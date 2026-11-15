@@ -1,5 +1,0 @@
-# Hashes of file build rules.
-c157c7bd2981cfbbb462868300a47740 CMakeFiles/dm_sql
-7dfc10bb0040ee730778718a6c1ac9f2 CMakeFiles/translations
-f7378d4bcbd00ea9c3f8bb14998d3c07 en/LC_MESSAGES/Magmass.mo
-34670bcec0500cda47130f21825e36c0 pl/LC_MESSAGES/Magmass.mo
