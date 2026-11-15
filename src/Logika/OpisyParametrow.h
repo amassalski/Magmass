@@ -22,6 +22,8 @@ const std::vector<std::pair<std::string, std::string>>& wbudowane();
 /// Słownik z bazy (symbol -> opis); po jego ustawieniu zeSlownika() korzysta tylko z niego
 void ustawZBazy(const std::map<std::string, std::string>& opisy);
 void wyczyscZBazy();
+/// Symbole z listy, których nie ma w słowniku (bez powtórzeń wg klucza, w kolejności pierwszego wystąpienia)
+std::vector<std::string> nieznane(const std::vector<std::string>& nazwy);
 /// Klucz porównawczy symbolu (do testów)
 std::string klucz(const std::string& nazwa);
 

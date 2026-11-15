@@ -183,3 +183,56 @@ bool DialogSlownikaParametrow::PrzywrocBrakujace() {
                  TR("Słownik parametrów"), wxOK | wxICON_INFORMATION, this);
     return n > 0;
 }
+
+DialogDoSlownika::DialogDoSlownika(wxWindow* parent, const std::vector<std::string>& symbole)
+    : wxDialog(parent, wxID_ANY, TR("Dodaj do słownika parametrów"), wxDefaultPosition, wxSize(760, 420), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER) {
+    wxBoxSizer* g = new wxBoxSizer(wxVERTICAL);
+    g->Add(new wxStaticText(this, wxID_ANY,
+           TR("Tych symboli nie ma jeszcze w słowniku, więc dymek nie powie, co oznaczają. Wpisz opis przy tych, które chcesz zapamiętać "
+              "(zaznaczone wiersze z opisem trafią do słownika; pozostałe zostaną pominięte).")), 0, wxALL, 10);
+    siatka_ = new wxGrid(this, wxID_ANY);
+    siatka_->CreateGrid(static_cast<int>(symbole.size()), 3);
+    siatka_->SetColLabelValue(0, TR("Dodaj"));
+    siatka_->SetColLabelValue(1, TR("Symbol"));
+    siatka_->SetColLabelValue(2, TR("Opis"));
+    siatka_->HideRowLabels();
+    siatka_->SetColSize(0, 60);
+    siatka_->SetColSize(1, 190);
+    siatka_->SetColSize(2, 440);
+    for (int i = 0; i < static_cast<int>(symbole.size()); ++i) {
+        siatka_->SetCellValue(i, 0, "0");
+        siatka_->SetCellRenderer(i, 0, new wxGridCellBoolRenderer);
+        siatka_->SetCellEditor(i, 0, new wxGridCellBoolEditor);
+        siatka_->SetCellValue(i, 1, TekstZUTF8(symbole[i]));
+        siatka_->SetReadOnly(i, 1);
+    }
+    // wpisanie opisu zaznacza wiersz
+    siatka_->Bind(wxEVT_GRID_CELL_CHANGED, [this](wxGridEvent& e) {
+        if (e.GetCol() == 2 && !siatka_->GetCellValue(e.GetRow(), 2).Strip(wxString::both).empty())
+            siatka_->SetCellValue(e.GetRow(), 0, "1");
+        e.Skip();
+    });
+    g->Add(siatka_, 1, wxEXPAND | wxLEFT | wxRIGHT, 10);
+    g->Add(CreateStdDialogButtonSizer(wxOK | wxCANCEL), 0, wxEXPAND | wxALL, 10);
+    SetSizer(g);
+}
+
+std::vector<WpisSlownikaParametrow> DialogDoSlownika::Wpisy() const {
+    std::vector<WpisSlownikaParametrow> w;
+    if (siatka_->IsCellEditControlEnabled()) siatka_->SaveEditControlValue();
+    for (int i = 0; i < siatka_->GetNumberRows(); ++i) {
+        const wxString opis = siatka_->GetCellValue(i, 2).Strip(wxString::both);
+        if (siatka_->GetCellValue(i, 0) != "1" || opis.empty()) continue;
+        WpisSlownikaParametrow e;
+        e.symbol = siatka_->GetCellValue(i, 1).utf8_string();
+        e.opis = opis.utf8_string();
+        for (char& c : e.opis) if (c == '\n' || c == '\r') c = ' ';
+        w.push_back(e);
+    }
+    return w;
+}
+
+void DialogDoSlownika::UstawOpis(int wiersz, const wxString& opis, bool zaznacz) {
+    siatka_->SetCellValue(wiersz, 2, opis);
+    siatka_->SetCellValue(wiersz, 0, zaznacz ? "1" : "0");
+}

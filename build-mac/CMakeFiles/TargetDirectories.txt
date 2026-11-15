@@ -1,0 +1,9 @@
+/Users/adam/Aplikacje/Magmass/build-mac/CMakeFiles/Magmass.dir
+/Users/adam/Aplikacje/Magmass/build-mac/CMakeFiles/dm_sql.dir
+/Users/adam/Aplikacje/Magmass/build-mac/CMakeFiles/translations.dir
+/Users/adam/Aplikacje/Magmass/build-mac/CMakeFiles/edit_cache.dir
+/Users/adam/Aplikacje/Magmass/build-mac/CMakeFiles/rebuild_cache.dir
+/Users/adam/Aplikacje/Magmass/build-mac/CMakeFiles/list_install_components.dir
+/Users/adam/Aplikacje/Magmass/build-mac/CMakeFiles/install.dir
+/Users/adam/Aplikacje/Magmass/build-mac/CMakeFiles/install/local.dir
+/Users/adam/Aplikacje/Magmass/build-mac/CMakeFiles/install/strip.dir

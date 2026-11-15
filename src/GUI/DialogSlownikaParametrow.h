@@ -6,6 +6,7 @@
 #include <wx/wx.h>
 #include <wx/listctrl.h>
 #include <wx/srchctrl.h>
+#include <wx/grid.h>
 
 #include <vector>
 
@@ -34,6 +35,21 @@ private:
     const WpisSlownikaParametrow* Wybrany() const;
     std::vector<long long> Zaznaczone() const;
     bool Edycja(WpisSlownikaParametrow wpis);
+};
+
+/// Po odczycie datasheetu: symbole parametrów, których nie ma w słowniku, z miejscem na opis. Zaznaczone wiersze z opisem
+/// trafiają do słownika (przycisk OK); puste opisy są pomijane.
+class DialogDoSlownika : public wxDialog {
+public:
+    DialogDoSlownika(wxWindow* parent, const std::vector<std::string>& symbole);
+    /// Wpisy do zapisania: zaznaczone i z niepustym opisem
+    std::vector<WpisSlownikaParametrow> Wpisy() const;
+    /// Dla testów
+    void UstawOpis(int wiersz, const wxString& opis, bool zaznacz = true);
+    int LiczbaWierszy() const { return siatka_->GetNumberRows(); }
+
+private:
+    wxGrid* siatka_ = nullptr;
 };
 
 #endif // DIALOGSLOWNIKAPARAMETROW_H

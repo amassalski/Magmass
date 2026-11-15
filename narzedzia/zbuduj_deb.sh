@@ -59,7 +59,7 @@ install -m 644 LICENSE "$PAK/usr/share/doc/magmass/LICENSE"
 cat > "$PAK/usr/share/doc/magmass/copyright" <<'KOP'
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Magmass
-Source: https://github.com/amassalski/MagazynElektroniki
+Source: https://github.com/amassalski/Magmass
 
 Files: *
 Copyright: 2026 Adam Massalski

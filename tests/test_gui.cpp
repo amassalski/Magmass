@@ -737,6 +737,17 @@ private:
             CHECK(ds.Wpisy().empty());
             ds.Szukaj("");
             CHECK(ds.Wpisy().size() > 10);
+            {   // dopisywanie nieznanych symboli po odczycie datasheetu
+                DialogDoSlownika dd(okno, {"GUISlow_B", "GUISlow_C"});
+                CHECK(dd.LiczbaWierszy() == 2 && dd.Wpisy().empty());
+                dd.UstawOpis(0, "Opis B");
+                dd.UstawOpis(1, "Pominięty", false);
+                CHECK(dd.Wpisy().size() == 1 && dd.Wpisy()[0].symbol == "GUISlow_B");
+                CHECK(sl.zapisz(dd.Wpisy()[0]).has_value());
+                sl.wczytajDoPamieci();
+                CHECK(OpisyParametrow::zeSlownika("guislow b") == "Opis B");
+                ManagerBazyDanych::pobierz().wykonaj("DELETE FROM tbl_slownik_parametrow WHERE klucz LIKE 'guislow%'");
+            }
             sl.wczytajDoPamieci();
             CHECK(!OpisyParametrow::zeSlownika("W_amax").empty());
         }
@@ -1809,7 +1820,7 @@ private:
         DialogOProgramie d(okno);
         CHECK(d.Karty() && d.Karty()->GetPageCount() == 3);
         const wxString o = DialogOProgramie::TrescOProgramie();
-        CHECK(o.Contains("Magmass") && o.Contains("Adam Massalski") && o.Contains("github.com/amassalski/MagazynElektroniki") && o.Contains("GNU General Public License"));
+        CHECK(o.Contains("Magmass") && o.Contains("Adam Massalski") && o.Contains("github.com/amassalski/Magmass") && o.Contains("GNU General Public License"));
         const wxString p = DialogOProgramie::TrescPodziekowan();
         CHECK(p.Contains("wxWidgets") && p.Contains("PostgreSQL") && p.Contains("ExifTool") && p.Contains("OCRmyPDF") && p.Contains("Tesseract"));
         const wxString l = DialogOProgramie::TekstLicencji();

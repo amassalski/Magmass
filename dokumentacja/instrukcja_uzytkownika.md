@@ -194,7 +194,7 @@ Baza narzędzi: nazwa, producent, model, kategoria, numer seryjny, miejsce, data
 
 *Sprawdź aktualizacje* pobiera plik `wersja.txt` z głównego katalogu repozytorium na GitHubie (gałąź domyślna) i porównuje numer z wersją programu. Gdy jest nowsza, pokazuje numer, opis zmian i proponuje otwarcie strony pobierania; niczego nie instaluje. Opcja *Sprawdzaj aktualizacje przy uruchomieniu* (domyślnie włączona) sprawdza po cichu, najwyżej raz dziennie.
 
-Wydanie nowej wersji: podnieś numer w `CMakeLists.txt` (`project(... VERSION ...)`), zbuduj instalatory, a po ich opublikowaniu zmień pierwszą linię `wersja.txt` (opcjonalnie: druga linia z adresem pobierania zaczynającym się od `http`, dalej opis zmian) i wyślij plik do repozytorium. Adres repozytorium zmienisz w *Ustawienia / Ścieżki / Aktualizacje* (domyślnie `https://github.com/amassalski/MagazynElektroniki`).
+Wydanie nowej wersji: podnieś numer w `CMakeLists.txt` (`project(... VERSION ...)`), zbuduj instalatory, a po ich opublikowaniu zmień pierwszą linię `wersja.txt` (opcjonalnie: druga linia z adresem pobierania zaczynającym się od `http`, dalej opis zmian) i wyślij plik do repozytorium. Adres repozytorium zmienisz w *Ustawienia / Ścieżki / Aktualizacje* (domyślnie `https://github.com/amassalski/Magmass`).
 
 ## Kalkulatory: zasilacz, tranzystor, ESR
 

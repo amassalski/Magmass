@@ -23,11 +23,11 @@ int main() {
     CHECK(!parsujPlikWersji("404: Not Found"));
     CHECK(!parsujPlikWersji("") && !parsujPlikWersji("\n\n"));
     CHECK(adresWersji().rfind("https://", 0) == 0 && adresWersji().find("/wersja.txt") != std::string::npos);
-    const std::string oczek = "https://raw.githubusercontent.com/amassalski/MagazynElektroniki/HEAD/wersja.txt";
+    const std::string oczek = "https://raw.githubusercontent.com/amassalski/Magmass/HEAD/wersja.txt";
     CHECK(adresWersji() == oczek);
-    CHECK(adresWersji("https://github.com/amassalski/MagazynElektroniki.git") == oczek);
-    CHECK(adresWersji("  https://github.com/amassalski/MagazynElektroniki/ ") == oczek);
-    CHECK(adresWersji("https://github.com/amassalski/MagazynElektroniki/tree/main/x") == oczek);
+    CHECK(adresWersji("https://github.com/amassalski/Magmass.git") == oczek);
+    CHECK(adresWersji("  https://github.com/amassalski/Magmass/ ") == oczek);
+    CHECK(adresWersji("https://github.com/amassalski/Magmass/tree/main/x") == oczek);
     CHECK(adresWersji("https://example.com/a/b").empty() && adresWersji("https://github.com/tylko").empty() && adresWersji("").empty());
     CHECK(adresStronyPobierania("https://github.com/a/b.git") == "https://github.com/a/b");
 

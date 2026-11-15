@@ -15,6 +15,10 @@ int main() {
         CHECK(OpisyParametrow::zeSlownika("w_AMAX") == OpisyParametrow::zeSlownika("W_amax"));
         CHECK(OpisyParametrow::zeSlownika("V_{CE(sat)}") == OpisyParametrow::zeSlownika("VCE sat") && !OpisyParametrow::zeSlownika("VCE sat").empty());
         CHECK(OpisyParametrow::zeSlownika("coś nieznanego").empty());
+        {   // symbole spoza słownika (bez powtórzeń wg klucza)
+            const auto n = OpisyParametrow::nieznane({"W_amax", "Foo Bar", "foo_bar", "V_CE(sat)", "Zzz", "  "});
+            CHECK(n.size() == 2 && n[0] == "Foo Bar" && n[1] == "Zzz");
+        }
         ParametrKatalogu p; p.nazwa = "W_amax";
         CHECK(OpisyParametrow::dlaParametru(p) == OpisyParametrow::zeSlownika("W_amax"));
         p.opis = "Moja moc"; CHECK(OpisyParametrow::dlaParametru(p) == "Moja moc");

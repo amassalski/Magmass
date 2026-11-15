@@ -62,6 +62,9 @@ public:
     int OcrDatasheetow(OcrPliku::Tryb tryb = OcrPliku::Tryb::Pytaj, bool bezPytan = false);
     /// Okno słownika opisów parametrów (tabela w bazie); po zamknięciu dymki są odświeżane
     void OtworzSlownikParametrow();
+    /// Po zapisie parametrów z datasheetu: pyta o opisy symboli, których nie ma w słowniku, i dopisuje je do słownika.
+    /// Zwraca liczbę dopisanych wpisów (0 także wtedy, gdy nie ma nic nowego, anulowano albo @p bezPytan).
+    int ProponujDoSlownika(const std::vector<ParametrKatalogu>& parametry, bool bezPytan = false);
     /// Menu podręczne listy (prawy przycisk): usuń z katalogu, OCR datasheetu
     std::unique_ptr<wxMenu> MenuKontekstowe();
 

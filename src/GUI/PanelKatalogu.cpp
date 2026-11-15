@@ -52,12 +52,15 @@ public:
                TR("To tylko propozycje - program odgaduje je z tekstu karty katalogowej i może się mylić.\n"
                   "Zaznacz te, które są poprawne; zapiszą się z oznaczeniem źródła \"datasheet\".\n"
                   "\"Maks.\" = Absolute Maximum Ratings, \"Elektr.\" = Electrical Characteristics. "
-                  "Pozycje oznaczone \"zgadywane\" są odznaczone - sprawdź je przed zaznaczeniem.")),
+                  "Pozycje oznaczone \"zgadywane\" są odznaczone - sprawdź je przed zaznaczeniem.\n"
+                  "\"w słowniku\" = program zna ten symbol (opis w dymku); po zapisie zapyta o symbole, których jeszcze nie zna.")),
                0, wxALL, 10);
         lista_ = new wxCheckListBox(this, wxID_ANY);
         for (const auto& p : w.parametry) {
+            const std::string z = OpisyParametrow::zeSlownika(p.nazwa);
             const int i = lista_->Append(TekstZUTF8(p.nazwa) + ": " + TekstZUTF8(p.wartosc) + "    [" + TekstZUTF8(p.fragment) + "]" +
-                                         (p.pewny ? wxString() : TR("   (zgadywane)")));
+                                         (p.pewny ? wxString() : TR("   (zgadywane)")) +
+                                         (z.empty() ? TR("   · nie ma w słowniku") : TR("   · w słowniku: ") + TekstZUTF8(z)));
             lista_->Check(static_cast<unsigned>(i), p.pewny);
         }
         g->Add(lista_, 1, wxEXPAND | wxLEFT | wxRIGHT, 10);
@@ -286,6 +289,24 @@ wxString PanelKatalogu::NaglowekKolumny(int kolumna) const {
     it.SetMask(wxLIST_MASK_TEXT);
     widok_->GetColumn(kolumna, it);
     return it.GetText();
+}
+
+int PanelKatalogu::ProponujDoSlownika(const std::vector<ParametrKatalogu>& parametry, bool bezPytan) {
+    std::vector<std::string> nazwy;
+    for (const auto& p : parametry) if (p.opis.empty()) nazwy.push_back(p.nazwa);
+    const std::vector<std::string> nowe = OpisyParametrow::nieznane(nazwy);
+    if (nowe.empty() || bezPytan) return 0;
+    DialogDoSlownika d(this, nowe);
+    if (d.ShowModal() != wxID_OK) return 0;
+    LogikaSlownikaParametrow sl(ManagerBazyDanych::pobierz());
+    int n = 0;
+    for (const auto& w : d.Wpisy()) {
+        if (sl.zapisz(w)) ++n;
+        else Komunikat(TR("✗ Słownik: ") + TekstZUTF8(sl.pobierzBlad()));
+    }
+    sl.wczytajDoPamieci();
+    if (n > 0) Komunikat(wxString::Format(TR("✓ Dodano do słownika parametrów: %d"), n));
+    return n;
 }
 
 void PanelKatalogu::OtworzSlownikParametrow() {
@@ -725,6 +746,7 @@ int PanelKatalogu::OdczytajDatasheet(const wxString& sciezkaWe, bool bezPytania,
         return -1;
     }
     Komunikat(wxString::Format(TR("✓ Z datasheetu zapisano parametrów: %d"), static_cast<int>(wybrane.size())));
+    if (!bezPytania) ProponujDoSlownika(wybrane);
     Odswiez();
     Wybierz(id);
     return static_cast<int>(wybrane.size());

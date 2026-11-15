@@ -5,7 +5,7 @@
 
 namespace Aktualizacje {
 
-std::string adresRepozytorium() { return "https://github.com/amassalski/MagazynElektroniki"; }
+std::string adresRepozytorium() { return "https://github.com/amassalski/Magmass"; }
 
 // "https://github.com/wlasciciel/repo[.git][/...]" -> {"wlasciciel", "repo"}
 static bool wlascicielIRepo(const std::string& adres, std::string& wlasciciel, std::string& repo) {

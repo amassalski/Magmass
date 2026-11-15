@@ -15,7 +15,7 @@ public:
     explicit DialogOProgramie(wxWindow* parent);
 
     static const char* Autor() { return "Adam Massalski"; }
-    static const char* Repozytorium() { return "https://github.com/amassalski/MagazynElektroniki"; }
+    static const char* Repozytorium() { return "https://github.com/amassalski/Magmass"; }
     static const char* AdresLicencji() { return "https://www.gnu.org/licenses/gpl-3.0.html"; }
 
     /// Strona "O programie" (HTML): opis, możliwości, autor, repozytorium, krótka informacja o licencji

@@ -68,7 +68,7 @@ Nowe pomysły trafiają do wersji 2.0 (poniżej, do uzupełnienia).
 - [ ] Biblioteka .lbr z magazynu (Eagle)
 - [ ] Przejrzeć angielskie tłumaczenia (lang/en.po) - pisane automatycznie
 - [ ] Zmienić klucz API Mouser (został wklejony do rozmowy)
-- [x] Zmiana nazwy katalogu projektu z DomowyMagazyn na Magmass (katalog w paczkach zip i klony; repozytorium GitHub zostaje MagazynElektroniki; wewnętrzna nazwa DomowyMagazyn w katalogu konfiguracji zostaje dla zgodności)
+- [x] Zmiana nazwy katalogu projektu z DomowyMagazyn na Magmass (katalog w paczkach zip i klony; repozytorium GitHub: nowe, Magmass; wewnętrzna nazwa DomowyMagazyn w katalogu konfiguracji zostaje dla zgodności)
 
 ## UWAGI I POMYSŁY
 - Używać polskich nazw dla funkcji i zmiennych w kodzie C++

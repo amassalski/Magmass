@@ -1,2 +1,2 @@
 1.0.0
-https://github.com/amassalski/MagazynElektroniki
+https://github.com/amassalski/Magmass

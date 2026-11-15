@@ -120,6 +120,21 @@ std::string zeSlownika(const std::string& nazwa) {
     return it == m.end() ? std::string() : it->second;
 }
 
+std::vector<std::string> nieznane(const std::vector<std::string>& nazwy) {
+    std::vector<std::string> w;
+    std::vector<std::string> klucze;
+    for (const std::string& n : nazwy) {
+        const std::string k = klucz(n);
+        if (k.empty() || !zeSlownika(n).empty()) continue;
+        bool juz = false;
+        for (const std::string& x : klucze) if (x == k) { juz = true; break; }
+        if (juz) continue;
+        klucze.push_back(k);
+        w.push_back(n);
+    }
+    return w;
+}
+
 std::string dlaParametru(const ParametrKatalogu& p) {
     return p.opis.empty() ? zeSlownika(p.nazwa) : p.opis;
 }
