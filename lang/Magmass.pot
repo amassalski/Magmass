@@ -1,0 +1,6891 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Magmass package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Magmass\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-10 10:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/GUI/DialogAudioLampy.cpp:150
+msgid "Narzędzia audio i lampowe"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:154
+msgid "Układy lampowe"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:155
+msgid "dB i nepery"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:156
+msgid "Krzywa RIAA"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:157
+msgid "Punkt pracy lampy"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:159 src/GUI/DialogCewkiAL.cpp:62
+#: src/GUI/DialogDlawika.cpp:264 src/GUI/DialogEtykiet.cpp:71
+#: src/GUI/DialogImportuElementow.cpp:94 src/GUI/DialogKalkulatorow.cpp:112
+#: src/GUI/DialogKodow.cpp:107 src/GUI/DialogLinkowElementu.cpp:171
+#: src/GUI/DialogMetodyGraficzne.cpp:253 src/GUI/DialogObudow.cpp:164
+#: src/GUI/DialogRaportu.cpp:60 src/GUI/DialogSklepow.cpp:43
+#: src/GUI/DialogTrafoPP.cpp:138 src/GUI/DialogTrafoSE.cpp:161
+#: src/GUI/DialogTrafoSieciowy.cpp:103 src/GUI/DialogZestawienia.cpp:63
+#: src/GUI/DialogZnieksztalcen.cpp:61 src/Pomoc/PomocGUI.cpp:143
+msgid "Zamknij"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:370
+msgid "Układ:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:376
+msgid "Polaryzacja automatyczna (Rk bez kondensatora)"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:382 src/GUI/DialogAudioLampy.cpp:975
+msgid "Lampa z katalogu..."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:383
+msgid "Zapisz lampę do katalogu..."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:471
+msgid ""
+"Uwagi: uzupełnij pola liczbami (rezystancje, pojemności i dane lampy większe "
+"od zera)."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:480
+msgid ""
+"Uwagi: przy polaryzacji automatycznej górna częstotliwość jest przybliżona "
+"(ECCLab podaje niższą)."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:645 src/GUI/DialogAudioLampy.cpp:708
+#: src/GUI/OknoGlowne.cpp:681
+msgid "Brak połączenia z bazą danych."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:645 src/GUI/DialogAudioLampy.cpp:668
+#: src/GUI/DialogAudioLampy.cpp:674
+msgid "Lampa z katalogu"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:667
+msgid ""
+"W katalogu nie ma jeszcze lamp (rodzina „Lampy elektronowe”). Dodać lampy "
+"przykładowe: ECC81, ECC82, ECC83, ECC85, ECC88?"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:674
+msgid "Wybierz lampę z katalogu:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:708 src/GUI/DialogAudioLampy.cpp:712
+#: src/GUI/DialogAudioLampy.cpp:715 src/GUI/DialogAudioLampy.cpp:718
+msgid "Zapisz lampę do katalogu"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:712
+msgid "Uzupełnij Ka i Rwew (albo Sa) lampy liczbami większymi od zera."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:715
+msgid "Symbol lampy (np. ECC83). Istniejąca pozycja dostanie nowe parametry."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:718
+msgid "Nie udało się zapisać lampy w katalogu."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:730
+msgid "Zamiana napięć na decybele i nepery (dB = 20 log U1/U2, Np = ln U1/U2)"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:734
+msgid "Zamiana mocy na decybele i nepery (dB = 10 log P1/P2, Np = ½ ln P1/P2)"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:738
+msgid "Zamiana miary liniowej na decybele"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:739
+msgid "Miara liniowa"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:741 src/GUI/DialogAudioLampy.cpp:750
+msgid "napięcie / prąd"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:742 src/GUI/DialogAudioLampy.cpp:751
+msgid "moc"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:747
+msgid "Zamiana decybeli na miarę liniową"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:756
+msgid "Zamiana neperów na decybele (1 Np = 8,686 dB)"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:759
+msgid "Zamiana decybeli na nepery"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:771
+msgid "Wpisz liczby większe od zera."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:782
+msgid "miara liniowa = "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:782 src/GUI/DialogAudioLampy.cpp:784
+#: src/GUI/DialogAudioLampy.cpp:786
+msgid "Wpisz liczbę."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:795
+msgid "Odtwarzanie (korektor gramofonowy)"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:796
+msgid "Nagrywanie (krzywa tłoczenia)"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:800
+msgid "IEC (filtr 20 Hz)"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:803
+msgid "Częstotliwość [Hz]"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:811
+msgid "Tabela od [Hz]"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:813
+msgid "do"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:815
+msgid "co [Hz]"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:822
+msgid "f [Hz]"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:823
+msgid "dB"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:824
+msgid "faza [°]"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:833
+msgid ""
+"Elementy RC biernej sieci korekcyjnej (odtwarzanie): sekcja A = R1 || C1 w "
+"szeregu i R2 || C2 do masy (3180/318 µs), sekcja B = R3 szeregowo i C3 do "
+"masy (75 µs); sekcje rozdziela stopień wzmacniający."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:842
+msgid "rezystory z szeregu"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:846
+msgid "kondensatory"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:868
+msgid "Wpisz częstotliwość większą od zera."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:871
+msgid "(względem 1 kHz)"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:886
+msgid "Podaj zakres i dodatni interwał."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:886
+#, c-format
+msgid "Punktów: %zu"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:907
+msgid "Wpisz R2 i R3, np. 100k i 10k."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:909
+msgid "Wpisz R2 i R3 większe od zera."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:912
+msgid "Obliczone:  "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:914
+msgid "Z szeregów:  "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:916
+#, c-format
+msgid ""
+"Największa odchyłka od krzywej RIAA (20 Hz..20 kHz): %s dB.  Tłumienie sieci "
+"przy 1 kHz: %s dB (o tyle wzmacniacz musi dodać wzmocnienia)."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:972
+msgid ""
+"Punkt pracy ze stałą polaryzacją katodową (siatka na masie): Rk = |Ug| / (Ia "
+"+ Ig2), Ua = B+ − Ia·Ra − |Ug|. Napięcie siatki Ug odczytaj z charakterystyk "
+"lampy."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:987
+msgid "Zasilanie B+ [V]:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:988
+msgid "Opór anodowy Ra [Ω]:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:989
+msgid "Prąd anody Ia [mA]:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:990
+msgid "Napięcie siatki Ug [V]:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:991
+msgid "Prąd ekranu Ig2 [mA]:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:992
+msgid "Napięcie ekranu Ug2 [V]:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:993
+msgid "Amplifikacja μ:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:994
+msgid "Rezystancja wewn. ra [Ω]:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:995
+msgid "Moc anody max [W]:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:996
+msgid "Dolna częstotliwość [Hz]:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1001
+msgid ""
+"Pola Ig2 i Ug2 wypełnij tylko dla pentody lub tetrody. μ i ra są potrzebne "
+"do wzmocnienia i kondensatora katodowego (np. ECC83: μ = 100, ra = 62,5 k; "
+"ECC82: μ = 17, ra = 7,7 k)."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1014
+msgid "Wpisz B+, Ra, Ia i Ug (np. 250, 100k, 0,8, -1,5)."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1017
+msgid "Rk = "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1018
+msgid "Ua = "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1018
+msgid "moc anody "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1019
+msgid "— PRZEKROCZONA moc dopuszczalna!"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1020
+msgid "Linia obciążenia: od "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1021
+msgid "Rezystor ekranu Rg2 = "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1022
+msgid "Wzmocnienie napięciowe: "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1022 src/GUI/DialogKalkulatorow.cpp:377
+msgid " V/V"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1023
+msgid "Kondensator katodowy: co najmniej "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1026
+msgid "Niemożliwe: Ug musi być ujemne, a spadek na Ra mniejszy od B+."
+msgstr ""
+
+#: src/GUI/DialogCewkiAL.cpp:15
+msgid "Cewka na rdzeniu z AL"
+msgstr ""
+
+#: src/GUI/DialogCewkiAL.cpp:19 src/GUI/DialogElementu.cpp:137
+#: src/GUI/DialogTrafoSE.cpp:33 src/GUI/PanelElementow.cpp:145
+msgid "Parametry"
+msgstr ""
+
+#: src/GUI/DialogCewkiAL.cpp:44 src/GUI/DialogMetodyGraficzne.cpp:309
+#: src/GUI/DialogTrafoPPEtap3.cpp:85 src/GUI/DialogTrafoSE.cpp:105
+#: src/GUI/DialogTrafoSEWykonane.cpp:72
+msgid "Wyniki"
+msgstr ""
+
+#: src/GUI/DialogCewkiAL.cpp:99
+msgid ""
+"Uwagi: wpisz AL i żądaną indukcyjność (liczby większe od zera); tolerancja "
+"poniżej 100%."
+msgstr ""
+
+#: src/GUI/DialogCewkiAL.cpp:112
+#, c-format
+msgid ""
+"Dla %s zwojów z podanym AL wychodzi %s mH, czyli %s%% względem żądanej "
+"indukcyjności; wzór L = AL·N² jest definicją AL, więc różnicę wyjaśnia inna "
+"wartość AL lub inna definicja w drugim programie. "
+msgstr ""
+
+#: src/GUI/DialogCewkiAL.cpp:114
+msgid ""
+"Indukcja szczytowa przekracza dopuszczalną - AL maleje, a rdzeń się nasyca; "
+"weź rdzeń o większym Ae lub ze szczeliną. "
+msgstr ""
+
+#: src/GUI/DialogCewkiAL.cpp:115
+msgid ""
+"AL podaje producent dla małego sygnału bez prądu stałego; przy polaryzacji "
+"prądem stałym efektywne AL jest mniejsze (potrzeba więcej zwojów lub "
+"szczeliny)."
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:7
+msgid "Pobierz datasheet z Mousera"
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:10
+msgid ""
+"Wpisz symbol albo numer części (np. LM358) i wybierz właściwą pozycję. "
+"Program pobierze jej datasheet."
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:14
+msgid "Szukaj"
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:20
+msgid "Numer producenta"
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:21 src/GUI/DialogEdycjiZbiorczej.cpp:34
+#: src/GUI/DialogElementu.cpp:110 src/GUI/DialogProjektu.cpp:99
+#: src/GUI/PanelElementow.cpp:141 src/GUI/PanelNarzedzi.cpp:57
+#: src/GUI/PanelNarzedzi.cpp:344 src/GUI/PanelPodgladu.cpp:134
+msgid "Producent"
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:22 src/GUI/DialogDodajSklep.cpp:45
+#: src/GUI/DialogElementu.cpp:112 src/GUI/DialogObudow.cpp:139
+#: src/GUI/DialogProjektu.cpp:51 src/GUI/DialogProjektu.cpp:102
+#: src/GUI/PanelElementow.cpp:142 src/GUI/PanelPodgladu.cpp:135
+msgid "Opis"
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:23 src/GUI/DialogObudow.cpp:131
+#: src/GUI/DialogProjektu.cpp:101 src/GUI/PanelElementow.cpp:146
+msgid "Obudowa"
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:24 src/GUI/DialogLinkowElementu.cpp:361
+#: src/GUI/DialogLinkowElementu.cpp:366 src/GUI/DialogLinkowElementu.cpp:418
+#: src/GUI/DialogLinkowElementu.cpp:432 src/GUI/PanelElementow.cpp:677
+#: src/GUI/PanelElementow.cpp:682 src/GUI/PanelKatalogu.cpp:418
+#: src/GUI/PanelKatalogu.cpp:551 src/GUI/PanelKatalogu.cpp:556
+#: src/GUI/PanelKatalogu.cpp:592 src/GUI/PanelKatalogu.cpp:616
+#: src/GUI/PanelKatalogu.cpp:657
+msgid "Datasheet"
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:30
+msgid "Wpisz adres ręcznie..."
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:31 src/GUI/DialogLinkowElementu.cpp:390
+#: src/GUI/PanelKatalogu.cpp:168 src/GUI/PanelKatalogu.cpp:624
+msgid "Pobierz datasheet"
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:37 src/GUI/DialogImportBOM.cpp:85
+#: src/GUI/DialogKamery.cpp:62 src/GUI/PanelKatalogu.cpp:494
+msgid "Anuluj"
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:67 src/GUI/DialogEtykiet.cpp:163
+#: src/GUI/DialogZebra.cpp:158 src/GUI/OknoGlowne.cpp:879
+#: src/GUI/PanelElementow.cpp:203 src/GUI/PanelElementow.cpp:504
+#: src/GUI/PanelKatalogu.cpp:216 src/GUI/PanelKatalogu.cpp:424
+#: src/GUI/PanelKategorii.cpp:70 src/GUI/PanelKsiazek.cpp:245
+#: src/GUI/PanelKsiazek.cpp:687 src/GUI/PanelKsiazek.cpp:727
+#: src/GUI/PanelNarzedzi.cpp:252 src/GUI/PanelProjektow.cpp:180
+msgid "✗ "
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:73
+msgid "Wpisz symbol albo numer części."
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:74
+msgid ""
+"Klucz API Mouser w Ustawieniach (zakładka Inne) ma nieprawidłowy format."
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:76
+msgid "Szukam w Mouserze..."
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:83
+msgid "Mouser odrzucił zapytanie: sprawdź klucz API w Ustawieniach."
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:84
+msgid ""
+"Za dużo zapytań do Mousera (limit: 30 na minutę, 1000 na dobę). Spróbuj za "
+"chwilę."
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:85
+msgid "Nie udało się połączyć z Mouserem: "
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:106 src/GUI/DialogKodow.cpp:363
+#: src/GUI/DialogZestawienia.cpp:178 src/GUI/DialogZestawienia.cpp:179
+#: src/GUI/PanelTrafoModel.cpp:76
+msgid "brak"
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:106
+msgid "jest"
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:108
+msgid "Mouser nie znalazł takiej części. Spróbuj podać dokładniejszy numer."
+msgstr ""
+
+#: src/GUI/DialogDatasheetMouser.cpp:109
+#, c-format
+msgid "Znaleziono: %zu. Wybierz pozycję i kliknij Pobierz datasheet."
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:122
+msgid "b – grubość pakietu (głębokość)"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:124
+msgid "l – średnia droga strumienia (jedna połówka)"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:126
+msgid "lzw – średnia długość zwoju"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:164
+msgid "Dławik zasilacza"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:169 src/GUI/DialogDlawika.cpp:220
+#: src/GUI/DialogTrafoSieciowy.cpp:27
+msgid "Rdzeń"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:180 src/GUI/DialogTrafoSieciowy.cpp:37
+msgid "Kształtka"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:183 src/GUI/DialogTrafoPP.cpp:82
+#: src/GUI/DialogTrafoSE.cpp:64 src/GUI/DialogTrafoSieciowy.cpp:40
+msgid "własna"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:187
+msgid "Grubość blachy [mm]"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:201
+msgid "Parametry dławika"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:214
+msgid "Oblicz"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:218 src/GUI/DialogTrafoSieciowy.cpp:69
+msgid "Wyniki obliczeń"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:221 src/GUI/DialogTrafoSieciowy.cpp:199
+msgid "Uzwojenie"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:262 src/Pomoc/PomocGUI.cpp:338
+#: src/Pomoc/PomocGUI.cpp:356
+msgid "Pomoc"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:274
+msgid "Średnica drutu nawojowego"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:342
+msgid ""
+"Uwagi: uzupełnij pola liczbami większymi od zera (średnica drutu może być 0)."
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:350
+msgid "Dla Twoich danych: indukcja w rdzeniu bez szczeliny wyniosłaby "
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:350
+msgid "przy dopuszczalnej "
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:351
+msgid "więc szczelina jest potrzebna."
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:351
+msgid "więc szczelina nie jest potrzebna."
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:353
+msgid "bez reluktancji żelaza"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:355
+#, c-format
+msgid ""
+"Obliczone uzwojenie zajmuje ponad 75% okna rdzenia. Należy zmniejszyć "
+"wypełnienie okna rdzenia poniżej tej wartości. W tym celu powinno się:\n"
+"- zmniejszyć objętość uzwojenia przez zastosowanie drutu nawojowego o "
+"mniejszej średnicy,\n"
+"- zmniejszyć indukcję dławika, co wpłynie na zmniejszenie liczby zwojów,\n"
+"- zwiększyć rozmiar kształtki rdzenia."
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:360
+#, c-format
+msgid ""
+"Obliczone uzwojenie zajmuje mniej niż 50% okna rdzenia, rdzeń nie jest "
+"optymalnie wypełniony. Należy zwiększyć wypełnienie okna rdzenia powyżej tej "
+"wartości. W tym celu powinno się:\n"
+"- zwiększyć objętość uzwojenia przez zastosowanie drutu nawojowego o "
+"większej średnicy,\n"
+"- zwiększyć indukcję dławika, co wpłynie na zwiększenie liczby zwojów,\n"
+"- zmniejszyć rozmiar kształtki rdzenia."
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:365
+#, c-format
+msgid "Uwaga: uzwojenie zajmuje ponad 75% okna - nie zmieści się."
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:366
+#, c-format
+msgid ""
+"Uwaga: uzwojenie zajmuje mniej niż 50% okna - rdzeń nie jest optymalnie "
+"wypełniony."
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:371
+msgid "Uwaga !!!!"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:375
+msgid "Dławik - pomoc"
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:378
+msgid ""
+"Obliczone uzwojenie należy sprawdzić pod względem zajmowanego miejsca w "
+"oknie rdzenia. Karkas, na którym znajduje się uzwojenie, zmniejsza przekrój "
+"okna rdzenia (c x h) o około 25...30%. Optymalne wypełnienie występuje "
+"pomiędzy około 50...75%.\n"
+"\n"
+"W przypadku gdy obliczone uzwojenie zajmuje ponad 75%, należy zmniejszyć "
+"wypełnienie okna rdzenia poniżej tej wartości. W tym celu powinno się:\n"
+"- zmniejszyć objętość uzwojenia przez zastosowanie drutu nawojowego o "
+"mniejszej średnicy,\n"
+"- zmniejszyć indukcję dławika, co wpłynie na zmniejszenie liczby zwojów,\n"
+"- zwiększyć rozmiar kształtki rdzenia.\n"
+"\n"
+"W przeciwnym wypadku, gdy uzwojenie zajmuje mniej niż 50%, należy zwiększyć "
+"wypełnienie okna rdzenia powyżej tej wartości. W tym celu powinno się:\n"
+"- zwiększyć objętość uzwojenia przez zastosowanie drutu nawojowego o "
+"większej średnicy,\n"
+"- zwiększyć indukcję dławika, co wpłynie na zwiększenie liczby zwojów,\n"
+"- zmniejszyć rozmiar kształtki rdzenia.\n"
+"\n"
+"Chcąc zapobiec nasyceniu dławika spowodowanemu zbyt silnym prądem "
+"przepływającym przez uzwojenie, stosuje się szczelinę z materiału "
+"niemagnetycznego między kształtkami rdzenia E oraz I. Szczelina nie jest "
+"konieczna, gdy indukcja od prądu stałego w rdzeniu bez szczeliny, B = "
+"μ0·μ·N·I / lFe, nie przekracza dopuszczalnej indukcji (pole Indukcja max, "
+"zwykle 0,7...0,85 T); to znaczy, gdy iloczyn N·I (amperozwoje) jest dość "
+"mały."
+msgstr ""
+
+#: src/GUI/DialogDlawika.cpp:395
+msgid "Szczelina [mm] = "
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:10
+msgid "Zmień sklep"
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:10
+msgid "Nowy sklep"
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:34
+msgid "Sklep aktywny (uwzględniany w zestawieniach)"
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:37 src/GUI/DialogProjektu.cpp:47
+#: src/GUI/PanelNarzedzi.cpp:55
+msgid "Nazwa *"
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:38
+msgid "Adres strony"
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:39
+msgid "Adres wyszukiwania (z {q})"
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:40
+msgid "Kraj"
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:41
+msgid "Waluta (3 litery)"
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:42
+msgid "Koszt dostawy"
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:43
+msgid "Darmowa dostawa od"
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:44
+msgid "Wzorzec ceny (zaawansowane)"
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:46
+msgid "Priorytet (1 = najchętniej)"
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:64
+msgid ""
+"Adres wyszukiwania: adres strony wyników sklepu, w którym szukana fraza jest "
+"zastąpiona przez {q},\n"
+"np. https://sklep.pl/szukaj?q={q}. Wzorzec ceny jest potrzebny tylko wtedy, "
+"gdy sklep nie podaje ceny\n"
+"w danych strukturalnych: wyrażenie regularne z jedną grupą w nawiasie, np. "
+"cena\">([0-9 ,.]+)"
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:98
+msgid "Koszt dostawy musi być liczbą."
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:98 src/GUI/DialogDodajSklep.cpp:103
+#: src/GUI/DialogDodajSklep.cpp:108 src/GUI/DialogLinkowElementu.cpp:131
+msgid "Sklep"
+msgstr ""
+
+#: src/GUI/DialogDodajSklep.cpp:103
+msgid "Próg darmowej dostawy musi być liczbą albo pusty."
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:10
+msgid "Edycja zbiorcza elementów"
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:13
+#, c-format
+msgid ""
+"Zaznaczone elementy: %d. Zaznacz pola, które mają dostać tę samą wartość;\n"
+"reszta danych pozostanie bez zmian."
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:25 src/GUI/DialogElementu.cpp:211
+#: src/GUI/DialogImportBOM.cpp:45 src/GUI/DialogKatalogu.cpp:163
+msgid "(bez kategorii)"
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:32 src/GUI/DialogElementu.cpp:109
+#: src/GUI/PanelElementow.cpp:147 src/GUI/PanelNarzedzi.cpp:62
+#: src/GUI/PanelNarzedzi.cpp:346 src/GUI/PanelPodgladu.cpp:136
+msgid "Kategoria"
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:36 src/GUI/DialogElementu.cpp:133
+msgid "np. 1%"
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:37 src/GUI/DialogElementu.cpp:136
+#: src/GUI/PanelElementow.cpp:144
+msgid "Tolerancja"
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:39
+msgid "Ilość (ustaw stan na)"
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:41 src/GUI/DialogElementu.cpp:170
+msgid "Stan minimalny"
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:43
+msgid "np. 0,12 (puste = usuń cenę)"
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:44 src/GUI/DialogElementu.cpp:175
+msgid "Cena jednostkowa"
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:48 src/GUI/DialogKsiazki.cpp:107
+msgid "dopisz do istniejących"
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:49 src/GUI/DialogKsiazki.cpp:108
+msgid "zastąp istniejące"
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:53 src/GUI/DialogElementu.cpp:195
+#: src/GUI/DialogKsiazki.cpp:112 src/GUI/DialogKsiazki.cpp:114
+#: src/GUI/PanelElementow.cpp:152 src/GUI/PanelKsiazek.cpp:369
+#: src/GUI/PanelKsiazek.cpp:492
+msgid "Tagi"
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:109
+msgid "Zaznacz przynajmniej jedno pole do zmiany."
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:109 src/GUI/DialogEdycjiZbiorczej.cpp:116
+#: src/GUI/PanelElementow.cpp:428
+msgid "Edycja zbiorcza"
+msgstr ""
+
+#: src/GUI/DialogEdycjiZbiorczej.cpp:116
+msgid "Cena musi być liczbą nieujemną (np. 0,12)."
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:37
+msgid "Nowy element"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:37
+msgid "Edycja elementu"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:102
+msgid "Z katalogu..."
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:106
+msgid "Symbol *"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:111
+msgid "Symbol producenta"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:113 src/GUI/DialogKatalogu.cpp:47
+#: src/GUI/DialogProjektu.cpp:100 src/GUI/PanelElementow.cpp:143
+#: src/GUI/PanelPodgladu.cpp:117
+msgid "Wartość"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:114
+msgid "Jednostka"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:119
+msgid "Wybierz obudowy elementu ze słownika"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:123
+msgid "Podpowiedz"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:124
+msgid "Podpowiedz obudowę dla symbolu elementu (z bibliotek Eagle i katalogu)"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:128 src/GUI/DialogElementu.cpp:285
+#: src/GUI/DialogObudow.cpp:28 src/GUI/DialogObudow.cpp:96
+#: src/GUI/DialogObudow.cpp:119 src/GUI/DialogObudow.cpp:228
+#: src/GUI/DialogObudow.cpp:253 src/GUI/DialogObudow.cpp:269
+#: src/GUI/DialogObudow.cpp:288 src/GUI/DialogObudow.cpp:293
+#: src/GUI/DialogObudow.cpp:356 src/GUI/DialogObudow.cpp:393
+#: src/GUI/DialogObudow.cpp:400 src/GUI/DialogObudow.cpp:404
+#: src/GUI/PanelPodgladu.cpp:118
+msgid "Obudowy"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:135
+msgid "np. 0,1 W; 50 V; X7R"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:149
+msgid "np. A1"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:151
+msgid "np. 1"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:155
+msgid "szuflada"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:159 src/GUI/PanelElementow.cpp:148
+#: src/GUI/PanelNarzedzi.cpp:69 src/GUI/PanelNarzedzi.cpp:349
+#: src/GUI/PanelPodgladu.cpp:137
+msgid "Miejsce"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:168
+msgid "Ilość początkowa"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:168
+msgid "Ilość dostępna"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:178
+msgid "Datasheet (adres)"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:182 src/GUI/DialogKsiazki.cpp:120
+#: src/GUI/DialogProjektu.cpp:171 src/GUI/PanelNarzedzi.cpp:84
+#: src/GUI/ZdjeciaElementow.cpp:82
+msgid "Wybierz..."
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:185 src/GUI/ZdjeciaElementow.cpp:83
+msgid "Z kamery..."
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:192 src/GUI/DialogElementu.cpp:509
+#: src/GUI/PanelNarzedzi.cpp:89
+msgid "Zdjęcie"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:202
+msgid "Zmiana ilości dostępnej zostanie zapisana w historii magazynu."
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:284
+msgid ""
+"Brak podpowiedzi dla tego symbolu. Wczytaj biblioteki Eagle (Katalog / "
+"Obudowy) albo wybierz obudowę ręcznie przyciskiem \"...\"."
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:369 src/GUI/DialogKatalogu.cpp:139
+msgid "Podaj symbol elementu."
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:369
+msgid "Brak danych"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:376
+msgid "Cena musi być liczbą nieujemną, np. 0,35."
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:376
+msgid "Błędna cena"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:382
+msgid "Waluta to kod trzyliterowy, np. PLN."
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:382
+msgid "Błędna waluta"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:395
+msgid "Zmiana stanu magazynowego"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:405
+msgid "Obecny stan: "
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:408
+msgid "Przyjęcie (dodaj do stanu)"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:410
+msgid "Wydanie (odejmij od stanu)"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:411
+msgid "Ustaw stan na (inwentaryzacja)"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:423 src/GUI/DialogProjektu.cpp:103
+#: src/GUI/PanelElementow.cpp:149
+msgid "Ilość"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:425
+msgid "Komentarz"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:468
+msgid "Stan się nie zmieni."
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:470
+msgid "Za mało sztuk: stan nie może być ujemny."
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:472
+msgid "Stan po zmianie: "
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:478
+msgid "Stan się nie zmieni. Wpisz inną ilość."
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:478 src/GUI/DialogElementu.cpp:483
+msgid "Zmiana stanu"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:483
+msgid "Nie można wydać więcej sztuk, niż jest w magazynie."
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:492 src/GUI/PanelPodgladu.cpp:192
+msgid "Wybierz zdjęcie elementu"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:493 src/GUI/OknoGlowne.cpp:873
+#: src/GUI/PanelPodgladu.cpp:193 src/GUI/ZdjeciaElementow.cpp:89
+msgid ""
+"Obrazy (*.jpg;*.jpeg;*.png;*.bmp;*.gif)|*.jpg;*.jpeg;*.png;*.bmp;*.gif|"
+"Wszystkie pliki|*.*"
+msgstr ""
+
+#: src/GUI/DialogElementu.cpp:509
+msgid "Nie udało się skopiować zdjęcia do katalogu zdjęć."
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:14
+msgid "Drukowanie etykiet"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:22
+msgid "Drukarka systemowa (arkusze i rolki)"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:23
+msgid "Zebra ZPL (ZD421 i podobne)"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:26
+msgid "Sposób drukowania"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:28
+msgid "Które elementy"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:29
+msgid "Tylko zaznaczony element"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:32
+#, c-format
+msgid "Wszystkie elementy z listy (%zu)"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:49
+msgid "Ramki etykiet (wydruk próbny)"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:50
+msgid "Kopii każdej etykiety"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:51
+msgid "Format arkusza"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:52
+msgid "Zacznij od etykiety nr"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:53
+msgid "Przesunięcie poziome [mm]"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:54
+msgid "Przesunięcie pionowe [mm]"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:61
+msgid "Podgląd wydruku..."
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:62 src/GUI/DialogEtykiet.cpp:126
+msgid "Drukuj..."
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:63
+msgid "Zapisz jako PNG..."
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:64
+msgid "Ustawienia Zebry..."
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:65
+msgid "Zapisz ZPL do pliku..."
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:126
+msgid "Drukuj na Zebrze"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:158
+msgid "✓ Zapisano polecenia ZPL do pliku."
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:159
+msgid "✓ Wysłano do drukarki."
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:164
+msgid "Etykiety: drukarka Zebra"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:181 src/GUI/DialogZebra.cpp:127
+msgid "Zapisz polecenia ZPL"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:181
+msgid "Pliki ZPL (*.zpl)|*.zpl"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:186
+msgid "✓ Zapisano plik ZPL."
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:188 src/GUI/DialogEtykiet.cpp:281
+#: src/GUI/DialogEtykiet.cpp:291 src/GUI/DialogEtykiet.cpp:312
+#: src/GUI/OknoGlowne.cpp:782
+msgid "Etykiety"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:230
+#, c-format
+msgid "Etykiet: %zu (%.0f x %.0f mm, %d dpi)"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:247
+#, c-format
+msgid "Etykiet: %zu, arkuszy: %d"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:277
+msgid "Zapisz etykiety jako PNG"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:277
+msgid "Obrazy PNG (*.png)|*.png"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:281
+#, c-format
+msgid "Zapisano obrazów: %d"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:291
+msgid "Nie można utworzyć podglądu wydruku (brak skonfigurowanej drukarki?)."
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:295
+msgid "Podgląd etykiet"
+msgstr ""
+
+#: src/GUI/DialogEtykiet.cpp:312
+msgid "Drukowanie nie powiodło się. Sprawdź ustawienia drukarki."
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:16
+msgid "Import listy części do projektu: "
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:23
+msgid "Plik:"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:26 src/GUI/DialogImportuElementow.cpp:174
+msgid "Wybierz plik..."
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:31
+msgid ""
+"Obsługiwane: KiCad (CSV z raportu BOM, netlista XML), Eagle (schemat .sch, "
+"CSV)."
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:36
+msgid "Liczba płytek:"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:40
+msgid "Zastąp obecną listę (poza pozycjami, z których już wydano)"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:42
+msgid "Kategoria nowych elementów:"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:74
+msgid "Wybierz element z magazynu..."
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:75
+msgid "Utwórz nowy element"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:76 src/GUI/PanelKatalogu.cpp:494
+msgid "Pomiń"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:83
+msgid "Importuj"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:91
+msgid "Wybierz plik z listą części"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:92
+msgid ""
+"Listy części (*.csv;*.xml;*.sch;*.net)|*.csv;*.xml;*.sch;*.net|Wszystkie "
+"pliki|*.*"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:119
+msgid "obudowa ze słownika: "
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:122
+msgid "obudowa (podpowiedź): "
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:142 src/GUI/DialogImportBOM.cpp:252
+#: src/GUI/DialogImportBOM.cpp:262
+msgid "Import listy części"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:159
+msgid "Format: "
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:159
+#, c-format
+msgid ", pozycji: %zu, sztuk: %d"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:165 src/GUI/DialogImportuElementow.cpp:213
+#: src/GUI/DialogImportuElementow.cpp:331
+msgid "• "
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:166
+msgid "Uwagi do wczytanego pliku"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:191
+msgid "pomiń"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:195
+msgid "utwórz nowy element"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:199
+msgid "użyj istniejącego"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:216
+#, c-format
+msgid "Z magazynu: %d, nowe elementy: %d, pominięte: %d"
+msgstr ""
+
+#: src/GUI/DialogImportBOM.cpp:252
+msgid "Obecna lista części projektu zostanie zastąpiona. Kontynuować?"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:43
+msgid "Generator szeregów E (rezystory, kondensatory, cewki)"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:44
+msgid "Import elementów z pliku CSV"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:68
+msgid "Gdy symbol już jest w magazynie:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:71
+msgid "pomiń (nic nie zmieniaj)"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:72
+msgid "dodaj ilość do istniejącego"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:73
+msgid "uzupełnij dane (stan bez zmian)"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:83
+msgid "Zapisz jako CSV..."
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:87
+msgid "Zapisz szablon CSV..."
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:92
+msgid "Dodaj do magazynu"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:119
+msgid "Rodzaj:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:134 src/GUI/DialogKalkulatorow.cpp:138
+#: src/GUI/DialogKalkulatorow.cpp:191 src/GUI/DialogKalkulatorow.cpp:356
+#: src/GUI/DialogKalkulatorow.cpp:480
+msgid "Szereg:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:141
+msgid "Od:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:142 src/GUI/DialogRaportu.cpp:33
+msgid "Do:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:144 src/GUI/DialogKodow.cpp:296
+msgid "Tolerancja:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:145 src/GUI/DialogKatalogu.cpp:28
+msgid "Obudowa:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:146
+msgid "Moc:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:147
+msgid "Napięcie:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:148
+msgid "Dielektryk:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:149 src/GUI/DialogKatalogu.cpp:26
+msgid "Producent:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:150
+msgid "Ilość każdej:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:151
+msgid "Minimum:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:152
+msgid "Cena szt.:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:153
+msgid "Wzór symbolu:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:154 src/GUI/DialogKatalogu.cpp:161
+msgid "Kategoria:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:155 src/GUI/DialogKatalogu.cpp:156
+msgid "Miejsce:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:159
+msgid ""
+"Każda dekada wartości do osobnej szuflady (A1, A2, A3, ... licząc od podanej)"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:164
+msgid ""
+"Wartości możesz wpisywać zapisem 4k7, 100n, 2M2, 10 kΩ. Puste pola "
+"(tolerancja, wzór, kategoria) dostają wartości domyślne."
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:170
+msgid "Plik CSV:"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:178
+msgid ""
+"Kolumny rozpoznawane po nagłówku: Symbol, Wartość, Tolerancja, Obudowa, "
+"Ilość, Minimum, Kategoria, Miejsce, Producent, Cena, Tagi, ... Plik wzorcowy "
+"zapiszesz przyciskiem poniżej."
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:181
+msgid "Wybierz plik CSV z elementami"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:182
+msgid "Pliki CSV (*.csv;*.txt)|*.csv;*.txt|Wszystkie pliki|*"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:196
+msgid "Nie można odczytać pliku: "
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:196
+#: src/GUI/DialogImportuElementow.cpp:206
+msgid "Import CSV"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:215
+msgid "Uwagi do pliku"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:262
+msgid "błąd: "
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:265
+msgid "już jest, pominę"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:266
+msgid "już jest, dodam ilość"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:267
+msgid "już jest, uzupełnię dane"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:270
+msgid "nowy"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:307
+#, c-format
+msgid "Razem: %zu, nowych: %d, już w magazynie: %d, błędnych: %d"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:324
+#: src/GUI/DialogImportuElementow.cpp:334
+msgid "Import elementów"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:327
+#, c-format
+msgid ""
+"Dodano nowych: %d\n"
+"Dodano ilość do istniejących: %d\n"
+"Uzupełniono dane: %d\n"
+"Pominięto: %d\n"
+"Utworzono kategorii: %d"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:330
+#, c-format
+msgid ""
+"\n"
+"\n"
+"Błędy (%zu):\n"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:340
+msgid "Zapisz zestaw jako CSV"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:341
+#: src/GUI/DialogImportuElementow.cpp:351 src/GUI/DialogRaportu.cpp:151
+#: src/GUI/DialogZestawienia.cpp:223 src/GUI/OknoGlowne.cpp:964
+#: src/GUI/PanelKatalogu.cpp:517 src/GUI/PanelKatalogu.cpp:536
+#: src/GUI/PanelKsiazek.cpp:600 src/GUI/PanelKsiazek.cpp:615
+#: src/GUI/PanelNarzedzi.cpp:464 src/GUI/PanelNarzedzi.cpp:479
+#: src/GUI/PanelProjektow.cpp:561
+msgid "Pliki CSV (*.csv)|*.csv"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:346
+#: src/GUI/DialogImportuElementow.cpp:356 src/GUI/PanelKatalogu.cpp:527
+#: src/GUI/PanelKatalogu.cpp:540 src/GUI/PanelProjektow.cpp:527
+#: src/GUI/PanelProjektow.cpp:543
+msgid "Nie udało się zapisać pliku."
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:346
+msgid "Zapis CSV"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:350
+msgid "Zapisz plik wzorcowy"
+msgstr ""
+
+#: src/GUI/DialogImportuElementow.cpp:356
+msgid "Szablon CSV"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:95
+msgid "Elementy indukcyjne: cewki powietrzne"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:95
+msgid "Narzędzia: kalkulatory"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:100
+msgid "Cewka jednowarstwowa"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:101
+msgid "Cewka wielowarstwowa"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:103
+msgid "Dzielnik napięcia"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:104
+msgid "Rezystor do LED"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:105
+msgid "Filtr RC"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:106
+msgid "Zasilacz (trafo)"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:107
+msgid "Tranzystor"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:108
+msgid "ESR kondensatorów"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:109
+msgid "LM317 / LM337"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:134
+msgid ""
+"Uwy = Uwe · R2 / (R1 + R2).  Wpisz napięcia, a program dobierze rezystory z "
+"wybranego szeregu."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:136
+msgid "Napięcie wejściowe Uwe [V]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:137
+msgid "Napięcie wyjściowe Uwy [V]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:145
+msgid "Sprawdź własne rezystory (Uwe z góry):"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:147 src/GUI/DialogKalkulatorow.cpp:345
+msgid "R1 (do plusa):"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:148 src/GUI/DialogKalkulatorow.cpp:346
+msgid "R2 (do masy):"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:165
+msgid "Wpisz napięcia, np. 5 i 3,3."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:167 src/GUI/DialogKalkulatorow.cpp:176
+#: src/GUI/DialogKalkulatorow.cpp:513
+msgid "Uwy = "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:168
+msgid "Prąd dzielnika: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:170
+msgid "Uwy musi być dodatnie i mniejsze niż Uwe."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:174
+msgid "Wpisz Uwe oraz R1 i R2 (np. 10k, 4k7)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:176
+msgid "prąd "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:178
+msgid "R2 musi być większe od zera."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:186
+msgid ""
+"R = (Uzas - Uf) / I.  Wybierana jest najbliższa NIE MNIEJSZA wartość z "
+"szeregu, żeby nie przekroczyć prądu diody."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:188
+msgid "Napięcie zasilania [V]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:189
+msgid "Napięcie diody Uf [V]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:190
+msgid "Prąd diody [mA]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:197
+msgid ""
+"Typowe Uf: czerwona 1,8-2,2 V, żółta/zielona 2,0-2,4 V, niebieska/biała "
+"3,0-3,4 V."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:211
+msgid "Wpisz trzy wartości liczbowe."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:213 src/GUI/DialogKodow.cpp:398
+msgid "Rezystor: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:213
+msgid "wyliczone "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:214
+msgid "Prąd z tym rezystorem: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:215
+msgid "Moc rezystora: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:215
+msgid "diody: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:217
+msgid "Napięcie zasilania musi być większe od Uf, a prąd dodatni."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:225
+msgid "Filtr RC pierwszego rzędu: fc = 1 / (2π · R · C)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:227
+msgid "Rezystancja R:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:228 src/GUI/DialogKalkulatorow.cpp:409
+msgid "Pojemność C:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:232
+msgid "Dobierz element dla zadanej częstotliwości granicznej:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:234
+msgid "Częstotliwość fc [Hz]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:251
+msgid "fc = "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:251
+msgid ",  τ = "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:254
+msgid "Wpisz R i C (np. 10k, 100n)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:256
+msgid "Wpisz częstotliwość (np. 1k, 440)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:260
+msgid "Dla C = "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:260
+msgid "z szeregu E24: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:264
+msgid "Dla R = "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:264 src/GUI/DialogKalkulatorow.cpp:332
+msgid "z szeregu E12: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:273
+msgid ""
+"Napięcie szczytowe = Usek·√2 − spadek na diodach. Tętnienia Upp = I / (f·C), "
+"gdzie f to 100 Hz (mostek, odczep) albo 50 Hz (jedna połówka)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:275
+msgid "Prostownik:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:277
+msgid "Mostek"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:278
+msgid "Dwie połówki (uzwojenie z odczepem)"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:279
+msgid "Jedna połówka"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:283
+msgid "Sieć:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:290
+msgid "Napięcie wtórne Usek [V]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:291
+msgid "Prąd obciążenia [A]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:292
+msgid "Kondensator C:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:296
+msgid ""
+"Odwrotnie: jakie napięcie wtórne i kondensator dla zadanego wyjścia (przy "
+"prądzie z góry):"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:298
+msgid "Potrzebne napięcie wyjściowe [V]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:299
+msgid "Dopuszczalne tętnienia Upp [V]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:316
+msgid "Wpisz Usek, prąd i kondensator (np. 18, 1, 4700u)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:318
+msgid "Napięcie na wyjściu: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:318
+msgid "szczyt "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:319
+msgid "tętnienia "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:320
+msgid "Moc wyjściowa: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:321
+msgid "Transformator: co najmniej "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:321
+msgid "prąd wtórny ok. "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:322
+msgid "Prąd szczytowy diody: ok. "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:324
+msgid ""
+"Dane muszą być dodatnie, a napięcie wtórne wystarczająco duże (po odjęciu "
+"diod i tętnień)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:328
+msgid "Wpisz napięcie wyjściowe i tętnienia (prąd z pola wyżej)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:331
+msgid "Usek co najmniej "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:331
+msgid "C co najmniej "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:334
+msgid "Napięcie wyjściowe musi być dodatnie."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:342
+msgid ""
+"Tranzystor NPN w układzie OE z dzielnikiem bazowym R1/R2 i rezystorem "
+"emitera RE. Przybliżenie: Vbe = 0,65 V, β stałe."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:344
+msgid "Zasilanie Vcc [V]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:347
+msgid "RC (kolektor):"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:348
+msgid "RE (emiter):"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:349
+msgid "Wzmocnienie β:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:353
+msgid ""
+"Dobór wartości: VE = 10 % Vcc, VCE = Vcc/2, prąd dzielnika ok. 10·Ib (Vcc i "
+"β z pól wyżej)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:355
+msgid "Prąd kolektora Ic [mA]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:371
+msgid "Wpisz wszystkie wartości (RE może być puste)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:373
+msgid "NASYCENIE (Vce ≈ 0,2 V)"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:374
+msgid "ZATKANY (Vb poniżej 0,65 V)"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:374
+msgid "praca liniowa"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:375
+msgid "Ic = "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:376
+msgid "Vb = "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:376
+msgid "moc tranzystora "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:377 src/GUI/PanelPodgladu.cpp:138
+msgid "Stan: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:377
+msgid "Wzmocnienie z zablokowanym RE: ok. "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:379
+msgid "Wartości muszą być dodatnie (RE może być zerem)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:382
+msgid "Wpisz Vcc, β i prąd kolektora."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:385
+msgid "Daje: Ic = "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:387
+msgid "Za małe Vcc albo β, albo prąd nie dodatni."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:407
+msgid ""
+"ESR = tg δ / (2π f C), tg δ zależy od napięcia znamionowego (przy 120 Hz). "
+"To orientacyjny rząd wielkości dla kondensatorów aluminiowych ogólnego "
+"przeznaczenia; dokładną wartość podaje karta katalogowa (serie Low ESR mają "
+"kilka razy mniej)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:410
+msgid "Napięcie znamionowe U [V]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:411
+msgid "Prąd tętnień [A] (opcja):"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:417
+msgid ""
+"Typowy ESR przy 120 Hz w zależności od pojemności i napięcia znamionowego:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:436
+msgid "Wpisz C i napięcie (np. 1000u, 25)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:439
+msgid "tg δ ≈ "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:439
+msgid " (120 Hz)"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:440
+msgid "Moc strat w kondensatorze: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:459
+msgid ""
+"Uwy = Vref · (1 + R2/R1) + Iadj · R2.  Przez R1 płynie Vref/R1 (Vref ≈ 1,25 "
+"V), a prąd końcówki ADJ (ok. 50 µA) dopływa jeszcze przez R2. LM337 daje to "
+"samo napięcie, ale ujemne. Vref i Iadj zależą od producenta - sprawdź kartę "
+"katalogową."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:461
+msgid "Stabilizator:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:468
+msgid "Napięcie wejściowe |Uwe| [V]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:469
+msgid "Prąd obciążenia [mA]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:470
+msgid "R1 (OUT - ADJ):"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:471
+msgid "Vref [V]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:472
+msgid "Prąd ADJ [µA]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:473
+msgid "R2 (ADJ - masa):"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:477
+msgid ""
+"Odwrotnie: R2 dla zadanego napięcia wyjściowego (R1, Vref i Iadj z pól "
+"wyżej):"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:479
+msgid "Potrzebne |Uwy| [V]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:503
+msgid "Wpisz wszystkie wartości (R2 może być puste = 0)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:513
+msgid "z rozrzutu Vref i Iadj: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:514
+msgid "Prąd dzielnika Vref/R1: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:514
+msgid "moc strat w stabilizatorze: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:515
+msgid "Napięcie wejściowe musi być co najmniej "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:516
+msgid "za małe: różnica we/wy poniżej 3 V!"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:517
+msgid ""
+"Uwaga: prąd obciążenia z dzielnikiem jest mniejszy niż minimalny wymagany "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:519
+msgid "Wpisz napięcie wyjściowe (np. 12)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:523
+msgid "z szeregu: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:523
+msgid " daje "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:525
+msgid "Napięcie wyjściowe musi być większe niż Vref."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:534
+msgid ""
+"Cewka powietrzna wielowarstwowa (warstwa na warstwie). Indukcyjność to suma "
+"indukcyjności własnych i wzajemnych wszystkich zwojów (całki eliptyczne); "
+"wzór Wheelera jest podany tylko do porównania. Wymiary w milimetrach."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:535
+msgid ""
+"Cewka powietrzna jednowarstwowa (solenoid). Indukcyjność to suma "
+"indukcyjności własnych i wzajemnych wszystkich zwojów (całki eliptyczne); "
+"wzór Wheelera jest podany tylko do porównania. Wymiary w milimetrach."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:540
+msgid "Średnica karkasu D [mm]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:541
+msgid "Średnica drutu bez izolacji [mm]:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:542
+msgid "Z izolacją [mm] (opcja):"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:543
+msgid "Skok zwojów [mm] (opcja):"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:545
+msgid "Zwojów w warstwie:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:546
+msgid "Liczba warstw:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:547 src/GUI/DialogKalkulatorow.cpp:550
+msgid "Docelowa indukcyjność L [µH] (opcja):"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:549
+msgid "Liczba zwojów N:"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:569
+msgid "Wpisz poprawne liczby (puste pola opcjonalne = domyślne)."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:574
+msgid ""
+"Dane muszą być dodatnie, a skok i średnica z izolacją nie mniejsze od "
+"średnicy drutu."
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:577
+msgid "bardzo duża cewka: użyto wzoru Wheelera"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:580
+msgid "Wheeler (porównanie): "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:582
+msgid "Uzwojenie: długość "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:582
+msgid "grubość "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:583
+msgid " zwojów"
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:584
+msgid "Drut: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:584
+msgid "masa Cu "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:589
+msgid "Dla L >= "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:589
+msgid "warstw: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:589
+msgid "zwojów: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:590
+msgid ", o jeden mniej: "
+msgstr ""
+
+#: src/GUI/DialogKalkulatorow.cpp:592
+msgid ""
+"Nie da się osiągnąć tej indukcyjności w rozsądnych granicach (do 20000 "
+"zwojów / 100 warstw)."
+msgstr ""
+
+#: src/GUI/DialogKamery.cpp:37 src/GUI/DialogKamery.cpp:158
+msgid "Zdjęcie z kamery"
+msgstr ""
+
+#: src/GUI/DialogKamery.cpp:42 src/GUI/DialogTermowizji.cpp:101
+msgid "Kamera:"
+msgstr ""
+
+#: src/GUI/DialogKamery.cpp:45 src/GUI/DialogTermowizji.cpp:105
+msgid "Wykryj ponownie"
+msgstr ""
+
+#: src/GUI/DialogKamery.cpp:55
+msgid "Zrób zdjęcie"
+msgstr ""
+
+#: src/GUI/DialogKamery.cpp:56
+msgid "Powtórz"
+msgstr ""
+
+#: src/GUI/DialogKamery.cpp:57
+msgid "Użyj zdjęcia"
+msgstr ""
+
+#: src/GUI/DialogKamery.cpp:100 src/GUI/DialogTermowizji.cpp:225
+msgid "Nie wykryto kamery"
+msgstr ""
+
+#: src/GUI/DialogKamery.cpp:102
+msgid ""
+"Podłącz kamerę USB i naciśnij „Wykryj ponownie”. Na macOS i Windows system "
+"może pytać o zgodę na dostęp do kamery."
+msgstr ""
+
+#: src/GUI/DialogKamery.cpp:103
+msgid ""
+"Ta wersja programu została zbudowana bez obsługi kamery (OpenCV). Zdjęcie "
+"możesz wskazać z pliku."
+msgstr ""
+
+#: src/GUI/DialogKamery.cpp:122 src/GUI/DialogKamery.cpp:149
+msgid "Ustaw element w kadrze i naciśnij „Zrób zdjęcie”."
+msgstr ""
+
+#: src/GUI/DialogKamery.cpp:143
+msgid ""
+"Zdjęcie zrobione. „Użyj zdjęcia” zapisze je w katalogu zdjęć, „Powtórz” "
+"wraca do podglądu."
+msgstr ""
+
+#: src/GUI/DialogKamery.cpp:157
+msgid ""
+"Nie udało się zapisać zdjęcia. Sprawdź katalog zdjęć w ustawieniach "
+"aplikacji."
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:13
+msgid "Nowa pozycja katalogu"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:13
+msgid "Pozycja katalogu"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:25
+msgid "Symbol:"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:27 src/GUI/DialogObudow.cpp:52
+msgid "Opis:"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:29 src/GUI/DialogObudow.cpp:329
+#: src/GUI/PanelKatalogu.cpp:103
+msgid "Rodzina:"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:34
+msgid "Datasheet (adres):"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:35
+msgid "Zdjęcie:"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:37 src/GUI/PanelNarzedzi.cpp:88
+msgid "plik obrazu"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:40 src/GUI/DialogObudow.cpp:73
+#: src/GUI/DialogPozyczki.cpp:34 src/GUI/PanelNarzedzi.cpp:91
+msgid "Uwagi:"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:43
+msgid "Parametry (indeksy: V_CE albo V_{CE(sat)}, potęgi: m^2, 10^-3):"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:46 src/GUI/DialogSklepow.cpp:19
+msgid "Nazwa"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:48
+msgid "Źródło"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:69
+msgid "Dodaj parametr"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:70
+msgid "Usuń parametr"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:139 src/GUI/OknoGlowne.cpp:87
+#: src/GUI/PanelElementow.cpp:660 src/GUI/PanelKatalogu.cpp:217
+#: src/GUI/PanelKatalogu.cpp:458
+msgid "Katalog"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:148
+msgid "Dodaj do magazynu: "
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:153 src/GUI/PanelProjektow.cpp:470
+msgid "Ilość:"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:158
+msgid "np. Kontener 1 szufladka A1/1"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:189
+msgid "Wybierz z katalogu"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:194
+msgid "Szukaj: symbol, producent, opis, rodzina..."
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:99
+msgid "Narzędzia: paski kolorów i kody SMD"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:103
+msgid "Paski → wartość"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:104
+msgid "Wartość → paski"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:105
+msgid "Kod SMD"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:133
+msgid "brak paska (±20 %)"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:202
+msgid "Element:"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:204
+msgid "Rezystor"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:205
+msgid "Cewka (µH)"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:209 src/GUI/DialogKodow.cpp:303
+msgid "Liczba pasków:"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:242
+msgid "Kopiuj wartość"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:291
+msgid "Wartość rezystora:"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:293
+msgid "np. 4k7, 330, 0,22"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:305
+msgid "3 paski (tolerancja 20 %)"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:306
+msgid "4 paski (2 cyfry)"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:307
+msgid "5 pasków (3 cyfry)"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:308
+msgid "6 pasków (3 cyfry + wsp. temperaturowy)"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:312
+msgid "Wsp. temperaturowy:"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:351
+msgid "Nie rozumiem wartości (np. 4k7, 330, 0,22)."
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:359
+msgid ""
+"Tej wartości nie da się zapisać na tylu paskach. Spróbuj z 5 lub 6 paskami."
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:372
+msgid "Kod na obudowie:"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:374
+msgid "np. 472, 1002, 4R7, 01A, 104"
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:381
+msgid ""
+"Rozpoznawane zapisy: 3 i 4 cyfry (ostatnia to liczba zer), 4R7 i R22 (litera "
+"zastępuje przecinek), EIA-96 (01A = 100 Ω, 68X = 49,9 Ω) oraz kondensatory w "
+"pF (104 = 100 nF, 225 = 2,2 µF)."
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:402
+msgid "Kondensator: "
+msgstr ""
+
+#: src/GUI/DialogKodow.cpp:403
+msgid "Nie rozpoznaję tego kodu."
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:36
+#, c-format
+msgid "Zmiana zbiorcza: %d książek"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:37
+msgid "Zmień książkę"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:37
+msgid "Nowa książka"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:43
+msgid ""
+"Zaznacz pola, które mają dostać tę samą wartość we wszystkich wybranych "
+"książkach. Pola indywidualne są zablokowane."
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:58
+msgid "Tytuł *"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:62 src/GUI/DialogKsiazki.cpp:65
+#: src/GUI/DialogOProgramie.cpp:43 src/GUI/PanelKsiazek.cpp:363
+#: src/GUI/PanelKsiazek.cpp:486
+msgid "Autor"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:63 src/GUI/DialogKsiazki.cpp:66
+#: src/GUI/PanelKsiazek.cpp:364 src/GUI/PanelKsiazek.cpp:487
+msgid "Wydawca"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:70
+msgid "rrrr"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:85
+msgid "  (puste = nieznany)"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:86
+msgid "Rok wydania"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:88
+msgid "np. pierwsze, drugie poprawione, 3rd edition"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:90 src/GUI/PanelKsiazek.cpp:366
+#: src/GUI/PanelKsiazek.cpp:489
+msgid "Wydanie"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:94 src/GUI/DialogKsiazki.cpp:269
+msgid "Pobierz z Biblioteki Narodowej"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:97 src/GUI/PanelKsiazek.cpp:367
+#: src/GUI/PanelKsiazek.cpp:490
+msgid "ISBN"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:101 src/GUI/PanelKsiazek.cpp:368
+#: src/GUI/PanelKsiazek.cpp:491
+msgid "Język"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:103
+msgid "np. wzmacniacze, lampy, zasilacze"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:118
+msgid "pusta = książka papierowa"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:122
+msgid "Odczytaj dane z pliku"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:125
+msgid "Plik (PDF, EPUB)"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:128
+msgid "Uwagi (dwuklik w polu otwiera edytor):"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:129
+msgid "Edytor HTML..."
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:142
+msgid "Plik książki"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:143
+msgid "Książki (*.pdf;*.epub)|*.pdf;*.epub|Wszystkie pliki|*.*"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:226
+msgid "Nieprawidłowa odpowiedź Biblioteki Narodowej: "
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:226 src/GUI/DialogKsiazki.cpp:230
+#: src/GUI/DialogKsiazki.cpp:257 src/GUI/DialogKsiazki.cpp:271
+#: src/GUI/DialogKsiazki.cpp:287 src/GUI/DialogKsiazki.cpp:312
+#: src/GUI/DialogKsiazki.cpp:319 src/GUI/OknoGlowne.cpp:89
+#: src/GUI/PanelKsiazek.cpp:224 src/GUI/PanelKsiazek.cpp:246
+#: src/GUI/PanelKsiazek.cpp:461 src/GUI/PanelKsiazek.cpp:465
+#: src/GUI/PanelKsiazek.cpp:521 src/GUI/PanelKsiazek.cpp:538
+#: src/GUI/PanelKsiazek.cpp:556 src/GUI/PanelKsiazek.cpp:658
+#: src/GUI/PanelKsiazek.cpp:681 src/GUI/PanelKsiazek.cpp:721
+#: src/GUI/PanelKsiazek.cpp:761 src/GUI/PanelKsiazek.cpp:790
+#: src/GUI/PanelKsiazek.cpp:794 src/GUI/PanelKsiazek.cpp:814
+msgid "Literatura"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:230
+msgid ""
+"Biblioteka Narodowa nie znalazła takiej książki. Spróbuj podać ISBN albo "
+"dokładniejszy tytuł."
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:246
+msgid "Znaleziono kilka pozycji. Wybierz właściwą:"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:246 src/GUI/DialogOProgramie.cpp:63
+msgid "Biblioteka Narodowa"
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:257
+msgid ""
+"Wpisz ISBN albo tytuł (i ewentualnie autora), a program poszuka książki w "
+"Bibliotece Narodowej."
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:263
+msgid "Szukam..."
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:271
+msgid "Nie udało się połączyć z Biblioteką Narodową: "
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:287
+msgid ""
+"W pliku nie znaleziono metadanych (XMP, Info PDF, OPF) albo nie można go "
+"odczytać."
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:312
+msgid "Zaznacz przynajmniej jedno pole do zmiany (Autor, Wydawca lub Tagi)."
+msgstr ""
+
+#: src/GUI/DialogKsiazki.cpp:319
+msgid "Podaj tytuł książki."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:22
+msgid "Zmień link do sklepu"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:22
+msgid "Nowy link do sklepu"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:44
+msgid "Domyślny sklep tego elementu"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:48
+msgid "Sklep *"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:51 src/GUI/DialogLinkowElementu.cpp:290
+msgid "Szukaj w sklepie"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:53
+msgid "Adres strony elementu *"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:55
+msgid "Kod w sklepie"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:56
+msgid "Cena za sztukę"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:57
+msgid "Waluta (puste = sklepu)"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:58
+msgid "Minimalna ilość"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:61 src/GUI/DialogProjektu.cpp:197
+#: src/GUI/PanelKsiazek.cpp:377 src/GUI/PanelKsiazek.cpp:497
+#: src/GUI/PanelNarzedzi.cpp:187 src/GUI/PanelNarzedzi.cpp:353
+msgid "Uwagi"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:67
+msgid ""
+"Wskazówka: \"Szukaj w sklepie\" otwiera wyniki wyszukiwania w przeglądarce. "
+"Wklej tu adres strony samego produktu -\n"
+"wtedy program potrafi sprawdzić cenę. Ceny można też wpisać ręcznie."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:79 src/GUI/DialogLinkowElementu.cpp:295
+msgid "Ten sklep nie ma ustawionego adresu wyszukiwania (okno Sklepy)."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:79 src/GUI/DialogLinkowElementu.cpp:107
+#: src/GUI/DialogLinkowElementu.cpp:112
+msgid "Link"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:107
+msgid "Cena musi być liczbą albo pusta."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:124
+msgid "Sklepy i ceny elementu"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:127
+msgid "Sklepy i ceny: "
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:132 src/GUI/PanelElementow.cpp:151
+msgid "Cena"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:133 src/GUI/DialogSklepow.cpp:20
+msgid "Waluta"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:134
+msgid "Sprawdzono"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:135
+msgid "Dostępność"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:136
+msgid "Min."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:137
+msgid "Dom."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:138
+msgid "Adres"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:143 src/GUI/DialogObudow.cpp:153
+#: src/GUI/DialogSklepow.cpp:36
+msgid "Dodaj..."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:144 src/GUI/DialogObudow.cpp:154
+#: src/GUI/DialogSklepow.cpp:37
+msgid "Zmień..."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:145 src/GUI/DialogObudow.cpp:155
+#: src/GUI/DialogSklepow.cpp:38 src/GUI/PanelElementow.cpp:109
+#: src/GUI/PanelElementow.cpp:628 src/GUI/PanelKatalogu.cpp:160
+#: src/GUI/PanelKategorii.cpp:35 src/GUI/PanelKategorii.cpp:255
+#: src/GUI/PanelKsiazek.cpp:168 src/GUI/PanelNarzedzi.cpp:214
+msgid "Usuń"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:146
+msgid "Otwórz w przeglądarce"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:147
+msgid "Szukaj w sklepie..."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:148
+msgid "Historia cen..."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:151
+msgid "Sprawdź zaznaczony"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:152 src/GUI/DialogLinkowElementu.cpp:326
+msgid "Sprawdź ceny wszystkich"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:156
+msgid "Ceny są sprawdzane tylko na Twoje polecenie, po jednej stronie naraz."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:159
+msgid "Karta katalogowa (datasheet)"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:162
+msgid "Otwórz"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:163
+msgid "Pobierz z adresu..."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:164
+msgid "Znajdź na stronach sklepów"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:165
+msgid "Szukaj w internecie..."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:226 src/GUI/DialogLinkowElementu.cpp:246
+#: src/GUI/DialogLinkowElementu.cpp:271 src/GUI/DialogLinkowElementu.cpp:274
+#: src/GUI/DialogLinkowElementu.cpp:295
+msgid "Sklepy i ceny"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:246
+msgid "Najpierw dodaj sklepy (menu Sklepy → Lista sklepów)."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:271
+#, c-format
+msgid "Usunąć link do sklepu %s razem z historią cen?"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:290
+msgid "W którym sklepie szukać \""
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:306
+msgid "Historia cen"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:312
+msgid "Brak zapisanych cen."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:313
+msgid "Historia cen: "
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:322 src/GUI/DialogZestawienia.cpp:208
+#, c-format
+msgid "Sprawdzono %d z %d: %s - %s"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:328 src/GUI/DialogZestawienia.cpp:213
+msgid "Przerwano sprawdzanie cen."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:328 src/GUI/DialogZestawienia.cpp:213
+msgid "Sprawdzanie cen zakończone."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:331 src/GUI/DialogZestawienia.cpp:217
+msgid "Przerwij sprawdzanie"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:347
+msgid "Pobrany: "
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:348
+msgid "Nie pobrany. Adres: "
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:349
+msgid "Brak datasheetu."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:361 src/GUI/PanelElementow.cpp:677
+#: src/GUI/PanelKatalogu.cpp:551
+msgid "Nie znaleziono programu do otwierania plików PDF."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:365
+msgid ""
+"Ten element nie ma jeszcze datasheetu. Użyj \"Znajdź na stronach sklepów\" "
+"albo \"Szukaj w internecie\"."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:371 src/GUI/PanelKatalogu.cpp:576
+msgid "Pobieranie datasheetu..."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:380
+msgid "✓ Datasheet pobrany."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:382 src/GUI/PanelKatalogu.cpp:587
+msgid "✗ Nie udało się pobrać datasheetu: "
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:390 src/GUI/PanelKatalogu.cpp:624
+msgid "Adres pliku PDF z datasheetem:"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:401
+msgid "Gdzie szukać \""
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:402
+msgid "Szukaj datasheetu"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:418
+msgid "Dodaj najpierw link do strony elementu w którymś sklepie."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:426
+msgid "Nie znaleziono odnośników do datasheetu na stronach sklepów."
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:432
+msgid "Znalezione odnośniki (najpewniejsze na górze):"
+msgstr ""
+
+#: src/GUI/DialogLinkowElementu.cpp:438
+#, c-format
+msgid "Szukanie datasheetu (%zu z %zu)..."
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:157
+msgid ""
+"Wczytaj obraz charakterystyki anodowej lampy (przycisk „Wczytaj obraz...”)."
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:228 src/GUI/DialogMetodyGraficzne.cpp:418
+msgid "Metody graficzne"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:233
+msgid "Wczytaj obraz..."
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:238
+msgid "Opcje wyświetlania"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:239
+msgid "Skalowanie charakterystyk"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:240
+msgid "Wyniki i wyznaczanie Ra"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:274
+msgid ""
+"Wybierz krok i kliknij na obrazie: 1) punkt (0,0), czyli przecięcie osi; 2) "
+"punkt na osi napięcia o znanej wartości; 3) punkt na osi prądu o znanej "
+"wartości. Wpisz te wartości i naciśnij „Skaluj”."
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:295
+msgid "Skaluj"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:323
+msgid "Koniec prądowy"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:324
+msgid "Koniec napięciowy"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:327
+msgid "Ra klasa A [kΩ]"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:328
+msgid "Raa klasa B [kΩ]"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:329
+msgid "Moc SE klasa A [W]"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:330
+msgid "Moc PP klasa B [W]"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:334
+msgid "Zablokuj"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:335
+msgid "Wartość Ra"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:336
+msgid "Amplitudę (ΔIa)"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:344
+msgid "Osie napięcia i natężenia (siatka kontrolna)"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:362
+msgid "Moc strat w anodzie Pa max"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:364
+msgid "Rysuj"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:371
+msgid "Zniekształcenia (pięć rzędnych)"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:373
+msgid ""
+"Dwuklik na prostej w miejscu przecięcia z krzywą Ug ustawia kolejny punkt; "
+"skrajne punkty to końce prostej."
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:411
+msgid "Wybierz obraz charakterystyki"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:412
+msgid ""
+"Obrazy (*.png;*.jpg;*.jpeg;*.bmp;*.gif)|*.png;*.jpg;*.jpeg;*.bmp;*.gif|"
+"Wszystkie pliki|*"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:418
+msgid "Nie udało się wczytać obrazu."
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:431
+msgid "Najpierw wczytaj obraz."
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:433
+msgid ""
+"Ustaw wszystkie trzy punkty (punkt Ua na prawo od zera, punkt Ia nad zerem) "
+"i wpisz wartości większe od zera."
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:444
+msgid "punkt ustawiony"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:444
+msgid "brak punktu"
+msgstr ""
+
+#: src/GUI/DialogMetodyGraficzne.cpp:446
+msgid "Skala: "
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:29
+msgid ""
+"Domowy magazyn części elektronicznych: elementy i stany magazynowe, projekty "
+"i listy części, katalog z parametrami i datasheetami, literatura z indeksem "
+"treści oraz narzędzia i pożyczki."
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:31
+msgid "Możliwości"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:33
+msgid ""
+"magazyn z kategoriami, miejscami (kontener, szuflada, przegroda), stanami "
+"minimalnymi i historią zmian"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:34
+msgid "hurtowe dodawanie: szeregi E12, E24, E48, E96 i import z CSV"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:35
+msgid ""
+"projekty: import list części z KiCada i Eagle'a, braki, lista zakupów, "
+"wydawanie części"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:36
+msgid ""
+"katalog elementów z parametrami, pobieraniem datasheetów i odczytem danych z "
+"PDF"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:37
+msgid "sklepy i ceny, kody kreskowe i etykiety, raporty"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:38
+msgid ""
+"literatura: import z katalogu, dane z Biblioteki Narodowej, indeks i "
+"szukanie w treści, OCR, zapis danych do PDF"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:39
+msgid ""
+"narzędzia i pożyczki, kalkulatory (transformatory, głośniki, punkty pracy "
+"tranzystorów i lamp)"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:40
+msgid "współpraca z Eagle CAD 7.6: eksport list części i import bibliotek"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:44
+msgid "Repozytorium"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:45 src/GUI/DialogOProgramie.cpp:112
+msgid "Licencja"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:45
+msgid "GNU General Public License, wersja 3 lub nowsza."
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:46
+msgid ""
+"Program jest wolnym oprogramowaniem: możesz go rozpowszechniać i zmieniać na "
+"warunkach tej licencji. Program jest udostępniany bez żadnej gwarancji. "
+"Pełny tekst licencji jest na zakładce Licencja."
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:49
+#, c-format
+msgid "Biblioteki: %s, PostgreSQL libpq %d.%d"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:55
+msgid "Magmass korzysta z pracy wielu projektów. Dziękuję ich autorom:"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:57
+msgid "biblioteka interfejsu graficznego (wxWindows Library Licence)"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:58
+msgid "baza danych i biblioteka klienta (PostgreSQL License)"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:59
+msgid ""
+"zapis i odczyt metadanych PDF; zewnętrzny program, nie jest częścią Magmass "
+"(Artistic License / GPL)"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:60
+msgid ""
+"rozpoznawanie tekstu w skanach PDF; zewnętrzny program (MPL-2.0), korzysta z "
+"Tesseract OCR (Apache-2.0) i Ghostscript"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:61
+msgid ""
+"odczyt tekstu z PDF do indeksu treści (GPL); dołączany do wersji "
+"instalacyjnych"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:62
+msgid "opcjonalny odczyt kodów kreskowych z kamery (Apache-2.0)"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:63
+msgid "dane bibliograficzne pobierane z publicznego API data.bn.org.pl"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:64
+msgid "Ikony"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:64
+msgid ""
+"własny, płaski zestaw ikon programu, narysowany skryptem narzedzia/"
+"zbuduj_ikony.py i udostępniany na tej samej licencji GPL"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:65
+msgid "Nazwy programów i znaki towarowe należą do ich właścicieli."
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:82
+msgid ""
+"Magmass jest wolnym oprogramowaniem na licencji GNU General Public License, "
+"wersja 3 lub nowsza. Nie znaleziono pliku LICENSE z pełnym tekstem; jest on "
+"dostępny pod adresem:"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:87
+msgid "O programie Magmass"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:107
+msgid "O programie"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:108
+msgid "Podziękowania"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:28
+#, c-format
+msgid "Pole \"%s\" musi być liczbą nieujemną (np. 2,5)."
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:39
+msgid "Zmień obudowę"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:39
+msgid "Nowa obudowa"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:50
+msgid "Nazwa (np. R7.5, TO220AH):"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:54 src/GUI/DialogObudow.cpp:335
+msgid "(nieokreślony)"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:58 src/GUI/DialogObudow.cpp:329
+msgid "Montaż:"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:60
+msgid "Liczba wyprowadzeń (0 = nieznana):"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:62 src/GUI/DialogObudow.cpp:329
+msgid "Moc strat [W]:"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:64
+msgid "Dopuszczalne napięcie [V]:"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:66
+msgid "Rozstaw wyprowadzeń:"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:68
+msgid "Rodzina (np. TO-220):"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:70
+msgid "Wariant (np. AH):"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:96
+msgid "Podaj nazwę obudowy."
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:100
+msgid "Moc strat"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:100
+msgid "Dopuszczalne napięcie"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:132
+msgid "Rodzina"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:133
+msgid "Montaż"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:134
+msgid "Piny"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:135
+msgid "Moc [W]"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:136
+msgid "Napięcie [V]"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:137
+msgid "Rozstaw"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:138
+msgid "Elementów"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:141
+msgid "Typowe elementy w tej obudowie (z bibliotek Eagle):"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:156
+msgid "Wczytaj bibliotekę Eagle (.lbr)..."
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:157
+msgid "Uzupełnij z elementów"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:243
+#, c-format
+msgid "Obudów: %zu"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:283
+#, c-format
+msgid ""
+"Obudowa \"%s\" jest używana w elementach (%d). Zostanie ona usunięta z pola "
+"\"Obudowy\" tych elementów. Usunąć?"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:284
+#, c-format
+msgid "Usunąć obudowę \"%s\"?"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:286
+#, c-format
+msgid "Usunąć zaznaczone obudowy (%zu)?"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:287
+#, c-format
+msgid "Używane w elementach: %d (zostaną usunięte z ich pola \"Obudowy\")."
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:324
+#, c-format
+msgid "Zmień zaznaczone obudowy (%zu)"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:326
+msgid ""
+"Zaznacz pola, które mają zostać ustawione we wszystkich zaznaczonych "
+"obudowach. Pozostałe atrybuty się nie zmienią."
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:329
+msgid "Napięcie max [V]:"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:329
+msgid "Rozstaw:"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:365
+msgid "Wybierz biblioteki Eagle"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:366
+msgid "Biblioteki Eagle (*.lbr)|*.lbr|Wszystkie pliki|*.*"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:379
+msgid "nie można odczytać pliku"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:390
+#, c-format
+msgid "Dodano lub uzupełniono obudów: %d."
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:391
+#, c-format
+msgid "Zapisano typowych elementów: %d."
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:392
+msgid ""
+"\n"
+"\n"
+"Problemy:"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:404
+#, c-format
+msgid "Dodano obudów z elementów i katalogu: %d."
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:410
+msgid "Obudowy elementu"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:413
+msgid ""
+"Zaznacz obudowy, w których pasuje ten element (stan magazynowy jest wspólny):"
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:422
+msgid "Słownik obudów..."
+msgstr ""
+
+#: src/GUI/DialogObudow.cpp:451
+#, c-format
+msgid "Wybrane: %s"
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:10
+msgid "Ustawienia połączenia z bazą danych"
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:35
+msgid "Host:"
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:36
+msgid "Port:"
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:37
+msgid "Baza danych:"
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:38
+msgid "Użytkownik:"
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:39
+msgid "Hasło:"
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:49
+msgid "Zapamiętaj hasło w pliku konfiguracji (zapis jako zwykły tekst)"
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:53 src/GUI/OknoGlowne.cpp:238
+msgid "Plik konfiguracji: "
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:65
+msgid "&Test połączenia"
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:66
+msgid "&Zapisz ustawienia"
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:70 src/GUI/DialogUstawien.cpp:85
+msgid "&OK"
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:71 src/GUI/DialogUstawien.cpp:86
+msgid "&Anuluj"
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:105
+msgid "Podaj host, nazwę bazy i użytkownika."
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:116
+msgid "Łączenie..."
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:128
+msgid "✓ Połączenie udane (PostgreSQL "
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:130
+msgid "✗ Błąd: "
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:139
+msgid "✓ Ustawienia zapisane"
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:141
+msgid "✗ Nie udało się zapisać ustawień: "
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:150 src/GUI/DialogUstawien.cpp:365
+msgid ""
+"Nie udało się zapisać ustawień:\n"
+"\n"
+msgstr ""
+
+#: src/GUI/DialogPolaczenia.cpp:151 src/GUI/DialogUstawien.cpp:366
+msgid "Błąd zapisu"
+msgstr ""
+
+#: src/GUI/DialogPozyczki.cpp:27
+msgid "Komu *"
+msgstr ""
+
+#: src/GUI/DialogPozyczki.cpp:29
+msgid "Data pożyczenia"
+msgstr ""
+
+#: src/GUI/DialogPozyczki.cpp:32
+msgid "Termin zwrotu (opcjonalnie)"
+msgstr ""
+
+#: src/GUI/DialogPozyczki.cpp:43
+msgid "Pożyczki"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:11
+msgid "Planowany"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:12
+msgid "W trakcie"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:13
+msgid "Wstrzymany"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:14
+msgid "Zakończony"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:26 src/GUI/PanelProjektow.cpp:346
+msgid "Nowy projekt"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:26 src/GUI/PanelProjektow.cpp:357
+msgid "Edycja projektu"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:49 src/GUI/PanelProjektow.cpp:40
+msgid "Status"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:74
+msgid "Podaj nazwę projektu."
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:74 src/GUI/PanelProjektow.cpp:39
+msgid "Projekt"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:87
+msgid "Wybierz element z magazynu"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:93
+msgid "Szukaj: symbol, opis, wartość, obudowa..."
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:98
+msgid "Symbol"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:154
+msgid "Dodaj część do projektu"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:154 src/GUI/PanelProjektow.cpp:416
+msgid "Edycja pozycji"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:175
+msgid "Element"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:179
+msgid "np. R1, R2, R5-R7"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:189
+msgid "Oznaczenia"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:191
+msgid "Potrzebna ilość"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:193
+msgid "Już zamówiono"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:195
+msgid "Priorytet (1-10)"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:214
+msgid "(nie wybrano)"
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:241
+msgid "Wybierz element z magazynu."
+msgstr ""
+
+#: src/GUI/DialogProjektu.cpp:241
+msgid "Pozycja"
+msgstr ""
+
+#: src/GUI/DialogRaportu.cpp:18
+msgid "Raporty"
+msgstr ""
+
+#: src/GUI/DialogRaportu.cpp:24
+msgid "Raport:"
+msgstr ""
+
+#: src/GUI/DialogRaportu.cpp:29
+msgid "Od (RRRR-MM-DD):"
+msgstr ""
+
+#: src/GUI/DialogRaportu.cpp:37
+msgid "Generuj"
+msgstr ""
+
+#: src/GUI/DialogRaportu.cpp:53 src/GUI/DialogZestawienia.cpp:59
+msgid "Zapisz CSV..."
+msgstr ""
+
+#: src/GUI/DialogRaportu.cpp:54 src/GUI/DialogZestawienia.cpp:60
+msgid "Zapisz HTML..."
+msgstr ""
+
+#: src/GUI/DialogRaportu.cpp:55
+msgid "Otwórz do wydruku / PDF"
+msgstr ""
+
+#: src/GUI/DialogRaportu.cpp:118 src/GUI/DialogRaportu.cpp:156
+#: src/GUI/DialogRaportu.cpp:174
+msgid "Raport"
+msgstr ""
+
+#: src/GUI/DialogRaportu.cpp:141
+msgid "  (pokazano tylko część wierszy)"
+msgstr ""
+
+#: src/GUI/DialogRaportu.cpp:150
+msgid "Zapisz raport jako CSV"
+msgstr ""
+
+#: src/GUI/DialogRaportu.cpp:165
+msgid "Zapisz raport jako HTML"
+msgstr ""
+
+#: src/GUI/DialogRaportu.cpp:166
+msgid "Pliki HTML (*.html)|*.html"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:15 src/GUI/DialogSklepow.cpp:77
+#: src/GUI/DialogSklepow.cpp:120 src/GUI/DialogSklepow.cpp:122
+#: src/GUI/DialogSklepow.cpp:156 src/GUI/DialogSklepow.cpp:163
+msgid "Sklepy"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:21
+msgid "Dostawa"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:22
+msgid "Darmowa od"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:23
+msgid "Priorytet"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:24
+msgid "Aktywny"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:25
+msgid "Linków"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:26
+msgid "Adres wyszukiwania"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:31
+msgid ""
+"Adresy wyszukiwania sklepów startowych nie były sprawdzane na działających "
+"stronach - popraw je w razie potrzeby."
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:39
+msgid "Wczytaj listę..."
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:40
+msgid "Kursy walut..."
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:87
+msgid "tak"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:87
+msgid "nie"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:117
+#, c-format
+msgid ""
+"Sklep \"%s\" jest używany w linkach elementów (%d), więc zostanie tylko "
+"wyłączony. Kontynuować?"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:119
+#, c-format
+msgid "Usunąć sklep \"%s\"?"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:130
+msgid "Wczytaj listę sklepów"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:133
+msgid ""
+"Jeden sklep w wierszu, pola oddzielone średnikiem (albo tabulatorem - można "
+"wkleić z Excela):\n"
+"nazwa; adres strony; adres wyszukiwania z {q}; waluta; koszt dostawy; "
+"darmowa dostawa od\n"
+"Wymagana jest tylko nazwa. Sklep o tej samej nazwie zostanie zaktualizowany. "
+"Wiersz od # to komentarz."
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:141
+msgid "Z pliku..."
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:142
+msgid "Wstaw bieżącą listę"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:150
+msgid "Plik z listą sklepów"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:150
+msgid "Tekst i CSV (*.txt;*.csv)|*.txt;*.csv|Wszystkie pliki|*.*"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:156
+msgid "Nie można odczytać pliku (oczekiwane kodowanie UTF-8)."
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:166
+#, c-format
+msgid "Dodano: %d, zaktualizowano: %d, z błędami: %zu."
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:168
+msgid "Wczytano listę sklepów"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:207 src/GUI/DialogSklepow.cpp:210
+#: src/GUI/DialogSklepow.cpp:223 src/GUI/DialogSklepow.cpp:228
+msgid "Kursy walut"
+msgstr ""
+
+#: src/GUI/DialogSklepow.cpp:212
+msgid ""
+"Ile złotych kosztuje jednostka waluty (używane do porównania cen w "
+"zestawieniu zakupów).\n"
+"Kursy wpisuje się ręcznie - program nie pobiera ich z internetu."
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:90
+msgid "brak temperatur"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:96 src/GUI/DialogTermowizji.cpp:187
+#: src/GUI/DialogTermowizji.cpp:193
+msgid "Kamera termowizyjna"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:113
+msgid "Paleta:"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:115
+msgid "Żelazo"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:115
+msgid "Tęcza"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:115
+msgid "Szara"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:115
+msgid "Szara odwrócona"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:119
+msgid "Układ ramki:"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:121
+msgid "Automatycznie"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:121
+msgid "Obraz i dane (górna/dolna połowa)"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:121
+msgid "Tylko obraz"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:126
+msgid "Dzielnik:"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:130
+msgid "Przesunięcie [K]:"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:135 src/GUI/DialogTermowizji.cpp:212
+#: src/GUI/DialogTermowizji.cpp:248
+msgid "Zamroź obraz"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:137
+msgid "Polecenie UVC zoom (hex):"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:141
+msgid "Wyślij polecenie (tryb surowy)"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:144
+msgid "Kalibracja (tryb surowy) - temperatura środka [°C]:"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:148
+msgid "Dodaj punkt kalibracji"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:151
+msgid "Wyczyść kalibrację"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:154
+msgid "Zapisz próbkę (do analizy)..."
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:157
+msgid "Zapisz obraz PNG..."
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:184
+msgid "Katalog na próbkę"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:187
+msgid "Nie udało się zapisać próbki."
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:187
+msgid "Zapisano próbkę: "
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:191
+msgid "Zapisz obraz"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:193
+msgid "Nie udało się zapisać obrazu."
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:212
+msgid "Wznów podgląd"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:228
+msgid ""
+"Podłącz kamerę termowizyjną przez USB i naciśnij „Wykryj ponownie”. System "
+"może zapytać o zgodę na dostęp do kamery."
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:229
+msgid "Próby otwarcia (OpenCV):"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:230
+msgid "Ta wersja programu została zbudowana bez obsługi kamery (OpenCV)."
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:290
+msgid "(kalibracja użytkownika) "
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:290
+msgid "Środek: "
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:290 src/GUI/DialogTermowizji.cpp:294
+msgid "   min: "
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:290 src/GUI/DialogTermowizji.cpp:294
+msgid "   max: "
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:293
+msgid "Surowe odczyty (bez kalibracji do °C) - środek: "
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:296
+msgid "Brak danych temperatury w tej ramce (tylko obraz)"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:312
+msgid ""
+"Wartość polecenia musi być liczbą szesnastkową do FFFF (można podać kilka, "
+"oddzielonych spacją)."
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:319
+msgid "Polecenie wysłane: "
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:319
+msgid "Polecenie nie powiodło się: "
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:333
+msgid "Kalibracja wymaga klatki w trybie surowym i temperatury podanej liczbą."
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:339
+#, c-format
+msgid "Punkt kalibracji: odczyt %.1f = %.1f °C (punktów: %d)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:24
+msgid "Transformator głośnikowy PP"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:29
+msgid "Etap 1: wymagania"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:32
+msgid "Przeznaczenie"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:34
+msgid "Hi-Fi"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:35
+msgid "gitarowy"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:39 src/GUI/DialogTrafoSE.cpp:45
+msgid "Spadek na krańcach pasma"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:61
+msgid "Pożądane parametry transformatora"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:76
+msgid "Wymiary zdobytego transformatora"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:79 src/GUI/DialogTrafoSE.cpp:61
+msgid "Kształtka EI"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:99
+msgid "Etap 2: uzwojenia"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:113
+msgid "Porównanie: metoda gitarowa (Mn = 1,25)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:127 src/GUI/DialogTrafoSE.cpp:145
+msgid "Rdzeń EI"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:135
+msgid "Dalej: uzwojenia wykonane (Etap 3)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:23
+msgid "Transformator PP - uzwojenia wykonane (Etap 3)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:28 src/GUI/DialogTrafoSEWykonane.cpp:32
+msgid "Uzwojenia wykonane"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:32 src/GUI/DialogTrafoSEWykonane.cpp:36
+msgid "wykonane"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:33 src/GUI/DialogTrafoSEWykonane.cpp:37
+msgid "proponowane"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:47 src/GUI/DialogTrafoSEWykonane.cpp:52
+msgid "Układ uzwojeń"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:49
+msgid "P-S: nieprzeplatane"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:50
+msgid "P/2-S-P/2: pierwotne wokół wtórnego"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:51
+msgid "gitarowy: A 40% W 50% A 20% W 50% A 40%"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:52
+msgid "HiFi: karkas dwukomorowy (A W | A W)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:53
+msgid "HiFi: dwukomorowy przeplatany (A W A | A W A)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:54
+msgid "własny (tabela sekcji)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:58
+msgid "Sekcje od rdzenia: A pierwotne, W wtórne, | przegroda"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:63
+msgid "Sekcje wtórne połączone"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:65
+msgid "szeregowo"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:66
+msgid "równolegle (równe sekcje)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:70
+msgid "Grubość przegrody karkasu [mm] ="
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:99 src/GUI/DialogTrafoSEWykonane.cpp:86
+msgid "Rozmieszczenie uzwojeń w oknie (od rdzenia)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:112 src/GUI/DialogTrafoSEWykonane.cpp:99
+msgid "Powrót"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:195
+msgid ""
+"Uwagi: uzupełnij pola liczbami większymi od zera. Suma zwojów A w tabeli "
+"sekcji musi być równa zwojom pierwotnym, suma W wtórnym (przy połączeniu "
+"równoległym każda sekcja W ma tyle zwojów, ile wtórne); komory muszą się "
+"zmieścić w oknie."
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:202 src/GUI/DialogTrafoSEWykonane.cpp:147
+msgid "Sekcja"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:202
+msgid "komora"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:202 src/GUI/DialogTrafoSEWykonane.cpp:147
+#: src/GUI/DialogTrafoSieciowy.cpp:199
+msgid "zwoje"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:202 src/GUI/DialogTrafoSEWykonane.cpp:147
+#: src/GUI/DialogTrafoSieciowy.cpp:199
+msgid "zw/warstwa"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:202 src/GUI/DialogTrafoSEWykonane.cpp:147
+#: src/GUI/DialogTrafoSieciowy.cpp:200
+msgid "warstw"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:202 src/GUI/DialogTrafoSEWykonane.cpp:147
+#: src/GUI/DialogTrafoSieciowy.cpp:200
+msgid "grubość[mm]"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:202 src/GUI/DialogTrafoSEWykonane.cpp:147
+msgid "zwój[cm]"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:214
+msgid "Indukcyjność pierwotna jest mniejsza od pożądanej - dodaj zwoje. "
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:215
+msgid ""
+"Indukcyjność rozproszenia przekracza dopuszczalną - przeplataj uzwojenia lub "
+"zmniejsz grubość uzwojeń. "
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:216 src/GUI/DialogTrafoSEWykonane.cpp:161
+msgid "Uzwojenia nie mieszczą się w oknie. "
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:217
+msgid ""
+"Podzielona sekcja pierwotna ma nieparzystą liczbę warstw (*) - trudniej "
+"połączyć sekcje; zmień liczbę zwojów lub drut. "
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:218
+msgid ""
+"Którakolwiek komora nie ma równych amperozwojów A i W - strumień "
+"rozproszenia nie zamyka się w komorze, wynik rozproszenia jest orientacyjny. "
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:28
+msgid "Transformator głośnikowy SE"
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:54
+msgid "Rdzeń i sprawność"
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:57
+msgid "Sprawność transformatora η ="
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:78
+msgid "Lampa i układ (Krize, współczynnik A)"
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:80
+msgid "pentoda bez NFB (A=20)"
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:81
+msgid "pentoda z NFB (A=10)"
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:82
+msgid "trioda bez NFB (A=10)"
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:83
+msgid "trioda z NFB (A=5)"
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:90
+msgid "Model fizyczny"
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:157
+msgid "Dalej: uzwojenia wykonane"
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:304
+msgid ""
+"Uwaga: żądana moc jest większa niż lampa odda w klasie A przy tym prądzie "
+"anodowym (maks. ok. "
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:304
+msgid " VA). "
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:305
+msgid ""
+"Model liniowy nie wymaga szczeliny (żelazo samo daje potrzebną "
+"indukcyjność), ale przy podmagnesowaniu przenikalność przyrostowa spada: "
+"zostaw szczelinę co najmniej 0,05 mm. "
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:306
+msgid ""
+"Podmagnesowanie przekracza 2 A·zw./cm: wg Cykina (XI.3) rdzeń musi mieć "
+"szczelinę. "
+msgstr ""
+
+#: src/GUI/DialogTrafoSE.cpp:307
+msgid "Przekrój rdzenia jest mniejszy od orientacyjnego. "
+msgstr ""
+
+#: src/GUI/DialogTrafoSEWykonane.cpp:28
+msgid "Transformator SE - uzwojenia wykonane"
+msgstr ""
+
+#: src/GUI/DialogTrafoSEWykonane.cpp:54
+msgid "nieprzeplatane (pierwotne, wtórne)"
+msgstr ""
+
+#: src/GUI/DialogTrafoSEWykonane.cpp:55
+msgid "pierwotne w dwóch częściach wokół wtórnego"
+msgstr ""
+
+#: src/GUI/DialogTrafoSEWykonane.cpp:56
+msgid "wtórne w dwóch częściach wokół pierwotnego"
+msgstr ""
+
+#: src/GUI/DialogTrafoSEWykonane.cpp:137
+msgid ""
+"Uwagi: uzupełnij pola liczbami większymi od zera (zwoje całkowite, szczelina "
+"może być 0)."
+msgstr ""
+
+#: src/GUI/DialogTrafoSEWykonane.cpp:158
+msgid ""
+"Indukcyjność pierwotna jest mniejsza od zadanej - dodaj zwoje albo zmniejsz "
+"szczelinę. "
+msgstr ""
+
+#: src/GUI/DialogTrafoSEWykonane.cpp:159
+msgid ""
+"Indukcja szczytowa przekracza zadaną - rdzeń może się nasycać; zwiększ "
+"szczelinę lub zwoje. "
+msgstr ""
+
+#: src/GUI/DialogTrafoSEWykonane.cpp:160
+msgid ""
+"Indukcyjność rozproszenia przekracza dopuszczalną dla Fg - przeplataj "
+"uzwojenia lub zmniejsz grubość uzwojeń. "
+msgstr ""
+
+#: src/GUI/DialogTrafoSEWykonane.cpp:162
+msgid ""
+"Podzielona sekcja ma nieparzystą liczbę warstw (*) - trudniej połączyć "
+"sekcje; zmień liczbę zwojów lub drut. "
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:23
+msgid "Transformator sieciowy"
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:49
+msgid "Parametry transformatora"
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:62
+msgid "Uzwojenia wtórne: napięcie [V] i prąd [A], jedno uzwojenie w wierszu"
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:66
+msgid "Wartości typowe wg mocy"
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:93
+msgid "Uzwojenia"
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:192
+msgid ""
+"Uwagi: uzupełnij pola liczbami większymi od zera; uzwojenia wtórne wpisz "
+"jako pary: napięcie i prąd."
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:199 src/GUI/ZestawienieDrutu.cpp:15
+msgid "drut[mm]"
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:199
+msgid "emalia"
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:205
+msgid "pierwotne"
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:206
+#, c-format
+msgid "wtórne %d"
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:210
+msgid ""
+"Uwaga: iloczyn q_o·q_z rdzenia jest mniejszy od wymaganego - wybierz większy "
+"rdzeń. "
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:211
+msgid "Uzwojenia mieszczą się w oknie (zapas duży; optymalnie ok. 5 mm)."
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:211
+msgid "Uzwojenia mieszczą się w oknie."
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:212
+msgid "Uwaga: uzwojenia nie mieszczą się w oknie rdzenia."
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:18
+msgid "Ustawienia"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:31 src/GUI/OknoGlowne.cpp:278
+msgid "&Ustawienia połączenia..."
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:35 src/GUI/DialogUstawien.cpp:38
+msgid "..."
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:42
+msgid "EAN13"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:43
+msgid "EAN8"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:44
+msgid "Code128"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:52
+msgid "Arial"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:53
+msgid "Times New Roman"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:54
+msgid "Courier New"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:55
+msgid "Verdana"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:61 src/GUI/DialogUwagHTML.cpp:18
+msgid "Pogrubienie"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:62 src/GUI/DialogUwagHTML.cpp:19
+msgid "Kursywa"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:64
+msgid "Przykład tekstu"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:69
+msgid "Według systemu"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:74
+#, c-format
+msgid "puste = automatycznie, np. okular --page %p \"%f\""
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:76
+msgid "puste = exiftool z PATH"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:78
+msgid "puste = ocrmypdf z PATH"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:80
+msgid "pol+eng"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:82
+msgid "klucz z maila od Mousera (xxxxxxxx-xxxx-...)"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:110 src/GUI/DialogUstawien.cpp:119
+#: src/GUI/OknoGlowne.cpp:625
+msgid "Baza danych"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:127 src/GUI/DialogUstawien.cpp:156
+msgid "Ścieżki"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:131
+msgid "Folder obrazków:"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:135
+msgid "Folder PDF:"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:143 src/GUI/DialogUstawien.cpp:344
+#: src/GUI/OknoGlowne.cpp:1000 src/GUI/OknoGlowne.cpp:1010
+#: src/GUI/OknoGlowne.cpp:1017 src/GUI/OknoGlowne.cpp:1025
+msgid "Aktualizacje"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:146
+msgid "Repozytorium GitHub:"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:150
+msgid ""
+"Plik wersja.txt musi leżeć w głównym katalogu repozytorium (repozytorium "
+"musi być publiczne)."
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:167
+msgid "Kod EAN"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:169
+msgid "Typ kodu:"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:171
+msgid "Prefix:"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:177
+msgid "Czcionka"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:180
+msgid "Nazwa:"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:183
+msgid "Rozmiar:"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:186
+msgid "Styl:"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:192
+msgid "Podgląd:"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:200
+msgid "Język i Literatura"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:203
+msgid "Język interfejsu:"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:205
+msgid "Polecenie czytnika PDF:"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:207
+msgid "Program ExifTool:"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:209
+msgid "Program ocrmypdf:"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:211
+msgid "Języki OCR (Tesseract):"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:213
+msgid "Klucz API Mouser (datasheety):"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:216
+#, c-format
+msgid ""
+"W poleceniu %f to plik, a %p numer strony. Zmiana języka działa po ponownym "
+"uruchomieniu programu."
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:222
+msgid "Inne"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:250 src/GUI/OknoGlowne.cpp:687
+msgid "Serwer: "
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:251 src/GUI/OknoGlowne.cpp:688
+msgid "Baza: "
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:252 src/GUI/OknoGlowne.cpp:689
+msgid "Użytkownik: "
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:299
+msgid "Wybierz folder obrazków"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:306
+msgid "Wybierz folder PDF"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:343
+msgid ""
+"Adres repozytorium musi mieć postać https://github.com/wlasciciel/"
+"repozytorium"
+msgstr ""
+
+#: src/GUI/DialogUwagHTML.cpp:8
+msgid "Uwagi (HTML)"
+msgstr ""
+
+#: src/GUI/DialogUwagHTML.cpp:8
+msgid "Uwagi (HTML): "
+msgstr ""
+
+#: src/GUI/DialogUwagHTML.cpp:20
+msgid "Podkreślenie"
+msgstr ""
+
+#: src/GUI/DialogUwagHTML.cpp:21
+msgid "Indeks dolny"
+msgstr ""
+
+#: src/GUI/DialogUwagHTML.cpp:22
+msgid "Indeks górny"
+msgstr ""
+
+#: src/GUI/DialogUwagHTML.cpp:23
+msgid "Lista"
+msgstr ""
+
+#: src/GUI/DialogUwagHTML.cpp:23
+msgid "Lista punktowana"
+msgstr ""
+
+#: src/GUI/DialogUwagHTML.cpp:24
+msgid "Nowa linia"
+msgstr ""
+
+#: src/GUI/DialogUwagHTML.cpp:25
+msgid "Akapit"
+msgstr ""
+
+#: src/GUI/DialogUwagHTML.cpp:37
+msgid "Góra: podgląd na żywo. Dół: źródło HTML (do edycji)."
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:9
+msgid "Drukarka Zebra (ZPL)"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:14
+msgid "Połączenie z drukarką"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:18
+msgid "Sieć (Ethernet / Wi-Fi)"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:20
+msgid "adres IP drukarki, np. 192.168.1.50"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:25
+msgid "port"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:30
+msgid "USB / drukarka w systemie"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:36
+msgid "Tylko zapis do pliku .zpl"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:47
+msgid "Etykieta"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:62
+msgid "Szerokość (w poprzek głowicy) [mm]"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:63
+msgid "Wysokość (wzdłuż rolki) [mm]"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:64
+msgid "Rozdzielczość drukarki"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:66
+msgid "Zamieniaj polskie litery, µ i Ω na znaki ASCII"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:68
+msgid "Obróć wydruk o 180 stopni"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:78
+msgid "Etykieta próbna"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:127
+msgid "Pliki ZPL (*.zpl)|*.zpl|Wszystkie pliki|*"
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:154
+msgid "✓ Zapisano etykietę próbną do pliku."
+msgstr ""
+
+#: src/GUI/DialogZebra.cpp:155
+msgid "✓ Wysłano etykietę próbną."
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:19
+msgid "Najtańsze zestawienie zakupów"
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:25
+msgid "Zakres:"
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:27
+msgid "Wszystkie aktywne projekty"
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:32
+msgid "Odejmij już zamówione"
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:38
+msgid "Najniższa suma z dostawą"
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:39
+msgid "Najniższe ceny części (bez dostawy)"
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:40
+msgid "Wszystko w jednym sklepie"
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:52
+msgid ""
+"Ceny pochodzą z linków elementów do sklepów (menu Sklepy → Sklepy i ceny "
+"elementu)."
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:56 src/GUI/DialogZestawienia.cpp:212
+msgid "Sprawdź aktualne ceny"
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:57
+msgid "Przelicz"
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:58
+msgid "Kopiuj listę zamówień"
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:126 src/GUI/DialogZestawienia.cpp:143
+#: src/GUI/DialogZestawienia.cpp:227 src/GUI/DialogZestawienia.cpp:236
+msgid "Zestawienie"
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:155
+msgid "wszystkie aktywne projekty"
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:156
+msgid "Zestawienie zakupów: "
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:174
+msgid "Niczego nie brakuje (albo wszystko jest już zamówione)."
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:182
+msgid "Porównanie (razem z dostawą):  najtańszy układ "
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:182
+msgid "   |   najniższe ceny części "
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:183
+msgid "   |   jeden sklep "
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:185
+msgid ""
+"\n"
+"Łączenie zakupów oszczędza "
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:185
+msgid " zł na dostawie."
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:203
+msgid ""
+"Brak linków do sprawdzenia - dodaj linki do sklepów w oknie \"Sklepy i ceny "
+"elementu\"."
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:222 src/GUI/DialogZestawienia.cpp:231
+msgid "Zapisz zestawienie"
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:232
+msgid "Strony HTML (*.html)|*.html"
+msgstr ""
+
+#: src/GUI/DialogZestawienia.cpp:244
+msgid "Lista zamówień skopiowana do schowka."
+msgstr ""
+
+#: src/GUI/DialogZnieksztalcen.cpp:20
+msgid "Zniekształcenia harmoniczne"
+msgstr ""
+
+#: src/GUI/DialogZnieksztalcen.cpp:22
+msgid ""
+"Metoda pięciu rzędnych: odczytaj z prostej obciążenia prądy dla wysterowania "
+"+Um, +0,5 Um, 0, -0,5 Um, -Um albo zmierz odcinki a..g."
+msgstr ""
+
+#: src/GUI/DialogZnieksztalcen.cpp:24
+msgid "Oblicz dla prądów"
+msgstr ""
+
+#: src/GUI/DialogZnieksztalcen.cpp:25
+msgid "Oblicz dla odcinków"
+msgstr ""
+
+#: src/GUI/DialogZnieksztalcen.cpp:58
+msgid "Wyczyść dane"
+msgstr ""
+
+#: src/GUI/DialogZnieksztalcen.cpp:100
+msgid "Uwagi: pierwsza harmoniczna jest równa zero (brak wysterowania)."
+msgstr ""
+
+#: src/GUI/DialogZnieksztalcen.cpp:100
+msgid "Uwagi: uzupełnij pola liczbami."
+msgstr ""
+
+#: src/GUI/OcrPliku.cpp:20
+msgid ""
+"Nie znaleziono programu ocrmypdf. Zainstaluj go (ocrmypdf.readthedocs.io; "
+"wymaga Tesseracta z językiem polskim) albo wskaż jego położenie w "
+"Ustawieniach (zakładka Inne)."
+msgstr ""
+
+#: src/GUI/OcrPliku.cpp:25
+msgid ""
+"Nieprawidłowe języki OCR w ustawieniach. Podaj kody Tesseracta, np. pol+eng."
+msgstr ""
+
+#: src/GUI/OcrPliku.cpp:32
+#, c-format
+msgid ""
+"OCR plików PDF: %zu. Dla dużych książek trwa to kilka minut lub dłużej, a "
+"strony z tekstem są pomijane.\n"
+"\n"
+"Tak: wynik zastępuje plik (oryginał zostaje jako plik.pdf.bak) i indeks "
+"treści jest budowany od nowa.\n"
+"Nie: wynik jest zapisywany obok jako plik_ocr.pdf."
+msgstr ""
+
+#: src/GUI/OcrPliku.cpp:35 src/GUI/OcrPliku.cpp:49
+#: src/GUI/PanelKatalogu.cpp:443 src/GUI/PanelKsiazek.cpp:753
+msgid "OCR"
+msgstr ""
+
+#: src/GUI/OcrPliku.cpp:36
+msgid "Zastąp oryginał"
+msgstr ""
+
+#: src/GUI/OcrPliku.cpp:36
+msgid "Zapisz obok"
+msgstr ""
+
+#: src/GUI/OcrPliku.cpp:49
+#, c-format
+msgid ""
+"%s (%zu z %zu)\n"
+"To może potrwać kilka minut..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:84
+msgid "Magazyn"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:86
+msgid "Projekty"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:91 src/GUI/PanelNarzedzi.cpp:118
+#: src/GUI/PanelNarzedzi.cpp:125 src/GUI/PanelNarzedzi.cpp:253
+#: src/GUI/PanelNarzedzi.cpp:402 src/GUI/PanelNarzedzi.cpp:412
+#: src/GUI/PanelNarzedzi.cpp:428 src/GUI/PanelNarzedzi.cpp:494
+msgid "Narzędzia"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:116
+msgid "Nie znaleziono elementu w magazynie"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:153
+msgid "Gotowy"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:154 src/GUI/OknoGlowne.cpp:414
+#: src/GUI/OknoGlowne.cpp:539
+msgid "Brak połączenia z bazą"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:272
+msgid "Za&kończ\tCtrl+Q"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:275
+msgid "&Połącz\tCtrl+L"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:276
+msgid "&Rozłącz"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:279
+msgid "U&twórz / zaktualizuj strukturę bazy..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:280
+msgid "&Informacje o bazie..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:283
+msgid "&Nowy element...\tCtrl+N"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:284
+msgid "&Edytuj element...\tCtrl+E"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:285
+msgid "Zmień &stan magazynowy...\tCtrl+T"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:286
+msgid "&Usuń element"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:288
+msgid "Nowa kategoria &główna...\tCtrl+Shift+N"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:289
+msgid "Nowa &podkategoria..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:290
+msgid "Zmień nazwę &kategorii..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:291
+msgid "Usuń k&ategorię"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:293
+msgid "Importuj kategorie s&tartowe"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:294
+msgid "&Importuj kategorie z pliku..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:296
+msgid "&Obudowy (typy, moc, napięcie, biblioteki Eagle)..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:297
+msgid "&Generator szeregów E (rezystory, kondensatory, cewki)..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:298
+msgid "Importuj elementy z pliku &CSV..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:300
+msgid "Drukuj &etykiety z kodem kreskowym...\tCtrl+P"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:301
+msgid "Znajdź element po &zdjęciu kodu..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:302
+msgid "E&ksportuj listę do CSV...\tCtrl+Shift+E"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:305
+msgid "&Nowy projekt..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:306
+msgid "&Edytuj projekt..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:307
+msgid "&Usuń projekt"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:309
+msgid "&Importuj listę części (KiCad / Eagle)...\tCtrl+I"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:310
+msgid "&Dodaj część do projektu..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:311
+msgid "&Wydaj wszystko dostępne"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:312
+msgid "&Lista zakupów do CSV..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:314
+msgid "Skrypt &atrybutów dla Eagle (.scr)..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:315
+msgid "Program ULP dla Eagle (lista części do CSV)..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:318
+msgid "&Nowa pozycja katalogu..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:319
+msgid "&Edytuj pozycję..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:320
+msgid "&Usuń pozycję"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:322
+msgid "&Dodaj do magazynu..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:324
+msgid "&Importuj katalog z CSV..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:325
+msgid "E&ksportuj katalog do CSV..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:326
+msgid "Zapisz &szablon CSV..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:328
+msgid "&Otwórz datasheet"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:329
+msgid "Odczytaj &parametry z datasheetu (PDF)..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:332
+msgid "&Raporty...\tCtrl+R"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:335
+msgid "&Lista sklepów...\tCtrl+Shift+S"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:336
+msgid "Sklepy, ceny i &datasheet wybranego elementu...\tCtrl+K"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:338
+msgid "&Najtańsze zestawienie zakupów...\tCtrl+Shift+Z"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:341
+msgid "Kamera &termowizyjna (InfiRay T3 Pro)...\tCtrl+Shift+T"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:345
+msgid "&Paski kolorów i kody SMD...\tCtrl+D"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:346
+msgid "&Kalkulatory (dzielnik, LED, filtr RC)...\tCtrl+Shift+K"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:347
+msgid "Narzędzia &audio i lampowe (dB, RIAA)...\tCtrl+Shift+L"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:348
+msgid "Metody &graficzne (charakterystyki lamp)...\tCtrl+Shift+G"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:349
+msgid "&Zniekształcenia harmoniczne (metoda graficzna)...\tCtrl+Shift+Z"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:352
+msgid "&Dławik zasilacza...\tCtrl+Shift+D"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:353
+msgid "Transformator &sieciowy..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:354
+msgid "Transformator głośnikowy &PP..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:355
+msgid "Transformator głośnikowy S&E..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:356
+msgid "Cewka na rdzeniu z &AL (ferryt, toroid)..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:357
+msgid "Cewki &powietrzne (jedno- i wielowarstwowe)..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:359
+msgid "&Elementy indukcyjne"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:364
+msgid "&Odśwież\tF5"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:365
+msgid "&Szukaj\tCtrl+F"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:366
+msgid "Pokaż &dziennik zdarzeń"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:369
+msgid "&Ustawienia aplikacji..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:372
+msgid "&Spis treści\tF1"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:373
+msgid "Otwórz pomoc w &przeglądarce"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:375
+msgid "Sprawdź &aktualizacje..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:376
+msgid "Sprawdzaj aktualizacje przy &uruchomieniu"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:379
+msgid "&O programie..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:382
+msgid "&Program"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:383
+msgid "&Baza danych"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:384
+msgid "&Magazyn"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:385
+msgid "Pro&jekty"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:386
+msgid "&Katalog"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:387
+msgid "&Raporty"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:388
+msgid "S&klepy"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:389
+msgid "Ka&mera"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:390
+msgid "&Narzędzia"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:391
+msgid "&Widok"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:392
+msgid "&Ustawienia"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:393
+msgid "Pomo&c"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:408
+msgid "Łączenie z bazą..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:507
+msgid "Hasło użytkownika "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:507
+msgid " do bazy "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:509
+msgid "Hasło do bazy danych"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:511
+msgid "Łączenie anulowane"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:522
+msgid "Łączenie z "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:538
+msgid "✗ Nie udało się połączyć: "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:545
+msgid "✓ Połączono z bazą danych"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:546
+msgid "Połączono z bazą danych"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:555
+msgid "  PostgreSQL "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:555
+msgid ", użytkownik "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:559
+msgid "  Baza nie zawiera struktury programu."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:561
+msgid "Baza „"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:562
+msgid ""
+"” nie zawiera jeszcze tabel programu.\n"
+"\n"
+"Czy utworzyć strukturę bazy teraz?"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:563
+msgid "Brak struktury bazy"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:566
+msgid "  Struktura bazy jest przestarzała."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:568
+msgid ""
+"Struktura bazy jest w starszej wersji niż wymaga program.\n"
+"\n"
+"Zaktualizować ją teraz? (Dane nie zostaną usunięte.)"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:570
+msgid "Aktualizacja bazy"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:573
+msgid "  Struktura bazy: wersja "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:620
+msgid "✓ Struktura bazy utworzona / zaktualizowana"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:621
+msgid "Struktura bazy gotowa"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:624
+msgid ""
+"Struktura bazy została utworzona lub zaktualizowana.\n"
+"\n"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:627
+msgid "✗ Błąd tworzenia struktury bazy: "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:628
+msgid ""
+"Nie udało się utworzyć struktury bazy:\n"
+"\n"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:629
+msgid ""
+"\n"
+"\n"
+"Postęp:\n"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:630
+msgid "Błąd bazy danych"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:650
+msgid "Rozłączono z bazą danych"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:651
+msgid "Rozłączono"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:661
+msgid "Zapisano ustawienia połączenia"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:670
+msgid ""
+"Struktura bazy już istnieje.\n"
+"\n"
+"Uruchomić aktualizację? Skrypty są bezpieczne: uzupełniają brakujące "
+"elementy i nie usuwają danych."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:672
+msgid "Aktualizacja struktury bazy"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:681 src/GUI/OknoGlowne.cpp:694
+msgid "Informacje o bazie"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:690
+msgid "Wersja PostgreSQL: "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:691
+msgid "Struktura programu: "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:692
+msgid "wersja "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:693
+msgid "brak (użyj Baza danych → Utwórz / zaktualizuj)"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:742
+msgid "Nie znaleziono katalogu „sql” ze skryptami obok programu."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:743 src/GUI/OknoGlowne.cpp:767
+#: src/GUI/OknoGlowne.cpp:776
+msgid "Import kategorii"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:750
+msgid "Wybierz plik z kategoriami"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:751
+msgid "Pliki tekstowe (*.txt;*.csv)|*.txt;*.csv|Wszystkie pliki|*"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:766
+msgid "✗ Import kategorii nie powiódł się: "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:770
+msgid "Wczytano ścieżek: "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:771
+msgid ", dodano nowych kategorii: "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:772
+msgid "✓ Import kategorii. "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:775
+msgid ""
+"\n"
+"\n"
+"Wszystkie kategorie już istniały."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:782
+msgid "Lista elementów jest pusta, nie ma czego drukować."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:855
+#, c-format
+msgid ""
+"✓ Generator szeregów: dodano %d, dodano ilość %d, uzupełniono %d, pominięto "
+"%d"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:865
+#, c-format
+msgid ""
+"✓ Import CSV: dodano %d, dodano ilość %d, uzupełniono %d, pominięto %d, "
+"błędów %zu"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:872
+msgid "Wybierz zdjęcie etykiety z kodem kreskowym"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:880
+msgid "Odczyt kodu"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:884
+msgid "Odczytano kod: "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:958
+msgid "Lista elementów jest pusta, nie ma czego eksportować."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:958 src/GUI/OknoGlowne.cpp:970
+msgid "Eksport do CSV"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:962
+msgid "Eksport listy do CSV"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:969
+msgid "✗ Eksport nie powiódł się: "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:973
+msgid "✓ Wyeksportowano "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:973
+msgid " elementów do: "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:974
+msgid "Wyeksportowano do CSV"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:999
+msgid ""
+"Adres repozytorium w ustawieniach jest nieprawidłowy. Podaj adres w postaci "
+"https://github.com/wlasciciel/repozytorium"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:1005
+msgid "Sprawdzam, czy jest nowsza wersja..."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:1010
+msgid ""
+"Nie udało się sprawdzić aktualizacji.\n"
+"\n"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:1014
+msgid "Plik z numerem wersji ma nieoczekiwaną treść."
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:1017
+msgid "Masz najnowszą wersję programu ("
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:1021
+msgid "Dostępna jest nowa wersja programu: "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:1021
+msgid " (masz "
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:1024
+msgid ""
+"\n"
+"\n"
+"Otworzyć stronę pobierania?"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:88
+msgid "Szukaj: symbol, opis, producent, obudowa, tagi..."
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:90
+msgid "Z podkategoriami"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:92
+msgid "Tylko niski stan"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:106
+msgid "Dodaj element"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:107
+msgid "Edytuj"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:108
+msgid "Zmień stan"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:150 src/GUI/PanelPodgladu.cpp:139
+#, c-format
+msgid " (minimum %d)"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:209
+msgid "Elementów: "
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:210
+msgid " (osiągnięto limit listy, zawęź wyszukiwanie)"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:211
+#, c-format
+msgid ", zaznaczono: %d"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:342
+msgid "Znaleziono element po kodzie kreskowym: "
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:350
+msgid "Nie udało się pobrać elementów"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:408
+msgid "Nie udało się dodać elementu"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:409
+msgid "Dodano element: "
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:426
+#, c-format
+msgid "Edycja zbiorcza: zmieniono elementów: %d"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:427
+#, c-format
+msgid ", błędów: %d (%s)"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:441 src/GUI/PanelElementow.cpp:515
+msgid "Nie udało się odczytać elementu"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:450
+msgid "Nie udało się zapisać elementu"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:451
+msgid "Zapisano element: "
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:464
+msgid "Usunąć element „"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:464
+msgid ""
+"”?\n"
+"\n"
+"Jeśli element jest używany (np. na liście części projektu), zostanie tylko "
+"ukryty, a dane pozostaną w bazie."
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:466
+msgid "Usuwanie elementu"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:471
+msgid "Usunięto element: "
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:474
+msgid "Element „"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:474
+msgid "” jest używany, więc został ukryty (zarchiwizowany)"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:477
+msgid "Nie udało się usunąć elementu"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:488
+#, c-format
+msgid ""
+"Usunąć zaznaczone elementy (%zu)?\n"
+"\n"
+"Elementy używane (np. na liście części projektu) zostaną tylko ukryte, a "
+"dane pozostaną w bazie."
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:489
+msgid "Usuwanie elementów"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:503
+#, c-format
+msgid "Usunięto elementów: %d, ukryto (używane): %d, błędów: %d"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:523
+msgid "Nie udało się zmienić stanu"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:525
+msgid "Zmieniono stan elementu "
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:621
+msgid "Edytuj zaznaczone (zbiorczo)..."
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:621 src/GUI/PanelKatalogu.cpp:158
+#: src/GUI/PanelKsiazek.cpp:166 src/GUI/PanelNarzedzi.cpp:212
+msgid "Edytuj..."
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:622
+msgid "Zmień stan..."
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:624
+msgid "Dodaj do katalogu"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:625
+msgid "Pokaż w katalogu"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:626
+msgid "Pokaż datasheet"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:628
+msgid "Usuń zaznaczone"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:647
+msgid "Ten element jest już w katalogu: "
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:659
+msgid "✗ Nie udało się dodać do katalogu: "
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:663
+msgid "Dodano do katalogu: "
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:663
+msgid " (zakładka Katalog, prawy przycisk: Pokaż w katalogu)"
+msgstr ""
+
+#: src/GUI/PanelElementow.cpp:681
+msgid ""
+"Ten element nie ma datasheetu. Wpisz adres w edycji elementu albo pobierz go "
+"w zakładce Katalog."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:44
+msgid "Parametry odczytane z datasheetu"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:48
+msgid ""
+"To tylko propozycje - program odgaduje je z tekstu karty katalogowej i może "
+"się mylić.\n"
+"Zaznacz te, które są poprawne; zapiszą się z oznaczeniem źródła "
+"\"datasheet\".\n"
+"\"Maks.\" = Absolute Maximum Ratings, \"Elektr.\" = Electrical "
+"Characteristics. Pozycje oznaczone \"zgadywane\" są odznaczone - sprawdź je "
+"przed zaznaczeniem."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:56
+msgid "   (zgadywane)"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:60
+msgid "Ustaw opis: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:63
+msgid "Ustaw obudowę: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:66
+msgid "Dopisz do uwag: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:100
+msgid "Szukaj w katalogu..."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:107
+msgid "tylko te, które mam w magazynie"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:127 src/GUI/PanelKatalogu.cpp:330
+msgid "Wybierz pozycję z listy"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:157 src/GUI/PanelKsiazek.cpp:165
+msgid "Nowa..."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:162
+msgid "Dodaj do magazynu..."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:164 src/GUI/PanelKsiazek.cpp:182
+#: src/GUI/PanelNarzedzi.cpp:221
+msgid "Import CSV..."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:165 src/GUI/PanelKsiazek.cpp:183
+#: src/GUI/PanelNarzedzi.cpp:222
+msgid "Eksport CSV..."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:166 src/GUI/PanelKsiazek.cpp:184
+#: src/GUI/PanelNarzedzi.cpp:223
+msgid "Szablon CSV..."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:167
+msgid "Otwórz datasheet"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:169
+msgid "Odczytaj parametry z PDF..."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:259
+msgid "(wszystkie)"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:291
+msgid "✗ Katalog: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:316
+#, c-format
+msgid "Pozycji: %d"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:330
+#, c-format
+msgid "Zaznaczono pozycji: %d"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:340
+msgid "Obudowa: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:341
+msgid "Rodzina: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:342
+#, c-format
+msgid "W magazynie: %d szt. (%d poz.)"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:343
+msgid "Nie ma w magazynie."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:345
+msgid "Datasheet: pobrany\n"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:346
+msgid "Datasheet: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:347
+msgid "Uwagi: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:371
+msgid "✓ Dodano do katalogu: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:387
+msgid "✓ Zapisano: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:407
+msgid "Usuń z katalogu"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:407
+msgid "Usuń zaznaczone z katalogu"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:409
+msgid "Wykonaj OCR datasheetu"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:418
+msgid "Zaznacz pozycje, które mają pobrany datasheet (plik PDF)."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:441
+#, c-format
+msgid "✓ OCR datasheetów wykonano dla plików: %d z %zu"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:441 src/GUI/PanelKsiazek.cpp:712
+#: src/GUI/PanelKsiazek.cpp:752
+msgid " (są błędy)"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:442
+msgid ". Teraz możesz odczytać parametry z datasheetu."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:443 src/GUI/PanelKsiazek.cpp:753
+msgid ""
+"Nie wszystkie pliki zostały przetworzone:\n"
+"\n"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:456
+msgid "Usunąć z katalogu \""
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:456
+msgid "\"? Elementy w magazynie zostaną nietknięte."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:457
+#, c-format
+msgid ""
+"Usunąć z katalogu zaznaczone pozycje (%zu)? Elementy w magazynie zostaną "
+"nietknięte."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:465
+#, c-format
+msgid "Usunięto z katalogu pozycji: %d"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:479
+msgid "✓ Dodano do magazynu: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:488
+msgid "Importuj katalog z CSV"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:489
+msgid "Pliki CSV (*.csv;*.txt)|*.csv;*.txt|Wszystkie pliki|*.*"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:492
+msgid ""
+"Co zrobić z pozycjami, które już są w katalogu (ten sam symbol i producent)?"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:493
+msgid "Import katalogu"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:494
+msgid "Zaktualizuj"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:500 src/GUI/PanelKsiazek.cpp:583
+#: src/GUI/PanelNarzedzi.cpp:447
+msgid "Nie można odczytać pliku."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:505
+#, c-format
+msgid "Import katalogu: dodano %d, zaktualizowano %d, pominięto %d"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:506
+#, c-format
+msgid ", błędów: %d"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:516
+msgid "Eksport katalogu do CSV"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:528
+#, c-format
+msgid "✓ Wyeksportowano %d pozycji katalogu."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:535
+msgid "Zapisz szablon katalogu"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:541
+msgid "✓ Zapisano szablon katalogu."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:555
+msgid ""
+"Ta pozycja nie ma datasheetu. Wpisz adres w edycji pozycji albo użyj "
+"\"Pobierz datasheet\"."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:585
+msgid "✓ Pobrano datasheet: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:590
+msgid ""
+"Serwer nie pozwolił pobrać pliku automatycznie, więc otworzyłem datasheet w "
+"przeglądarce.\n"
+"\n"
+"Zapisz go w tym miejscu, a program go znajdzie:\n"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:615
+msgid ""
+"Mouser nie podaje datasheetu dla tej części. Dane (producent, opis, obudowa) "
+"zostały uzupełnione."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:640
+msgid "Wybierz plik PDF z datasheetem"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:641
+msgid "Pliki PDF (*.pdf)|*.pdf"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:649
+msgid "✗ Odczyt datasheetu: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:650
+msgid "Nie udało się odczytać tekstu z PDF: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:656
+msgid ""
+"Nie znalazłem w tym pliku żadnych parametrów, które program umie rozpoznać."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:688
+#, c-format
+msgid "✓ Z datasheetu zapisano parametrów: %d"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:32
+msgid "Nowa"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:33
+msgid "Podkategoria"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:34
+msgid "Zmień nazwę"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:77 src/GUI/PanelKategorii.cpp:105
+msgid "Wszystkie elementy"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:98
+msgid "Nie udało się odczytać kategorii"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:169
+msgid "Nazwa nowej kategorii głównej:"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:169
+msgid "Nowa kategoria"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:173
+msgid "Nie udało się dodać kategorii"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:174
+msgid "Dodano kategorię: "
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:184
+msgid "Nazwa nowej podkategorii w „"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:184
+msgid "”:"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:185
+msgid "Nowa podkategoria"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:188
+msgid "Nie udało się dodać podkategorii"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:189
+msgid "Dodano podkategorię: "
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:213
+msgid "Nowa nazwa kategorii:"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:213
+msgid "Zmiana nazwy"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:216
+msgid "Nie udało się zmienić nazwy"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:218
+msgid "Zmieniono nazwę kategorii na: "
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:227
+msgid "Usunąć kategorię „"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:227 src/GUI/PanelProjektow.cpp:439
+msgid "”?"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:227
+msgid "Usuwanie kategorii"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:231
+msgid "Nie udało się usunąć kategorii"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:232
+msgid "Usunięto kategorię: "
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:251
+msgid "Nowa kategoria główna"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:252
+msgid "Nowa podkategoria..."
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:252
+msgid "Nowa kategoria..."
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:254
+msgid "Zmień nazwę\tF2"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:306
+msgid "poziom główny"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:307
+msgid "Przenieść kategorię „"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:307 src/GUI/PanelKategorii.cpp:314
+msgid "” do: "
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:308
+msgid "Przenoszenie kategorii"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:313
+msgid "Nie udało się przenieść kategorii"
+msgstr ""
+
+#: src/GUI/PanelKategorii.cpp:314
+msgid "Przeniesiono kategorię „"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:104
+msgid "Szukaj książki (tytuł, autor, tagi)..."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:108
+msgid "Szukaj w treści książek (Enter)..."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:112
+msgid "tylko w zaznaczonej książce"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:127 src/GUI/PanelKsiazek.cpp:355
+msgid "Wybierz książkę z listy"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:133
+msgid "Wyniki szukania w treści (dwuklik otwiera książkę na stronie):"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:139
+msgid "Książka"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:140
+msgid "Str."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:141
+msgid "Fragment"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:170
+msgid "Otwórz plik"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:171 src/GUI/PanelNarzedzi.cpp:216
+msgid "Pożycz..."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:172 src/GUI/PanelNarzedzi.cpp:186
+msgid "Zwrot"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:174
+msgid "Indeksuj treść"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:176
+msgid "Indeksuj wszystkie"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:177
+msgid "Zapisz dane do PDF"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:179
+msgid "OCR..."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:181
+msgid "Dodaj z katalogu na dysku..."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:224
+msgid "Nie można otworzyć pliku książki (sprawdź ścieżkę)."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:226
+#, c-format
+msgid "Otwarto: %s, strona %d"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:308
+msgid "✗ Literatura: "
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:341 src/GUI/PanelNarzedzi.cpp:309
+msgid " (do "
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:346
+#, c-format
+msgid "Książek: %zu"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:365 src/GUI/PanelKsiazek.cpp:488
+msgid "Rok"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:370
+msgid "Plik: brak (książka papierowa)\n"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:372
+msgid "Plik: "
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:373
+msgid "  (nie znaleziono pliku!)"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:376
+#, c-format
+msgid "Indeks treści: %d stron (%s)\n"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:379
+msgid "Pożyczona: "
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:379 src/GUI/PanelKsiazek.cpp:495
+#: src/GUI/PanelNarzedzi.cpp:355
+msgid ", od "
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:380
+msgid ", do "
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:380
+msgid "  (PO TERMINIE)"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:385
+msgid "Historia pożyczek:\n"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:387
+msgid "nadal"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:399
+msgid "✓ Dodano książkę: "
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:423
+#, c-format
+msgid "✓ Zmieniono książek: %d"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:423
+#, c-format
+msgid " (błędy: %d)"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:440
+msgid "Usuń książkę"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:440
+msgid "Usuń zaznaczone książki"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:441
+msgid "Usuń indeks"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:444
+msgid "Zapisz metadane"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:445
+msgid "Wykonaj OCR"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:447
+msgid "Info"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:461
+msgid "Zaznaczone książki nie mają indeksu treści."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:464
+#, c-format
+msgid ""
+"Usunąć indeks treści (wyszukiwanie w treści) dla książek: %zu? Książki i "
+"pliki zostają."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:472
+#, c-format
+msgid "✓ Usunięto indeks treści: %d"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:493
+msgid "Plik"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:493
+msgid "brak (książka papierowa)"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:494
+msgid "Indeks treści"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:494
+#, c-format
+msgid "%d stron (%s)"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:495
+msgid "Pożyczona"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:503
+msgid "Informacje o książce"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:519
+#, c-format
+msgid "Usunąć książkę \"%s\" z biblioteczki? Plik na dysku zostaje."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:520
+#, c-format
+msgid "Usunąć z biblioteczki zaznaczone książki (%zu)? Pliki na dysku zostają."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:529
+#, c-format
+msgid "✓ Usunięto książek: %d"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:537
+#, c-format
+msgid "Ta książka jest już pożyczona (%s). Najpierw zarejestruj zwrot."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:542
+msgid "Pożycz książkę"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:542
+msgid "Podaj, komu pożyczasz książkę."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:547 src/GUI/PanelNarzedzi.cpp:419
+#, c-format
+msgid "✓ Pożyczono \"%s\": %s"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:555
+#, c-format
+msgid "Zarejestrować zwrot książki \"%s\" od: %s?"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:560 src/GUI/PanelNarzedzi.cpp:432
+msgid "✓ Zwrócono: "
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:570
+#, c-format
+msgid "⚠ Książka \"%s\" miała wrócić %s od: %s"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:577
+msgid "Importuj książki z CSV"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:577 src/GUI/PanelNarzedzi.cpp:441
+msgid "Pliki CSV (*.csv)|*.csv|Wszystkie pliki|*.*"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:589
+#, c-format
+msgid "Dodano książek: %d, pominięto (już są): %d."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:600
+msgid "Eksportuj książki do CSV"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:607 src/GUI/PanelKsiazek.cpp:620
+#: src/GUI/PanelNarzedzi.cpp:471 src/GUI/PanelNarzedzi.cpp:484
+msgid "Nie można zapisać pliku."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:608
+#, c-format
+msgid "✓ Wyeksportowano książek: %zu"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:615 src/GUI/PanelNarzedzi.cpp:479
+msgid "Zapisz szablon CSV"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:627
+msgid "Katalog z książkami (PDF, EPUB; podkatalogi są przeszukiwane)"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:647
+#, c-format
+msgid "Znaleziono plików: %zu, dodano książek: %d, pominięto (już są): %d."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:657
+msgid ""
+"Nie można otworzyć pliku książki (sprawdź, czy istnieje i czy jest program "
+"do jego otwierania)."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:681 src/GUI/PanelKsiazek.cpp:721
+msgid "Zaznacz książki, które mają plik PDF (istniejący na dysku)."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:686
+msgid ""
+"Nie znaleziono programu ExifTool (exiftool.org). Zainstaluj go albo wskaż "
+"jego położenie w Ustawieniach (zakładka Inne)."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:692
+#, c-format
+msgid ""
+"Zapisać dane z bazy (tytuł, autor, wydawca, rok, ISBN, język, tagi, uwagi) "
+"do plików PDF: %zu?"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:693
+msgid ""
+"\n"
+"\n"
+"ExifTool zostawi obok kopię oryginału (plik.pdf_original)."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:694 src/GUI/PanelKsiazek.cpp:714
+msgid "Zapis danych do PDF"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:712
+#, c-format
+msgid "✓ Zapisano dane do plików PDF: %d z %zu"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:713
+#, c-format
+msgid "Zapisano dane do plików PDF: %d"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:714
+msgid ""
+"Nie wszystkie pliki zostały zapisane:\n"
+"\n"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:752
+#, c-format
+msgid "✓ OCR wykonano dla plików: %d z %zu"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:761
+msgid "Indeksować można pliki PDF z warstwą tekstową oraz EPUB."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:781
+#, c-format
+msgid "✓ Zaindeksowano \"%s\": %d stron (fragmentów) z tekstem"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:790
+msgid "Wszystkie książki (PDF, EPUB) z tej listy są już zaindeksowane."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:793
+#, c-format
+msgid "Zaindeksować treść %zu książek? Duże PDF-y mogą potrwać kilka minut."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:799
+msgid "Indeksowanie"
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:812
+#, c-format
+msgid "Zaindeksowano książek: %d z %zu."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:833
+msgid "Nie znaleziono w treści zaindeksowanych książek."
+msgstr ""
+
+#: src/GUI/PanelKsiazek.cpp:834
+#, c-format
+msgid "Trafień w treści: %zu"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:44
+msgid "Zmień narzędzie"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:44
+msgid "Nowe narzędzie"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:59 src/GUI/PanelNarzedzi.cpp:345
+msgid "Model"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:64 src/GUI/PanelNarzedzi.cpp:347
+msgid "Numer seryjny"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:66 src/GUI/PanelNarzedzi.cpp:348
+msgid "Numer inwentarzowy"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:68
+msgid "np. warsztat, szuflada 3"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:76
+msgid "Cena [zł]:"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:79
+msgid "Data zakupu"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:82
+msgid "plik PDF lub adres strony"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:86 src/GUI/PanelNarzedzi.cpp:352
+msgid "Instrukcja"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:101
+msgid "Instrukcja narzędzia"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:101
+msgid "Dokumenty (*.pdf)|*.pdf|Wszystkie pliki|*.*"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:118
+msgid "Podaj nazwę narzędzia."
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:125
+msgid "Cena musi być liczbą nieujemną (np. 249,90)."
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:152
+msgid "Szukaj narzędzia lub osoby..."
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:155
+msgid "tylko pożyczone"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:158
+msgid "tylko po terminie"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:172 src/GUI/PanelNarzedzi.cpp:336
+msgid "Wybierz narzędzie z listy"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:181
+msgid "Historia pożyczek:"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:183
+msgid "Komu"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:184
+msgid "Od"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:185
+msgid "Termin"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:211
+msgid "Nowe..."
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:218
+msgid "Zwrócono"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:220
+msgid "Otwórz instrukcję"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:297
+msgid "✗ Narzędzia: "
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:306
+msgid "u mnie"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:308
+msgid "PO TERMINIE: "
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:308
+msgid "pożyczone: "
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:309
+msgid " (od "
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:315
+#, c-format
+msgid "Narzędzi: %zu"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:350
+msgid "Kupiono"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:351
+msgid "Cena: "
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:355
+msgid "POŻYCZONE: "
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:356
+msgid ", termin zwrotu "
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:356
+msgid " (minął!)"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:368
+msgid "nie zwrócono"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:381
+msgid "✓ Dodano narzędzie: "
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:400
+#, c-format
+msgid "Usunąć narzędzie \"%s\" razem z historią pożyczek?"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:401
+#, c-format
+msgid ""
+"Narzędzie \"%s\" jest pożyczone (%s). Usunąć je razem z historią pożyczek?"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:411
+#, c-format
+msgid "To narzędzie jest już pożyczone (%s). Najpierw zarejestruj zwrot."
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:415
+msgid "Pożycz narzędzie"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:415
+msgid "Komu pożyczasz narzędzie?"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:427
+#, c-format
+msgid "Zarejestrować zwrot narzędzia \"%s\" od: %s?"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:441
+msgid "Importuj narzędzia z CSV"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:453
+#, c-format
+msgid "Dodano narzędzi: %d, pominięto (już są): %d."
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:464
+msgid "Eksportuj narzędzia do CSV"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:472
+#, c-format
+msgid "✓ Wyeksportowano narzędzi: %zu"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:494
+msgid "Nie można otworzyć instrukcji (sprawdź ścieżkę lub adres)."
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:501
+#, c-format
+msgid "⚠ Narzędzie \"%s\" miało wrócić %s od: %s"
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:25
+msgid "Dwukrotne kliknięcie otwiera zdjęcie w domyślnym programie"
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:32
+msgid "Brak zdjęcia"
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:32
+msgid "Nie znaleziono pliku zdjęcia"
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:36
+msgid "Nie można odczytać zdjęcia"
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:77
+msgid "Zdjęcie z kamery..."
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:78
+msgid "Zdjęcie z pliku..."
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:79
+msgid "Usuń zdjęcie"
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:105
+msgid "Nie wybrano elementu"
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:106
+msgid "Zaznacz element na liście, aby zobaczyć jego zdjęcie i dane."
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:127
+#, c-format
+msgid "%d wyprowadzeń"
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:128
+msgid "moc "
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:144
+msgid ""
+"\n"
+"\n"
+"Z katalogu:"
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:151
+msgid " jest, bez dodatkowych danych"
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:166
+msgid "✗ Nie udało się wczytać elementu: "
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:172
+msgid "✗ Nie udało się zapisać zdjęcia: "
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:173
+msgid "Zdjęcie elementu"
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:177
+msgid "Usunięto zdjęcie elementu "
+msgstr ""
+
+#: src/GUI/PanelPodgladu.cpp:177
+msgid "Zapisano zdjęcie elementu "
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:26
+msgid "Pokaż zarchiwizowane"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:41
+msgid "Poz."
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:42
+msgid "Braki"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:51 src/GUI/PanelProjektow.cpp:189
+#: src/GUI/PanelProjektow.cpp:261
+msgid "Wybierz projekt"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:132
+msgid "Idź do elementu w magazynie"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:134
+msgid "Edytuj pozycję..."
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:135 src/GUI/PanelProjektow.cpp:441
+#: src/GUI/PanelProjektow.cpp:451
+msgid "Usuń pozycję"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:202
+msgid "✗ Nie udało się pobrać projektów: "
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:224
+msgid " (archiwum)"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:268
+msgid "✗ Nie udało się pobrać listy części: "
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:317
+#, c-format
+msgid "Pozycji: %zu, sztuk: %d, wydano w całości: %d, brakuje w magazynie: %d"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:319
+msgid "Projekt: "
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:347
+msgid "✓ Dodano projekt: "
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:358
+msgid "✓ Zapisano projekt: "
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:366
+msgid "Usunąć projekt „"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:367
+msgid ""
+"” razem z listą części?\n"
+"\n"
+"Jeśli wydano już do niego części, projekt zostanie tylko zarchiwizowany."
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:368 src/GUI/PanelProjektow.cpp:375
+msgid "Usuń projekt"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:371
+msgid "✓ Usunięto projekt: "
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:373
+msgid "✓ Projekt zarchiwizowany (były wydania części): "
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:391
+#, c-format
+msgid ""
+"✓ Import BOM do projektu %s: nowych pozycji %d, zwiększono %d, nowych "
+"elementów %d, pominięto %d"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:405
+msgid "Dodaj część"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:439
+msgid "Usunąć z projektu pozycję „"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:440
+#, c-format
+msgid "Usunąć z projektu zaznaczone pozycje (%zu)?"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:463
+msgid "Ta pozycja jest już w całości wydana do projektu."
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:464
+msgid "Brak tego elementu w magazynie."
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:465 src/GUI/PanelProjektow.cpp:474
+#: src/GUI/PanelProjektow.cpp:487 src/GUI/PanelProjektow.cpp:491
+msgid "Wydaj z magazynu"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:468
+msgid ""
+"Ile sztuk wydać do projektu?\n"
+"(w magazynie: "
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:470
+msgid "Wydaj z magazynu: "
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:475
+#, c-format
+msgid "✓ Wydano %ld szt. %s do projektu %s"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:485
+msgid "Wydać do projektu „"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:486
+msgid "” wszystkie części, które są dostępne w magazynie?"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:492
+#, c-format
+msgid "✓ Wydano do projektu %s: %d szt."
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:508 src/GUI/PanelProjektow.cpp:515
+#: src/GUI/PanelProjektow.cpp:527
+msgid "Skrypt dla Eagle"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:514
+msgid ""
+"Pozycje projektu nie mają oznaczeń części (R1, C2, ...), więc nie ma czego "
+"ustawiać w schemacie."
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:520
+msgid "Zapisz skrypt dla Eagle"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:521
+msgid "Skrypty Eagle (*.scr)|*.scr"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:530
+#, c-format
+msgid "✓ Zapisano skrypt dla Eagle (%d części): "
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:537
+msgid "Zapisz program ULP dla Eagle"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:538
+msgid "Programy ULP (*.ulp)|*.ulp"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:543
+msgid "Program ULP"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:546
+msgid "✓ Zapisano program ULP dla Eagle: "
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:554 src/GUI/PanelProjektow.cpp:556
+#: src/GUI/PanelProjektow.cpp:565
+msgid "Lista zakupów"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:556
+msgid "Niczego nie brakuje - wszystkie potrzebne części są w magazynie."
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:560
+msgid "Lista zakupów do CSV"
+msgstr ""
+
+#: src/GUI/PanelProjektow.cpp:566
+#, c-format
+msgid "✓ Zapisano listę zakupów (%zu pozycji): "
+msgstr ""
+
+#: src/GUI/PanelTrafoModel.cpp:23
+msgid "Analiza dokładna (jeden model fizyczny: pełny schemat zastępczy)"
+msgstr ""
+
+#: src/GUI/PanelTrafoModel.cpp:82
+msgid ""
+"Indukcja łączna przekracza 0,9·Bs - rdzeń nasyca się przy pełnej mocy na "
+"dolnym brzegu pasma. "
+msgstr ""
+
+#: src/GUI/PanelTrafoModel.cpp:83
+msgid "Dolny kraniec pasma poza zakresem obliczeń. "
+msgstr ""
+
+#: src/GUI/PanelTrafoModel.cpp:84
+msgid "Górny kraniec pasma poza zakresem obliczeń. "
+msgstr ""
+
+#: src/GUI/PanelTrafoModel.cpp:85
+#, c-format
+msgid ""
+"Rezonans rozproszenia z pojemnością własną: +%s dB przy %s Hz - grozi "
+"niestabilnością pętli sprzężenia zwrotnego. "
+msgstr ""
+
+#: src/GUI/ZdjeciaElementow.cpp:88
+msgid "Wybierz zdjęcie"
+msgstr ""
+
+#: src/GUI/ZestawienieDrutu.cpp:15
+msgid "długość[m]"
+msgstr ""
+
+#: src/GUI/ZestawienieDrutu.cpp:15
+msgid "miedź[g]"
+msgstr ""
+
+#: src/GUI/ZestawienieDrutu.cpp:15
+msgid "do zakupu[g]"
+msgstr ""
+
+#: src/GUI/ZestawienieDrutu.cpp:15
+msgid "uzwojenia"
+msgstr ""
+
+#: src/GUI/ZestawienieDrutu.cpp:18
+msgid "razem"
+msgstr ""
+
+#: src/GUI/ZestawienieDrutu.cpp:19
+#, c-format
+msgid ""
+"Do zakupu = miedź + ok. %.0f%% lakieru + %.0f%% zapasu (wartości "
+"orientacyjne)."
+msgstr ""
+
+#: src/GUI/ZestawienieDrutu.cpp:24
+msgid "Zestawienie drutu (waga)"
+msgstr ""
+
+#: src/Pomoc/PomocGUI.cpp:81
+msgid "Magmass: pomoc"
+msgstr ""
+
+#: src/Pomoc/PomocGUI.cpp:84
+msgid "&Wstecz"
+msgstr ""
+
+#: src/Pomoc/PomocGUI.cpp:85
+msgid "&Dalej"
+msgstr ""
+
+#: src/Pomoc/PomocGUI.cpp:86
+msgid "&Spis treści"
+msgstr ""
+
+#: src/Pomoc/PomocGUI.cpp:87
+msgid "Otwórz w &przeglądarce"
+msgstr ""
+
+#: src/Pomoc/PomocGUI.cpp:134
+msgid "Pomoc: "
+msgstr ""
+
+#: src/Pomoc/PomocGUI.cpp:141
+msgid "Więcej w pomocy"
+msgstr ""
+
+#: src/Pomoc/PomocGUI.cpp:338
+msgid "Nie znaleziono pliku pomocy (katalog „pomoc” obok programu)."
+msgstr ""
+
+#: src/Pomoc/PomocGUI.cpp:356
+msgid "Nie udało się wczytać pliku pomocy."
+msgstr ""
+
+#: src/main.cpp:115
+msgid "Magmass"
+msgstr ""

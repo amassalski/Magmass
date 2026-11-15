@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="2">
+    <title>Magmass</title>
+    <welcome file="welcome.html" mime-type="text/html"/>
+    <license file="LICENSE.txt" mime-type="text/plain"/>
+    <conclusion file="conclusion.html" mime-type="text/html"/>
+    <!-- customize="always": instalator zawsze pokazuje „Dostosuj” z listą opcji (m.in. dodanie do Docka) -->
+    <options customize="always" require-scripts="false" hostArchitectures="@ARCH@"/>
+    <domains enable_anywhere="false" enable_currentUserHome="false" enable_localSystem="true"/>
+    <choices-outline>
+        <line choice="program"/>
+        <line choice="dock"/>
+    </choices-outline>
+    <choice id="program" title="Magmass" description="Program Magmass @WERSJA@ (instalowany w folderze Programy). Wymagany." start_enabled="false" start_selected="true">
+        <pkg-ref id="pl.magmass.app"/>
+    </choice>
+    <choice id="dock" title="Dodaj do Docka" description="Dodaje ikonę Magmass do Docka bieżącego użytkownika." start_selected="true">
+        <pkg-ref id="pl.magmass.dock"/>
+    </choice>
+    <pkg-ref id="pl.magmass.app" version="@WERSJA@" onConclusion="none">Magmass-app.pkg</pkg-ref>
+    <pkg-ref id="pl.magmass.dock" version="@WERSJA@" onConclusion="none">Magmass-dock.pkg</pkg-ref>
+</installer-gui-script>
