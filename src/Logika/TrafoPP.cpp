@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <cmath>
 #include <cctype>
+#include <map>
+#include <set>
 #include <sstream>
 
 namespace TrafoPP {
@@ -123,24 +125,53 @@ std::optional<WynikWykonane> etap3Wewn(const Wymagania& w, const Rdzen& r, const
         return s;
     };
     std::vector<int> komoraSekcji;
+    std::map<int, int> grZwoje, grLiczba;   // grupy wtórnych: zwoje jednej sekcji i liczba sekcji równoległych
+    bool grupy = false;
     if (tabela) {
         int sumaA = 0, sumaW = 0, nW = 0;
         bool rowneW = true;
-        int pierwszaW = 0;
+        int pierwszaW = 0, kolejnoscA = 0, bezGrupy = 0;
+        std::set<int> uzyteKolejnosci;
         for (const SekcjaWej& s : u.sekcjeWej) {
             if (s.zwoje < 1 || s.komora < 0) return std::nullopt;
-            if (s.pierwotna) sumaA += s.zwoje;
-            else { sumaW += s.zwoje; if (nW++ == 0) pierwszaW = s.zwoje; else if (s.zwoje != pierwszaW) rowneW = false; }
+            if (s.pierwotna) { sumaA += s.zwoje; if (s.kolejnosc > 0) { kolejnoscA++; uzyteKolejnosci.insert(s.kolejnosc); } }
+            else {
+                sumaW += s.zwoje;
+                if (nW++ == 0) pierwszaW = s.zwoje; else if (s.zwoje != pierwszaW) rowneW = false;
+                if (s.grupa != 0) grupy = true; else bezGrupy++;
+                if (s.grupa > 0) {
+                    auto it = grZwoje.find(s.grupa);
+                    if (it == grZwoje.end()) grZwoje[s.grupa] = s.zwoje; else if (it->second != s.zwoje) return std::nullopt;   // równolegle tylko równe sekcje
+                    grLiczba[s.grupa]++;
+                }
+            }
         }
         if (sumaA != u.zwojePierwotne || nW == 0) return std::nullopt;
-        if (u.wtorneRownolegle ? (!rowneW || pierwszaW != u.zwojeWtorne) : (sumaW != u.zwojeWtorne)) return std::nullopt;
-        double przedA = 0, przedW = 0;
+        if (kolejnoscA != 0) {   // kolejność elektryczna: wszystkie sekcje A, różne numery
+            int nA = 0;
+            for (const SekcjaWej& s : u.sekcjeWej) if (s.pierwotna) nA++;
+            if (kolejnoscA != nA || static_cast<int>(uzyteKolejnosci.size()) != nA) return std::nullopt;
+        }
+        if (grupy) {
+            int sumaGrup = 0;
+            for (const auto& g : grZwoje) sumaGrup += g.second;
+            if (bezGrupy != 0 || grZwoje.empty() || sumaGrup != u.zwojeWtorne) return std::nullopt;
+        } else if (u.wtorneRownolegle ? (!rowneW || pierwszaW != u.zwojeWtorne) : (sumaW != u.zwojeWtorne)) return std::nullopt;
+        double przedW = 0;
         for (const SekcjaWej& sw : u.sekcjeWej) {
             SekcjaUzwojenia s = sekcja(sw.pierwotna, sw.zwoje);
             s.komora = sw.komora;
-            double& przed = sw.pierwotna ? przedA : przedW;
-            s.zwojePrzed = (!sw.pierwotna && u.wtorneRownolegle) ? 0.0 : przed;
-            przed += sw.zwoje;
+            if (sw.pierwotna) {
+                if (kolejnoscA > 0) { double p = 0; for (const SekcjaWej& t : u.sekcjeWej) if (t.pierwotna && t.kolejnosc < sw.kolejnosc) p += t.zwoje; s.zwojePrzed = p; }
+                else { double p = 0; for (const SekcjaWej& t : u.sekcjeWej) { if (&t == &sw) break; if (t.pierwotna) p += t.zwoje; } s.zwojePrzed = p; }
+            } else if (grupy) {
+                double p = 0;
+                if (sw.grupa > 0) for (const auto& g : grZwoje) if (g.first < sw.grupa) p += g.second;   // grupy połączone szeregowo w kolejności numerów
+                s.zwojePrzed = p;
+            } else {
+                s.zwojePrzed = u.wtorneRownolegle ? 0.0 : przedW;
+                przedW += sw.zwoje;
+            }
             o.sekcje.push_back(s);
             komoraSekcji.push_back(sw.komora);
         }
@@ -171,7 +202,12 @@ std::optional<WynikWykonane> etap3Wewn(const Wymagania& w, const Rdzen& r, const
             x += gapMm;
         }
         double ulamek = s.pierwotna ? s.zwoje / static_cast<double>(u.zwojePierwotne) : 1.0;   // udział w amperozwojach całkowitych z1·I1
-        if (!s.pierwotna && tabela) ulamek = u.wtorneRownolegle ? 1.0 / nW : s.zwoje / static_cast<double>(u.zwojeWtorne);
+        if (!s.pierwotna && tabela) {
+            if (grupy) {
+                const int g = u.sekcjeWej[k].grupa;
+                ulamek = g > 0 ? grZwoje[g] / static_cast<double>(u.zwojeWtorne) / grLiczba[g] : 0.0;   // nieczynna: bez prądu; w grupie prąd dzieli się równo
+            } else ulamek = u.wtorneRownolegle ? 1.0 / nW : s.zwoje / static_cast<double>(u.zwojeWtorne);
+        }
         const double F1 = s.pierwotna ? F + ulamek : F - ulamek;    // pierwotne podnosi, wtórne cofa siłomotoryczną
         odc.push_back({s.gruboscMm * 1e-3, F, F1, (x + s.gruboscMm / 2.0) * 1e-3, hUzytMm * 1e-3});
         s.dlugoscZwojuCm = r.dlugoscZwojuCm + 2.0 * kPi * (x + s.gruboscMm / 2.0) * 0.1;   // obwód rdzenia + 2π·odległość środka sekcji
@@ -190,14 +226,18 @@ std::optional<WynikWykonane> etap3Wewn(const Wymagania& w, const Rdzen& r, const
     // rezystancje: suma po sekcjach
     const double q1 = kPi * u.drutPierwotnyMm * u.drutPierwotnyMm / 4.0, q2 = kPi * u.drutWtornyMm * u.drutWtornyMm / 4.0;
     double gW = 0;                                                  // przewodność wtórnych przy połączeniu równoległym
-    for (const SekcjaUzwojenia& s : o.sekcje) {
+    std::map<int, double> gGrupy;                                   // przewodność każdej grupy równoległej
+    for (size_t k = 0; k < o.sekcje.size(); k++) {
+        const SekcjaUzwojenia& s = o.sekcje[k];
         const double dlugoscM = s.zwoje * s.dlugoscZwojuCm * 0.01;
         const double rs = u.rezystywnosc * dlugoscM / (s.pierwotna ? q1 : q2);
         if (s.pierwotna) o.rpOm += rs;
+        else if (grupy) { if (u.sekcjeWej[k].grupa > 0) gGrupy[u.sekcjeWej[k].grupa] += 1.0 / rs; }   // sekcje nieczynne nie liczą się do rezystancji
         else if (u.wtorneRownolegle && tabela) gW += 1.0 / rs;
         else o.rwOm += rs;
     }
-    if (u.wtorneRownolegle && tabela && gW > 0) o.rwOm = 1.0 / gW;
+    if (grupy) { for (const auto& g : gGrupy) if (g.second > 0) o.rwOm += 1.0 / g.second; }
+    else if (u.wtorneRownolegle && tabela && gW > 0) o.rwOm = 1.0 / gW;
     // sprawność: straty w miedzi, w klasie B każda połowa pierwotnego przewodzi przez pół okresu (I1² Rp / 2)
     const double i2 = std::sqrt(w.mocW / w.rObciazeniaOm);
     const double i1 = i2 * u.zwojeWtorne / u.zwojePierwotne + w.i0Ma * 1e-3;
@@ -259,9 +299,39 @@ std::vector<SekcjaWej> presetSekcji(int numer, int z1, int z2) {
         v = {A(q), W(z2 / 2), A(h - q), A(q, 1), W(z2 - z2 / 2, 1), A(z1 - h - q, 1)};
         break;
     }
+    case 5: case 6: case 7: {   // Mesa Boogie DR: 10 warstw od rdzenia, wtórne 2∥5∥8 (4 Ω), 3∥9 (+8 Ω), 6 (+16 Ω)
+        // pierwotne 318/530/530/318 z 1696 zwojów, połączone elektrycznie 1-7-(środek)-4-10; wtórne w stosunku 78 : 33 : 78
+        const int a1 = static_cast<int>(std::lround(z1 * 318.0 / 1696.0)), a2 = static_cast<int>(std::lround(z1 * 530.0 / 1696.0));
+        const int a7 = a2, a10 = z1 - a1 - 2 * a2;       // warstwa 7 = 530/1696, warstwa 10 = reszta
+        const int b = numer == 5 ? z2 : numer == 6 ? static_cast<int>(std::lround(z2 * 78.0 / 111.0)) : static_cast<int>(std::lround(z2 / 2.0));
+        // dopinka czynna dopełnia odczep do z2 (suma grup = z2); dopinka nieczynna ma wymiar z rysunku w tej samej skali
+        const int c = numer == 6 ? std::max(1, z2 - b) : std::max(1, static_cast<int>(std::lround(b * 33.0 / 78.0)));
+        const int d = numer == 7 ? std::max(1, z2 - b) : b;
+        // grupy: 1 = sekcje 4 Ω (2, 5, 8); 2 = dopinka 8 Ω (3, 9) albo dopinka 16 Ω (6); reszta nieczynna
+        const int gC = numer == 6 ? 2 : -1, gD = numer == 7 ? 2 : -1;
+        auto Wg = [](int z, int g) { SekcjaWej s{false, z, 0}; s.grupa = g; return s; };
+        auto Ae = [](int z, int e) { SekcjaWej s{true, z, 0}; s.kolejnosc = e; return s; };
+        v = {Ae(a1, 1), Wg(b, 1), Wg(c, gC), Ae(a2, 3), Wg(b, 1), Wg(d, gD), Ae(a7, 2), Wg(b, 1), Wg(c, gC), Ae(a10, 4)};
+        break;
+    }
     default: v = {A(z1), W(z2)}; break;
     }
     return v;
+}
+
+int zwojeWtorneZSekcji(const std::vector<SekcjaWej>& sekcje, bool rownolegle) {
+    int suma = 0, pierwsza = 0, n = 0;
+    std::map<int, int> grupy;
+    bool czyGrupy = false;
+    for (const SekcjaWej& s : sekcje) {
+        if (s.pierwotna) continue;
+        if (s.grupa != 0) czyGrupy = true;
+        if (s.grupa > 0 && !grupy.count(s.grupa)) grupy[s.grupa] = s.zwoje;
+        suma += s.zwoje;
+        if (n++ == 0) pierwsza = s.zwoje;
+    }
+    if (czyGrupy) { int g = 0; for (const auto& e : grupy) g += e.second; return g; }
+    return rownolegle ? pierwsza : suma;
 }
 
 bool parsujSekcje(const std::string& tekst, std::vector<SekcjaWej>& wynik, std::string& blad) {
@@ -295,10 +365,23 @@ bool parsujSekcje(const std::string& tekst, std::vector<SekcjaWej>& wynik, std::
         if (p >= wiersz.size()) { blad = "Wiersz " + std::to_string(nr) + ": brak liczby zwojów"; return false; }
         size_t k = p;
         while (k < wiersz.size() && std::isdigit(static_cast<unsigned char>(wiersz[k]))) k++;
-        if (k == p || wiersz.find_first_not_of(" \t", k) != std::string::npos) { blad = "Wiersz " + std::to_string(nr) + ": liczba zwojów musi być całkowita"; return false; }
+        if (k == p) { blad = "Wiersz " + std::to_string(nr) + ": liczba zwojów musi być całkowita"; return false; }
         const long z = std::stol(wiersz.substr(p, k - p));
         if (z < 1 || z > 1000000) { blad = "Wiersz " + std::to_string(nr) + ": liczba zwojów poza zakresem"; return false; }
-        wynik.push_back({pierwotna, static_cast<int>(z), komora});
+        SekcjaWej sek{pierwotna, static_cast<int>(z), komora};
+        // opcjonalne dopiski: g<N> (grupa wtórnych), x (sekcja nieczynna), e<N> (kolejność elektryczna sekcji A)
+        std::istringstream reszta(wiersz.substr(k));
+        std::string tok;
+        while (reszta >> tok) {
+            const char c = static_cast<char>(std::tolower(static_cast<unsigned char>(tok[0])));
+            const std::string cyfry = tok.substr(1);
+            const bool liczba = !cyfry.empty() && cyfry.size() < 6 && cyfry.find_first_not_of("0123456789") == std::string::npos && std::stol(cyfry) > 0;
+            if (!pierwotna && c == 'g' && liczba) sek.grupa = static_cast<int>(std::stol(cyfry));
+            else if (!pierwotna && c == 'x' && tok.size() == 1) sek.grupa = -1;
+            else if (pierwotna && c == 'e' && liczba) sek.kolejnosc = static_cast<int>(std::stol(cyfry));
+            else { blad = "Wiersz " + std::to_string(nr) + ": po liczbie zwojów dozwolone tylko g<N> (grupa wtórnych), x (nieczynna) albo e<N> (kolejność sekcji A)"; return false; }
+        }
+        wynik.push_back(sek);
     }
     if (wynik.empty()) { blad = "Brak sekcji"; return false; }
     if (wynik.back().komora != komora) { blad = "Pusta ostatnia komora"; return false; }
@@ -310,7 +393,11 @@ std::string formatujSekcje(const std::vector<SekcjaWej>& v) {
     int a = 0, w = 0, komora = 0;
     for (const SekcjaWej& s : v) {
         if (s.komora != komora) { t += "|\n"; komora = s.komora; }
-        t += (s.pierwotna ? "A" + std::to_string(++a) : "W" + std::to_string(++w)) + " " + std::to_string(s.zwoje) + "\n";
+        t += (s.pierwotna ? "A" + std::to_string(++a) : "W" + std::to_string(++w)) + " " + std::to_string(s.zwoje);
+        if (!s.pierwotna && s.grupa > 0) t += " g" + std::to_string(s.grupa);
+        if (!s.pierwotna && s.grupa < 0) t += " x";
+        if (s.pierwotna && s.kolejnosc > 0) t += " e" + std::to_string(s.kolejnosc);
+        t += "\n";
     }
     return t;
 }

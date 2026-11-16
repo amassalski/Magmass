@@ -1,0 +1,106 @@
+# ======================================================================
+# Magmass: pliki, które NIE trafiają do repozytorium
+# ======================================================================
+
+# --- Dane dostępu (adres bazy, użytkownik, hasło, klucze API): NIGDY do repozytorium ---
+config.ini
+*.ini.bak
+*.env
+.env
+klucze*.txt
+*.pem
+*.key
+
+# --- Budowanie i wyniki (CMake, Ninja, instalatory) ---
+build/
+build-*/
+cmake-build-*/
+install-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+.ninja_*
+build.ninja
+Testing/
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.exp
+*.deb
+*.dmg
+*.pkg
+*.msi
+*.app/
+test_bazy
+test_gui
+test_kalkulatory
+test_katalog
+test_siec
+test_aktualizacje
+test_kody
+Magmass-*-win64*
+Magmass-*-macos-*
+magmass_*_amd64*
+test_output.txt
+nohup.out
+*.log
+
+# --- Archiwa (paczki z poprawkami, pobrane SDK i biblioteki) ---
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.tar.xz
+etap*.zip
+
+# --- SDK producentów kamer termowizyjnych (IRay/InfiRay, Xtherm): bez licencji na redystrybucję, tylko lokalnie ---
+# (wzorce przy korzeniu repozytorium, żeby nie łapać plików źródłowych src/Narzedzia/XthermDll.* i InfirayUsb.*)
+/USBSDK*
+/XthermDll*
+/Xtherm*/
+/*SDK*/
+/infiray*/
+/test_03/
+__MACOSX/
+.DS_Store
+._*
+
+# --- Próbki kalibracji kamery termowizyjnej (zapisywane przez program) ---
+*.f32
+*_xtherm.*
+
+# --- Dane użytkownika: zdjęcia, pobrane datasheety, kopie zapasowe bazy, wyniki OCR ---
+dokumenty/
+assets/zdjecia/
+*.sql.bak
+*.dump
+backup*/
+*.pdf.bak
+*_ocr.pdf
+
+# --- Pliki edytorów, systemów i narzędzi pomocniczych ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.orig
+*.rej
+Thumbs.db
+desktop.ini
+CMakeUserPresets.json
+__pycache__/
+*.pyc
+.claude/
+.claude-session*

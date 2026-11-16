@@ -8073,6 +8073,15 @@ msgstr ""
 "AI assistant and co-author of the program: wrote and tested code, "
 "documentation and tools under the author's direction"
 
+msgid "Mesa Boogie DR: odczep 4 Ω (10 warstw)"
+msgstr "Mesa Boogie DR: 4 Ω tap (10 layers)"
+
+msgid "Mesa Boogie DR: odczep 8 Ω (10 warstw)"
+msgstr "Mesa Boogie DR: 8 Ω tap (10 layers)"
+
+msgid "Mesa Boogie DR: odczep 16 Ω (10 warstw)"
+msgstr "Mesa Boogie DR: 16 Ω tap (10 layers)"
+
 #~ msgid "Uzwojenia wtórne: napięcie [V] i prąd [A], jedno uzwojenie w wierszu"
 #~ msgstr "Secondary windings: voltage [V] and current [A], one winding per line"
 

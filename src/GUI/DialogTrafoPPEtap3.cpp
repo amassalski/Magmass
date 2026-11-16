@@ -9,6 +9,7 @@
 #include "../Pomoc/PomocGUI.h"
 
 namespace {
+constexpr int kUkladWlasny = 8;   // numer pozycji „własny (tabela sekcji)” na liście układów (po szablonach P-S ... Mesa Boogie DR)
 const char* kNazwy[7] = {"z1", "d1", "z2", "d2", "beta", "k", "rho"};
 struct Poz { const char* klucz; const char* etykieta; int miejsca; };
 const Poz kPoz[15] = {
@@ -61,6 +62,9 @@ DialogTrafoPPEtap3::DialogTrafoPPEtap3(wxWindow* parent, const TrafoPP::Wymagani
     chUklad_->Append(TR("gitarowy: A 40% W 50% A 20% W 50% A 40%"));
     chUklad_->Append(TR("HiFi: karkas dwukomorowy (A W | A W)"));
     chUklad_->Append(TR("HiFi: dwukomorowy przeplatany (A W A | A W A)"));
+    chUklad_->Append(TR("Mesa Boogie DR: odczep 4 Ω (10 warstw)"));
+    chUklad_->Append(TR("Mesa Boogie DR: odczep 8 Ω (10 warstw)"));
+    chUklad_->Append(TR("Mesa Boogie DR: odczep 16 Ω (10 warstw)"));
     chUklad_->Append(TR("własny (tabela sekcji)"));
     chUklad_->SetSelection(0);
     PomocGUI::Dodaj(chUklad_, "trafopp.uklad");
@@ -148,7 +152,7 @@ DialogTrafoPPEtap3::DialogTrafoPPEtap3(wxWindow* parent, const TrafoPP::Wymagani
     tcMargines_->Bind(wxEVT_TEXT, [this](wxCommandEvent&) { Przelicz(); });
     for (int k = 0; k < kPol; k++)
         tc_[k]->Bind(wxEVT_TEXT, [this, k](wxCommandEvent&) {
-            if (!wypelniam_ && (k == 0 || k == 2) && chUklad_->GetSelection() != 5) ZSzablonu();   // zmiana zwojów: odtwórz tabelę z szablonu
+            if (!wypelniam_ && (k == 0 || k == 2) && chUklad_->GetSelection() != kUkladWlasny) ZSzablonu();   // zmiana zwojów: odtwórz tabelę z szablonu
             else Przelicz();
         });
     tcSekcje_->Bind(wxEVT_TEXT, [this](wxCommandEvent&) {
@@ -156,12 +160,12 @@ DialogTrafoPPEtap3::DialogTrafoPPEtap3(wxWindow* parent, const TrafoPP::Wymagani
         std::vector<TrafoPP::SekcjaWej> s;
         std::string blad;
         if (TrafoPP::parsujSekcje(tcSekcje_->GetValue().utf8_string(), s, blad)) {      // suma A i W wyznacza z1, z2
-            int a = 0, w = 0, nW = 0, pw = 0;
-            for (const auto& x : s) { if (x.pierwotna) a += x.zwoje; else { w += x.zwoje; if (nW++ == 0) pw = x.zwoje; } }
+            int a = 0;
+            for (const auto& x : s) if (x.pierwotna) a += x.zwoje;
             wypelniam_ = true;
             tc_[0]->ChangeValue(L(a, 0));
-            tc_[2]->ChangeValue(L(chWtorne_->GetSelection() == 1 ? pw : w, 0));
-            if (chUklad_->GetSelection() != 5) chUklad_->SetSelection(5);
+            tc_[2]->ChangeValue(L(TrafoPP::zwojeWtorneZSekcji(s, chWtorne_->GetSelection() == 1), 0));
+            if (chUklad_->GetSelection() != kUkladWlasny) chUklad_->SetSelection(kUkladWlasny);
             wypelniam_ = false;
         }
         Przelicz();
@@ -174,7 +178,7 @@ void DialogTrafoPPEtap3::UstawPole(const wxString& n, const wxString& v) {
 }
 void DialogTrafoPPEtap3::ZSzablonu() {
     const int numer = chUklad_->GetSelection();
-    if (numer != 5) {
+    if (numer != kUkladWlasny) {
         double z1 = 0, z2 = 0;
         tekstNaLiczbe(tc_[0]->GetValue().utf8_string(), z1);
         tekstNaLiczbe(tc_[2]->GetValue().utf8_string(), z2);

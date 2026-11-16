@@ -60,11 +60,17 @@ struct SekcjaWej {
     bool pierwotna = true;
     int zwoje = 0;
     int komora = 0;          ///< numer komory karkasu (0, 1, ...); przegroda karkasu dzieli okno na komory
+    int grupa = 0;           ///< tylko W: 0 = wg ustawienia „wtórne szeregowo/równolegle” dla wszystkich; N > 0 = grupa N (sekcje jednej grupy
+                             ///< równolegle i o równej liczbie zwojów, grupy szeregowo); -1 = sekcja nieczynna (nie przewodzi, ale zajmuje miejsce w oknie)
+    int kolejnosc = 0;       ///< tylko A: kolejność w połączeniu elektrycznym (1, 2, ...) gdy różni się od kolejności w oknie; 0 = jak w tabeli
 };
+/// Zwoje wtórnego wynikające z tabeli sekcji: suma zwojów grup (gdy są grupy), zwoje jednej sekcji (równolegle) albo suma wszystkich W
+int zwojeWtorneZSekcji(const std::vector<SekcjaWej>& sekcje, bool rownolegle);
 /// Gotowe układy sekcji dla z1 i z2 zwojów: 0 = P-S, 1 = P/2-S-P/2, 2 = gitarowy 3-sekcyjny (A 40% / W 50% / A 20% / W 50% / A 40%),
-/// 3 = HiFi dwukomorowy (komora 1: A½ W½, komora 2: A½ W½), 4 = HiFi dwukomorowy przeplatany (każda komora: A¼ W½ A¼)
+/// 3 = HiFi dwukomorowy (komora 1: A½ W½, komora 2: A½ W½), 4 = HiFi dwukomorowy przeplatany (każda komora: A¼ W½ A¼),
+/// 5, 6, 7 = Mesa Boogie DR (10 warstw, wtórne 2∥5∥8, 3∥9, 6) dla odczepu 4, 8 albo 16 Ω; z2 = zwoje wtórnego na wybranym odczepie
 std::vector<SekcjaWej> presetSekcji(int numer, int z1, int z2);
-/// Tekst „A1 600 / W1 100 / | / A2 300 ...” -> sekcje. Wiersz „|” (albo „---”) zaczyna nową komorę. A lub P = pierwotne, W lub S = wtórne.
+/// Tekst „A1 600 / W1 100 / | / A2 300 ...” -> sekcje. Za liczbą zwojów mogą stać: g<N> (grupa wtórnych), x (sekcja nieczynna), e<N> (kolejność elektryczna sekcji A). Wiersz „|” (albo „---”) zaczyna nową komorę. A lub P = pierwotne, W lub S = wtórne.
 bool parsujSekcje(const std::string& tekst, std::vector<SekcjaWej>& sekcje, std::string& blad);
 /// Sekcje -> tekst w formacie jak wyżej (A1, W1, A2, ... i „|” między komorami)
 std::string formatujSekcje(const std::vector<SekcjaWej>& sekcje);

@@ -2,8 +2,9 @@
 
 ## 2.0 (w przygotowaniu)
 
-Wersje robocze przed 2.0 są numerowane 1.9.N (kolejny numer N przy każdej paczce poprawek); numer bierze się z `CMakeLists.txt` i widać go w oknie „O programie”. Bieżąca wersja robocza: 1.9.7.
+Wersje robocze przed 2.0 są numerowane 1.9.N (kolejny numer N przy każdej paczce poprawek); numer bierze się z `CMakeLists.txt` i widać go w oknie „O programie”. Bieżąca wersja robocza: 1.9.8.
 
+- Transformator głośnikowy PP, Etap 3: nowe szablony układu uzwojeń „Mesa Boogie DR” dla odczepów 4, 8 i 16 Ω (dziesięć warstw wg Rys.15 ze strony guitaramplifiers.prv.pl; zwoje przeliczane do wpisanych z1 i z2). Tabela sekcji dostała dopiski `g<N>` (grupy sekcji wtórnych połączonych równolegle, grupy szeregowo), `x` (sekcja nieczynna) i `e<N>` (kolejność elektryczna sekcji pierwotnych); rozproszenie, rezystancje i pojemność uwzględniają je w modelu.
 - Katalog: odczyt parametrów z datasheetu współpracuje ze słownikiem parametrów. W oknie propozycji przy każdym parametrze widać, czy symbol jest w słowniku (z opisem) czy nie; po zapisie program pyta o opisy symboli, których jeszcze nie zna, i dopisuje je do słownika (okno „Dodaj do słownika parametrów”).
 - Repozytorium na GitHubie nazywa się `Magmass` (adres github.com/amassalski/Magmass): zmienione adresy w sprawdzaniu aktualizacji, oknie „O programie”, pakiecie DEB, pomocy i testach. Starsze wersje programu, wskazujące na stare repozytorium, nie znajdą aktualizacji, dopóki nie zmienią adresu w Ustawienia / Ścieżki / Aktualizacje.
 - Katalog: słownik opisów parametrów jest teraz tabelą w bazie (`tbl_slownik_parametrow`, schemat 17) z oknem „Słownik parametrów...” (przycisk pod listą katalogu): dodawanie, zmiana, usuwanie, wyszukiwanie i „Przywróć brakujące wbudowane”. Słownik jest wspólny dla wszystkich komputerów z tą bazą; przy aktualizacji bazy dostaje wbudowany zestaw symboli. Własny opis parametru w pozycji nadal ma pierwszeństwo.
