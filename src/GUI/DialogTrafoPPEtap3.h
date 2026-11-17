@@ -12,10 +12,11 @@ public:
 
     // --- dostęp dla testów
     void UstawPole(const wxString& nazwa, const wxString& wartosc);    ///< "z1","d1","z2","d2","beta","k","rho"
-    void UstawUklad(int numer);                                         ///< szablon: 0 = P-S, 1 = P/2-S-P/2, 2 = gitarowy 3-sekcyjny, 3 = HiFi dwukomorowy, 4 = HiFi dwukomorowy przeplatany, 5 = własny
+    void UstawUklad(int numer);                                         ///< szablon: 0 = P-S, 1 = P/2-S-P/2, 2 = gitarowy 3-sekcyjny, 3 = HiFi dwukomorowy, 4 = HiFi dwukomorowy przeplatany, 5 = Mesa Boogie DR (odczepy 4/8/16 Ω), 6 = własny
     void UstawSekcje(const wxString& tekst);                            ///< wpisuje tabelę sekcji (A1 600 / W1 100 / | ...) i aktualizuje zwoje z1, z2
     wxString Sekcje() const { return tcSekcje_->GetValue(); }
     void UstawWtorne(bool rownolegle);
+    void UstawOdczep(int numer);                                        ///< transformator z odczepami (DR): 0 = 4 Ω, 1 = 8 Ω, 2 = 16 Ω
     void UstawKarkas(const wxString& siankaMm, const wxString& marginesMm);   ///< ścianka karkasu i margines warstwy [mm]
     void UstawPrzegrode(const wxString& mm);
     wxString Wynik(const wxString& klucz) const;
@@ -29,7 +30,7 @@ private:
     TrafoPP::Wymagania w_;
     TrafoPP::Rdzen r_;
     TrafoPP::Uzwojenia u_;
-    wxChoice *chUklad_ = nullptr, *chWtorne_ = nullptr;
+    wxChoice *chUklad_ = nullptr, *chWtorne_ = nullptr, *chOdczep_ = nullptr;
     wxTextCtrl *tcSekcje_ = nullptr, *tcPrzegroda_ = nullptr, *tcScianka_ = nullptr, *tcMargines_ = nullptr;
     bool wypelniam_ = false;
     void ZSzablonu();

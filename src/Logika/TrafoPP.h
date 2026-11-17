@@ -3,6 +3,7 @@
 
 #include <optional>
 #include <string>
+#include <array>
 #include <vector>
 #include "TrafoModel.h"
 
@@ -62,10 +63,16 @@ struct SekcjaWej {
     int komora = 0;          ///< numer komory karkasu (0, 1, ...); przegroda karkasu dzieli okno na komory
     int grupa = 0;           ///< tylko W: 0 = wg ustawienia „wtórne szeregowo/równolegle” dla wszystkich; N > 0 = grupa N (sekcje jednej grupy
                              ///< równolegle i o równej liczbie zwojów, grupy szeregowo); -1 = sekcja nieczynna (nie przewodzi, ale zajmuje miejsce w oknie)
+    std::array<int, 3> grupaOdczep = {0, 0, 0};   ///< tylko W, transformator z odczepami (DR): grupa tej sekcji dla odczepu 4, 8 i 16 Ω (N > 0 = grupa N, -1 = nieczynna);
+                             ///< gdy któryś wpis ≠ 0, pole `grupa` jest wyznaczane z wybranego odczepu (Wykonane::odczep)
     int kolejnosc = 0;       ///< tylko A: kolejność w połączeniu elektrycznym (1, 2, ...) gdy różni się od kolejności w oknie; 0 = jak w tabeli
 };
 /// Zwoje wtórnego wynikające z tabeli sekcji: suma zwojów grup (gdy są grupy), zwoje jednej sekcji (równolegle) albo suma wszystkich W
-int zwojeWtorneZSekcji(const std::vector<SekcjaWej>& sekcje, bool rownolegle);
+int zwojeWtorneZSekcji(const std::vector<SekcjaWej>& sekcje, bool rownolegle, int odczep = 0);
+/// Czy tabela ma sekcje wtórne z osobnymi grupami dla odczepów (4, 8, 16 Ω)
+bool maOdczepy(const std::vector<SekcjaWej>& sekcje);
+/// Impedancje odczepów w kolejności numerów odczepu 1..3 [Ω]
+constexpr double kImpedancjeOdczepow[3] = {4.0, 8.0, 16.0};
 /// Gotowe układy sekcji dla z1 i z2 zwojów: 0 = P-S, 1 = P/2-S-P/2, 2 = gitarowy 3-sekcyjny (A 40% / W 50% / A 20% / W 50% / A 40%),
 /// 3 = HiFi dwukomorowy (komora 1: A½ W½, komora 2: A½ W½), 4 = HiFi dwukomorowy przeplatany (każda komora: A¼ W½ A¼),
 /// 5, 6, 7 = Mesa Boogie DR (10 warstw, wtórne 2∥5∥8, 3∥9, 6) dla odczepu 4, 8 albo 16 Ω; z2 = zwoje wtórnego na wybranym odczepie
@@ -87,7 +94,10 @@ struct Wykonane {
     double marginesWarstwyMm = 1.5;                     ///< wolny pas na brzegu każdej warstwy (drut się nie zsuwa); 0 = warstwa na całej wysokości komory
     double przegrodaMm = 2.0;                           ///< grubość przegrody karkasu między komorami (zabiera wysokość okna)
     bool wtorneRownolegle = false;                      ///< sekcje wtórne połączone równolegle (wszystkie o tej samej liczbie zwojów = z2)
+    int odczep = 1;                                     ///< przy tabeli z odczepami (DR): dla którego odczepu liczymy: 1 = 4 Ω, 2 = 8 Ω, 3 = 16 Ω; zwojeWtorne wynika wtedy z tabeli
 };
+/// Kopia z grupami wtórnych i zwojeWtorne wyznaczonymi z wybranego odczepu (bez odczepów w tabeli: bez zmian)
+Wykonane rozwiazOdczep(const Wykonane& u);
 
 struct SekcjaUzwojenia {
     bool pierwotna = true;
@@ -118,6 +128,15 @@ struct WynikWykonane {
     double rwEcclabOm = 0;                              ///< ECCLab: długość zwoju wtórnego Cu + 1,4π·a
 };
 std::optional<WynikWykonane> etap3(const Wymagania& w, const Rdzen& r, const Wykonane& u);
+
+/// Wyniki jednego odczepu transformatora z odczepami (liczone dla znamionowego obciążenia tego odczepu)
+struct WynikOdczepu {
+    double omy = 0;                 ///< 4, 8 albo 16
+    int zwojeWtorne = 0;
+    double raaOm = 0, lrH = 0, rwOm = 0, sprawnosc = 0;
+};
+/// Zestawienie wszystkich trzech odczepów (puste, gdy tabela nie ma odczepów albo obliczenia się nie udały)
+std::vector<WynikOdczepu> odczepy(const Wymagania& w, const Rdzen& r, const Wykonane& u);
 
 /// Analiza dokładna wykonanego transformatora PP jednym wspólnym modelem (TrafoModel).
 std::optional<TrafoModel::Wynik> analizaDokladna(const Wymagania& w, const Rdzen& r, const Wykonane& u, const WynikWykonane& o, const TrafoModel::Parametry& p);

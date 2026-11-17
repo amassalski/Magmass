@@ -8073,14 +8073,44 @@ msgstr ""
 "AI assistant and co-author of the program: wrote and tested code, "
 "documentation and tools under the author's direction"
 
-msgid "Mesa Boogie DR: odczep 4 Ω (10 warstw)"
-msgstr "Mesa Boogie DR: 4 Ω tap (10 layers)"
+msgid "Mesa Boogie DR: odczepy 4, 8 i 16 Ω (10 warstw)"
+msgstr "Mesa Boogie DR: 4, 8 and 16 Ω taps (10 layers)"
 
-msgid "Mesa Boogie DR: odczep 8 Ω (10 warstw)"
-msgstr "Mesa Boogie DR: 8 Ω tap (10 layers)"
+msgid "Odczep wtórnego (DR)"
+msgstr "Secondary tap (DR)"
 
-msgid "Mesa Boogie DR: odczep 16 Ω (10 warstw)"
-msgstr "Mesa Boogie DR: 16 Ω tap (10 layers)"
+msgid "4 Ω"
+msgstr "4 Ω"
+
+msgid "8 Ω"
+msgstr "8 Ω"
+
+msgid "16 Ω"
+msgstr "16 Ω"
+
+msgid ""
+"Transformator z odczepami (Mesa Boogie DR) ma wszystkie trzy obciążenia "
+"naraz; tu wybierasz, dla którego liczysz wyniki. Zestawienie wszystkich "
+"trzech jest pod tabelą sekcji."
+msgstr ""
+"A transformer with taps (Mesa Boogie DR) has all three loads at once; choose"
+" here the tap the results are calculated for. All three are summarised below"
+" the section table."
+
+msgid "Odczepy (każdy dla własnego obciążenia):"
+msgstr "Taps (each for its own load):"
+
+msgid "odczep"
+msgstr "tap"
+
+msgid "Raa[Ω]"
+msgstr "Raa[Ω]"
+
+msgid "Lr[H]"
+msgstr "Lr[H]"
+
+msgid "Rw[Ω]"
+msgstr "Rw[Ω]"
 
 #~ msgid "Uzwojenia wtórne: napięcie [V] i prąd [A], jedno uzwojenie w wierszu"
 #~ msgstr "Secondary windings: voltage [V] and current [A], one winding per line"

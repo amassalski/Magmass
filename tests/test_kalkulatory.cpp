@@ -731,47 +731,51 @@ int main() {
                 if (et && nr == 1) { Wykonane xp = x; xp.pierwotnePodzielone = true; const auto ep = etap3(w2, r, xp); CHECK(ep && bl(et->lrH, ep->lrH, 1e-3)); }
                 if (et && nr == 3) CHECK(et->sekcje[2].komora == 1 && et->sekcje[2].wysokoscKomoryMm < 5.1 * 10 / 2 + 1e-9);
             }
-            {   // Mesa Boogie DR (Rys.15): 10 warstw, wtórne 2∥5∥8 | 3∥9 | 6, pierwotne 1-7-środek-4-10
-                for (int nr = 5; nr <= 7; nr++) {
-                    const int z2dr = nr == 5 ? 84 : nr == 6 ? 116 : 169;
-                    const auto ps = presetSekcji(nr, 1696, z2dr);
-                    int a = 0;
-                    for (const auto& q : ps) if (q.pierwotna) a += q.zwoje;
-                    CHECK(ps.size() == 10 && a == 1696 && zwojeWtorneZSekcji(ps, false) == z2dr);
-                    CHECK(ps[0].pierwotna && ps[3].pierwotna && ps[6].pierwotna && ps[9].pierwotna && ps[0].zwoje == 318 && ps[3].zwoje == 530 && ps[9].zwoje == 318);
-                    int czynne = 0;
-                    for (const auto& q : ps) if (!q.pierwotna && q.grupa > 0) czynne++;
-                    CHECK(czynne == (nr == 5 ? 3 : nr == 6 ? 5 : 4));       // 4 Ω: 2,5,8; 8 Ω: + 3,9; 16 Ω: + 6
-                    Wykonane xd = x; xd.zwojePierwotne = 1696; xd.zwojeWtorne = z2dr; xd.sekcjeWej = ps; xd.drutPierwotnyMm = 0.3; xd.drutWtornyMm = 0.4;
+            {   // Mesa Boogie DR (Rys.15): jedno trafo, 10 warstw, odczepy 4, 8 i 16 Ω jednocześnie; pierwotne 1-7-środek-4-10
+                const auto ps = presetSekcji(5, 1696, 78);
+                int a = 0, w = 0;
+                for (const auto& q : ps) (q.pierwotna ? a : w) += q.zwoje;
+                CHECK(ps.size() == 10 && a == 1696 && maOdczepy(ps) && w == 78 * 4 + 33 * 2);
+                CHECK(ps[0].pierwotna && ps[3].pierwotna && ps[6].pierwotna && ps[9].pierwotna && ps[0].zwoje == 318 && ps[3].zwoje == 530 && ps[9].zwoje == 318);
+                // zwoje odczepów: 78, 78 + 33 = 111, 78 + 78 = 156
+                CHECK(zwojeWtorneZSekcji(ps, false, 1) == 78 && zwojeWtorneZSekcji(ps, false, 2) == 111 && zwojeWtorneZSekcji(ps, false, 3) == 156);
+                Wykonane xd = x; xd.zwojePierwotne = 1696; xd.zwojeWtorne = 78; xd.sekcjeWej = ps; xd.drutPierwotnyMm = 0.3; xd.drutWtornyMm = 0.4;
+                WynikWykonane wyn[3];
+                for (int k = 1; k <= 3; k++) {
+                    xd.odczep = k;
                     const auto ed = etap3(w2, r, xd);
                     CHECK(ed && ed->sekcje.size() == 10 && !ed->niezrownowazone && ed->rwOm > 0);
-                    if (ed) {   // kolejność elektryczna pierwotnych 1-7-4-10: zwojePrzed sekcji 7 = 318, sekcji 4 = 848, sekcji 10 = 1378
+                    if (ed) {
+                        wyn[k - 1] = *ed;
+                        // kolejność elektryczna pierwotnych 1-7-4-10: zwojePrzed sekcji 7 = 318, sekcji 4 = 848, sekcji 10 = 1378
                         CHECK(bl(ed->sekcje[0].zwojePrzed, 0, 1e-9) && bl(ed->sekcje[6].zwojePrzed, 318, 1e-9) && bl(ed->sekcje[3].zwojePrzed, 848, 1e-9) && bl(ed->sekcje[9].zwojePrzed, 1378, 1e-9));
                     }
-                    CHECK(formatujSekcje(ps).find("g1") != std::string::npos && formatujSekcje(ps).find("e2") != std::string::npos);
-                    std::vector<SekcjaWej> s2; std::string b2;
-                    CHECK(parsujSekcje(formatujSekcje(ps), s2, b2) && s2.size() == ps.size());
-                    for (size_t i = 0; i < ps.size() && s2.size() == ps.size(); i++) CHECK(s2[i].grupa == ps[i].grupa && s2[i].kolejnosc == ps[i].kolejnosc && s2[i].zwoje == ps[i].zwoje);
                 }
-                // nieczynne sekcje nie zmieniają rezystancji wtórnego, dopinka 16 Ω zwiększa ją
-                Wykonane x4 = x, x16 = x;
-                x4.zwojePierwotne = x16.zwojePierwotne = 1696; x4.drutPierwotnyMm = x16.drutPierwotnyMm = 0.3; x4.drutWtornyMm = x16.drutWtornyMm = 0.4;
-                x4.zwojeWtorne = 78; x4.sekcjeWej = presetSekcji(5, 1696, 78);
-                x16.zwojeWtorne = 156; x16.sekcjeWej = presetSekcji(7, 1696, 156);
-                const auto e4 = etap3(w2, r, x4), e16 = etap3(w2, r, x16);
-                CHECK(e4 && e16 && e16->rwOm > 1.5 * e4->rwOm);
-                // błędy: grupa o nierównych sekcjach, grupy bez zgodnej sumy, mieszanie z sekcjami bez grupy, powtórzona kolejność
-                Wykonane xe = x4; xe.sekcjeWej[1].zwoje = 79;
+                CHECK(wyn[2].rwOm > 1.5 * wyn[0].rwOm);      // 16 Ω: szeregowo dopinka 78 zw., więcej miedzi w obiegu niż samo 4 Ω
+                {   // zestawienie odczepów: każdy dla własnego obciążenia; Raa wszystkich zbliżone (zwoje ∝ √Z)
+                    const auto zo = odczepy(w2, r, xd);
+                    CHECK(zo.size() == 3 && zo[0].omy == 4 && zo[1].omy == 8 && zo[2].omy == 16 && zo[0].zwojeWtorne == 78 && zo[1].zwojeWtorne == 111 && zo[2].zwojeWtorne == 156);
+                    if (zo.size() == 3) CHECK(zo[1].raaOm > 0.97 * zo[0].raaOm && zo[1].raaOm < 1.03 * zo[0].raaOm && zo[2].raaOm > 0.97 * zo[0].raaOm && zo[2].raaOm < 1.03 * zo[0].raaOm);
+                    CHECK(odczepy(w2, r, x).empty());          // zwykła tabela: brak odczepów
+                }
+                const std::string tekst = formatujSekcje(ps);
+                CHECK(tekst.find("g1/1/1") != std::string::npos && tekst.find("g-/2/-") != std::string::npos && tekst.find("g-/-/2") != std::string::npos && tekst.find("e2") != std::string::npos);
+                std::vector<SekcjaWej> s2; std::string b2;
+                CHECK(parsujSekcje(tekst, s2, b2) && s2.size() == ps.size());
+                for (size_t i = 0; i < ps.size() && s2.size() == ps.size(); i++) CHECK(s2[i].grupaOdczep == ps[i].grupaOdczep && s2[i].kolejnosc == ps[i].kolejnosc && s2[i].zwoje == ps[i].zwoje);
+                // z2 (zwoje na 4 Ω) przeskalowane: 84 zw. -> odczepy 84 / 84+36 / 168
+                const auto p84 = presetSekcji(5, 1696, 84);
+                CHECK(zwojeWtorneZSekcji(p84, false, 1) == 84 && zwojeWtorneZSekcji(p84, false, 3) == 168);
+                // błędy: nierówne sekcje w grupie, mieszanie z sekcjami bez grup, powtórzona kolejność, zły zapis
+                Wykonane xe = xd; xe.odczep = 1; xe.sekcjeWej[1].zwoje = 79;
                 CHECK(!etap3(w2, r, xe));
-                xe = x4; xe.zwojeWtorne = 77;
-                CHECK(!etap3(w2, r, xe));
-                xe = x4; xe.sekcjeWej[2].grupa = 0;
-                CHECK(!etap3(w2, r, xe));
-                xe = x4; xe.sekcjeWej[3].kolejnosc = 1;
+                xe = xd; xe.odczep = 1; xe.sekcjeWej[3].kolejnosc = 1;
                 CHECK(!etap3(w2, r, xe));
                 std::vector<SekcjaWej> sb; std::string bb;
                 CHECK(!parsujSekcje("A1 5 g1", sb, bb) && !parsujSekcje("W1 5 e1", sb, bb) && !parsujSekcje("W1 5 g0", sb, bb) && !parsujSekcje("W1 5 qq", sb, bb));
+                CHECK(!parsujSekcje("W1 5 g1/2", sb, bb) && !parsujSekcje("W1 5 g1/2/3/4", sb, bb) && !parsujSekcje("W1 5 g1/0/2", sb, bb));
                 CHECK(parsujSekcje("A1 5 e1\nW1 3 G2\nW2 3 X", sb, bb) && sb[1].grupa == 2 && sb[2].grupa == -1 && sb[0].kolejnosc == 1);
+                CHECK(parsujSekcje("W1 3 g1/-/2", sb, bb) && sb[0].grupaOdczep[0] == 1 && sb[0].grupaOdczep[1] == -1 && sb[0].grupaOdczep[2] == 2);
             }
             Wykonane xn = x; xn.sekcjeWej = {{true, 917, 0}, {false, 47, 0}, {true, 0 + 1, 1}};   // suma A != z1 -> błąd
             CHECK(!etap3(w2, r, xn));

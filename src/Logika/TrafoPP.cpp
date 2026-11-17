@@ -280,7 +280,26 @@ std::optional<WynikWykonane> etap3Wewn(const Wymagania& w, const Rdzen& r, const
 }
 }   // namespace
 
-std::optional<WynikWykonane> etap3(const Wymagania& w, const Rdzen& r, const Wykonane& u) { return etap3Wewn(w, r, u, true); }
+std::optional<WynikWykonane> etap3(const Wymagania& w, const Rdzen& r, const Wykonane& u) { return etap3Wewn(w, r, rozwiazOdczep(u), true); }
+
+std::vector<WynikOdczepu> odczepy(const Wymagania& w, const Rdzen& r, const Wykonane& u) {
+    std::vector<WynikOdczepu> wynik;
+    if (!maOdczepy(u.sekcjeWej)) return wynik;
+    for (int k = 1; k <= 3; k++) {
+        Wymagania wk = w;
+        wk.rObciazeniaOm = kImpedancjeOdczepow[k - 1];
+        Wykonane x = u;
+        x.odczep = k;
+        const auto o = etap3(wk, r, x);
+        if (!o) return {};
+        WynikOdczepu t;
+        t.omy = kImpedancjeOdczepow[k - 1];
+        t.zwojeWtorne = rozwiazOdczep(x).zwojeWtorne;
+        t.raaOm = o->raaOm; t.lrH = o->lrH; t.rwOm = o->rwOm; t.sprawnosc = o->sprawnosc;
+        wynik.push_back(t);
+    }
+    return wynik;
+}
 
 std::vector<SekcjaWej> presetSekcji(int numer, int z1, int z2) {
     auto A = [](int z, int k = 0) { return SekcjaWej{true, z, k}; };
@@ -299,19 +318,15 @@ std::vector<SekcjaWej> presetSekcji(int numer, int z1, int z2) {
         v = {A(q), W(z2 / 2), A(h - q), A(q, 1), W(z2 - z2 / 2, 1), A(z1 - h - q, 1)};
         break;
     }
-    case 5: case 6: case 7: {   // Mesa Boogie DR: 10 warstw od rdzenia, wtórne 2∥5∥8 (4 Ω), 3∥9 (+8 Ω), 6 (+16 Ω)
-        // pierwotne 318/530/530/318 z 1696 zwojów, połączone elektrycznie 1-7-(środek)-4-10; wtórne w stosunku 78 : 33 : 78
+    case 5: {   // Mesa Boogie DR: 10 warstw od rdzenia; jeden transformator ma odczepy 4, 8 i 16 Ω jednocześnie
+        // pierwotne 318/530/530/318 z 1696 zwojów, połączone elektrycznie 1-7-(środek)-4-10; wtórne w stosunku 78 : 33 : 78 (z2 = zwoje na odczepie 4 Ω)
+        // odczep 4 Ω: warstwy 2∥5∥8; 8 Ω: + 3∥9; 16 Ω: + 6 (warstwy 2∥5∥8 i 6 szeregowo, 3 i 9 wtedy nieczynne)
         const int a1 = static_cast<int>(std::lround(z1 * 318.0 / 1696.0)), a2 = static_cast<int>(std::lround(z1 * 530.0 / 1696.0));
-        const int a7 = a2, a10 = z1 - a1 - 2 * a2;       // warstwa 7 = 530/1696, warstwa 10 = reszta
-        const int b = numer == 5 ? z2 : numer == 6 ? static_cast<int>(std::lround(z2 * 78.0 / 111.0)) : static_cast<int>(std::lround(z2 / 2.0));
-        // dopinka czynna dopełnia odczep do z2 (suma grup = z2); dopinka nieczynna ma wymiar z rysunku w tej samej skali
-        const int c = numer == 6 ? std::max(1, z2 - b) : std::max(1, static_cast<int>(std::lround(b * 33.0 / 78.0)));
-        const int d = numer == 7 ? std::max(1, z2 - b) : b;
-        // grupy: 1 = sekcje 4 Ω (2, 5, 8); 2 = dopinka 8 Ω (3, 9) albo dopinka 16 Ω (6); reszta nieczynna
-        const int gC = numer == 6 ? 2 : -1, gD = numer == 7 ? 2 : -1;
-        auto Wg = [](int z, int g) { SekcjaWej s{false, z, 0}; s.grupa = g; return s; };
+        const int a7 = a2, a10 = z1 - a1 - 2 * a2;
+        const int b = z2, c = std::max(1, static_cast<int>(std::lround(b * 33.0 / 78.0))), d = b;
+        auto Wg = [](int z, int g4, int g8, int g16) { SekcjaWej s{false, z, 0}; s.grupaOdczep = {g4, g8, g16}; return s; };
         auto Ae = [](int z, int e) { SekcjaWej s{true, z, 0}; s.kolejnosc = e; return s; };
-        v = {Ae(a1, 1), Wg(b, 1), Wg(c, gC), Ae(a2, 3), Wg(b, 1), Wg(d, gD), Ae(a7, 2), Wg(b, 1), Wg(c, gC), Ae(a10, 4)};
+        v = {Ae(a1, 1), Wg(b, 1, 1, 1), Wg(c, -1, 2, -1), Ae(a2, 3), Wg(b, 1, 1, 1), Wg(d, -1, -1, 2), Ae(a7, 2), Wg(b, 1, 1, 1), Wg(c, -1, 2, -1), Ae(a10, 4)};
         break;
     }
     default: v = {A(z1), W(z2)}; break;
@@ -319,19 +334,37 @@ std::vector<SekcjaWej> presetSekcji(int numer, int z1, int z2) {
     return v;
 }
 
-int zwojeWtorneZSekcji(const std::vector<SekcjaWej>& sekcje, bool rownolegle) {
+bool maOdczepy(const std::vector<SekcjaWej>& sekcje) {
+    for (const SekcjaWej& s : sekcje)
+        if (!s.pierwotna && (s.grupaOdczep[0] != 0 || s.grupaOdczep[1] != 0 || s.grupaOdczep[2] != 0)) return true;
+    return false;
+}
+
+int zwojeWtorneZSekcji(const std::vector<SekcjaWej>& sekcje, bool rownolegle, int odczep) {
+    const bool zOdczepu = odczep >= 1 && odczep <= 3 && maOdczepy(sekcje);
     int suma = 0, pierwsza = 0, n = 0;
     std::map<int, int> grupy;
     bool czyGrupy = false;
     for (const SekcjaWej& s : sekcje) {
         if (s.pierwotna) continue;
-        if (s.grupa != 0) czyGrupy = true;
-        if (s.grupa > 0 && !grupy.count(s.grupa)) grupy[s.grupa] = s.zwoje;
+        const int g = zOdczepu ? s.grupaOdczep[odczep - 1] : s.grupa;
+        if (g != 0) czyGrupy = true;
+        if (g > 0 && !grupy.count(g)) grupy[g] = s.zwoje;
         suma += s.zwoje;
         if (n++ == 0) pierwsza = s.zwoje;
     }
-    if (czyGrupy) { int g = 0; for (const auto& e : grupy) g += e.second; return g; }
+    if (czyGrupy) { int z = 0; for (const auto& e : grupy) z += e.second; return z; }
     return rownolegle ? pierwsza : suma;
+}
+
+Wykonane rozwiazOdczep(const Wykonane& u) {
+    if (!maOdczepy(u.sekcjeWej)) return u;
+    Wykonane x = u;
+    const int o = u.odczep >= 1 && u.odczep <= 3 ? u.odczep : 1;
+    for (SekcjaWej& s : x.sekcjeWej) if (!s.pierwotna) s.grupa = s.grupaOdczep[o - 1];
+    x.zwojeWtorne = zwojeWtorneZSekcji(x.sekcjeWej, false);
+    x.wtorneRownolegle = false;
+    return x;
 }
 
 bool parsujSekcje(const std::string& tekst, std::vector<SekcjaWej>& wynik, std::string& blad) {
@@ -376,7 +409,20 @@ bool parsujSekcje(const std::string& tekst, std::vector<SekcjaWej>& wynik, std::
             const char c = static_cast<char>(std::tolower(static_cast<unsigned char>(tok[0])));
             const std::string cyfry = tok.substr(1);
             const bool liczba = !cyfry.empty() && cyfry.size() < 6 && cyfry.find_first_not_of("0123456789") == std::string::npos && std::stol(cyfry) > 0;
-            if (!pierwotna && c == 'g' && liczba) sek.grupa = static_cast<int>(std::stol(cyfry));
+            if (!pierwotna && c == 'g' && cyfry.find('/') != std::string::npos) {   // g1/2/- : grupy dla odczepów 4, 8, 16 Ω ("-" = nieczynna)
+                std::istringstream cz(cyfry);
+                std::string kawalek;
+                int i = 0;
+                bool dobre = true;
+                while (std::getline(cz, kawalek, '/')) {
+                    if (i >= 3) { dobre = false; break; }
+                    if (kawalek == "-") sek.grupaOdczep[i++] = -1;
+                    else if (!kawalek.empty() && kawalek.size() < 6 && kawalek.find_first_not_of("0123456789") == std::string::npos && std::stol(kawalek) > 0) sek.grupaOdczep[i++] = static_cast<int>(std::stol(kawalek));
+                    else { dobre = false; break; }
+                }
+                if (!dobre || i != 3) { blad = "Wiersz " + std::to_string(nr) + ": odczepy zapisuje się jako g<a>/<b>/<c> dla 4, 8 i 16 Ω (numer grupy albo -)"; return false; }
+            }
+            else if (!pierwotna && c == 'g' && liczba) sek.grupa = static_cast<int>(std::stol(cyfry));
             else if (!pierwotna && c == 'x' && tok.size() == 1) sek.grupa = -1;
             else if (pierwotna && c == 'e' && liczba) sek.kolejnosc = static_cast<int>(std::stol(cyfry));
             else { blad = "Wiersz " + std::to_string(nr) + ": po liczbie zwojów dozwolone tylko g<N> (grupa wtórnych), x (nieczynna) albo e<N> (kolejność sekcji A)"; return false; }
@@ -394,7 +440,11 @@ std::string formatujSekcje(const std::vector<SekcjaWej>& v) {
     for (const SekcjaWej& s : v) {
         if (s.komora != komora) { t += "|\n"; komora = s.komora; }
         t += (s.pierwotna ? "A" + std::to_string(++a) : "W" + std::to_string(++w)) + " " + std::to_string(s.zwoje);
-        if (!s.pierwotna && s.grupa > 0) t += " g" + std::to_string(s.grupa);
+        if (!s.pierwotna && maOdczepy({s})) {
+            t += " g";
+            for (int i = 0; i < 3; i++) t += (i ? "/" : "") + (s.grupaOdczep[i] > 0 ? std::to_string(s.grupaOdczep[i]) : std::string("-"));
+        }
+        else if (!s.pierwotna && s.grupa > 0) t += " g" + std::to_string(s.grupa);
         if (!s.pierwotna && s.grupa < 0) t += " x";
         if (s.pierwotna && s.kolejnosc > 0) t += " e" + std::to_string(s.kolejnosc);
         t += "\n";

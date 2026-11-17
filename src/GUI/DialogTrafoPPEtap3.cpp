@@ -9,7 +9,7 @@
 #include "../Pomoc/PomocGUI.h"
 
 namespace {
-constexpr int kUkladWlasny = 8;   // numer pozycji „własny (tabela sekcji)” na liście układów (po szablonach P-S ... Mesa Boogie DR)
+constexpr int kUkladWlasny = 6;   // numer pozycji „własny (tabela sekcji)” na liście układów (po szablonach P-S ... Mesa Boogie DR)
 const char* kNazwy[7] = {"z1", "d1", "z2", "d2", "beta", "k", "rho"};
 struct Poz { const char* klucz; const char* etykieta; int miejsca; };
 const Poz kPoz[15] = {
@@ -62,9 +62,7 @@ DialogTrafoPPEtap3::DialogTrafoPPEtap3(wxWindow* parent, const TrafoPP::Wymagani
     chUklad_->Append(TR("gitarowy: A 40% W 50% A 20% W 50% A 40%"));
     chUklad_->Append(TR("HiFi: karkas dwukomorowy (A W | A W)"));
     chUklad_->Append(TR("HiFi: dwukomorowy przeplatany (A W A | A W A)"));
-    chUklad_->Append(TR("Mesa Boogie DR: odczep 4 Ω (10 warstw)"));
-    chUklad_->Append(TR("Mesa Boogie DR: odczep 8 Ω (10 warstw)"));
-    chUklad_->Append(TR("Mesa Boogie DR: odczep 16 Ω (10 warstw)"));
+    chUklad_->Append(TR("Mesa Boogie DR: odczepy 4, 8 i 16 Ω (10 warstw)"));
     chUklad_->Append(TR("własny (tabela sekcji)"));
     chUklad_->SetSelection(0);
     PomocGUI::Dodaj(chUklad_, "trafopp.uklad");
@@ -76,6 +74,14 @@ DialogTrafoPPEtap3::DialogTrafoPPEtap3(wxWindow* parent, const TrafoPP::Wymagani
     chWtorne_->SetSelection(0);
     PomocGUI::Dodaj(chWtorne_, "trafopp.wtorne");
     g->Add(chWtorne_, wxGBPosition(6, 1), wxGBSpan(1, 3), wxEXPAND);
+    g->Add(new wxStaticText(ww, wxID_ANY, TR("Odczep wtórnego (DR)")), wxGBPosition(7, 0), wxDefaultSpan, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT);
+    chOdczep_ = new wxChoice(ww, wxID_ANY);
+    chOdczep_->Append(TR("4 Ω"));
+    chOdczep_->Append(TR("8 Ω"));
+    chOdczep_->Append(TR("16 Ω"));
+    chOdczep_->SetSelection(1);
+    chOdczep_->SetToolTip(TR("Transformator z odczepami (Mesa Boogie DR) ma wszystkie trzy obciążenia naraz; tu wybierasz, dla którego liczysz wyniki. Zestawienie wszystkich trzech jest pod tabelą sekcji."));
+    g->Add(chOdczep_, wxGBPosition(7, 1), wxGBSpan(1, 3), wxEXPAND);
     wyk->Add(g, 0, wxALL, 4);
     // parametry modelu: dwie pary pole-etykieta w wierszu
     wxFlexGridSizer* g3 = new wxFlexGridSizer(0, 4, 4, 6);
@@ -147,6 +153,7 @@ DialogTrafoPPEtap3::DialogTrafoPPEtap3(wxWindow* parent, const TrafoPP::Wymagani
     Bind(wxEVT_BUTTON, [this](wxCommandEvent&) { EndModal(wxID_CLOSE); }, wxID_CLOSE);
     chUklad_->Bind(wxEVT_CHOICE, [this](wxCommandEvent&) { ZSzablonu(); });
     chWtorne_->Bind(wxEVT_CHOICE, [this](wxCommandEvent&) { Przelicz(); });
+    chOdczep_->Bind(wxEVT_CHOICE, [this](wxCommandEvent&) { Przelicz(); });
     tcPrzegroda_->Bind(wxEVT_TEXT, [this](wxCommandEvent&) { Przelicz(); });
     tcScianka_->Bind(wxEVT_TEXT, [this](wxCommandEvent&) { Przelicz(); });
     tcMargines_->Bind(wxEVT_TEXT, [this](wxCommandEvent&) { Przelicz(); });
@@ -164,7 +171,7 @@ DialogTrafoPPEtap3::DialogTrafoPPEtap3(wxWindow* parent, const TrafoPP::Wymagani
             for (const auto& x : s) if (x.pierwotna) a += x.zwoje;
             wypelniam_ = true;
             tc_[0]->ChangeValue(L(a, 0));
-            tc_[2]->ChangeValue(L(TrafoPP::zwojeWtorneZSekcji(s, chWtorne_->GetSelection() == 1), 0));
+            tc_[2]->ChangeValue(L(TrafoPP::zwojeWtorneZSekcji(s, chWtorne_->GetSelection() == 1, 1), 0));
             if (chUklad_->GetSelection() != kUkladWlasny) chUklad_->SetSelection(kUkladWlasny);
             wypelniam_ = false;
         }
@@ -185,7 +192,17 @@ void DialogTrafoPPEtap3::ZSzablonu() {
         wypelniam_ = true;
         tcSekcje_->ChangeValue(wxString::FromUTF8(TrafoPP::formatujSekcje(TrafoPP::presetSekcji(numer, static_cast<int>(std::lround(z1)), static_cast<int>(std::lround(z2))))));
         wypelniam_ = false;
+        if (numer == 5) {   // DR: odczep najbliższy obciążeniu z Etapu 1 (z2 w tabeli = zwoje odczepu 4 Ω)
+            int najblizszy = 0;
+            for (int k = 1; k < 3; k++)
+                if (std::fabs(TrafoPP::kImpedancjeOdczepow[k] - w_.rObciazeniaOm) < std::fabs(TrafoPP::kImpedancjeOdczepow[najblizszy] - w_.rObciazeniaOm)) najblizszy = k;
+            chOdczep_->SetSelection(najblizszy);
+        }
     }
+    Przelicz();
+}
+void DialogTrafoPPEtap3::UstawOdczep(int numer) {
+    chOdczep_->SetSelection(numer);
     Przelicz();
 }
 void DialogTrafoPPEtap3::UstawUklad(int numer) {
@@ -234,7 +251,13 @@ void DialogTrafoPPEtap3::Przelicz() {
     x.przegrodaMm = przegroda;
     ok = ok && tekstNaLiczbe(tcScianka_->GetValue().utf8_string(), x.sciankaKarkasuMm) && tekstNaLiczbe(tcMargines_->GetValue().utf8_string(), x.marginesWarstwyMm);
     x.wtorneRownolegle = chWtorne_->GetSelection() == 1;
-    const auto o = ok ? TrafoPP::etap3(w_, r_, x) : std::nullopt;
+    x.odczep = chOdczep_->GetSelection() + 1;
+    const bool odczepy = ok && TrafoPP::maOdczepy(x.sekcjeWej);
+    chOdczep_->Enable(odczepy);
+    chWtorne_->Enable(!odczepy);
+    TrafoPP::Wymagania wUz = w_;                                     // przy odczepach: obciążenie wybranego odczepu
+    if (odczepy) { wUz.rObciazeniaOm = TrafoPP::kImpedancjeOdczepow[x.odczep - 1]; x = TrafoPP::rozwiazOdczep(x); }
+    const auto o = ok ? TrafoPP::etap3(wUz, r_, x) : std::nullopt;
     if (!o) {
         uwagiTrafo_ = (!bladSekcji.empty() ? wxString::FromUTF8(bladSekcji) :
             TR("Uwagi: uzupełnij pola liczbami większymi od zera. Suma zwojów A w tabeli sekcji musi być równa zwojom pierwotnym, suma W wtórnym (przy połączeniu równoległym każda sekcja W ma tyle zwojów, ile wtórne); komory muszą się zmieścić w oknie."));
@@ -253,6 +276,12 @@ void DialogTrafoPPEtap3::Przelicz() {
         t += wxString::Format("%-8s %6d %7d %11d %8d %12s %10s%s\n", s.pierwotna ? wxString::Format("A%d", ++na) : wxString::Format("W%d", ++nw), s.komora + 1, s.zwoje,
                               s.zwojeWWarstwie, s.warstwy, L(s.gruboscMm, 2), L(s.dlugoscZwojuCm, 2), s.nieparzysteWarstwy ? "  *" : "");
         nieparzyste = nieparzyste || (s.nieparzysteWarstwy && s.pierwotna && sekcjiA > 1);
+    }
+    if (odczepy) {   // zestawienie wszystkich odczepów, każdy dla własnego obciążenia
+        t += wxString("\n") + TR("Odczepy (każdy dla własnego obciążenia):") + "\n";
+        t += wxString::Format("%-6s %7s %10s %11s %10s %7s\n", TR("odczep"), TR("zwoje"), TR("Raa[Ω]"), TR("Lr[H]"), TR("Rw[Ω]"), TR("η"));
+        for (const auto& od : TrafoPP::odczepy(w_, r_, x))
+            t += wxString::Format("%-6s %7d %10s %11s %10s %7s\n", wxString::Format(wxString::FromUTF8("%g \xCE\xA9"), od.omy), od.zwojeWtorne, L(od.raaOm, 1), L(od.lrH, 5), L(od.rwOm, 4), L(od.sprawnosc, 3));
     }
     tcTabela_->ChangeValue(t);
     tcDrut_->ChangeValue(ZestawienieDrutu::Tekst(MasaDrutu::zestawienie(MasaDrutu::pozycje(*o, x))));

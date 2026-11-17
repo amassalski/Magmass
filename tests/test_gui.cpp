@@ -1530,14 +1530,18 @@ private:
             e->UstawWtorne(true);
             CHECK(!e->Uwagi().empty());           // sekcje W różne (nierówne) przy połączeniu równoległym
             e->UstawWtorne(false);
-            {   // Mesa Boogie DR: odczepy 4, 8 i 16 Ω
-                e->UstawPole("z1", "1696"); e->UstawPole("d1", "0,3"); e->UstawPole("d2", "0,4");
-                for (int nr = 5; nr <= 7; nr++) {
-                    e->UstawPole("z2", nr == 5 ? "78" : nr == 6 ? "111" : "156");
-                    e->UstawUklad(nr);
-                    CHECK(e->Sekcje().Contains(" g1") && e->Sekcje().Contains(" e2") && e->Tabela().Contains("W6") && e->Tabela().Contains("A4"));
+            {   // Mesa Boogie DR: jeden układ, odczepy 4, 8 i 16 Ω
+                e->UstawPole("z1", "1696"); e->UstawPole("d1", "0,3"); e->UstawPole("d2", "0,4"); e->UstawPole("z2", "78");
+                e->UstawUklad(5);
+                CHECK(e->Sekcje().Contains("g1/1/1") && e->Sekcje().Contains(" e2") && e->Tabela().Contains("W6") && e->Tabela().Contains("A4"));
+                CHECK(e->Tabela().Contains("Odczepy") && e->Tabela().Contains("16 Ω"));
+                wxString rw[3];
+                for (int k = 0; k < 3; k++) {
+                    e->UstawOdczep(k);
                     CHECK(!e->Wynik("lr").empty() && !e->Wynik("rw").empty());
+                    rw[k] = e->Wynik("rw");
                 }
+                CHECK(rw[0] != rw[2]);                                  // inny odczep = inne sekcje czynne
                 e->UstawPole("z1", "917"); e->UstawPole("z2", "47"); e->UstawPole("d1", "0,3"); e->UstawPole("d2", "1,3");
             }
             e->UstawUklad(0);
