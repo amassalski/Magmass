@@ -96,6 +96,9 @@
 #include "Narzedzia/Konfiguracja.h"
 #include "Narzedzia/KodKreskowy.h"
 #include "Pomoc/PomocGUI.h"
+#include "Pomoc/ObrazyPomocy.h"
+#include <wx/mstream.h>
+#include <wx/image.h>
 
 static int bledy = 0;
 #define CHECK(w)                                                                   \
@@ -2971,6 +2974,22 @@ private:
         TestTrafoPP(okno);
         TestTrafoSE(okno);
         TestCewkiAL(okno);
+
+        {   // obrazy pomocy wkompilowane w program: poprawne PNG, każdy użyty w pomocy
+            static const char* wymagane[] = {"rdzen_ei.png", "okno_warstwy.png", "uklady_sekcji.png",
+                                             "amperozwoje.png", "mesa_boogie_dr.png"};
+            for (const char* nazwa : wymagane) {
+                bool jest = false;
+                for (const ObrazPomocy& o : ObrazyPomocy())
+                    if (std::string(o.nazwa) == nazwa) {
+                        jest = o.rozmiar > 1000 && o.dane[1] == 'P' && o.dane[2] == 'N' && o.dane[3] == 'G';
+                        wxMemoryInputStream in(o.dane, o.rozmiar);
+                        wxImage im(in, wxBITMAP_TYPE_PNG);
+                        CHECK(im.IsOk() && im.GetWidth() > 300);
+                    }
+                CHECK(jest);
+            }
+        }
 
         okno->Close(true);
         ExitMainLoop();

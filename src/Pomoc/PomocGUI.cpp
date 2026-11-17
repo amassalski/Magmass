@@ -2,8 +2,12 @@
 #include "PomocKontekstowa.h"
 #include "../BazaDanych/ManagerBazyDanych.h"
 #include "../Narzedzia/Tlumaczenia.h"
+#include "ObrazyPomocy.h"
 
 #include <wx/filename.h>
+#include <wx/fs_mem.h>
+#include <wx/wfstream.h>
+#include <wx/image.h>
 #include <wx/spinctrl.h>
 #include <wx/html/htmlwin.h>
 #include <wx/mimetype.h>
@@ -28,6 +32,17 @@ wxString PlikPomocy() {
     const std::string kat = ZnajdzKatalogPomocy();
     if (kat.empty()) return wxString();
     return wxFileName(wxString::FromUTF8(kat), "pomoc_pl.htm").GetFullPath();
+}
+
+// Obrazy pomocy są wkompilowane w program; do wxHtmlWindow trafiają przez pamięciowy system plików
+// (src="obrazy/x.png" -> src="memory:x.png"), do zewnętrznej przeglądarki przez katalog tymczasowy.
+void RejestrujObrazyPomocy() {
+    static bool zrobione = false;
+    if (zrobione) return;
+    zrobione = true;
+    wxFileSystem::AddHandler(new wxMemoryFSHandler);
+    for (const ObrazPomocy& o : ObrazyPomocy())
+        wxMemoryFSHandler::AddFileWithMimeType(wxString::FromUTF8(o.nazwa), o.dane, o.rozmiar, "image/png");
 }
 
 wxString TekstDymka(const WpisPomocy& w) {
@@ -112,6 +127,9 @@ public:
             wxFile f(plik);
             if (!f.IsOpened() || !f.ReadAll(&tresc, wxConvUTF8)) return false;
         }
+        RejestrujObrazyPomocy();
+        tresc.Replace("src=\"obrazy/", "src=\"memory:");
+        tresc.Replace("src=obrazy/", "src=memory:");
         html_->SetPage(tresc);
         Odswiez();
         return true;
@@ -367,6 +385,22 @@ bool OtworzWPrzegladarce(const std::string& kotwica) {
     const wxString plik = PlikPomocy();
     if (plik.empty()) return false;
     wxString url = wxFileName::FileNameToURL(wxFileName(plik));
+    {
+        // kopia pomocy z obrazami w katalogu tymczasowym (obrazy są w programie, nie w pliku)
+        wxFileName kat(wxFileName::GetTempDir(), wxEmptyString);
+        kat.AppendDir("magmass_pomoc");
+        kat.AppendDir("obrazy");
+        if (wxFileName::Mkdir(kat.GetPath(), wxS_DIR_DEFAULT, wxPATH_MKDIR_FULL)) {
+            for (const ObrazPomocy& o : ObrazyPomocy()) {
+                wxFileOutputStream out(wxFileName(kat.GetPath(), wxString::FromUTF8(o.nazwa)).GetFullPath());
+                if (out.IsOk()) out.Write(o.dane, o.rozmiar);
+            }
+            wxFileName cel(kat.GetPath(), "pomoc_pl.htm");
+            cel.RemoveLastDir();
+            cel.SetFullName("pomoc_pl.htm");
+            if (wxCopyFile(plik, cel.GetFullPath(), true)) url = wxFileName::FileNameToURL(cel);
+        }
+    }
     if (!kotwica.empty()) url += "#" + wxString::FromUTF8(kotwica);
     return wxLaunchDefaultBrowser(url);
 }

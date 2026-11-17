@@ -694,7 +694,117 @@ Okno Kamera / Kamera termowizyjna (Ctrl+Shift+T) pokazuje na żywo obraz z kamer
 <h2><a name=pole-drut>Zestawienie drutu (waga)</a></h2>
 <p>W oknach dławika i transformatorów pole „Zestawienie drutu (waga)” podaje dla każdej średnicy drutu długość i masę miedzi oraz masę do zakupu (miedź + ok. 3% lakieru + 10% zapasu). Uzwojenia o tej samej średnicy są sumowane. Wartości są orientacyjne; zapas zależy od sposobu nawijania.</p>
 <h2><a name=pole-trafopp>Transformator głośnikowy PP</a></h2>
-<tt>Narzędzia / Elementy indukcyjne / Transformator głośnikowy PP</tt>: Etap 1 podaje pożądane parametry transformatora przeciwsobnego z wymagań, Etap 2 liczy uzwojenia na zdobytym rdzeniu. Przycisk Dalej otwiera Etap 3: uzwojenia wykonane (całkowite zwoje, normalne średnice drutu), rozmieszczenie w warstwach, rezystancje, rozproszenie dla uzwojeń nieprzeplatanych i przeplatanych oraz sprawność.
+<tt>Narzędzia / Elementy indukcyjne / Transformator głośnikowy PP</tt> prowadzi przez projekt transformatora wyjściowego przeciwsobnego (push-pull) w trzech etapach. Każdy kolejny etap bierze wyniki poprzedniego, ale można w nim wszystko poprawić ręcznie.
+<ul>
+<li><b>Etap 1: czego potrzebuję.</b> Z wymagań (obciążenie, moc, pasmo, lampy) program liczy <i>pożądane</i> parametry: minimalną indukcyjność pierwotną, maksymalną indukcyjność rozproszenia, przekładnię i potrzebny rozmiar rdzenia.</li>
+<li><b>Etap 2: co mam na rdzeniu.</b> Podajesz wymiary posiadanej blachy EI i grubość pakietu; program liczy liczbę zwojów i średnicę drutu obu uzwojeń oraz prądy.</li>
+<li><b>Etap 3: jak to nawinąć.</b> Zwoje i drut zaokrąglasz do wartości możliwych do wykonania, rozmieszczasz uzwojenia w oknie i dostajesz rezystancje, indukcyjność rozproszenia (z całki energii pola w oknie) i sprawność. Przycisk <i>Dalej</i> otwiera Etap 3.</li>
+</ul>
+<h3>Etap 1: wymagania, parametry zaawansowane, pożądane</h3>
+<table border=1 cellpadding=3 cellspacing=0>
+<tr><td><b>Pole</b></td><td><b>Znaczenie</b></td></tr>
+<tr><td>R0</td><td>Rezystancja obciążenia (głośnika) w omach, np. 8. To obciążenie, dla którego liczona jest przekładnia.</td></tr>
+<tr><td>Raa</td><td>Rezystancja anoda-anoda: obciążenie widziane przez lampy po przetransformowaniu, np. 3400 Ω. Zwykle podaje ją producent lamp dla danego punktu pracy.</td></tr>
+<tr><td>P0</td><td>Moc wyjściowa w watach.</td></tr>
+<tr><td>Fd, Fg</td><td>Dolna i górna częstotliwość graniczna pasma. Fd wyznacza indukcyjność pierwotną, Fg indukcyjność rozproszenia.</td></tr>
+<tr><td>Ri</td><td>Rezystancja wewnętrzna lamp (dla układu PP łączna, widziana między anodami).</td></tr>
+<tr><td>I0</td><td>Prąd spoczynkowy lamp; służy do oceny składowej stałej (w układzie PP się praktycznie znosi).</td></tr>
+<tr><td>B</td><td>Maksymalna indukcja w rdzeniu (tesla). Mniejsza B = większy, lecz spokojniejszy rdzeń.</td></tr>
+<tr><td>μ</td><td>Względna przenikalność blachy; wpływa na indukcyjność przy danej drodze strumienia.</td></tr>
+<tr><td>η</td><td>Zakładana sprawność transformatora; wchodzi do przekładni.</td></tr>
+<tr><td>α</td><td>Współczynnik wypełnienia rdzenia żelazem (izolacja między blachami), zwykle 0,9 do 0,95.</td></tr>
+<tr><td>β</td><td>Współczynnik wypełnienia okna miedzią (karkas, izolacje, luzy), zwykle 0,2 do 0,4.</td></tr>
+<tr><td>σ</td><td>Gęstość prądu w uzwojeniach w A/mm²; typowo 2 do 3.</td></tr>
+<tr><td>Spadek na krańcach pasma</td><td>Dopuszczalny spadek poziomu w dB na Fd i Fg; od niego zależy współczynnik k we wzorach poniżej.</td></tr>
+</table>
+<p>Wyniki Etapu 1 (pożądane parametry):
+<ul>
+<li>indukcyjność pierwotna <b>Li = (Raa ∥ Ri) / (2π · Fd · k)</b>: pierwotne musi być na tyle indukcyjne, żeby na Fd nie bocznikowało obciążenia;</li>
+<li>indukcyjność rozproszenia <b>Lr = k · (Raa + Ri) / (2π · Fg)</b>: im większa, tym wcześniej ucina górę pasma;</li>
+<li>przekładnia <b>Naa:N0 = √(Raa · η / R0)</b>: stosunek zwojów pierwotnego (cały, anoda-anoda) do wtórnego;</li>
+<li>iloczyn <b>okno × rdzeń = P0 · 10⁶ / (4,44 · Fd · α · B · β · σ)</b> w cm⁴, czyli pole okna razem z przekrojem rdzenia; porównuj z danymi blachy w Etapie 2.</li>
+</ul>
+<b>Przykład</b> (R0 = 8 Ω, Raa = 3400 Ω, P0 = 50 W, Fd = 100 Hz, Fg = 15 kHz, Ri = 15 kΩ, I0 = 32 mA): Li ≈ 4,41 H, Lr ≈ 0,195 H (195 mH, górny dopuszczalny limit; rzeczywiste transformatory mają wielokrotnie mniej), Naa:N0 ≈ 19,6, okno × rdzeń ≈ 208 cm⁴, a przekrój rdzenia około 14,4 cm².</p>
+<h3>Etap 2: rdzeń i uzwojenia</h3>
+<p><img src="obrazy/rdzen_ei.png"></p>
+<p>Wymiary blachy EI według rysunku: <b>A</b> szerokość całej blachy, <b>B</b> wysokość, <b>a</b> szerokość kolumny środkowej, <b>c</b> szerokość okna, <b>d</b> szerokość kolumny bocznej, <b>h</b> wysokość okna. Z nich program liczy:</p>
+<ul>
+<li><b>przekrój rdzenia S</b> = a · grubość pakietu · α (cm²);</li>
+<li><b>drogę strumienia lż</b>: obwód pętli wokół okna (kolumna środkowa + boczna);</li>
+<li><b>długość zwoju</b>: obwód uzwojenia wokół kolumny środkowej (średni);</li>
+<li><b>wysokość uzwojenia h</b> i <b>sumę grubości uzwojeń</b> mieszczącą się w oknie.</li>
+</ul>
+<p>Uzwojenia: zwoje pierwotne <b>z1</b> (całość, od anody do anody), zwoje wtórne <b>z2</b> (przy odczepie wybranej impedancji), średnice drutu <b>d1, d2</b> z gęstości prądu σ oraz prądy <b>I1</b> (pierwotny) i <b>I2</b> (wtórny).</p>
+<p><b>Przykład</b> dla rdzenia z Etapu 1 (S ≈ 17,3 cm², lż ≈ 18,7 cm, długość zwoju ≈ 21,7 cm, h ≈ 5,1 cm, szerokość okna 1,7 cm): z1 ≈ 917 zw. drutu 0,319 mm (I1 ≈ 0,16 A), z2 ≈ 47 zw. drutu 1,262 mm (I2 = 2,5 A). To punkt wyjścia do Etapu 3.</p>
+<h3>Etap 3: uzwojenia wykonane i rozmieszczenie</h3>
+<p>Etap 2 daje liczby idealne (917,22 zwoju, drut 0,319 mm). W warsztacie nawija się całkowitą liczbę zwojów drutem o znormalizowanej średnicy. Etap 3 sprawdza, co z tego wyjdzie, i pozwala porównać różne układy sekcji na tym samym rdzeniu.</p>
+<h4>Krok 1: uzwojenia wykonane</h4>
+<p>Wpisz <b>z1</b>, <b>d1</b> (średnica pierwotnego), <b>z2</b>, <b>d2</b> (wtórnego). Dla przykładu: z1 = 917, d1 = 0,30 mm, z2 = 47, d2 = 1,3 mm. Program pokaże zaraz rzeczywiste Li (4,409 H) i Raa (3383,7 Ω) oraz ile miejsca w oknie jest do dyspozycji (7,44 cm²). Jeśli rzeczywiste Raa mocno odbiega od zamierzonego, popraw zwoje.</p>
+<h4>Krok 2: układ uzwojeń (szablon)</h4>
+<p>Lista <b>układ uzwojeń</b> wypełnia tabelę sekcji gotowym wzorem. Pozycja <i>własny</i> zostawia tabelę do ręcznej edycji.</p>
+<p><img src="obrazy/uklady_sekcji.png"></p>
+<ul>
+<li><b>P-S</b>: całe pierwotne, a na nim wtórne. Najprostszy, ale z największym rozproszeniem.</li>
+<li><b>P/2-S-P/2</b>: wtórne między dwiema połówkami pierwotnego; rozproszenie kilkakrotnie mniejsze.</li>
+<li><b>gitarowy</b>: A 40% / W 50% / A 20% / W 50% / A 40%, najlepsze przeplatanie przy akceptowalnej komplikacji.</li>
+<li><b>HiFi dwukomorowy</b>: karkas z przegrodą, w każdej komorze pierwotne i wtórne; przegroda zmniejsza pojemności, ale zwiększa rozproszenie (wariant przeplatany to poprawia).</li>
+<li><b>Mesa Boogie DR</b>: układ z trzema odczepami wtórnego jednocześnie (patrz niżej).</li>
+</ul>
+<h4>Krok 3: tabela sekcji i jej składnia</h4>
+<p>Każdy wiersz tabeli to jedna sekcja, od kolumny środkowej na zewnątrz. Format: litera, numer, spacja, liczba zwojów, np. <tt>A1 600</tt> (pierwotne, sekcja 1, 600 zwojów) i <tt>W1 100</tt> (wtórne). Litera <b>A</b> to uzwojenia pierwotne (anodowe), <b>W</b> wtórne. Znak <tt>|</tt> w osobnym wierszu to przegroda karkasu (druga komora). Po liczbie zwojów można dopisać:</p>
+<ul>
+<li><tt>g2</tt>: grupa. Sekcje o tym samym numerze grupy są połączone równolegle, w różnych grupach szeregowo (dla A i W osobno); bez g każda sekcja jest sama w grupie i wszystkie idą szeregowo.</li>
+<li><tt>x</tt>: sekcja leży w oknie, ale nie przewodzi (nieaktywna); zajmuje miejsce, nie wpływa na prąd.</li>
+<li><tt>e2</tt>: kolejność elektryczna sekcji A (przy połączeniu szeregowym inna niż fizyczna).</li>
+<li><tt>g2/3/-</tt>: grupa osobno dla odczepu 4, 8 i 16 Ω; <tt>-</tt> oznacza sekcję nieaktywną przy tym odczepie (układ DR).</li>
+</ul>
+<p>Suma zwojów sekcji A musi dać z1, a aktywnych sekcji W (w jednej grupie szeregowej, po uwzględnieniu równoległych) z2; ewentualny błąd program zgłasza komunikatem pod tabelą.</p>
+<h4>Krok 4: połączenie wtórnych, ścianka, margines, przegroda, poprawka k</h4>
+<ul>
+<li><b>Połączenie sekcji wtórnych</b>: szeregowo lub równolegle (gdy wtórne jest podzielone na kilka sekcji, np. w układach przeplatanych).</li>
+<li><b>Ścianka karkasu</b>: grubość policzka karkasu (mm) po obu stronach okna; odejmuje wysokość uzwojenia.</li>
+<li><b>Margines warstwy</b>: wolny pas przy policzku na końcach warstwy (domyślnie 1,5 mm); zwoje nie dochodzą do policzka, co daje odstęp izolacyjny.</li>
+<li><b>Przegroda karkasu</b>: grubość przegrody dla układów dwukomorowych (domyślnie 2 mm).</li>
+<li><b>Przekładki warstw</b>: grubość izolacji między warstwami (domyślnie 0,05 mm).</li>
+<li><b>Poprawka k</b>: mnożnik do indukcyjności rozproszenia, by zgrać obliczenia z pomiarem prawdziwego transformatora.</li>
+</ul>
+<p><img src="obrazy/okno_warstwy.png"></p>
+<p>Rysunek pokazuje, jak program liczy warstwy: długość warstwy = h − 2·ścianka − 2·margines; zwojów w warstwie = długość warstwy / średnica drutu z lakierem; liczba warstw = zwoje sekcji / zwojów w warstwie (zaokrąglone w górę); grubość sekcji = warstwy · (średnica + przekładka). Zsumowana grubość wszystkich sekcji nie może przekroczyć szerokości okna c. Jeśli nie mieści się, wynik jest oznaczony jako „nie mieści się w oknie”.</p>
+<h4>Krok 5: wyniki</h4>
+<ul>
+<li><b>Lr</b>: indukcyjność rozproszenia sprowadzona do pierwotnego, z całki energii pola w oknie (wg amperozwojów, patrz niżej);</li>
+<li><b>Rp, Rw</b>: rezystancje uzwojenia pierwotnego i wtórnego (z długości drutu);</li>
+<li><b>η</b>: sprawność wynikająca z rezystancji przy obciążeniu wybranym odczepem;</li>
+<li><b>zajęte miejsce</b> w oknie (cm²) i liczba warstw oraz zwojów na warstwę każdej sekcji;</li>
+<li><b>porównanie</b> z wzorami książkowymi i programem ECCLab (kontrolnie).</li>
+</ul>
+<p>Dlaczego przeplatanie zmniejsza Lr: indukcyjność rozproszenia jest proporcjonalna do całki z kwadratu amperozwojów po grubości okna.</p>
+<p><img src="obrazy/amperozwoje.png"></p>
+<h4>Przykłady (rdzeń z Etapu 1, z1 = 917 zw. 0,30 mm, z2 = 47 zw. 1,3 mm)</h4>
+<table border=1 cellpadding=3 cellspacing=0>
+<tr><td><b>Układ</b></td><td><b>Lr</b></td><td><b>Rp</b></td><td><b>Rw</b></td><td><b>η</b></td><td><b>Zajęte w oknie</b></td></tr>
+<tr><td>P-S</td><td>12,53 mH</td><td>52,0 Ω</td><td>0,155 Ω</td><td>0,968</td><td>2,66 cm²</td></tr>
+<tr><td>P/2-S-P/2</td><td>4,07 mH</td><td>55,0 Ω</td><td>0,150 Ω</td><td>0,968</td><td>3,05 cm²</td></tr>
+<tr><td>gitarowy (5 sekcji)</td><td>2,34 mH</td><td>55,8 Ω</td><td></td><td>0,968</td><td>3,50 cm²</td></tr>
+</table>
+<p>Wnioski: przejście z P-S na P/2-S-P/2 obniża Lr około trzykrotnie za cenę nieco większego zajęcia okna; układ gitarowy jeszcze bardziej, ale wymaga więcej sekcji i lutowań. Sprawność prawie się nie zmienia, bo zależy od drutu. W przykładzie P-S pierwotne ma 140 zwojów w warstwie i 7 warstw (2,59 mm), a wtórne 33 zwoje w warstwie i 2 warstwy.</p>
+<p>Układy dwukomorowe (HiFi) dla tych samych danych: 14,89 mH (zwykły) i 4,59 mH (przeplatany). Przegroda wydłuża drogę między uzwojeniami, więc zwykły wariant rozprasza więcej; dopiero przeplatanie go poprawia.</p>
+<h4>Układ Mesa Boogie DR: trzy odczepy jednocześnie</h4>
+<p><img src="obrazy/mesa_boogie_dr.png"></p>
+<p>W tym układzie jeden transformator ma wtórne podzielone na kilka warstw tak, że odpowiednim połączeniem uzyskuje się <b>jednocześnie</b> wyjścia 4, 8 i 16 Ω; nie wybiera się więc jednej impedancji przy projektowaniu. Pierwotne jest rozłożone na czterech sekcjach (A1 do A4) z odczepem środkowym +HT. Wtórne tworzą warstwy w grupach: niebieskie (2, 5, 8) połączone równolegle dają odczep 4 Ω (z2 zwojów), do nich dopina się zielone (3, 9) dla 8 Ω lub fioletową (6) dla 16 Ω. Liczby zwojów obu dopinek są dobrane tak, że przekładnia rośnie jak √(impedancja): przy z2 = 78 zw. (4 Ω) wychodzi 111 zw. dla 8 Ω i 156 zw. dla 16 Ω.</p>
+<p>W programie wybierz układ „Mesa Boogie DR”, a w polu <b>odczep</b> przełączasz impedancję, dla której wyniki są liczone (obciążenie w modelu to ten odczep). Pod tabelą widać podsumowanie wszystkich trzech odczepów.</p>
+<p><b>Przykład</b> (z1 = 1696, z2 = 78, d1 = 0,3, d2 = 0,4 mm na tym samym rdzeniu): 4 Ω: Raa = 2101 Ω, Lr = 4,81 mH, Rw = 0,93 Ω, η = 0,785; 8 Ω (111 zw.): Raa = 2075 Ω, Lr = 3,80 mH, Rw = 1,53 Ω, η = 0,811; 16 Ω (156 zw.): Raa = 2101 Ω, Lr = 8,23 mH, Rw = 3,80 Ω, η = 0,782. Zajęte 5,68 cm² z 7,44 cm², więc się mieści.</p>
+<p><b>Uwaga:</b> sprawność w tym przykładzie jest niska, bo wtórne nawinięto jednym drutem 0,4 mm. W prawdziwym DR każda warstwa wtórna jest nawinięta dwoma lub więcej drutami równolegle (lub drutem grubszym), co zmniejsza Rw. W programie wpisz średnicę ekwiwalentną (pole przekroju równe sumie przekrojów drutów równoległych, np. dwa druty 0,4 mm ≈ jeden 0,57 mm); wtedy układ da dużo wyższą sprawność, a liczba warstw i miejsce w oknie będą bliższe rzeczywistym, jeśli dodatkowo zwiększysz przekładkę.</p>
+<h4>Typowe komunikaty</h4>
+<ul>
+<li><i>„Uzwojenia nie mieszczą się w oknie”</i>: zmniejsz drut, margines lub przekładki warstw, zmniejsz zwoje albo wybierz większą blachę.</li>
+<li><i>„Indukcyjność rozproszenia przekracza dopuszczalną”</i>: Lr z Etapu 3 jest większe niż limit z Etapu 1; przeplataj uzwojenia (P/2-S-P/2, gitarowy) lub zmniejsz grubość uzwojeń.</li>
+<li><i>„Indukcyjność pierwotna jest mniejsza od pożądanej”</i>: dodaj zwoje pierwotne.</li>
+<li><i>Nieparzysta liczba warstw (*)</i> w podzielonej sekcji pierwotnej: trudniej połączyć sekcje; zmień zwoje lub drut tak, by liczba warstw wyszła parzysta.</li>
+<li><i>Niezrównoważone amperozwoje komory</i>: w układach dwukomorowych w każdej komorze amperozwoje A i W powinny być równe, inaczej strumień rozproszenia się nie domyka i wynik Lr jest orientacyjny.</li>
+<li><i>„Wiersz N: …”</i> w tabeli sekcji: błąd składni (pierwsza litera to A lub W, potem numer, spacja i całkowita liczba zwojów, np. <tt>A1 600</tt>; dalej tylko <tt>g</tt>, <tt>x</tt>, <tt>e</tt>); komora przed przegrodą <tt>|</tt> nie może być pusta.</li>
+<li>Suma zwojów A w tabeli musi być równa z1, suma W (po uwzględnieniu połączenia sekcji wtórnych) równa z2.</li>
+</ul>
 <h2><a name=pole-trafose>Transformator głośnikowy SE</a></h2>
 <tt>Narzędzia / Elementy indukcyjne / Transformator głośnikowy SE</tt> liczy transformator wyjściowy jednotaktowy z prądem anodowym płynącym przez uzwojenie pierwotne: indukcyjność, przekładnię, zwoje i drut obu uzwojeń oraz szczelinę w rdzeniu. Zwoje i szczelina wynikają z modelu fizycznego (strumień od składowej stałej i zmiennej, reluktancja żelaza). Obok pokazane są wartości z programu porównawczego i z modułu Cykina. Przycisk Dalej otwiera uzwojenia wykonane: rozmieszczenie w oknie, rezystancje, rozproszenie dla trzech układów i sprawność.
 <h2><a name=pole-czytnik-pdf>Polecenie czytnika PDF (zakładka Inne)</a></h2>
