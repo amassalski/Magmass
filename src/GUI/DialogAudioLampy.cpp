@@ -91,6 +91,11 @@ WykresRIAA::WykresRIAA(wxWindow* parent) : wxPanel(parent, wxID_ANY, wxDefaultPo
     Bind(wxEVT_SIZE, [this](wxSizeEvent& e) { Refresh(); e.Skip(); });
 }
 
+void WykresRIAA::UstawZakres(double dbMin, double dbMax, int krok) {
+    if (dbMax > dbMin && krok > 0) { dbMin_ = dbMin; dbMax_ = dbMax; krok_ = krok; }
+    Refresh();
+}
+
 void WykresRIAA::Ustaw(const std::vector<double>& f, const std::vector<double>& idealna, const std::vector<double>& siec) {
     f_ = f;
     idealna_ = idealna;
@@ -107,14 +112,15 @@ void WykresRIAA::OnPaint(wxPaintEvent&) {
     const int w = rozm.x - lewo - prawo, h = rozm.y - gora - dol;
     if (w < 20 || h < 20 || f_.empty()) return;
     const double fMin = f_.front(), fMax = f_.back();
-    double dbMin = -30, dbMax = 30;
+    const double dbMin = dbMin_, dbMax = dbMax_;
     auto x = [&](double f) { return lewo + static_cast<int>(w * std::log10(f / fMin) / std::log10(fMax / fMin)); };
     auto y = [&](double db) { return gora + static_cast<int>(h * (dbMax - db) / (dbMax - dbMin)); };
 
     dc.SetFont(GetFont().Smaller());
     dc.SetTextForeground(wxColour(80, 80, 80));
     dc.SetPen(wxPen(wxColour(225, 225, 225)));
-    for (int db = -30; db <= 30; db += 10) {
+    for (int db = static_cast<int>(std::ceil(dbMin)); db <= dbMax; ++db) {
+        if (db % krok_ != 0) continue;
         dc.DrawLine(lewo, y(db), lewo + w, y(db));
         dc.DrawText(wxString::Format("%+d", db), 6, y(db) - 7);
     }
@@ -156,6 +162,9 @@ DialogAudioLampy::DialogAudioLampy(wxWindow* parent)
     ksiazka_->AddPage(StronaDecybeli(), TR("dB i nepery"));
     ksiazka_->AddPage(StronaRIAA(), TR("Krzywa RIAA"));
     ksiazka_->AddPage(StronaPunktuPracy(), TR("Punkt pracy lampy"));
+    ksiazka_->AddPage(StronaKatody(), TR("Polaryzacja katodowa"));
+    ksiazka_->AddPage(StronaSprzezenia(), TR("Kondensator sprzęgający"));
+    ksiazka_->AddPage(StronaBarwy(), TR("Regulacja barwy"));
     glowny->Add(ksiazka_, 1, wxEXPAND | wxALL, 10);
     glowny->Add(new wxButton(this, wxID_CLOSE, TR("Zamknij")), 0, wxALIGN_RIGHT | wxLEFT | wxRIGHT | wxBOTTOM, 10);
     SetSizer(glowny);
@@ -167,6 +176,9 @@ DialogAudioLampy::DialogAudioLampy(wxWindow* parent)
     PrzeliczTabele();
     PrzeliczSiec();
     PrzeliczLampe();
+    PrzeliczKatode();
+    PrzeliczSprzezenie();
+    PrzeliczBarwe();
 }
 
 // ---------------------------------------------------------------- schemat układu
@@ -1032,4 +1044,326 @@ void DialogAudioLampy::UstawPolaLampy(std::initializer_list<wxString> wartosci) 
     size_t i = 0;
     for (const wxString& w : wartosci) { if (i < poleLM_.size()) poleLM_[i]->ChangeValue(w); ++i; }
     PrzeliczLampe();
+}
+
+// ---------------------------------------------------------------- polaryzacja katodowa, sprzężenie RC, regulacja barwy
+
+namespace {
+std::optional<double> Kond(const wxTextCtrl* tc) {
+    return SzeregiE::parsujWartosc(tc->GetValue().utf8_string(), RodzajElementu::Kondensator);
+}
+}
+
+wxPanel* DialogAudioLampy::StronaKatody() {
+    wxPanel* p = new wxPanel(ksiazka_);
+    wxBoxSizer* s = new wxBoxSizer(wxVERTICAL);
+    s->Add(new wxStaticText(p, wxID_ANY, TR("Rk = Uk / (Ia + Ig2).  Ck: spadek wzmocnienia o 3 dB przy fd, z równania |(1 + jx) / (1 + gm·Rk + jx)| = 1/√2, czyli x = 2π·fd·Rk·Ck = √((1 + gm·Rk)² − 2).")),
+           0, wxALL, 10);
+    wxFlexGridSizer* g = new wxFlexGridSizer(2, 6, 10);
+    auto pole = [&](const wxString& et, const wxString& wart, const char* klucz) {
+        g->Add(new wxStaticText(p, wxID_ANY, et), 0, wxALIGN_CENTER_VERTICAL);
+        wxTextCtrl* t = new wxTextCtrl(p, wxID_ANY, wart, wxDefaultPosition, wxSize(110, -1));
+        PomocGUI::Dodaj(t, klucz);
+        g->Add(t, 0);
+        poleKat_.push_back(t);
+    };
+    pole(TR("Prąd anodowy Ia [mA]:"), "1,2", "audio.kat_ia");
+    pole(TR("Prąd siatki ekranującej Ig2 [mA] (trioda: 0):"), "0", "audio.kat_ig2");
+    pole(TR("Napięcie polaryzacji Uk [V]:"), "1,8", "audio.kat_uk");
+    pole(TR("Konduktancja gm [mA/V] (puste: tylko reguła):"), "1,6", "audio.kat_gm");
+    pole(TR("Dolna częstotliwość graniczna fd [Hz] (puste: bez Ck):"), "40", "audio.kat_fd");
+    g->Add(new wxStaticText(p, wxID_ANY, TR("Szereg dla Rk:")), 0, wxALIGN_CENTER_VERTICAL);
+    chKatR_ = WyborSzeregu(p, Szereg::E24);
+    PomocGUI::DodajPole(chKatR_, "audio.kat_szereg");
+    g->Add(chKatR_, 0);
+    g->Add(new wxStaticText(p, wxID_ANY, TR("Szereg dla Ck:")), 0, wxALIGN_CENTER_VERTICAL);
+    chKatC_ = WyborSzeregu(p, Szereg::E12);
+    PomocGUI::DodajPole(chKatC_, "audio.kat_szereg");
+    g->Add(chKatC_, 0);
+    s->Add(g, 0, wxLEFT | wxRIGHT, 10);
+    lbKatoda_ = new wxStaticText(p, wxID_ANY, wxEmptyString);
+    s->Add(lbKatoda_, 0, wxALL, 10);
+    p->SetSizer(s);
+    for (wxTextCtrl* t : poleKat_) t->Bind(wxEVT_TEXT, [this](wxCommandEvent&) { PrzeliczKatode(); });
+    for (wxChoice* c : {chKatR_, chKatC_}) c->Bind(wxEVT_CHOICE, [this](wxCommandEvent&) { PrzeliczKatode(); });
+    return p;
+}
+
+void DialogAudioLampy::PrzeliczKatode() {
+    using namespace KalkulatoryWzmacniaczy;
+    if (poleKat_.size() < 5) return;
+    auto ia = Liczba(poleKat_[0]), ig2 = OpcjaLiczba(poleKat_[1]), uk = Liczba(poleKat_[2]), gm = OpcjaLiczba(poleKat_[3]), fd = OpcjaCzest(poleKat_[4]);
+    if (!ia || !ig2 || !uk || !gm || !fd) { lbKatoda_->SetLabel(TR("Wpisz Ia i Uk (liczby), pozostałe pola mogą być puste.")); return; }
+    WejscieKatody w;
+    w.iaMA = *ia; w.ig2MA = *ig2; w.ukV = *uk; w.gmMAV = *gm; w.fdHz = *fd;
+    w.szeregR = Wybrany(chKatR_);
+    w.szeregC = Wybrany(chKatC_);
+    const auto r = polaryzacjaKatodowa(w);
+    if (!r) { lbKatoda_->SetLabel(TR("Prąd i napięcie muszą być dodatnie.")); return; }
+    wxString t = TR("Prąd katody Ik = ") + L(r->ikMA, 3) + " mA\n";
+    t += TR("Rk = ") + Op(r->rkIdealny) + TR("  →  z szeregu ") + Op(r->rkSzereg) + TR("  (Uk = ") + L(r->ukRzeczywiste, 3) + " V)\n";
+    t += TR("Moc rezystora ") + L(r->mocMW, 2) + TR(" mW, zalecany z zapasem x2: ") + L(r->mocZalecanaMW, 2) + " mW";
+    if (r->maCk) {
+        t += "\n\n";
+        if (!r->ckPotrzebny)
+            t += TR("Przy tak małym gm·Rk spadek wzmocnienia po wyłączeniu Ck nie sięga 3 dB: kondensator katodowy nie jest potrzebny.");
+        else {
+            t += TR("Ck dla spadku 3 dB przy fd: ") + Pf(r->ckUF * 1e-6) + TR("  →  z szeregu ") + Pf(r->ckSzeregUF * 1e-6) + "\n";
+            t += TR("Napięcie pracy Ck co najmniej ") + L(r->napiecieCkV, 0) + " V\n";
+            if (r->ckReguleUF > 0 && w.gmMAV > 0) t += TR("Reguła praktyczna (Xc = Rk/10 przy fd): ") + Pf(r->ckReguleUF * 1e-6);
+            else t += TR("Bez gm podano tylko regułę praktyczną (Xc = Rk/10 przy fd).");
+            if (r->ckSzeregUF > 0 && w.gmMAV > 0) {
+                const double f = fKatodyHz(r->rkSzereg, r->ckSzeregUF * 1e-6, w.gmMAV * 1e-3);
+                t += "\n" + TR("Z kondensatorem z szeregu częstotliwość -3 dB wynosi ") + L(f, 1) + " Hz";
+            }
+        }
+    }
+    lbKatoda_->SetLabel(t);
+}
+
+void DialogAudioLampy::UstawPolaKatody(std::initializer_list<wxString> wartosci) {
+    size_t i = 0;
+    for (const wxString& w : wartosci) if (i < poleKat_.size()) poleKat_[i++]->ChangeValue(w);
+    PrzeliczKatode();
+}
+
+wxPanel* DialogAudioLampy::StronaSprzezenia() {
+    wxPanel* p = new wxPanel(ksiazka_);
+    wxBoxSizer* s = new wxBoxSizer(wxVERTICAL);
+    s->Add(new wxStaticText(p, wxID_ANY, TR("fc = 1 / (2π · (Ra ‖ ra + Rg) · Cs).  Dla n jednakowych sekcji RC w kaskadzie f(-3 dB) = fc / √(2^(1/n) − 1).")), 0, wxALL, 10);
+    wxFlexGridSizer* g = new wxFlexGridSizer(2, 6, 10);
+    auto pole = [&](const wxString& et, const wxString& wart, const char* klucz) {
+        g->Add(new wxStaticText(p, wxID_ANY, et), 0, wxALIGN_CENTER_VERTICAL);
+        wxTextCtrl* t = new wxTextCtrl(p, wxID_ANY, wart, wxDefaultPosition, wxSize(110, -1));
+        PomocGUI::Dodaj(t, klucz);
+        g->Add(t, 0);
+        poleSprz_.push_back(t);
+    };
+    pole(TR("Obciążenie anodowe Ra poprzedniego stopnia:"), "100k", "audio.sprz_ra");
+    pole(TR("Rezystancja wewnętrzna lampy ra (puste: pomiń):"), "62k", "audio.sprz_rwew");
+    pole(TR("Rezystor siatki następnego stopnia Rg:"), "470k", "audio.sprz_rg");
+    pole(TR("Kondensator sprzęgający Cs (np. 22n; puste: tylko dobór):"), "22n", "audio.sprz_cs");
+    pole(TR("Żądana dolna częstotliwość fd [Hz] (puste: tylko f z Cs):"), "20", "audio.sprz_fd");
+    g->Add(new wxStaticText(p, wxID_ANY, TR("Liczba jednakowych sekcji w kaskadzie:")), 0, wxALIGN_CENTER_VERTICAL);
+    chSprzSekcje_ = new wxChoice(p, wxID_ANY);
+    for (int i = 1; i <= 8; ++i) chSprzSekcje_->Append(wxString::Format("%d", i));
+    chSprzSekcje_->SetSelection(0);
+    PomocGUI::DodajPole(chSprzSekcje_, "audio.sprz_sekcje");
+    g->Add(chSprzSekcje_, 0);
+    g->Add(new wxStaticText(p, wxID_ANY, TR("Szereg dla Cs:")), 0, wxALIGN_CENTER_VERTICAL);
+    chSprzC_ = WyborSzeregu(p, Szereg::E12);
+    PomocGUI::DodajPole(chSprzC_, "audio.sprz_szereg");
+    g->Add(chSprzC_, 0);
+    s->Add(g, 0, wxLEFT | wxRIGHT, 10);
+    lbSprz_ = new wxStaticText(p, wxID_ANY, wxEmptyString);
+    s->Add(lbSprz_, 0, wxALL, 10);
+    p->SetSizer(s);
+    for (wxTextCtrl* t : poleSprz_) t->Bind(wxEVT_TEXT, [this](wxCommandEvent&) { PrzeliczSprzezenie(); });
+    for (wxChoice* c : {chSprzSekcje_, chSprzC_}) c->Bind(wxEVT_CHOICE, [this](wxCommandEvent&) { PrzeliczSprzezenie(); });
+    return p;
+}
+
+void DialogAudioLampy::PrzeliczSprzezenie() {
+    using namespace KalkulatoryWzmacniaczy;
+    if (poleSprz_.size() < 5) return;
+    auto ra = Opor(poleSprz_[0]), rwew = OpcjaOpor(poleSprz_[1]), rg = Opor(poleSprz_[2]), fd = OpcjaCzest(poleSprz_[4]);
+    std::optional<double> cs = poleSprz_[3]->GetValue().Trim().empty() ? std::optional<double>(0.0) : Kond(poleSprz_[3]);
+    if (!ra || !rwew || !rg || !cs || !fd) { lbSprz_->SetLabel(TR("Wpisz Ra i Rg (np. 100k, 470k); Cs np. 22n.")); return; }
+    WejscieSprzezenia w;
+    w.raKOhm = *ra / 1e3; w.rwewKOhm = *rwew / 1e3; w.rgKOhm = *rg / 1e3; w.csNF = *cs * 1e9; w.fdHz = *fd;
+    w.sekcje = chSprzSekcje_->GetSelection() + 1;
+    w.szeregC = Wybrany(chSprzC_);
+    const auto r = kondensatorSprzegajacy(w);
+    if (!r) { lbSprz_->SetLabel(TR("Ra i Rg muszą być dodatnie.")); return; }
+    wxString t = TR("Rezystancja widziana przez Cs: ") + Op(r->rcalkKOhm * 1e3) + "\n";
+    if (r->maF) {
+        t += TR("Częstotliwość graniczna jednej sekcji: ") + L(r->fSekcjiHz, 2) + " Hz\n";
+        if (w.sekcje > 1) t += TR("Częstotliwość -3 dB całej kaskady (") + wxString::Format("%d", w.sekcje) + TR(" sekcji): ") + L(r->fCalkowitaHz, 2) + " Hz\n";
+    }
+    if (r->maCs) {
+        t += "\n" + TR("Cs dla fd = ") + L(w.fdHz, 1) + " Hz: " + Pf(r->csPotrzebneNF * 1e-9) + TR("  →  z szeregu ") + Pf(r->csSzeregNF * 1e-9) + "\n";
+        t += TR("Tłumienie całego układu przy fd z tą wartością: ") + L(r->spadekPrzyFdDb, 2) + " dB";
+    }
+    lbSprz_->SetLabel(t);
+}
+
+void DialogAudioLampy::UstawPolaSprzezenia(std::initializer_list<wxString> wartosci, int sekcje) {
+    size_t i = 0;
+    for (const wxString& w : wartosci) if (i < poleSprz_.size()) poleSprz_[i++]->ChangeValue(w);
+    chSprzSekcje_->SetSelection(std::max(0, std::min(7, sekcje - 1)));
+    PrzeliczSprzezenie();
+}
+
+wxPanel* DialogAudioLampy::StronaBarwy() {
+    wxPanel* p = new wxPanel(ksiazka_);
+    panelBarwy_ = p;
+    wxBoxSizer* s = new wxBoxSizer(wxVERTICAL);
+    s->Add(new wxStaticText(p, wxID_ANY, TR("Bierne układy regulacji barwy liczone z równań węzłowych (topologie i wartości wzorcowe: projekt tonestack, GPL-3.0, wzorowany na Duncan's Tone Stack Calculator). Wykres pokazuje straty układu względem napięcia źródła.")),
+           0, wxALL, 10);
+    wxBoxSizer* gora = new wxBoxSizer(wxHORIZONTAL);
+    gora->Add(new wxStaticText(p, wxID_ANY, TR("Układ:")), 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, 6);
+    chPresetBarwy_ = new wxChoice(p, wxID_ANY);
+    for (const auto& u : KalkulatoryWzmacniaczy::ukladyBarwy()) chPresetBarwy_->Append(wxString::FromUTF8(u.nazwa));
+    chPresetBarwy_->SetSelection(0);
+    PomocGUI::DodajPole(chPresetBarwy_, "audio.barwa_preset");
+    gora->Add(chPresetBarwy_, 0, wxALIGN_CENTER_VERTICAL);
+    s->Add(gora, 0, wxLEFT | wxRIGHT, 10);
+
+    auto pole = [&](wxStaticText*& et, wxTextCtrl*& tc, const wxString& nazwa, const char* klucz) {
+        et = new wxStaticText(p, wxID_ANY, nazwa);
+        tc = new wxTextCtrl(p, wxID_ANY, "", wxDefaultPosition, wxSize(70, -1));
+        PomocGUI::Dodaj(tc, klucz);
+        tc->Bind(wxEVT_TEXT, [this](wxCommandEvent&) { PrzeliczBarwe(); });
+    };
+    for (int i = 1; i <= 3; ++i) pole(etBR_[i], tcBR_[i], wxString::Format("R%d", i), "audio.barwa_r");
+    for (int i = 1; i <= 4; ++i) pole(etBC_[i], tcBC_[i], wxString::Format("C%d", i), "audio.barwa_c");
+    for (int i = 1; i <= 2; ++i) pole(etBL_[i], tcBL_[i], wxString::Format("L%d", i), "audio.barwa_l");
+    pole(etBRzr_, tcBRzr_, TR("Rźr"), "audio.barwa_zr");
+    pole(etBRobc_, tcBRobc_, TR("Robc"), "audio.barwa_obc");
+    siatkaBarwy_ = new wxFlexGridSizer(10, 4, 8);
+    s->Add(siatkaBarwy_, 0, wxALL, 10);
+
+    siatkaPotBarwy_ = new wxFlexGridSizer(5, 4, 8);
+    for (int i = 1; i <= 3; ++i) {
+        etPot_[i] = new wxStaticText(p, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(80, -1));
+        slPot_[i] = new wxSlider(p, wxID_ANY, 50, 0, 100, wxDefaultPosition, wxSize(240, -1));
+        PomocGUI::DodajPole(slPot_[i], "audio.barwa_suwaki");
+        etPoz_[i] = new wxStaticText(p, wxID_ANY, "5,0", wxDefaultPosition, wxSize(30, -1));
+        tcPotR_[i] = new wxTextCtrl(p, wxID_ANY, "", wxDefaultPosition, wxSize(70, -1));
+        PomocGUI::Dodaj(tcPotR_[i], "audio.barwa_potr");
+        chPotTaper_[i] = new wxChoice(p, wxID_ANY);
+        for (const char* t : {"liniowy", "log", "log A", "odwrotny log"}) chPotTaper_[i]->Append(TekstZUTF8(t));
+        PomocGUI::DodajPole(chPotTaper_[i], "audio.barwa_taper");
+        slPot_[i]->Bind(wxEVT_SLIDER, [this](wxCommandEvent&) { PrzeliczBarwe(); });
+        tcPotR_[i]->Bind(wxEVT_TEXT, [this](wxCommandEvent&) { PrzeliczBarwe(); });
+        chPotTaper_[i]->Bind(wxEVT_CHOICE, [this](wxCommandEvent&) { PrzeliczBarwe(); });
+    }
+    s->Add(siatkaPotBarwy_, 0, wxLEFT | wxRIGHT, 10);
+
+    lbBarwa_ = new wxStaticText(p, wxID_ANY, wxEmptyString);
+    s->Add(lbBarwa_, 0, wxALL, 10);
+    wykresBarwy_ = new WykresRIAA(p);
+    wykresBarwy_->UstawZakres(-50, 0, 10);
+    s->Add(wykresBarwy_, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 10);
+    p->SetSizer(s);
+
+    chPresetBarwy_->Bind(wxEVT_CHOICE, [this](wxCommandEvent&) { WczytajPresetBarwy(); PrzeliczBarwe(); });
+    WczytajPresetBarwy();
+    return p;
+}
+
+void DialogAudioLampy::WczytajPresetBarwy() {
+    using namespace KalkulatoryWzmacniaczy;
+    const auto& uk = ukladyBarwy();
+    const int nr = chPresetBarwy_->GetSelection();
+    if (nr < 0 || nr >= static_cast<int>(uk.size())) return;
+    const UkladBarwy& u = uk[nr];
+    wczytujeBarwe_ = true;
+    auto wpisz = [&](wxTextCtrl* tc, double v, RodzajElementu r) { tc->ChangeValue(v > 0 ? TekstZUTF8(SzeregiE::formatWartosci(v, r)) : wxString("0")); };
+    siatkaBarwy_->Clear(false);
+    auto pokaz = [&](wxStaticText* et, wxTextCtrl* tc, bool uzyty) {
+        et->Show(uzyty); tc->Show(uzyty);
+        if (uzyty) { siatkaBarwy_->Add(et, 0, wxALIGN_CENTER_VERTICAL); siatkaBarwy_->Add(tc, 0); }
+    };
+    for (int i = 1; i <= 3; ++i) { wpisz(tcBR_[i], u.r[i], RodzajElementu::Rezystor); pokaz(etBR_[i], tcBR_[i], u.uzywa(Typ::R, i)); }
+    for (int i = 1; i <= 4; ++i) { wpisz(tcBC_[i], u.c[i], RodzajElementu::Kondensator); pokaz(etBC_[i], tcBC_[i], u.uzywa(Typ::C, i)); }
+    for (int i = 1; i <= 2; ++i) { wpisz(tcBL_[i], u.l[i], RodzajElementu::Cewka); pokaz(etBL_[i], tcBL_[i], u.uzywa(Typ::L, i)); }
+    wpisz(tcBRzr_, u.rzr, RodzajElementu::Rezystor); pokaz(etBRzr_, tcBRzr_, true);
+    wpisz(tcBRobc_, u.robc, RodzajElementu::Rezystor); pokaz(etBRobc_, tcBRobc_, true);
+
+    siatkaPotBarwy_->Clear(false);
+    for (int i = 1; i <= 3; ++i) {
+        const bool uz = u.uzywaPot(i);
+        for (wxWindow* w : std::initializer_list<wxWindow*>{etPot_[i], slPot_[i], etPoz_[i], tcPotR_[i], chPotTaper_[i]}) w->Show(uz);
+        if (!uz) continue;
+        etPot_[i]->SetLabel(wxString::FromUTF8(u.pot[i].nazwa));
+        slPot_[i]->SetValue(50);
+        wpisz(tcPotR_[i], u.pot[i].calkowita, RodzajElementu::Rezystor);
+        chPotTaper_[i]->SetSelection(static_cast<int>(u.pot[i].taper));
+        siatkaPotBarwy_->Add(etPot_[i], 0, wxALIGN_CENTER_VERTICAL);
+        siatkaPotBarwy_->Add(slPot_[i], 0);
+        siatkaPotBarwy_->Add(etPoz_[i], 0, wxALIGN_CENTER_VERTICAL);
+        siatkaPotBarwy_->Add(tcPotR_[i], 0);
+        siatkaPotBarwy_->Add(chPotTaper_[i], 0);
+    }
+    wczytujeBarwe_ = false;
+    panelBarwy_->Layout();
+}
+
+void DialogAudioLampy::PrzeliczBarwe() {
+    using namespace KalkulatoryWzmacniaczy;
+    if (!wykresBarwy_ || wczytujeBarwe_ || !tcBRzr_) return;
+    const auto& uk = ukladyBarwy();
+    const int nr = chPresetBarwy_->GetSelection();
+    if (nr < 0 || nr >= static_cast<int>(uk.size())) return;
+    UkladBarwy u = uk[nr];
+    bool blad = false;
+    auto pobierz = [&](wxTextCtrl* tc, RodzajElementu r, double& v, bool zeroDozwolone) {
+        const wxString t = tc->GetValue().Trim();
+        if (zeroDozwolone && (t.empty() || t == "0")) { v = 0; return; }
+        auto w = SzeregiE::parsujWartosc(t.utf8_string(), r);
+        if (!w) { blad = true; return; }
+        v = *w;
+    };
+    for (int i = 1; i <= 3; ++i) if (u.uzywa(Typ::R, i)) pobierz(tcBR_[i], RodzajElementu::Rezystor, u.r[i], false);
+    for (int i = 1; i <= 4; ++i) if (u.uzywa(Typ::C, i)) pobierz(tcBC_[i], RodzajElementu::Kondensator, u.c[i], false);
+    for (int i = 1; i <= 2; ++i) if (u.uzywa(Typ::L, i)) pobierz(tcBL_[i], RodzajElementu::Cewka, u.l[i], false);
+    pobierz(tcBRzr_, RodzajElementu::Rezystor, u.rzr, true);
+    pobierz(tcBRobc_, RodzajElementu::Rezystor, u.robc, true);
+    NastawyBarwy n;
+    wxString poziomy;
+    for (int i = 1; i <= 3; ++i) {
+        if (!u.uzywaPot(i)) continue;
+        pobierz(tcPotR_[i], RodzajElementu::Rezystor, u.pot[i].calkowita, false);
+        u.pot[i].taper = static_cast<Taper>(std::max(0, chPotTaper_[i]->GetSelection()));
+        n.poz[i] = slPot_[i]->GetValue() / 100.0;
+        etPoz_[i]->SetLabel(L(slPot_[i]->GetValue() / 10.0, 1));
+    }
+    auto nieDodatnie = [&]() {
+        for (const Skladnik& s : u.skladniki) {
+            if (s.typ == Typ::R && !(u.r[s.numer] > 0)) return true;
+            if (s.typ == Typ::C && !(u.c[s.numer] > 0)) return true;
+            if (s.typ == Typ::L && !(u.l[s.numer] > 0)) return true;
+            if ((s.typ == Typ::PotLo || s.typ == Typ::PotHi) && !(u.pot[s.numer].calkowita > 0)) return true;
+        }
+        return false;
+    };
+    if (blad || nieDodatnie()) {
+        lbBarwa_->SetLabel(TR("Wpisz wartości elementów (np. 250k, 22n, 470p, 6H); rezystory, kondensatory i cewki muszą być większe od zera."));
+        wykresBarwy_->Ustaw({}, {}, {});
+        return;
+    }
+    const ParametryUkladu ps = parametryUkladu(u, n);
+    wxString t = TR("Poziom: 100 Hz ") + Znak(ps.poziom100Hz, 1) + TR(" dB, 400 Hz ") + Znak(ps.poziom400Hz, 1) + TR(" dB, 1 kHz ") + Znak(ps.poziom1kHz, 1) +
+                 TR(" dB, 4 kHz ") + Znak(ps.poziom4kHz, 1) + TR(" dB, 10 kHz ") + Znak(ps.poziom10kHz, 1) + " dB\n";
+    t += TR("Najgłębsze wycięcie w paśmie 100 Hz do 3 kHz: ") + Znak(ps.minimumDb, 1) + TR(" dB przy ") + L(ps.fMinimumHz, 0) + TR(" Hz; najwyższy poziom: ") + Znak(ps.maksimumDb, 1) + " dB";
+    lbBarwa_->SetLabel(t);
+    const std::vector<double> f = KalkulatoryAudio::czestotliwosciLogarytmiczne(20, 20000, 40);
+    std::vector<double> db;
+    for (double x : f) db.push_back(poziomUkladuDb(u, n, x));
+    wykresBarwy_->Ustaw(f, db, {});
+}
+
+void DialogAudioLampy::UstawBarwe(int uklad, double poz1, double poz2, double poz3) {
+    chPresetBarwy_->SetSelection(uklad);
+    WczytajPresetBarwy();
+    const double p[4] = {0, poz1, poz2, poz3};
+    for (int i = 1; i <= 3; ++i) slPot_[i]->SetValue(static_cast<int>(std::lround(p[i] * 100)));
+    PrzeliczBarwe();
+}
+
+int DialogAudioLampy::LiczbaPotBarwy() const {
+    int n = 0;
+    for (int i = 1; i <= 3; ++i) if (slPot_[i]->IsShown()) ++n;
+    return n;
+}
+
+wxString DialogAudioLampy::NazwaPotBarwy(int nr) const {
+    return nr >= 1 && nr <= 3 && slPot_[nr]->IsShown() ? etPot_[nr]->GetLabel() : wxString();
+}
+
+void DialogAudioLampy::UstawTaperPotBarwy(int nr, int taper) {
+    if (nr < 1 || nr > 3) return;
+    chPotTaper_[nr]->SetSelection(std::max(0, std::min(3, taper)));
+    PrzeliczBarwe();
 }

@@ -33,6 +33,10 @@ public:
     bool EksportujCSV(const wxString& sciezka = wxEmptyString);
     bool ZapiszSzablon(const wxString& sciezka = wxEmptyString);
     void OtworzInstrukcje();
+    /// Ustawia zdjęcie zaznaczonego narzędzia z podanego pliku (zapis w bazie)
+    bool DolaczZdjecie(const wxString& sciezka);
+    void DolaczZdjecieZKamery();
+    void DolaczZdjecieZPliku();
     /// Wpisuje do dziennika przeterminowane pożyczki; zwraca ich liczbę (-1 = błąd)
     int Przypomnij();
 
@@ -50,7 +54,7 @@ public:
     std::function<void(const wxString&)> naKomunikat;
 
 private:
-    enum { ID_N_NOWE = wxID_HIGHEST + 800, ID_N_EDYTUJ, ID_N_USUN, ID_N_POZYCZ, ID_N_ZWROC, ID_N_INSTRUKCJA, ID_N_IMPORT, ID_N_EKSPORT, ID_N_SZABLON };
+    enum { ID_N_NOWE = wxID_HIGHEST + 800, ID_N_EDYTUJ, ID_N_USUN, ID_N_POZYCZ, ID_N_ZWROC, ID_N_INSTRUKCJA, ID_N_IMPORT, ID_N_EKSPORT, ID_N_SZABLON, ID_N_KAMERA, ID_N_PLIK };
     enum Kol { K_NAZWA, K_MODEL, K_KATEGORIA, K_MIEJSCE, K_STATUS, K_LICZBA };
 
     LogikaNarzedzi& logika_;
@@ -69,6 +73,7 @@ private:
     bool odswiezanie_ = false;
 
     void PokazSzczegoly();
+    void MenuKontekstowe(long element);
     void PokazZdjecie(const Narzedzie* n);
     void Komunikat(const wxString& t) const { if (naKomunikat) naKomunikat(t); }
     void Status(const wxString& t) const { if (naStatus) naStatus(t); }

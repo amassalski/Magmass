@@ -1,3 +1,4 @@
+#include "PoleDaty.h"
 #include "DialogPozyczki.h"
 
 #include "../Narzedzia/Tlumaczenia.h"
@@ -25,9 +26,9 @@ DialogPozyczki::DialogPozyczki(wxWindow* parent, const wxString& tytul, const wx
     cbOsoba_ = new wxComboBox(this, wxID_ANY);
     for (const std::string& o : osoby) cbOsoba_->Append(TekstZUTF8(o));
     dodaj(TR("Komu *"), cbOsoba_);
-    dpOd_ = new wxDatePickerCtrl(this, wxID_ANY, wxDateTime::Today(), wxDefaultPosition, wxDefaultSize, wxDP_DROPDOWN);
+    dpOd_ = NowePoleDaty(this, wxDateTime::Today(), wxDP_DROPDOWN);
     dodaj(TR("Data pożyczenia"), dpOd_);
-    dpTermin_ = new wxDatePickerCtrl(this, wxID_ANY, wxDefaultDateTime, wxDefaultPosition, wxDefaultSize, wxDP_DROPDOWN | wxDP_ALLOWNONE);
+    dpTermin_ = NowePoleDaty(this, wxDefaultDateTime, wxDP_DROPDOWN | wxDP_ALLOWNONE);
     dpTermin_->SetValue(wxDateTime());
     dodaj(TR("Termin zwrotu (opcjonalnie)"), dpTermin_);
     g->Add(s, 0, wxEXPAND | wxLEFT | wxRIGHT, 10);

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(Magmass VERSION 1.9.10 LANGUAGES CXX)
+project(Magmass VERSION 1.9.21 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -12,7 +12,10 @@ option(USE_SYSTEM_WX "Używaj wxWidgets zainstalowanego w systemie (jedyny tryb;
 
 # --- Zależności ---------------------------------------------------------
 # --- wxWidgets przez wx-config (z poprawką ścieżek MSYS2) ---
-find_program(WX_CONFIG NAMES wx-config wx-config-3.2 REQUIRED)
+# Kolejność: 3.3 (na Windows daje ciemny motyw), potem domyślny wx-config, potem 3.2. Można wskazać inny: cmake -DWX_CONFIG=/ucrt64/bin/wx-config-3.3 ..
+find_program(WX_CONFIG NAMES wx-config-3.3 wx-config wx-config-3.2 REQUIRED)
+execute_process(COMMAND sh "${WX_CONFIG}" --version OUTPUT_VARIABLE WX_WERSJA OUTPUT_STRIP_TRAILING_WHITESPACE)
+message(STATUS "wxWidgets: ${WX_WERSJA} (${WX_CONFIG})")
 get_filename_component(MINGW_BIN "${CMAKE_CXX_COMPILER}" DIRECTORY)
 get_filename_component(MINGW_ROOT "${MINGW_BIN}" DIRECTORY)   # np. G:/MSYS2/mingw64
 
@@ -222,6 +225,7 @@ if(DM_BUILD_TESTS)
         src/Logika/LogikaKsiazek.cpp
         src/Logika/KsiazkiCSV.cpp
         src/Logika/LogikaNarzedzi.cpp
+        src/Logika/LogikaSerwisu.cpp
         src/Logika/NarzedziaCSV.cpp
         src/Import/MetadaneKsiazek.cpp
         src/Import/ImportLBR.cpp
@@ -285,7 +289,7 @@ if(DM_BUILD_TESTS)
     add_test(NAME test_aktualizacje COMMAND test_aktualizacje)
 
     # Kalkulatory (dzielnik, rezystor LED, filtr RC): bez bazy danych
-    add_executable(test_kalkulatory tests/test_kalkulatory.cpp src/Logika/Kalkulatory.cpp src/Logika/KalkulatoryAnalogowe.cpp src/Logika/KalkulatoryAudio.cpp src/Logika/KalkulatoryLampowe.cpp src/Logika/SchematyLampowe.cpp src/Logika/MetodyGraficzne.cpp src/Logika/Znieksztalcenia.cpp src/Logika/Dlawik.cpp src/Logika/TrafoSieciowy.cpp src/Logika/TrafoPP.cpp src/Logika/TrafoSE.cpp src/Logika/TrafoModel.cpp src/Logika/CewkaAL.cpp src/Logika/Termowizja.cpp src/Logika/MasaDrutu.cpp src/Logika/CewkaPowietrzna.cpp src/Logika/StabilizatorRegulowany.cpp src/Logika/tube_magnetics.cpp src/Logika/tube_audio.cpp src/Logika/SzeregiE.cpp
+    add_executable(test_kalkulatory tests/test_kalkulatory.cpp src/Logika/Kalkulatory.cpp src/Logika/KalkulatoryAnalogowe.cpp src/Logika/KalkulatoryAudio.cpp src/Logika/KalkulatoryLampowe.cpp src/Logika/KalkulatoryWzmacniaczy.cpp src/Logika/SchematyLampowe.cpp src/Logika/MetodyGraficzne.cpp src/Logika/Znieksztalcenia.cpp src/Logika/Dlawik.cpp src/Logika/TrafoSieciowy.cpp src/Logika/TrafoPP.cpp src/Logika/TrafoSE.cpp src/Logika/TrafoModel.cpp src/Logika/CewkaAL.cpp src/Logika/Termowizja.cpp src/Logika/MasaDrutu.cpp src/Logika/CewkaPowietrzna.cpp src/Logika/StabilizatorRegulowany.cpp src/Logika/tube_magnetics.cpp src/Logika/tube_audio.cpp src/Logika/SzeregiE.cpp
         src/Narzedzia/Liczby.cpp src/Narzedzia/Miejsce.cpp src/Narzedzia/InfirayUsb.cpp src/Narzedzia/XthermDll.cpp)
     target_include_directories(test_kalkulatory PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
     add_test(NAME test_kalkulatory COMMAND test_kalkulatory)

@@ -3,6 +3,7 @@
 
 #include "../Logika/KalkulatoryAudio.h"
 #include "../Logika/KalkulatoryLampowe.h"
+#include "../Logika/KalkulatoryWzmacniaczy.h"
 #include "../Logika/LampyKatalog.h"
 #include "../Logika/SchematyLampowe.h"
 
@@ -20,9 +21,13 @@ public:
     /// Krzywe: idealna i (opcjonalnie) sieć; wartości w dB dla częstotliwości `f`
     void Ustaw(const std::vector<double>& f, const std::vector<double>& idealna, const std::vector<double>& siec);
     size_t LiczbaPunktow() const { return f_.size(); }
+    /// Zakres osi dB i podziałka siatki (domyślnie -30..30 co 10)
+    void UstawZakres(double dbMin, double dbMax, int krok);
 
 private:
     std::vector<double> f_, idealna_, siec_;
+    double dbMin_ = -30, dbMax_ = 30;
+    int krok_ = 10;
     void OnPaint(wxPaintEvent&);
 };
 
@@ -69,6 +74,22 @@ public:
     void UstawSiecRIAA(const wxString& r2, const wxString& r3, int szeregR, int szeregC);
     wxString OpisSieciRIAA() const { return lbSiec_->GetLabel(); }
     size_t PunktowWykresu() const { return wykres_->LiczbaPunktow(); }
+
+    /// Polaryzacja katodowa (zakładka 4): pola Ia, Ig2, Uk, gm, fd
+    void UstawPolaKatody(std::initializer_list<wxString> wartosci);
+    wxString WynikKatody() const { return lbKatoda_->GetLabel(); }
+    /// Kondensator sprzęgający (zakładka 5): Ra, ra, Rg, Cs, fd i liczba sekcji
+    void UstawPolaSprzezenia(std::initializer_list<wxString> wartosci, int sekcje);
+    wxString WynikSprzezenia() const { return lbSprz_->GetLabel(); }
+    /// Regulacja barwy (zakładka 6): układ (indeks na liście), położenia potencjometrów 1..3 w zakresie 0..1
+    void UstawBarwe(int uklad, double poz1, double poz2, double poz3);
+    int LiczbaUkladowBarwy() const { return chPresetBarwy_->GetCount(); }
+    int LiczbaPotBarwy() const;                 ///< ile potencjometrów ma wybrany układ
+    wxString NazwaPotBarwy(int nr) const;       ///< nazwa potencjometru 1..3 w wybranym układzie ("" gdy go nie ma)
+    void UstawTaperPotBarwy(int nr, int taper); ///< 0 liniowy, 1 log, 2 log A, 3 odwrotny log
+    wxString WynikBarwy() const { return lbBarwa_->GetLabel(); }
+    size_t PunktowBarwy() const { return wykresBarwy_->LiczbaPunktow(); }
+    int PresetBarwy() const { return chPresetBarwy_->GetSelection(); }
 
     /// Punkt pracy lampy (zakładka 3): pola w kolejności z formularza, "" zostawia puste
     void UstawPolaLampy(std::initializer_list<wxString> wartosci);
@@ -138,6 +159,25 @@ private:
     wxPanel* StronaUklady();
     void UkladZmieniony();
     void PrzeliczUklad();
+    wxPanel* StronaKatody();
+    wxPanel* StronaSprzezenia();
+    wxPanel* StronaBarwy();
+    void PrzeliczKatode();
+    void PrzeliczSprzezenie();
+    void PrzeliczBarwe();
+    void WczytajPresetBarwy();
+    std::vector<wxTextCtrl*> poleKat_, poleSprz_;
+    wxChoice *chKatR_ = nullptr, *chKatC_ = nullptr, *chSprzC_ = nullptr, *chSprzSekcje_ = nullptr, *chPresetBarwy_ = nullptr;
+    wxStaticText *lbKatoda_ = nullptr, *lbSprz_ = nullptr, *lbBarwa_ = nullptr;
+    // regulacja barwy: elementy układu (R1..R3, C1..C4, L1..L2), rezystancje źródła i obciążenia, potencjometry 1..3
+    wxTextCtrl *tcBR_[4] = {}, *tcBC_[5] = {}, *tcBL_[3] = {}, *tcBRzr_ = nullptr, *tcBRobc_ = nullptr, *tcPotR_[4] = {};
+    wxStaticText *etBR_[4] = {}, *etBC_[5] = {}, *etBL_[3] = {}, *etBRzr_ = nullptr, *etBRobc_ = nullptr, *etPot_[4] = {}, *etPoz_[4] = {};
+    wxSlider* slPot_[4] = {};
+    wxChoice* chPotTaper_[4] = {};
+    wxFlexGridSizer *siatkaBarwy_ = nullptr, *siatkaPotBarwy_ = nullptr;
+    wxPanel* panelBarwy_ = nullptr;
+    bool wczytujeBarwe_ = false;
+    WykresRIAA* wykresBarwy_ = nullptr;
     wxPanel* StronaDecybeli();
     wxPanel* StronaRIAA();
     void PrzeliczDecybele();

@@ -55,7 +55,7 @@ struct InformacjeOBazie {
 class ManagerBazyDanych {
 public:
     /// Wersja struktury bazy, której oczekuje ten program
-    static constexpr int WYMAGANA_WERSJA_SCHEMATU = 17;
+    static constexpr int WYMAGANA_WERSJA_SCHEMATU = 19;
 
     static ManagerBazyDanych& pobierz();
 

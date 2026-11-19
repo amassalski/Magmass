@@ -2,6 +2,7 @@
 #include "Logika/KalkulatoryAnalogowe.h"
 #include "Logika/KalkulatoryAudio.h"
 #include "Logika/KalkulatoryLampowe.h"
+#include "Logika/KalkulatoryWzmacniaczy.h"
 #include "Logika/SchematyLampowe.h"
 #include "Logika/MetodyGraficzne.h"
 #include "Logika/Znieksztalcenia.h"
@@ -989,6 +990,152 @@ int main() {
         const Moc m = bilans(18, 12, 0.5, 240, p);
         CHECK(std::fabs(m.stratyW - 3.0) < 1e-9 && std::fabs(m.wejscieMinV - 15.0) < 1e-9 && m.pradMinimalnyOk && std::fabs(m.pradDzielnikaA - 1.25 / 240) < 1e-12);
         CHECK(!bilans(18, 12, 0.0001, 24000, p).pradMinimalnyOk);
+    }
+
+
+    // ---- kalkulatory wzmacniaczy: polaryzacja katodowa, kondensator sprzęgający, regulacja barwy
+    {
+        using namespace KalkulatoryWzmacniaczy;
+        const double pi = 3.14159265358979323846;
+        // Rk = Uk / Ik; dla Ia = 1,2 mA i Uk = 1,8 V: 1500 Ω (jest w E24); moc = Uk²/Rk = 2,16 mW
+        WejscieKatody k; k.iaMA = 1.2; k.ukV = 1.8; k.gmMAV = 1.6; k.fdHz = 40;
+        auto rk = polaryzacjaKatodowa(k);
+        CHECK(rk && bl(rk->rkIdealny, 1500) && bl(rk->rkSzereg, 1500) && bl(rk->ukRzeczywiste, 1.8) && bl(rk->mocMW, 2.16) && bl(rk->mocZalecanaMW, 4.32));
+        // Ck z warunku -3 dB: x = sqrt((1+K)^2-2), K = gm·Rk = 2,4 -> Ck = x / (2π Rk fd) = 8,2014 µF; E12 w górę: 10 µF; reguła Xc = Rk/10: 26,53 µF
+        CHECK(rk && rk->maCk && rk->ckPotrzebny && bl(rk->ckUF, std::sqrt(3.4 * 3.4 - 2) / (2 * pi * 1500 * 40) * 1e6) && std::fabs(rk->ckUF - 8.2014) < 1e-3);
+        CHECK(rk && bl(rk->ckSzeregUF, 10) && bl(rk->ckReguleUF, 10 / (2 * pi * 40 * 1500) * 1e6) && bl(rk->napiecieCkV, 16));
+        // odwrotnie: z tym Ck częstotliwość -3 dB wraca do żądanej (dla Ck wyliczonego, przed zaokrągleniem)
+        CHECK(std::fabs(fKatodyHz(1500, rk->ckUF * 1e-6, 1.6e-3) - 40) < 1e-6);
+        CHECK(fKatodyHz(1500, 10e-6, 1.6e-3) > 32.8 && fKatodyHz(1500, 10e-6, 1.6e-3) < 32.82);
+        // małe K = gm·Rk < √2 - 1: spadek 3 dB nigdy nie następuje
+        WejscieKatody k2; k2.iaMA = 10; k2.ukV = 2; k2.gmMAV = 1.6; k2.fdHz = 40;   // Rk = 200 Ω, K = 0,32
+        auto rk2 = polaryzacjaKatodowa(k2);
+        CHECK(rk2 && bl(rk2->rkSzereg, 200) && rk2->maCk && !rk2->ckPotrzebny && fKatodyHz(200, 100e-6, 1.6e-3) == 0);
+        // pentoda: prąd ekranu dodaje się do prądu katody: 45 + 5 mA, 20 V -> 400 Ω, E24 = 390 Ω, Uk = 19,5 V
+        WejscieKatody k3; k3.iaMA = 45; k3.ig2MA = 5; k3.ukV = 20;
+        auto rk3 = polaryzacjaKatodowa(k3);
+        CHECK(rk3 && bl(rk3->ikMA, 50) && bl(rk3->rkIdealny, 400) && bl(rk3->rkSzereg, 390) && bl(rk3->ukRzeczywiste, 19.5) && !rk3->maCk && bl(rk3->napiecieCkV, 39));
+        // bez gm: tylko reguła praktyczna
+        WejscieKatody k4 = k; k4.gmMAV = 0;
+        auto rk4 = polaryzacjaKatodowa(k4);
+        CHECK(rk4 && bl(rk4->ckUF, rk4->ckReguleUF));
+        WejscieKatody zle; zle.iaMA = 0; zle.ukV = 2;
+        CHECK(!polaryzacjaKatodowa(zle));
+        zle.iaMA = 1; zle.ukV = 0;
+        CHECK(!polaryzacjaKatodowa(zle));
+
+        // kondensator sprzęgający: Ra = 100 k, ra = 62 k (równolegle 38,2716 k) + Rg = 470 k = 508,2716 k; Cs = 22 nF
+        WejscieSprzezenia c; c.raKOhm = 100; c.rwewKOhm = 62; c.rgKOhm = 470; c.csNF = 22; c.fdHz = 20;
+        auto sp = kondensatorSprzegajacy(c);
+        const double rcalk = 100.0 * 62 / 162 + 470;
+        CHECK(sp && bl(sp->rcalkKOhm, rcalk) && sp->maF && bl(sp->fSekcjiHz, 1 / (2 * pi * rcalk * 1e3 * 22e-9)) && bl(sp->fCalkowitaHz, sp->fSekcjiHz));
+        CHECK(sp && sp->maCs && bl(sp->csPotrzebneNF, 1 / (2 * pi * rcalk * 1e3 * 20) * 1e9) && bl(sp->csSzeregNF, 18));   // 15,66 nF -> E12 w górę: 18 nF
+        c.sekcje = 2;   // dwie jednakowe sekcje: f_całk = f / sqrt(sqrt(2) - 1)
+        auto sp2 = kondensatorSprzegajacy(c);
+        CHECK(sp2 && bl(sp2->fCalkowitaHz, sp->fSekcjiHz / std::sqrt(std::sqrt(2.0) - 1)) && sp2->csPotrzebneNF > sp->csPotrzebneNF);
+        // dobór z fd: dla policzonego Cs (bez zaokrąglenia) układ ma dokładnie -3,01 dB przy fd
+        {
+            WejscieSprzezenia d; d.raKOhm = 100; d.rgKOhm = 1000; d.fdHz = 30;
+            auto r = kondensatorSprzegajacy(d);
+            const double fs = 1 / (2 * pi * 1100e3 * r->csPotrzebneNF * 1e-9);
+            CHECK(r && bl(fs, 30) && r->csSzeregNF >= r->csPotrzebneNF && r->spadekPrzyFdDb > -3.02 && r->spadekPrzyFdDb <= 0);
+        }
+        WejscieSprzezenia zlec; zlec.raKOhm = 100; zlec.rgKOhm = 0;
+        CHECK(!kondensatorSprzegajacy(zlec));
+        zlec.rgKOhm = 470; zlec.sekcje = 9;
+        CHECK(!kondensatorSprzegajacy(zlec));
+
+        // regulacja barwy: wartości odniesienia z niezależnej implementacji (numpy), która czyta bezpośrednio netlisty .cir
+        // i katalog projektu tonestack (wartości, krzywe potencjometrów); poziomy w dB przy zadanej częstotliwości
+        const auto& uk = ukladyBarwy();
+        CHECK(uk.size() == 14 && uk[0].nazwa.find("Bassman") != std::string::npos);
+        struct Wz { const char* plik; size_t nr; double p[3]; double f; double db; };
+        static const Wz wz[] = {
+        {"fender", 1, {0.5, 0.5, 0.5}, 1000, -22.933285971},
+        {"fender", 1, {0.2, 0.8, 0.35}, 300, -20.980927629},
+        {"fender", 1, {0.9, 0.1, 0.7}, 5000, -12.318983972},
+        {"marshall", 2, {0.5, 0.5, 0.5}, 1000, -8.734630617},
+        {"marshall", 2, {0.2, 0.8, 0.35}, 300, -6.421077391},
+        {"marshall", 2, {0.9, 0.1, 0.7}, 5000, -4.159469896},
+        {"vox", 3, {0.5, 0.5, 0.5}, 1000, -25.397586908},
+        {"vox", 3, {0.2, 0.8, 0.35}, 300, -18.605776092},
+        {"vox", 3, {0.9, 0.1, 0.7}, 5000, -15.086313736},
+        {"james", 4, {0.5, 0.5, 0.5}, 1000, -21.263675308},
+        {"james", 4, {0.2, 0.8, 0.35}, 300, -22.707442068},
+        {"james", 4, {0.9, 0.1, 0.7}, 5000, -16.349029200},
+        {"baxandall", 5, {0.5, 0.5, 0.5}, 1000, -8.660216062},
+        {"baxandall", 5, {0.2, 0.8, 0.35}, 300, -8.728679718},
+        {"baxandall", 5, {0.9, 0.1, 0.7}, 5000, -7.319220418},
+        {"bandmaster", 6, {0.5, 0.5, 0.5}, 1000, -10.000284018},
+        {"bandmaster", 6, {0.2, 0.8, 0.35}, 300, -15.168044556},
+        {"bandmaster", 6, {0.9, 0.1, 0.7}, 5000, -5.561175861},
+        {"bench", 7, {0.5, 0.5, 0.5}, 1000, -24.726429445},
+        {"bench", 7, {0.2, 0.8, 0.35}, 300, -21.637134486},
+        {"bench", 7, {0.9, 0.1, 0.7}, 5000, -22.280569725},
+        {"voigt", 8, {0.5, 0.5, 0.5}, 1000, -17.846491744},
+        {"voigt", 8, {0.2, 0.8, 0.35}, 300, -17.859808533},
+        {"voigt", 8, {0.9, 0.1, 0.7}, 5000, -13.076413822},
+        {"boneray", 9, {0.5, 0.5, 0.5}, 1000, -14.586808767},
+        {"boneray", 9, {0.2, 0.8, 0.35}, 300, -11.187227624},
+        {"boneray", 9, {0.9, 0.1, 0.7}, 5000, -8.056505255},
+        {"tubedriver", 10, {0.5, 0.5, 0.5}, 1000, -23.649365032},
+        {"tubedriver", 10, {0.2, 0.8, 0.35}, 300, -18.227770531},
+        {"tubedriver", 10, {0.9, 0.1, 0.7}, 5000, -27.994334461},
+        {"marshall18", 11, {0.5, 0.5, 0.5}, 1000, -2.324304648},
+        {"marshall18", 11, {0.2, 0.8, 0.35}, 300, -3.614157323},
+        {"marshall18", 11, {0.9, 0.1, 0.7}, 5000, -5.413578958},
+        {"bigmuff", 12, {0.5, 0.5, 0.5}, 1000, -19.059469165},
+        {"bigmuff", 12, {0.2, 0.8, 0.35}, 300, -17.196806819},
+        {"bigmuff", 12, {0.9, 0.1, 0.7}, 5000, -24.176811856},
+        {"moonlight", 13, {0.5, 0.5, 0.5}, 1000, -10.934962901},
+        {"moonlight", 13, {0.2, 0.8, 0.35}, 300, -10.945929393},
+        {"moonlight", 13, {0.9, 0.1, 0.7}, 5000, -14.849072685},
+        };
+        for (const Wz& w : wz) {
+            NastawyBarwy n; n.poz[1] = w.p[0]; n.poz[2] = w.p[1]; n.poz[3] = w.p[2];
+            const double d = poziomUkladuDb(uk.at(w.nr), n, w.f);
+            if (std::fabs(d - w.db) >= 1e-5) std::cerr << "  układ " << w.plik << " f=" << w.f << ": " << d << " zamiast " << w.db << "\n";
+            CHECK(std::fabs(d - w.db) < 1e-5);
+        }
+        // Fender Bassman 5F6-A (topologia Fendera, wartości typowe)
+        {
+            NastawyBarwy n; n.poz[1] = n.poz[2] = n.poz[3] = 0.5;
+            CHECK(std::fabs(poziomUkladuDb(uk[0], n, 1000) - (-16.912464986)) < 1e-5);
+            n.poz[1] = 0.9; n.poz[2] = 0.1; n.poz[3] = 0.7;
+            CHECK(std::fabs(poziomUkladuDb(uk[0], n, 400) - (-16.341938658)) < 1e-5);
+        }
+        // krzywe potencjometrów: f(0,5) = m, f(0) = 0, f(1) = 1
+        for (Taper t : {Taper::Log, Taper::LogA, Taper::OdwrotnyLog})
+            CHECK(std::fabs(udzialRezystancji(0.5, t) - polowaTaperu(t)) < 1e-12 && std::fabs(udzialRezystancji(0, t)) < 1e-12 && std::fabs(udzialRezystancji(1, t) - 1) < 1e-12);
+        CHECK(udzialRezystancji(0.3, Taper::Liniowy) == 0.3 && udzialRezystancji(-1, Taper::LogA) == 0 && std::fabs(udzialRezystancji(2, Taper::Log) - 1) < 1e-12);
+        // wykorzystanie elementów: Fender ma 3 potencjometry, Vox 2, Marshall 18 W jeden
+        CHECK(uk[1].uzywaPot(1) && uk[1].uzywaPot(2) && uk[1].uzywaPot(3) && uk[3].uzywaPot(1) && !uk[3].uzywaPot(2) && uk[3].uzywaPot(3));
+        CHECK(!uk[11].uzywaPot(1) && uk[11].uzywaPot(2) && uk[7].uzywa(Typ::L, 1) && uk[7].uzywa(Typ::L, 2) && !uk[1].uzywa(Typ::L, 1));
+        // własności fizyczne: układy bierne nie wzmacniają; Fender/Marshall: wysokie na maksimum -> ok. 0 dB przy wysokich f
+        {
+            bool bierny = true;
+            for (size_t i = 0; i < uk.size(); ++i) {
+                NastawyBarwy n;
+                for (double a : {0.0, 0.5, 1.0}) for (double c : {0.0, 0.5, 1.0}) {
+                    n.poz[1] = a; n.poz[2] = c; n.poz[3] = a;
+                    for (double f = 20; f <= 20000; f *= 1.4)
+                        if (uk[i].nazwa.find("Bench") == std::string::npos) bierny = bierny && poziomUkladuDb(uk[i], n, f) <= 1e-6;
+                }
+            }
+            CHECK(bierny);
+        }
+        // środek Fendera jest rezystorem zmiennym do masy: im większy, tym płytsze wycięcie pasma środkowego (500 Hz)
+        {
+            auto d = [&](double sr) { NastawyBarwy n; n.poz[1] = 0.5; n.poz[2] = sr; n.poz[3] = 0.5; return poziomUkladuDb(uk[0], n, 500); };
+            CHECK(d(0.1) < d(0.5) && d(0.5) < d(1.0));
+        }
+        const ParametryUkladu ps = parametryUkladu(uk[0], NastawyBarwy{});
+        CHECK(ps.minimumDb < -10 && ps.fMinimumHz >= 100 && ps.fMinimumHz <= 3000 && ps.maksimumDb <= 0 && ps.poziom1kHz > -60);
+        // błędne dane
+        UkladBarwy zly = uk[0]; zly.c[2] = 0;
+        CHECK(odpowiedzUkladu(zly, NastawyBarwy{}, 1000) == std::complex<double>(0));
+        NastawyBarwy poza; poza.poz[1] = 1.5;
+        CHECK(odpowiedzUkladu(uk[0], poza, 1000) == std::complex<double>(0) && odpowiedzUkladu(uk[0], NastawyBarwy{}, 0) == std::complex<double>(0));
     }
 
     std::cerr << sprawdzenia << " sprawdzeń, " << bledy << " błędów\n";

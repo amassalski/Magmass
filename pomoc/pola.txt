@@ -563,3 +563,40 @@ narzedzia.paski.pasek6	Pasek 6	Kolor szóstego paska – współczynnik temperat
 narzedzia.wartosc.tolerancja	Tolerancja	Dopuszczalne odchylenie rezystancji od wartości nominalnej w procentach; pokazywane kolorem paska tolerancji (brak paska oznacza 20 %).	narzedzia-kody
 narzedzia.wartosc.liczba_paskow	Liczba pasków rezystora	Ile pasków ma mieć rysunek dla wpisanej wartości: 3 (tolerancja 20 %), 4 (dwie cyfry), 5 (trzy cyfry) albo 6 (trzy cyfry i współczynnik temperaturowy).	narzedzia-kody
 narzedzia.wartosc.tempco	Współczynnik temperaturowy	Zmiana rezystancji wraz z temperaturą w ppm/K; kodowana szóstym paskiem (np. brązowy = 100 ppm/K). Dotyczy tylko rezystorów 6-paskowych.	narzedzia-kody
+audio.kat_ia	Prąd anodowy Ia	Prąd anodowy lampy w punkcie pracy w miliamperach. Razem z prądem siatki ekranującej płynie przez rezystor katodowy.	pole-audio
+audio.kat_ig2	Prąd siatki ekranującej Ig2	Dla pentody i tetrody: prąd siatki ekranującej w mA, który płynie przez ten sam Rk (Ik = Ia + Ig2). Dla triody wpisz 0 albo zostaw puste.	pole-audio
+audio.kat_uk	Napięcie polaryzacji Uk	Wymagane napięcie polaryzacji, czyli spadek napięcia na rezystorze katodowym w woltach (dla triod zwykle 1 do 3 V, dla lamp mocy kilkanaście woltów). Rk = Uk / Ik.	pole-audio
+audio.kat_gm	Konduktancja gm	Konduktancja wzajemna lampy w mA/V. Służy do doboru kondensatora katodowego z warunku spadku wzmocnienia o 3 dB. Puste: pokazana zostaje tylko reguła praktyczna (reaktancja Ck równa Rk/10 przy fd).	pole-audio
+audio.kat_fd	Częstotliwość fd	Częstotliwość, przy której spadek wzmocnienia po wyłączeniu bocznikowania Rk ma wynosić 3 dB (zwykle 20 do 40 Hz). Puste: bez doboru Ck.	pole-audio
+audio.kat_szereg	Szereg wartości	Szereg wartości znormalizowanych użyty do zaokrąglenia: Rk do najbliższej wartości, Ck do najbliższej NIE MNIEJSZEJ, żeby nie pogorszyć pasma.	pole-audio
+audio.sprz_ra	Obciążenie anodowe Ra	Rezystor anodowy poprzedniego stopnia, np. 100k. Razem z rezystancją wewnętrzną lampy tworzy rezystancję wyjściową stopnia.	pole-audio
+audio.sprz_rwew	Rezystancja wewnętrzna ra	Rezystancja wewnętrzna lampy poprzedniego stopnia, np. 62k dla ECC83. Rezystancja wyjściowa stopnia to Ra ‖ ra. Puste: pomiń (wtedy tylko Ra).	pole-audio
+audio.sprz_rg	Rezystor siatki Rg	Rezystor upływu siatki następnego stopnia, np. 470k albo 1M. Razem z rezystancją wyjściową poprzedniego stopnia tworzy rezystancję, na którą pracuje kondensator sprzęgający.	pole-audio
+audio.sprz_cs	Kondensator sprzęgający Cs	Pojemność kondensatora między stopniami, np. 22n. Z niej program liczy częstotliwość graniczną fc = 1 / (2π · (Ra ‖ ra + Rg) · Cs). Puste: tylko dobór z fd.	pole-audio
+audio.sprz_fd	Dolna częstotliwość fd	Częstotliwość, przy której całe pasmo ma spadek 3 dB. Program dobiera Cs. Puste: tylko częstotliwość z Cs.	pole-audio
+audio.sprz_sekcje	Liczba sekcji w kaskadzie	Ile jednakowych sekcji RC (np. kolejnych stopni sprzężonych RC) składa się na dolną częstotliwość graniczną. Dla n sekcji częstotliwość -3 dB jest wyższa niż dla jednej: f = fc / √(2^(1/n) − 1).	pole-audio
+audio.sprz_szereg	Szereg dla Cs	Szereg wartości, z którego dobierany jest kondensator (najbliższa NIE MNIEJSZA wartość).	pole-audio
+audio.barwa_preset	Układ regulacji barwy	Wybór układu: Fender Bassman 5F6-A (wartości typowe) oraz bierne układy z katalogu projektu tonestack: Fender (Twin Reverb), Marshall JCM800, Vox AC30, James, Baxandall, Bandmaster, Bench (z cewkami), Voigt, Bone Ray, Tube Driver, Marshall 18 W, Big Muff i Moonlight. Po wyborze pokazują się tylko elementy i potencjometry danego układu, z wartościami katalogowymi, które można zmieniać.	pole-audio
+audio.barwa_r	Rezystory R1 do R3	Rezystory stałe układu (np. slope w układzie Fendera i Marshalla). Wartości jak w rezystorach: 33k, 100k, 1M.	pole-audio
+audio.barwa_c	Kondensatory C1 do C4	Kondensatory układu (np. 270p, 100n, 47n).	pole-audio
+audio.barwa_l	Cewki L1 i L2	Cewki układu Bench (wartości w henrach, np. 6 i 20).	pole-audio
+audio.barwa_zr	Rezystancja źródła	Rezystancja wyjściowa poprzedniego stopnia (anoda lampy albo wtórnik katodowy). Wartość katalogowa układu; 0 oznacza idealne źródło.	pole-audio
+audio.barwa_obc	Obciążenie wyjścia	Rezystancja obciążająca wyjście układu (np. rezystor siatki następnego stopnia, 1M). 0 oznacza brak obciążenia.	pole-audio
+audio.barwa_suwaki	Położenie potencjometru	Położenie osi od 0 do 10. Rezystancja odcinka potencjometru wynika z krzywej: R·f(x), gdzie f to udział rezystancji dla danej charakterystyki.	pole-audio
+audio.barwa_potr	Wartość potencjometru	Rezystancja całkowita potencjometru, np. 250k, 1M, 25k.	pole-audio
+audio.barwa_taper	Charakterystyka potencjometru	Liniowy: f = x. Pozostałe: f = a·b^x − a, b = (1/m − 1)², a = 1/(b − 1), gdzie m to udział rezystancji w połowie obrotu: log 0,12, log A 0,25, odwrotny log 0,88. Charakterystyki katalogowe jak w projekcie tonestack.	pole-audio
+serwis.szukaj	Szukaj w serwisie	Szuka po nazwie urządzenia, producencie, modelu, numerze seryjnym, lokalizacji, numerze zgłoszenia, techniku, opisach oraz po nazwie i numerach części.	serwis
+serwis.zakres	Zakres dat	Pokazuje wpisy serwisowe z wybranego okresu (włącznie). Puste pole oznacza brak ograniczenia.	serwis
+serwis.lista	Lista serwisów	Wpisy od najnowszego. Prawy przycisk myszy otwiera menu: edycja, kolejny serwis, zdjęcie z kamery lub pliku, historia urządzenia, usuń. Niebieskie: w trakcie, pomarańczowe: oczekuje na części.	serwis
+serwis.duplikuj	Kolejny serwis tego urządzenia	Nowy wpis z danymi urządzenia, lokalizacją, technikiem i rodzajem z zaznaczonego wpisu oraz dzisiejszą datą; usterkę, czynności i części wpisujesz od nowa.	serwis
+serwis.historia	Historia urządzenia	Pokazuje wszystkie wpisy tego samego urządzenia: po numerze seryjnym, a gdy go brak po nazwie. Wyczyść pole szukania, aby wrócić do całej listy.	serwis
+serwis.lokalizacja	Lokalizacja	Gdzie urządzenie stoi: obiekt, węzeł, szafa, pozycja. Lista podpowiada wcześniej wpisane miejsca.	serwis
+serwis.rodzaj	Rodzaj serwisu	Naprawa, wymiana, przegląd, konfiguracja, instalacja, pomiar lub inne. Służy do filtrowania listy.	serwis
+serwis.status	Status serwisu	Zakończone, w trakcie albo oczekuje na części. Wpisy niezakończone są na liście kolorowe, żeby nie umknęły.	serwis
+serwis.zgloszenie	Numer zgłoszenia	Numer zgłoszenia lub zlecenia z zewnętrznego systemu, np. helpdesku, pod którym prowadzono prace.	serwis
+serwis.seryjny	Numer seryjny urządzenia	Jednoznacznie wskazuje urządzenie. Po nim działa historia urządzenia, więc warto go wpisywać.	serwis
+serwis.czesci	Części	Co wymieniono lub zamontowano: nazwa, ilość oraz numery seryjne elementu zdjętego i zamontowanego. Dwuklik zmienia pozycję.	serwis
+serwis.czesc_numery	Numery seryjne części	Numer elementu zdjętego z urządzenia i numer elementu zamontowanego na jego miejsce. Pozwala potem ustalić, gdzie trafił dany egzemplarz.	serwis
+serwis.zdjecia	Zdjęcia wpisu	Zdjęcia z kamery USB lub z plików: uszkodzenie, stan przed i po, tabliczka znamionowa. W bazie zapisana jest tylko ścieżka, pliki leżą w katalogu zdjęć programu.	serwis
+serwis.czesc_magazyn	Wybierz z magazynu	Powiązuje część z elementem z magazynu i podstawia jego symbol, wartość i obudowę jako nazwę. Nazwę można potem poprawić. Odłącz zrywa powiązanie.	serwis
+serwis.czesc_pobierz	Zdejmij ze stanu magazynu	Przy zapisie wpisu ilość części zostanie zdjęta ze stanu elementu (zapis w historii jako wydanie). Jeśli brakuje towaru, zapis wpisu jest odrzucony. Pobrania nie da się powtórzyć: ponowna edycja wpisu nie zmienia już stanu.	serwis

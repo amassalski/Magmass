@@ -3,7 +3,7 @@
 
 #include <wx/wx.h>
 #include <wx/combobox.h>
-#include <wx/datectrl.h>
+#include "PoleDaty.h"
 
 #include <string>
 #include <vector>
@@ -22,7 +22,7 @@ public:
 
 private:
     wxComboBox* cbOsoba_;
-    wxDatePickerCtrl *dpOd_, *dpTermin_;
+    PoleDatyTyp *dpOd_, *dpTermin_;
     wxTextCtrl* tcUwagi_;
     wxString komunikatBraku_;
 };

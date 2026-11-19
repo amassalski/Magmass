@@ -31,6 +31,7 @@
 #include "PanelKatalogu.h"
 #include "PanelKsiazek.h"
 #include "PanelNarzedzi.h"
+#include "PanelSerwisu.h"
 #include "../BazaDanych/ManagerBazyDanych.h"
 #include "UstawieniaOkna.h"
 #include "../Eksport/EksportCSV.h"
@@ -57,6 +58,7 @@ OknoGlowne::OknoGlowne(const wxString& title)
       logikaKatalogu(ManagerBazyDanych::pobierz()),
       logikaKsiazek(ManagerBazyDanych::pobierz()),
       logikaNarzedzi(ManagerBazyDanych::pobierz()),
+      logikaSerwisu(ManagerBazyDanych::pobierz()),
       logikaRaportow(ManagerBazyDanych::pobierz(), logika, logikaProjektow),
       logikaSklepow(ManagerBazyDanych::pobierz()) {
     SetIcons(Ikony::IkonaProgramu());
@@ -89,6 +91,8 @@ OknoGlowne::OknoGlowne(const wxString& title)
     zakladki->AddPage(panelKsiazek, TR("Literatura"));
     panelNarzedzi = new PanelNarzedzi(zakladki, logikaNarzedzi);
     zakladki->AddPage(panelNarzedzi, TR("Narzędzia"));
+    panelSerwisu = new PanelSerwisu(zakladki, logikaSerwisu, logika);
+    zakladki->AddPage(panelSerwisu, TR("Serwis"));
     uklad->Add(zakladki, 1, wxEXPAND);
 
     dziennik = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, 96),
@@ -138,12 +142,16 @@ OknoGlowne::OknoGlowne(const wxString& title)
     panelNarzedzi->naStatus = [this](const wxString& tekst) { SetStatusText(tekst, 0); };
     panelNarzedzi->naKomunikat = [this](const wxString& tekst) { Zapisz(tekst); };
     panelNarzedzi->Enable(false);
+    panelSerwisu->naStatus = [this](const wxString& tekst) { SetStatusText(tekst, 0); };
+    panelSerwisu->naKomunikat = [this](const wxString& tekst) { Zapisz(tekst); };
+    panelSerwisu->Enable(false);
     zakladki->Bind(wxEVT_NOTEBOOK_PAGE_CHANGED, [this](wxBookCtrlEvent& e) {
         // stany magazynowe mogły się zmienić na innej zakładce (Magazyn, Katalog, Narzędzia) - lista części projektu pokazuje je na bieżąco
         if (bazaGotowa && zakladki->GetPage(static_cast<size_t>(e.GetSelection())) == panelProjektow) panelProjektow->Odswiez();
         if (bazaGotowa && zakladki->GetPage(static_cast<size_t>(e.GetSelection())) == panelKatalogu) panelKatalogu->Odswiez();
         if (bazaGotowa && zakladki->GetPage(static_cast<size_t>(e.GetSelection())) == panelKsiazek) panelKsiazek->Odswiez();
         if (bazaGotowa && zakladki->GetPage(static_cast<size_t>(e.GetSelection())) == panelNarzedzi) panelNarzedzi->Odswiez();
+        if (bazaGotowa && zakladki->GetPage(static_cast<size_t>(e.GetSelection())) == panelSerwisu) panelSerwisu->Odswiez();
         e.Skip();
     });
 
@@ -587,10 +595,12 @@ void OknoGlowne::OdswiezDane() {
     panelKatalogu->Enable(gotowa);
     panelKsiazek->Enable(gotowa);
     panelNarzedzi->Enable(gotowa);
+    panelSerwisu->Enable(gotowa);
     if (!gotowa) {
         panelKatalogu->Wyczysc();
         panelKsiazek->Wyczysc();
         panelNarzedzi->Wyczysc();
+        panelSerwisu->Wyczysc();
         panelKategorii->Wyczysc();
         panelElementow->Wyczysc();
         panelProjektow->Wyczysc();
@@ -600,6 +610,7 @@ void OknoGlowne::OdswiezDane() {
     panelKatalogu->Odswiez();
     panelKsiazek->Odswiez();
     panelNarzedzi->Odswiez();
+    panelSerwisu->Odswiez();
     panelNarzedzi->Przypomnij();   // przeterminowane pożyczki trafiają do dziennika
     panelKsiazek->Przypomnij();
     panelKategorii->Odswiez();
@@ -920,6 +931,7 @@ void OknoGlowne::OnZestawienie(wxCommandEvent&) {
 void OknoGlowne::PokazKatalog() { zakladki->SetSelection(2); }
 void OknoGlowne::PokazLiteratura() { zakladki->SetSelection(3); }
 void OknoGlowne::PokazNarzedzia() { zakladki->SetSelection(4); }
+void OknoGlowne::PokazSerwis() { zakladki->SetSelection(5); }
 
 void OknoGlowne::OnKatalog(wxCommandEvent& event) {
     zakladki->SetSelection(2);

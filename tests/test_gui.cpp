@@ -82,6 +82,8 @@
 #include <wx/wfstream.h>
 #include <wx/zipstrm.h>
 #include "GUI/PanelNarzedzi.h"
+#include "GUI/PanelSerwisu.h"
+#include "Logika/LogikaSerwisu.h"
 #include "Logika/LogikaNarzedzi.h"
 #include "GUI/DialogKatalogu.h"
 #include "Logika/LogikaKatalogu.h"
@@ -1639,7 +1641,30 @@ private:
 
     void TestAudioLampy(OknoGlowne* okno) {
         DialogAudioLampy d(okno);
-        CHECK(d.LiczbaStron() == 4);
+        CHECK(d.LiczbaStron() == 7);
+        // polaryzacja katodowa: Ia = 1,2 mA, Uk = 1,8 V -> Rk = 1,5 kΩ, Ck 8,2 µF (E12: 10 µF)
+        d.UstawPolaKatody({"1,2", "0", "1,8", "1,6", "40"});
+        CHECK(d.WynikKatody().Contains("1,5 k") && d.WynikKatody().Contains("Ck dla spadku 3 dB"));
+        d.UstawPolaKatody({"x", "0", "1,8", "1,6", "40"});
+        CHECK(d.WynikKatody().Contains("Wpisz Ia"));
+        // kondensator sprzęgający: Ra 100k, ra 62k, Rg 470k, Cs 22n -> fc ≈ 14,2 Hz
+        d.UstawPolaSprzezenia({"100k", "62k", "470k", "22n", "20"}, 1);
+        CHECK(d.WynikSprzezenia().Contains("14,2") && d.WynikSprzezenia().Contains("Cs dla fd"));
+        d.UstawPolaSprzezenia({"100k", "62k", "0", "22n", "20"}, 1);
+        CHECK(d.WynikSprzezenia().Contains("muszą być dodatnie"));
+        // regulacja barwy: wybór układu pokazuje tylko jego elementy i potencjometry
+        CHECK(d.LiczbaUkladowBarwy() == 14);
+        d.UstawBarwe(0, 0.5, 0.5, 0.5);   // Fender Bassman 5F6-A (potencjometry log A: bas i wysokie)
+        CHECK(d.PunktowBarwy() > 50 && d.LiczbaPotBarwy() == 3 && d.NazwaPotBarwy(1) == "Bas" && d.WynikBarwy().Contains("1 kHz -16,9"));
+        d.UstawTaperPotBarwy(1, 0);
+        d.UstawTaperPotBarwy(3, 0);       // liniowe -> inny przebieg
+        CHECK(!d.WynikBarwy().Contains("1 kHz -16,9") && d.WynikBarwy().Contains("Najgłębsze wycięcie"));
+        d.UstawBarwe(3, 0.3, 0.5, 0.9);   // Vox: tylko bas i wysokie
+        CHECK(d.LiczbaPotBarwy() == 2 && d.NazwaPotBarwy(2).empty() && d.NazwaPotBarwy(3) == "Wysokie" && d.PunktowBarwy() > 50);
+        d.UstawBarwe(11, 0.5, 0.5, 0.5);  // Marshall 18 W: jeden potencjometr „Barwa”
+        CHECK(d.LiczbaPotBarwy() == 1 && d.NazwaPotBarwy(2) == "Barwa");
+        d.UstawBarwe(7, 0.5, 0.5, 0.5);   // Bench: z cewkami
+        CHECK(d.PunktowBarwy() > 50 && d.LiczbaPotBarwy() == 3 && !d.WynikBarwy().Contains("Wpisz"));
         d.UstawPolaLampy({"250", "100k", "0,8", "-1,5", "", "", "100", "62k5", "1", "20"});
         CHECK(d.WynikPunktuPracy().Contains("Rk = ") && d.WynikPunktuPracy().Contains("Kondensator katodowy"));
         d.UstawPolaLampy({"250", "100k", "0,8", "1,5"});
@@ -2075,6 +2100,83 @@ private:
         sprzatanie();
     }
 
+    void TestSerwisu(OknoGlowne* okno) {
+        ManagerBazyDanych& m = ManagerBazyDanych::pobierz();
+        LogikaSerwisu ls(m);
+        LogikaNarzedzi ln(m);
+        auto sprzatanie = [&] {
+            m.wykonaj("DELETE FROM tbl_serwis WHERE urzadzenie LIKE 'GUIS %'");
+            m.wykonaj("DELETE FROM tbl_narzedzia WHERE nazwa LIKE 'GUIS %'");
+        };
+        sprzatanie();
+        PanelSerwisu* ps = ZnajdzTyp<PanelSerwisu>(okno);
+        CHECK(ps != nullptr);
+        if (!ps) return;
+        WpisSerwisowy a; a.urzadzenie = "GUIS Router"; a.numerSeryjny = "SN-1"; a.lokalizacja = "Węzeł A"; a.data = "2026-05-01";
+        a.status = "w trakcie"; a.rodzaj = "wymiana";
+        CzescSerwisowa c; c.nazwa = "Moduł SFP"; c.numerNowy = "SFP-9";
+        a.czesci = {c};
+        WpisSerwisowy b; b.urzadzenie = "GUIS Switch"; b.data = "2026-04-01";
+        auto ia = ls.zapisz(a), ib = ls.zapisz(b);
+        CHECK(ia && ib);
+        if (!ia || !ib) { sprzatanie(); return; }
+        okno->PokazSerwis();
+        ps->Szukaj("GUIS");
+        CHECK(ps->Lista().size() == 2 && ps->Lista()[0].id == *ia);
+        ps->Wybierz(*ia);
+        CHECK(ps->Wybrany() && ps->Wybrany()->id == *ia);
+        CHECK(ps->Szczegoly() && ps->Szczegoly()->czesci.size() == 1);
+        ps->UstawFiltr("", "w trakcie");
+        CHECK(ps->Lista().size() >= 1);
+        ps->UstawFiltr("", "");
+        ps->Szukaj("SFP-9");
+        CHECK(ps->Lista().size() == 1 && ps->Lista()[0].id == *ia);
+        ps->Szukaj("GUIS");
+        ps->Wybierz(*ia);
+        const wxString obraz = wxFileName::GetTempDir() + "/guis_zdjecie.png";
+        wxImage im(60, 40); im.SetRGB(wxRect(0, 0, 60, 40), 30, 120, 30);
+        CHECK(im.SaveFile(obraz, wxBITMAP_TYPE_PNG));
+        CHECK(ps->DolaczZdjecie(obraz, "przed"));
+        CHECK(ps->Szczegoly() && ps->Szczegoly()->zdjecia.size() == 1 && ps->LiczbaMiniatur() == 1);
+        wxYield();
+        ZrzutEkranu("25_serwis");
+        ps->UsunZdjecie(0, true);
+        CHECK(ps->Szczegoly() && ps->Szczegoly()->zdjecia.empty() && ps->LiczbaMiniatur() == 0);
+        wxRemoveFile(obraz);
+        ps->HistoriaUrzadzenia();
+        CHECK(ps->Lista().size() == 1);                            // po numerze seryjnym
+        ps->Szukaj("GUIS");
+        const wxString out = wxFileName::GetTempDir() + "/guis_out.csv";
+        CHECK(ps->EksportujCSV(out) && wxFileExists(out));
+        wxRemoveFile(out);
+        ps->Wybierz(*ib);
+        ps->Usun(true);
+        CHECK(ps->Lista().size() == 1);
+
+        // zdjęcie narzędzia (to samo, co robi menu kontekstowe "Dołącz zdjęcie z kamery")
+        Narzedzie n; n.nazwa = "GUIS Miernik";
+        auto in = ln.zapisz(n);
+        CHECK(in.has_value());
+        if (in) {
+            okno->PokazNarzedzia();
+            PanelNarzedzi* pn = ZnajdzTyp<PanelNarzedzi>(okno);
+            CHECK(pn != nullptr);
+            if (pn) {
+                pn->Szukaj("GUIS Miernik");
+                pn->Wybierz(*in);
+                CHECK(!pn->ZdjeciePokazane());
+                const wxString o2 = wxFileName::GetTempDir() + "/guis_n.png";
+                CHECK(im.SaveFile(o2, wxBITMAP_TYPE_PNG));
+                CHECK(pn->DolaczZdjecie(o2));
+                CHECK(pn->ZdjeciePokazane());
+                wxRemoveFile(o2);
+                pn->Szukaj("");
+            }
+        }
+        okno->PokazKatalog();
+        sprzatanie();
+    }
+
     void TestKatalogu(OknoGlowne* okno) {
         ManagerBazyDanych& m = ManagerBazyDanych::pobierz();
         LogikaMagazynu logika(m);
@@ -2432,7 +2534,7 @@ private:
         wxNotebook* zakladki = ZnajdzTyp<wxNotebook>(okno);
         CHECK(pp != nullptr && zakladki != nullptr);
         if (!pp || !zakladki) return;
-        CHECK(zakladki->GetPageCount() == 5);
+        CHECK(zakladki->GetPageCount() == 6);
         CHECK(zakladki->GetPageText(1) == "Projekty");
         CHECK(pp->IsEnabled());
 
@@ -2959,6 +3061,7 @@ private:
         TestObudow(okno);
         TestKsiazek(okno);
         TestNarzedzi(okno);
+        TestSerwisu(okno);
         TestZbiorczychGUI(okno);
         TestOcrIMetadanych(okno);
         TestMenuIWydania(okno);

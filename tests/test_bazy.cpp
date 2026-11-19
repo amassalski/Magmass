@@ -26,6 +26,7 @@
 #include "Logika/LogikaKsiazek.h"
 #include "Logika/KsiazkiCSV.h"
 #include "Logika/LogikaNarzedzi.h"
+#include "Logika/LogikaSerwisu.h"
 #include "Logika/NarzedziaCSV.h"
 #include "Import/MetadaneKsiazek.h"
 #include "Logika/SzeregiE.h"
@@ -1869,6 +1870,164 @@ static void testNarzedzi(const fs::path&) {
     sprzatanie();
 }
 
+static void testSerwisu(const fs::path&) {
+    std::cout << "== ewidencja serwisowa\n";
+    ManagerBazyDanych& m = ManagerBazyDanych::pobierz();
+    if (!m.czyPolaczony()) CHECK(m.polacz());
+    CHECK(m.inicjalizujBaze());
+    CHECK(m.wersjaSchematu() >= 18);
+    LogikaSerwisu ls(m);
+    auto sprzatanie = [&] {
+        m.wykonaj("DELETE FROM tbl_serwis WHERE urzadzenie LIKE 'TESTS %'");
+        m.wykonaj("DELETE FROM tbl_transakcje WHERE id_elementu IN (SELECT id FROM tbl_elementy WHERE symbol LIKE 'TESTS\\_%')");
+        m.wykonaj("DELETE FROM tbl_elementy WHERE symbol LIKE 'TESTS\\_%'");
+    };
+    sprzatanie();
+
+    WpisSerwisowy w;
+    CHECK(!ls.zapisz(w));                                  // brak nazwy
+    w.urzadzenie = "TESTS Przełącznik";
+    w.producent = "Cisco"; w.model = "C2960"; w.numerSeryjny = "FOC123"; w.lokalizacja = "Węzeł Kielce";
+    w.data = "2026-02-30";
+    CHECK(!ls.zapisz(w));                                  // zła data
+    w.data = "2026-03-10";
+    w.rodzaj = "kosmiczny";
+    CHECK(!ls.zapisz(w));
+    w.rodzaj = "wymiana"; w.status = "zakończone"; w.technik = "Adam"; w.czasMin = 90;
+    w.usterka = "Brak zasilania portu"; w.wykonano = "Wymieniono zasilacz";
+    CzescSerwisowa c; c.nazwa = "Zasilacz 150 W"; c.ilosc = 1; c.numerStary = "PS-001"; c.numerNowy = "PS-777";
+    CzescSerwisowa c2; c2.nazwa = "Kabel zasilający"; c2.ilosc = 2;
+    w.czesci = {c, c2};
+    c2.ilosc = 0; WpisSerwisowy zly = w; zly.czesci = {c2};
+    CHECK(!ls.zapisz(zly));                                // ilość części
+    auto id = ls.zapisz(w);
+    CHECK(id.has_value());
+    if (!id) { sprzatanie(); return; }
+    auto o = ls.pobierzWpis(*id);
+    CHECK(o && o->urzadzenie == "TESTS Przełącznik" && o->data == "2026-03-10" && o->czasMin && *o->czasMin == 90);
+    CHECK(o && o->czesci.size() == 2 && o->czesci[0].numerNowy == "PS-777" && o->czesci[1].ilosc == 2);
+
+    // druga wizyta u tego samego urządzenia, w trakcie
+    WpisSerwisowy w2; w2.urzadzenie = "TESTS Przełącznik"; w2.numerSeryjny = "FOC123"; w2.data = "2026-04-01"; w2.rodzaj = "przegląd"; w2.status = "w trakcie";
+    auto id2 = ls.zapisz(w2);
+    CHECK(id2.has_value());
+    WpisSerwisowy w3; w3.urzadzenie = "TESTS Modem"; w3.data = "2025-12-01"; w3.status = "oczekuje na części";
+    auto id3 = ls.zapisz(w3);
+    CHECK(id3.has_value());
+
+    std::vector<WpisSerwisowy> l;
+    FiltrSerwisu f; f.tekst = "TESTS";
+    CHECK(ls.pobierz(f, l) && l.size() == 3 && l[0].id == *id2 && l[2].id == *id3);      // najnowsze pierwsze
+    CHECK(l[2].liczbaCzesci == 0);
+    for (const auto& e : l) if (e.id == *id) CHECK(e.liczbaCzesci == 2);
+    f.tekst = "PS-777";                                    // numer części
+    CHECK(ls.pobierz(f, l) && l.size() == 1 && l[0].id == *id);
+    f.tekst = "zasilacz";                                  // opis wykonanych czynności / nazwa części
+    CHECK(ls.pobierz(f, l) && l.size() == 1);
+    f = FiltrSerwisu(); f.tekst = "TESTS"; f.status = "w trakcie";
+    CHECK(ls.pobierz(f, l) && l.size() == 1 && l[0].id == *id2);
+    f = FiltrSerwisu(); f.tekst = "TESTS"; f.rodzaj = "wymiana";
+    CHECK(ls.pobierz(f, l) && l.size() == 1 && l[0].id == *id);
+    f = FiltrSerwisu(); f.tekst = "TESTS"; f.od = "2026-01-01"; f.doDaty = "2026-03-31";
+    CHECK(ls.pobierz(f, l) && l.size() == 1 && l[0].id == *id);
+    f.od = "zła data";
+    CHECK(!ls.pobierz(f, l));
+
+    std::vector<WpisSerwisowy> h;
+    CHECK(ls.historiaUrzadzenia("foc123", "", h) && h.size() == 2);                 // po numerze seryjnym, bez wielkości liter
+    CHECK(ls.historiaUrzadzenia("", "tests modem", h) && h.size() == 1);            // po nazwie, gdy brak numeru
+    CHECK(!ls.historiaUrzadzenia("", "", h));
+
+    // edycja: zamiana listy części
+    o->czesci.pop_back(); o->wykonano = "Zmieniono"; o->status = "oczekuje na części";
+    CHECK(ls.zapisz(*o).has_value());
+    auto o2 = ls.pobierzWpis(*id);
+    CHECK(o2 && o2->czesci.size() == 1 && o2->wykonano == "Zmieniono" && o2->status == "oczekuje na części");
+
+    // zdjęcia
+    CHECK(ls.dodajZdjecie(*id, "/tmp/a.jpg", "przed"));
+    CHECK(ls.dodajZdjecie(*id, "/tmp/b.jpg"));
+    CHECK(!ls.dodajZdjecie(999999999, "/tmp/c.jpg"));
+    CHECK(!ls.dodajZdjecie(*id, "  "));
+    o2 = ls.pobierzWpis(*id);
+    CHECK(o2 && o2->zdjecia.size() == 2 && o2->zdjecia[0].opis == "przed");
+    // edycja wpisu nie kasuje zdjęć
+    CHECK(o2 && ls.zapisz(*o2).has_value());
+    o2 = ls.pobierzWpis(*id);
+    CHECK(o2 && o2->zdjecia.size() == 2);
+    if (o2) CHECK(ls.usunZdjecie(o2->zdjecia[0].id));
+    o2 = ls.pobierzWpis(*id);
+    CHECK(o2 && o2->zdjecia.size() == 1);
+
+    // podpowiedzi i eksport
+    const auto u = ls.urzadzenia();
+    CHECK(std::find(u.begin(), u.end(), "TESTS Modem") != u.end());
+    const auto tt = ls.technicy();
+    CHECK(std::find(tt.begin(), tt.end(), "Adam") != tt.end());
+    WpisSerwisowy pelny = *ls.pobierzWpis(*id);
+    const std::string csv = LogikaSerwisu::naCSV({pelny, *ls.pobierzWpis(*id3)});
+    CHECK(csv.find("Zasilacz 150 W") != std::string::npos && csv.find("TESTS Modem") != std::string::npos);
+    CHECK(std::count(csv.begin(), csv.end(), '\n') == 3);                           // nagłówek + 1 część + wpis bez części
+
+    // części z magazynu: powiązanie, pobranie ze stanu, zwrot
+    {
+        LogikaMagazynu lm(m);
+        Element el; el.symbol = "TESTS_EL"; el.iloscDostepna = 5;
+        auto ide = lm.zapiszElement(el);
+        CHECK(ide.has_value());
+        if (ide) {
+            WpisSerwisowy wm; wm.urzadzenie = "TESTS Magazyn"; wm.data = "2026-05-05";
+            CzescSerwisowa cm; cm.nazwa = "TESTS_EL kondensator"; cm.ilosc = 2; cm.idElementu = *ide; cm.pobierz = true;
+            wm.czesci = {cm};
+            CzescSerwisowa za_duzo = cm; za_duzo.ilosc = 99;
+            WpisSerwisowy wz = wm; wz.czesci = {za_duzo};
+            CHECK(!ls.zapisz(wz));                                                   // brak towaru: nic nie zapisano
+            CHECK(lm.pobierzElement(*ide)->iloscDostepna == 5);
+            std::vector<WpisSerwisowy> lz; FiltrSerwisu fz; fz.tekst = "TESTS Magazyn";
+            CHECK(ls.pobierz(fz, lz) && lz.empty());
+            CzescSerwisowa ulamek = cm; ulamek.ilosc = 1.5;
+            wz.czesci = {ulamek};
+            CHECK(!ls.zapisz(wz));                                                   // sztuki z magazynu są całkowite
+            auto idm = ls.zapisz(wm);
+            CHECK(idm.has_value());
+            CHECK(lm.pobierzElement(*ide)->iloscDostepna == 3);                      // pobrano 2 szt.
+            auto om = idm ? ls.pobierzWpis(*idm) : std::nullopt;
+            CHECK(om && om->czesci.size() == 1 && om->czesci[0].pobrano && om->czesci[0].idElementu == *ide && om->czesci[0].symbolElementu == "TESTS_EL");
+            if (om) {
+                CHECK(ls.zapisz(*om).has_value());                                   // ponowny zapis nie pobiera drugi raz
+                CHECK(lm.pobierzElement(*ide)->iloscDostepna == 3);
+                WpisSerwisowy bez = *om; bez.czesci.clear();
+                CHECK(ls.zapisz(bez).has_value());                                   // usunięcie części bez zwrotu
+                CHECK(lm.pobierzElement(*ide)->iloscDostepna == 3);
+            }
+            // zwrot przy usunięciu części i wpisu
+            WpisSerwisowy w2m; w2m.urzadzenie = "TESTS Magazyn 2"; w2m.czesci = {cm};
+            auto id2m = ls.zapisz(w2m);
+            CHECK(id2m && lm.pobierzElement(*ide)->iloscDostepna == 1);
+            auto o2m = ls.pobierzWpis(*id2m);
+            if (o2m) {
+                o2m->czesci.clear();
+                CHECK(ls.zapisz(*o2m, true).has_value());
+                CHECK(lm.pobierzElement(*ide)->iloscDostepna == 3);                  // zwrot usuniętej części
+            }
+            auto id3m = ls.zapisz(w2m);
+            CHECK(id3m && lm.pobierzElement(*ide)->iloscDostepna == 1);
+            CHECK(ls.czesciPobrane(*id3m).size() == 1);
+            CHECK(ls.usun(*id3m, true));
+            CHECK(lm.pobierzElement(*ide)->iloscDostepna == 3);                      // zwrot przy usunięciu wpisu
+            CHECK(ls.usun(*idm, false));
+        }
+    }
+
+    // usunięcie wpisu usuwa części i zdjęcia
+    CHECK(ls.usun(*id));
+    auto zl = m.zapytanie("SELECT (SELECT count(*) FROM tbl_serwis_czesci WHERE id_serwisu = " + std::to_string(*id) +
+                          ") + (SELECT count(*) FROM tbl_serwis_zdjecia WHERE id_serwisu = " + std::to_string(*id) + ")");
+    CHECK(zl && zl->liczba(0, 0) == 0);
+    CHECK(!ls.pobierzWpis(*id).has_value());
+    sprzatanie();
+}
+
 static void testNazwObiektow(const fs::path&) {
     std::cout << "== nazwy i opisy obiektów bazy\n";
     ManagerBazyDanych& m = ManagerBazyDanych::pobierz();
@@ -2198,6 +2357,7 @@ int main() {
     testKsiazek(tmp);
     testMetadanychKsiazek(tmp);
     testNarzedzi(tmp);
+    testSerwisu(tmp);
     testZbiorczych(tmp);
     testNazwObiektow(tmp);
 

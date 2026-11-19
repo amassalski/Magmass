@@ -6,6 +6,7 @@
 #include "../Logika/LogikaKatalogu.h"
 #include "../Logika/LogikaKsiazek.h"
 #include "../Logika/LogikaNarzedzi.h"
+#include "../Logika/LogikaSerwisu.h"
 #include "../Logika/LogikaRaportow.h"
 #include "../Logika/LogikaSklepow.h"
 
@@ -24,6 +25,7 @@ class PanelProjektow;
 class PanelKatalogu;
 class PanelKsiazek;
 class PanelNarzedzi;
+class PanelSerwisu;
 
 /**
  * @class OknoGlowne
@@ -115,6 +117,7 @@ private:
     PanelKatalogu* panelKatalogu = nullptr;
     PanelKsiazek* panelKsiazek = nullptr;
     PanelNarzedzi* panelNarzedzi = nullptr;
+    PanelSerwisu* panelSerwisu = nullptr;
     PanelKategorii* panelKategorii = nullptr;
     PanelElementow* panelElementow = nullptr;
     PanelPodgladu* panelPodgladu = nullptr;
@@ -124,6 +127,7 @@ private:
     LogikaKatalogu logikaKatalogu;
     LogikaKsiazek logikaKsiazek;
     LogikaNarzedzi logikaNarzedzi;
+    LogikaSerwisu logikaSerwisu;
     LogikaRaportow logikaRaportow;
     LogikaSklepow logikaSklepow;
     std::thread watekLaczenia;
@@ -136,6 +140,7 @@ public:
     void PokazKatalog();
     void PokazLiteratura();
     void PokazNarzedzia();
+    void PokazSerwis();
 private:
     void OnKatalog(wxCommandEvent& event);
 

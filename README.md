@@ -68,6 +68,9 @@ cmake --build build -j
 Pakiet DEB: `narzedzia/zbuduj_deb.sh`.
 
 **Windows (MSYS2, powłoka UCRT64)**
+
+> Ciemny motyw systemu na Windows obsługuje dopiero wxWidgets 3.3: zamiast `wxwidgets3.2-msw` zainstaluj `mingw-w64-ucrt-x86_64-wxwidgets3.3-msw` (CMake wybierze go sam; z wxWidgets 3.2 okna zostają jasne). Wyłączenie: `motyw=jasny` w `[interfejs]` w config.ini.
+
 ```bash
 pacman -S --needed mingw-w64-ucrt-x86_64-toolchain mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-ninja \
   mingw-w64-ucrt-x86_64-wxwidgets3.2-msw mingw-w64-ucrt-x86_64-postgresql

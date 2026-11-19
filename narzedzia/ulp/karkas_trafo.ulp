@@ -1,0 +1,241 @@
+#usage "<b>Karkas składany transformatora - elementy do wycięcia</b>\n"
+       "<p>Rysuje w edytorze płytki (Board) 6 elementów karkasu składanego z laminatu (tekstolit, bakelit, preszpan) "
+       "dla rdzenia EI, w trzech rodzajach:</p>"
+       "<ul><li><b>1. policzek</b> - 2 szt.: płyta z oknem na tuleję, zaokrąglone rogi, opcjonalnie otwory na wyprowadzenia,</li>"
+       "<li><b>2. ścianka z kołnierzami</b> - 2 szt.: pasek o szerokości kolumny środkowej, z kołnierzami na końcach i wypustkami pośrodku,</li>"
+       "<li><b>3. ścianka z wcięciami</b> - 2 szt.: pasek o szerokości pakietu, z wcięciami pośrodku, w które wchodzą wypustki ścianki 2.</li></ul>"
+       "<p>Ścianki 2 i 3 łączą się pod kątem 90° (po dwie naprzeciw siebie), wypustek wchodzi we wcięcie o głębokości równej grubości laminatu d. "
+       "Powstaje otwór na rdzeń większy o luz (domyślnie 0,3 mm) od kolumny środkowej i pakietu blach. "
+       "Złożoną tuleję wsuwa się w okna policzków i rozsuwa policzki na zewnątrz, co zakleszcza całość.</p>"
+       "<p>Oznaczenia: Sk - szerokość kolumny środkowej, Gr - grubość pakietu blach, d - grubość laminatu, "
+       "Wo - wysokość okna rdzenia, So - szerokość okna rdzenia. Wzory: układ elementów i wymiary jak w opisie karkasu składanego "
+       "(Sk+2d, Gr+2d, wysokość tulei Wo, trzy równe odcinki wypustek); wymiary rdzenia powiększane o luz.</p>"
+       "<author>Magmass (GPL-3.0-or-later)</author>"
+
+if (!board) {
+    dlgMessageBox("Uruchom ten skrypt w edytorze płytki (Board), a nie w schemacie ani bibliotece.", "OK");
+    exit(EXIT_FAILURE);
+}
+
+string nazwyRdzeni[] = {
+    "własne wymiary",
+    "EI 30  (Sk = 10 mm)", "EI 38  (Sk = 12,7 mm)", "EI 42  (Sk = 14 mm)", "EI 48  (Sk = 16 mm)",
+    "EI 54  (Sk = 18 mm)", "EI 60  (Sk = 20 mm)", "EI 66  (Sk = 22 mm)", "EI 75  (Sk = 25 mm)",
+    "EI 84  (Sk = 28 mm)", "EI 96  (Sk = 32 mm)", "EI 105 (Sk = 35 mm)", "EI 120 (Sk = 40 mm)",
+    "EI 150 (Sk = 50 mm)"
+};
+real aRdzeni[] = { 0, 10, 12.7, 14, 16, 18, 20, 22, 25, 28, 32, 35, 40, 50 };
+
+int  wybor   = 8;      // EI 75
+real Sk      = 25;     // szerokość kolumny środkowej rdzenia
+real Gr      = 25;     // grubość pakietu blach
+real d       = 1.2;    // grubość laminatu
+real Wo      = 37.5;   // wysokość okna rdzenia
+real So      = 12.5;   // szerokość okna rdzenia
+real luz     = 0.3;    // luz na szerokość i grubość pakietu (blachy mają wejść)
+real skroc   = 0;      // skrócenie karkasu (np. 3 mm dla rdzeni M)
+real kol     = 4;      // wysokość kołnierza ścianki 2 (2 do 4 mm)
+real promien = 3;      // promień zaokrąglenia rogów policzka
+int  otwory  = 6;      // liczba otworów na wyprowadzenia (0 = brak)
+real dotw    = 1.5;    // średnica otworów na wyprowadzenia
+real odstep  = 4;      // odstęp między częściami na rysunku
+real szerLin = 0.1;    // szerokość linii konturu
+int  warstwa = 46;     // warstwa konturów (46 = Milling, 20 = Dimension)
+
+dlgDialog("Karkas składany transformatora EI") {
+    dlgHBoxLayout {
+        dlgLabel("Kształtka rdzenia:");
+        dlgComboBox(nazwyRdzeni, wybor) {
+            if (wybor > 0) {
+                Sk = aRdzeni[wybor];
+                Gr = Sk;
+                So = Sk / 2;
+                Wo = 1.5 * Sk;
+            }
+            dlgRedisplay();
+        }
+    }
+    dlgGridLayout {
+        dlgCell(0, 0)  dlgLabel("Sk - szerokość kolumny środkowej [mm]");
+        dlgCell(0, 1)  dlgRealEdit(Sk, 1, 500);
+        dlgCell(1, 0)  dlgLabel("Gr - grubość pakietu blach [mm]");
+        dlgCell(1, 1)  dlgRealEdit(Gr, 1, 500);
+        dlgCell(2, 0)  dlgLabel("d - grubość laminatu [mm]");
+        dlgCell(2, 1)  dlgRealEdit(d, 0.2, 10);
+        dlgCell(3, 0)  dlgLabel("Wo - wysokość okna rdzenia [mm]");
+        dlgCell(3, 1)  dlgRealEdit(Wo, 5, 500);
+        dlgCell(4, 0)  dlgLabel("So - szerokość okna rdzenia [mm]");
+        dlgCell(4, 1)  dlgRealEdit(So, 2, 500);
+        dlgCell(5, 0)  dlgLabel("luz na pakiecie (szerokość i grubość) [mm]");
+        dlgCell(5, 1)  dlgRealEdit(luz, 0, 3);
+        dlgCell(6, 0)  dlgLabel("skrócenie karkasu, rdzeń M [mm]");
+        dlgCell(6, 1)  dlgRealEdit(skroc, 0, 20);
+        dlgCell(7, 0)  dlgLabel("kołnierz ścianki 2 [mm] (2 do 4)");
+        dlgCell(7, 1)  dlgRealEdit(kol, 1, 10);
+        dlgCell(8, 0)  dlgLabel("promień rogów policzka [mm]");
+        dlgCell(8, 1)  dlgRealEdit(promien, 0, 20);
+        dlgCell(9, 0)  dlgLabel("otwory na wyprowadzenia: liczba");
+        dlgCell(9, 1)  dlgIntEdit(otwory, 0, 30);
+        dlgCell(10, 0) dlgLabel("otwory na wyprowadzenia: średnica [mm]");
+        dlgCell(10, 1) dlgRealEdit(dotw, 0.3, 10);
+        dlgCell(11, 0) dlgLabel("odstęp między częściami [mm]");
+        dlgCell(11, 1) dlgRealEdit(odstep, 1, 50);
+        dlgCell(12, 0) dlgLabel("szerokość linii konturu [mm]");
+        dlgCell(12, 1) dlgRealEdit(szerLin, 0, 5);
+        dlgCell(13, 0) dlgLabel("warstwa konturów (numer)");
+        dlgCell(13, 1) dlgIntEdit(warstwa, 1, 255);
+    }
+    dlgHBoxLayout {
+        dlgStretch(1);
+        dlgPushButton("+Rysuj") dlgAccept();
+        dlgPushButton("-Anuluj") dlgReject();
+    }
+};
+
+// ---------------- wymiary ----------------
+real sk  = Sk + luz;                 // wnętrze tulei wzdłuż kolumny środkowej
+real gr  = Gr + luz;                 // wnętrze tulei wzdłuż pakietu
+real wk  = Wo - skroc;               // wysokość karkasu (tulei)
+real ww  = wk / 3;                   // wysokość wypustek: trzy równe odcinki
+real szb = Sk + 2 * So;              // policzek: szerokość (rozpiętość okien rdzenia)
+real wzb = Gr + 2 * So;              // policzek: wysokość
+real swb = sk + 2 * d;               // okno policzka: szerokość (zewnętrzny wymiar tulei)
+real wwb = gr + 2 * d;               // okno policzka: wysokość
+real skk = sk + 2 * d + 2 * kol;     // szerokość kołnierza ścianki 2
+real wkk = wk + 2 * kol;             // wysokość ścianki 2 z kołnierzami
+
+if (swb >= szb - 2 || wwb >= wzb - 2) {
+    dlgMessageBox("Tuleja nie mieści się w policzku: zmniejsz d lub luz, albo sprawdź So (szerokość okna).", "OK");
+    exit(EXIT_FAILURE);
+}
+if (wk < 9 * d) {
+    dlgMessageBox("Wysokość okna jest za mała w stosunku do grubości laminatu.", "OK");
+    exit(EXIT_FAILURE);
+}
+
+string cmd = "";
+real px[96], py[96];
+int  n = 0;
+real ox = 0, oy = 0;
+
+void pt(real x, real y) { px[n] = x; py[n] = y; n++; }
+
+void kontur(void) {
+    string s;
+    string p;
+    sprintf(s, "WIRE %.3f", szerLin);
+    for (int i = 0; i < n; i++) {
+        sprintf(p, " (%.3f %.3f)", px[i] + ox, py[i] + oy);
+        s += p;
+    }
+    s += ";\n";
+    cmd += s;
+    n = 0;
+}
+
+void tekst(string napis, real x, real y) {
+    string s;
+    string l;
+    sprintf(s, "TEXT '%s' R0 (%.3f %.3f);\n", napis, x, y);
+    sprintf(l, "LAYER %d;\n", warstwa);
+    cmd += "CHANGE SIZE 2;\nLAYER 51;\n" + s + l;
+}
+
+// łuk rogu: środek (cx, cy), promień r, kąt od a0 do a1 (stopnie), 6 odcinków
+void rog(real cx, real cy, real r, real a0, real a1) {
+    for (int i = 0; i <= 6; i++) {
+        real k = (a0 + (a1 - a0) * i / 6.0) * 3.14159265358979 / 180.0;
+        pt(cx + r * cos(k), cy + r * sin(k));
+    }
+}
+
+// 1. policzek: obrys z zaokrąglonymi rogami + okno + otwory; środek w (cx, cy)
+void policzek(real cx, real cy) {
+    ox = cx; oy = cy;
+    real hx = szb / 2, hy = wzb / 2, r = promien;
+    if (r < 0.1) { pt(-hx, -hy); pt(hx, -hy); pt(hx, hy); pt(-hx, hy); pt(-hx, -hy); }
+    else {
+        rog(hx - r, -hy + r, r, -90, 0);
+        rog(hx - r, hy - r, r, 0, 90);
+        rog(-hx + r, hy - r, r, 90, 180);
+        rog(-hx + r, -hy + r, r, 180, 270);
+        pt(px[0], py[0]);
+    }
+    kontur();
+    pt(-swb / 2, -wwb / 2); pt(swb / 2, -wwb / 2); pt(swb / 2, wwb / 2); pt(-swb / 2, wwb / 2); pt(-swb / 2, -wwb / 2);
+    kontur();
+    if (otwory > 0) {                          // rząd otworów w pasie nad oknem
+        real pas = hy - wwb / 2;               // wysokość pasa nad oknem
+        real y = (wwb / 2 + hy) / 2;
+        real w = szb - 2 * (promien + dotw);
+        for (int i = 0; i < otwory; i++) {
+            real x = otwory > 1 ? -w / 2 + w * i / (otwory - 1) : 0;
+            string c;
+            sprintf(c, "CIRCLE %.3f (%.3f %.3f) (%.3f %.3f);\n", szerLin, x + cx, y + cy, x + cx + dotw / 2, y + cy);
+            cmd += c;
+        }
+    }
+}
+
+// ścianka pionowa złożona z odcinków o danych połowach szerokości (od dołu do góry), dół w (x0, y0), oś symetrii x = xs
+real hw[8], dl[8];
+int  ns = 0;
+void odc(real polowa, real dlugosc) { hw[ns] = polowa; dl[ns] = dlugosc; ns++; }
+
+void scianka(real xs, real y0) {
+    ox = 0; oy = 0;
+    real y = y0;
+    for (int i = 0; i < ns; i++) {              // prawa strona w górę
+        pt(xs + hw[i], y);
+        y += dl[i];
+        pt(xs + hw[i], y);
+    }
+    for (int i = ns - 1; i >= 0; i--) {         // lewa strona w dół
+        pt(xs - hw[i], y);
+        y -= dl[i];
+        pt(xs - hw[i], y);
+    }
+    pt(px[0], py[0]);
+    kontur();
+    ns = 0;
+}
+
+// ---------------- rysowanie ----------------
+string s0;
+sprintf(s0, "GRID MM;\nSET WIRE_BEND 2;\nLAYER %d;\n", warstwa);
+cmd += s0;
+
+// rząd 1: policzki
+policzek(szb / 2, wzb / 2);
+policzek(szb * 1.5 + odstep, wzb / 2);
+tekst("1. Policzek x2", 0, wzb + odstep / 2);
+
+// rząd 2: ścianki 2 (kołnierze + wypustki) i 3 (wcięcia); dół rysujemy poniżej rzędu policzków
+real yb = -odstep - wkk;                       // dół ścianki 2
+real xs = skk / 2;
+for (int k = 0; k < 2; k++) {                  // ścianka 2: kołnierz | Sk | Sk+2d | Sk | kołnierz
+    odc(skk / 2, kol);
+    odc(sk / 2, ww);
+    odc((sk + 2 * d) / 2, ww);
+    odc(sk / 2, ww);
+    odc(skk / 2, kol);
+    scianka(xs, yb);
+    xs += skk + odstep;
+}
+real yb3 = yb + (wkk - wk) / 2;                // ścianka 3 wyrównana do tulei
+for (int k = 0; k < 2; k++) {                  // ścianka 3: Gr+2d | Gr | Gr+2d
+    odc((gr + 2 * d) / 2, ww);
+    odc(gr / 2, ww);
+    odc((gr + 2 * d) / 2, ww);
+    scianka(xs + (gr + 2 * d) / 2, yb3);
+    xs += gr + 2 * d + odstep;
+}
+tekst("2. Scianka z kolnierzami x2", 0, yb - 3);
+tekst("3. Scianka z wcieciami x2", 2 * (skk + odstep), yb - 3);
+
+string op;
+sprintf(op, "Sk=%.1f Gr=%.1f d=%.1f Wo=%.1f So=%.1f luz=%.2f (mm)", Sk, Gr, d, Wo, So, luz);
+tekst(op, 0, yb - 8);
+
+cmd += "WINDOW FIT;\n";
+exit(cmd);

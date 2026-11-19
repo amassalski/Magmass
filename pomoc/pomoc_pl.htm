@@ -177,6 +177,7 @@
 <li><a href=#obudowy>Obudowy</a>
 <li><a href=#literatura>Literatura</a>
 <li><a href=#narzedzia>Narzędzia i pożyczki</a>
+<li><a href=#serwis>Ewidencja serwisowa</a>
 <li><a href=#skroty>Klawiatura</a>
 <li><a href=#problemy>Rozwiązywanie problemów</a>
 <ul>
@@ -668,11 +669,14 @@ W oknie etykiet pole <i>Sposób drukowania</i> przełącza między drukarką sys
 </table>
 Rozmiar etykiety (np. 80 x 50 mm) i rozdzielczość (203 dpi w ZD421) ustaw zgodnie z rolką; drukarkę skalibruj raz na dane etykiety. Czcionka wbudowana w drukarkę może nie mieć polskich liter, dlatego domyślnie są zamieniane na ASCII; po sprawdzeniu etykiety próbnej możesz tę opcję wyłączyć. Układ jest liczony w kropkach drukarki, a podgląd w oknie etykiet pokazuje ten sam układ.
 <h2><a name=pole-audio>Narzędzia audio i lampowe (ECCkalkulator)</a></h2>
-<tt>Narzędzia / Narzędzia audio i lampowe</tt> (<tt>Ctrl+Shift+L</tt>) otwiera okno wzorowane na programie ECCLab. Ma cztery zakładki (układy lampowe, dB i nepery, krzywa RIAA, punkt pracy lampy); kolejne (lampy, metody graficzne, elementy indukcyjne) dochodzą w następnych wydaniach.
+<tt>Narzędzia / Narzędzia audio i lampowe</tt> (<tt>Ctrl+Shift+L</tt>) otwiera okno wzorowane na programie ECCLab. Ma siedem zakładek (układy lampowe, dB i nepery, krzywa RIAA, punkt pracy lampy, polaryzacja katodowa, kondensator sprzęgający, regulacja barwy); kolejne (lampy, metody graficzne, elementy indukcyjne) dochodzą w następnych wydaniach.
 <b>Układy lampowe</b>: sprzężenie RC (wzmocnienie, oporność wyjściowa, pasmo), wtórnik anodowy, wtórnik katodowy (oporność wejściowa i wyjściowa, wzmocnienie, górna częstotliwość, maksymalne napięcie wejściowe) inwerter różnicowy (współczynnik asymetrii q, wzmocnienie każdej triody) oraz układy złożone: mi-wtórnik, SRPP, wtórnik White'a, kaskodowy wtórnik katodowy i superwtórnik (wzory z modułu <tt>tube_audio</tt>: Łożnikow/Sonin, Morgan Jones, Broskie). Lampy możesz brać z katalogu i zapisywać do niego przyciskami „Lampa z katalogu” i „Zapisz lampę do katalogu” (zwykły katalog elementów, rodzina „Lampy elektronowe”, parametry Sa, Ka, Rwew, Cak, Cas, Csk). Dane lampy: nachylenie Sa [mA/V], współczynnik wzmocnienia Ka, oporność wewnętrzna Rwew [kΩ]. Wzory sprawdzono na przykładach z ECCLab 7.2; różnice opisuje dokumentacja.
 <b>dB i nepery</b>: zamiana napięć, mocy i miary liniowej na decybele i nepery oraz odwrotnie; wyniki liczą się podczas wpisywania. Dla napięć 1 Np = 8,686 dB.
 <b>Krzywa RIAA</b>: tłumienie lub wzmocnienie korektora gramofonowego (odtwarzanie) albo krzywej tłoczenia (nagrywanie) względem 1 kHz dla zadanej częstotliwości, tabela z zakresu i wykres 20 Hz..20 kHz. Opcja IEC dodaje filtr 20 Hz.
 <b>Sieć korekcyjna</b>: po wpisaniu R2 i R3 program wylicza elementy biernej sieci RIAA złożonej z dwóch sekcji rozdzielonych stopniem wzmacniającym: sekcja A (szereg R1 || C1, bocznik R2 || C2) realizuje stałe 3180 i 318 µs, sekcja B (R3 szeregowo, C3 do masy) stałą 75 µs. Wartości zaokrągla do wybranych szeregów E i pokazuje największą odchyłkę od krzywej RIAA oraz tłumienie przy 1 kHz (ok. 40 dB, o tyle wzmacniacz musi dodać wzmocnienia).
+<b>Polaryzacja katodowa</b>: z prądu anodowego (i prądu siatki ekranującej dla pentody) oraz wymaganego napięcia polaryzacji program liczy rezystor katodowy Rk = Uk / (Ia + Ig2), zaokrągla go do szeregu i podaje moc z zapasem. Z konduktancji gm i dolnej częstotliwości granicznej fd dobiera też kondensator katodowy Ck. Wyprowadzenie: wzmocnienie stopnia z niezblokowanym Rk ma postać A = gm·Ra·(1 + jωRkCk) / (1 + gm·Rk + jωRkCk); spadek o 3 dB względem pełnego zblokowania następuje przy x = ωRkCk = √((1 + gm·Rk)² − 2). Dla gm·Rk &lt; √2 − 1 ≈ 0,41 spadek nie sięga 3 dB i Ck jest zbędny. Przykład: Ia = 1,2 mA, Uk = 1,8 V, gm = 1,6 mA/V, fd = 40 Hz daje Rk = 1,5 kΩ i Ck ≈ 8,2 µF (z szeregu E12: 10 µF); reguła „reaktancja Ck równa Rk/10” podałaby 26,5 µF.
+<b>Kondensator sprzęgający</b>: dolna częstotliwość graniczna fc = 1 / (2π · (Ra ‖ ra + Rg) · Cs), bo kondensator pracuje na szeregowej rezystancji wyjściowej poprzedniego stopnia i rezystora siatki następnego. Dla n jednakowych sekcji w kaskadzie częstotliwość -3 dB wynosi fc / √(2^(1/n) − 1) (n = 2: fc / 0,644). Podaj Cs, aby policzyć częstotliwość, albo fd, aby dobrać Cs z szeregu (najbliższa wartość nie mniejsza od potrzebnej). Przykład: Ra = 100k, ra = 62k, Rg = 470k, Cs = 22 nF daje rezystancję 508 kΩ i fc ≈ 14,2 Hz.
+<b>Regulacja barwy</b>: bierne układy regulacji barwy liczone z równań węzłowych (admitancje elementów, eliminacja Gaussa), z rezystancją źródła i obciążeniem. Topologie i wartości wzorcowe pochodzą z projektu tonestack (GPL-3.0), wzorowanego na programie Duncan's Tone Stack Calculator; silnik obliczeń jest własny. Do wyboru: Fender Bassman 5F6-A (wartości typowe), Fender (Twin Reverb), Marshall JCM800, Vox AC30, James, Baxandall, Fender Bandmaster, Bench (z cewkami), Voigt, Bone Ray, Tube Driver, Marshall 18 W, Big Muff i Moonlight. Po wyborze układu widać tylko jego elementy (R, C, L), rezystancję źródła i obciążenie oraz potencjometry (bas, środek, wysokie albo pojedyncza „barwa”) z suwakami, wartością i charakterystyką. Każdy potencjometr to dwa rezystory połączone w węźle suwaka: R·f(x) i R·(1 − f(x)), gdzie f zależy od charakterystyki: liniowa f = x, a dla log (m = 0,12), log A (m = 0,25) i odwrotnej log (m = 0,88) f = a·b<sup>x</sup> − a, b = (1/m − 1)², a = 1/(b − 1); m to udział rezystancji w połowie obrotu. Wykres pokazuje poziom względem napięcia źródła od 20 Hz do 20 kHz. Układy bierne nie wzmacniają, więc wykres leży poniżej 0 dB; typowe wycięcie pasma środkowego w układzie Fendera to kilkanaście decybeli. Uwaga: w układzie Fendera potencjometr środka jest rezystorem zmiennym do masy, a w Marshallu pełnym potencjometrem z suwakiem. Wyniki sprawdzono drugą, niezależną implementacją, która czyta bezpośrednio netlisty projektu tonestack, dla wszystkich układów i trzech ustawień potencjometrów.
 <h2><a name=kalk-lampa>Punkt pracy lampy (Narzędzia audio i lampowe)</a></h2>
 
 Trioda lub pentoda ze stałą polaryzacją katodową. Podajesz B+, opór anodowy, prąd anody i napięcie siatki z charakterystyk lampy, a program liczy rezystor katodowy Rk = |Ug| / (Ia + Ig2), napięcie i moc anody (z ostrzeżeniem o przekroczeniu mocy dopuszczalnej), linię obciążenia, rezystor ekranu, wzmocnienie μ·Ra/(ra+Ra) i kondensator katodowy dla dolnej częstotliwości.
@@ -805,6 +809,25 @@ Okno Kamera / Kamera termowizyjna (Ctrl+Shift+T) pokazuje na żywo obraz z kamer
 <li><i>„Wiersz N: …”</i> w tabeli sekcji: błąd składni (pierwsza litera to A lub W, potem numer, spacja i całkowita liczba zwojów, np. <tt>A1 600</tt>; dalej tylko <tt>g</tt>, <tt>x</tt>, <tt>e</tt>); komora przed przegrodą <tt>|</tt> nie może być pusta.</li>
 <li>Suma zwojów A w tabeli musi być równa z1, suma W (po uwzględnieniu połączenia sekcji wtórnych) równa z2.</li>
 </ul>
+<h4>Karkas składany z laminatu: skrypt ULP dla EAGLE</h4>
+<p>W katalogu <tt>narzedzia/ulp/</tt> jest skrypt <tt>karkas_trafo.ulp</tt>. Uruchom go w edytorze płytki (Board) EAGLE: <tt>RUN karkas_trafo.ulp</tt>. Rysuje 6 elementów karkasu składanego z tekstolitu, bakelitu lub preszpanu, w trzech rodzajach:</p>
+<ul>
+<li><b>1. policzek</b>, 2 szt.: płyta z oknem na tuleję, zaokrąglone rogi, opcjonalnie rząd otworów na wyprowadzenia;</li>
+<li><b>2. ścianka z kołnierzami</b>, 2 szt.: pasek o szerokości kolumny środkowej, z kołnierzem na każdym końcu i wypustką w środkowej trzeciej części;</li>
+<li><b>3. ścianka z wcięciami</b>, 2 szt.: pasek o szerokości pakietu blach, z wcięciami w środkowej trzeciej części.</li>
+</ul>
+<p>Ścianki 2 i 3 łączą się pod kątem 90°, po dwie naprzeciw siebie: wypustka ścianki 2 wchodzi we wcięcie ścianki 3 (wcięcie i wypustka mają głębokość równą grubości laminatu d). Powstaje otwór na rdzeń, o <b>0,3 mm większy</b> (parametr „luz”) od kolumny środkowej i od grubości pakietu, żeby blachy dały się włożyć. Złożoną tuleję wsuwa się w okna policzków, a policzki rozsuwa się na zewnątrz, co zakleszcza całość.</p>
+<p>Oznaczenia i wymiary (Sk i Gr zwiększone o luz: sk = Sk + luz, gr = Gr + luz):</p>
+<table border=1 cellpadding=3 cellspacing=0>
+<tr><td>Sk, Gr</td><td>szerokość kolumny środkowej i grubość pakietu blach</td></tr>
+<tr><td>d</td><td>grubość laminatu</td></tr>
+<tr><td>Wo, So</td><td>wysokość i szerokość okna rdzenia</td></tr>
+<tr><td>policzek</td><td>obrys (Sk + 2·So) × (Gr + 2·So), okno (sk + 2d) × (gr + 2d)</td></tr>
+<tr><td>ścianka 2</td><td>wysokość Wo + 2·kołnierz, szerokość sk (po bokach), sk + 2d (wypustka), kołnierz o szerokości sk + 2d + 2·kołnierz (2 do 4 mm)</td></tr>
+<tr><td>ścianka 3</td><td>wysokość Wo, szerokość gr + 2d (po bokach), gr (wcięcie)</td></tr>
+<tr><td>wypustki i wcięcia</td><td>wysokość = Wo / 3 (trzy równe odcinki)</td></tr>
+</table>
+<p>Dla rdzeni M, które wymagają krótszego karkasu, jest parametr „skrócenie karkasu” (np. 3 mm). Grubość d warto ustawić taką samą jak „Ścianka karkasu” w Etapie 3. Kontury trafiają na wybraną warstwę (domyślnie 46 Milling), podpisy na warstwę 51.</p>
 <h2><a name=pole-trafose>Transformator głośnikowy SE</a></h2>
 <tt>Narzędzia / Elementy indukcyjne / Transformator głośnikowy SE</tt> liczy transformator wyjściowy jednotaktowy z prądem anodowym płynącym przez uzwojenie pierwotne: indukcyjność, przekładnię, zwoje i drut obu uzwojeń oraz szczelinę w rdzeniu. Zwoje i szczelina wynikają z modelu fizycznego (strumień od składowej stałej i zmiennej, reluktancja żelaza). Obok pokazane są wartości z programu porównawczego i z modułu Cykina. Przycisk Dalej otwiera uzwojenia wykonane: rozmieszczenie w oknie, rezystancje, rozproszenie dla trzech układów i sprawność.
 <h2><a name=pole-czytnik-pdf>Polecenie czytnika PDF (zakładka Inne)</a></h2>
@@ -891,6 +914,21 @@ instrukcja (plik PDF lub adres) i uwagi. Dane można wczytać z CSV (<i>Import C
 <li><b>Zwrócono</b> zamyka pożyczkę z dzisiejszą datą. Wpis zostaje w <b>historii pożyczek</b> narzędzia po prawej stronie.
 <li>Na liście pożyczone narzędzia są niebieskie, a po terminie pomarańczowe. Filtry <i>tylko pożyczone</i> i <i>tylko po terminie</i> pokazują, co jest poza domem. Pole szukania znajduje też narzędzia po nazwisku osoby.
 <li>Przy starcie programu przeterminowane pożyczki są wypisane w dzienniku na dole okna.
+<li><b>Menu pod prawym przyciskiem myszy</b> na narzędziu: <i>Wypożycz...</i> (albo <i>Zwrócono</i>, gdy narzędzie jest pożyczone), <i>Dołącz zdjęcie z kamery...</i>, <i>Dołącz zdjęcie z pliku...</i>, <i>Edytuj...</i> i <i>Usuń</i>. Zdjęcie z kamery USB zapisuje się od razu przy narzędziu i pokazuje w panelu po prawej.
+</ul>
+
+<a name=serwis>
+<h1>Ewidencja serwisowa</h1>
+Zakładka <i>Serwis</i> (po <i>Narzędziach</i>) to dziennik serwisowania urządzeń, np. elementów sieci telekomunikacyjnej: co i gdzie serwisowano, kiedy, kto to zrobił, co było usterką, co wykonano i jakie części wymieniono, ze zdjęciami.
+Wzorowana jest na typowych kartach zleceń serwisowych: urządzenie z numerem seryjnym, lokalizacja, rodzaj prac, status, numer zgłoszenia, opis usterki i czynności, części (z numerami seryjnymi zdjętego i zamontowanego elementu) oraz czas pracy.
+<ul>
+<li><b>Nowy wpis...</b> otwiera formularz. Pola <i>Urządzenie</i>, <i>Lokalizacja</i> i <i>Technik</i> podpowiadają wcześniej wpisane wartości. <i>Rodzaj</i>: naprawa, wymiana, przegląd, konfiguracja, instalacja, pomiar, inne. <i>Status</i>: zakończone, w trakcie, oczekuje na części.
+<li><b>Części</b> dodajesz w formularzu przyciskiem <i>Dodaj część...</i>: nazwa, ilość oraz numer seryjny elementu zdjętego i zamontowanego. Wyszukiwanie znajduje wpis także po nazwie lub numerze części. Przycisk <i>Wybierz z magazynu...</i> w oknie części powiązuje ją z elementem z magazynu (nazwa uzupełnia się z symbolu, wartości i obudowy), a zaznaczona opcja <i>Zdejmij ilość ze stanu magazynu</i> zmniejsza stan elementu przy zapisie wpisu (w historii jako wydanie; przy braku towaru zapis jest odrzucany). Pobrane części są oznaczone na liście, a po ich usunięciu z wpisu lub usunięciu całego wpisu program pyta, czy zwrócić je na stan.
+<li><b>Zdjęcia</b> dołączasz w formularzu albo później z listy (przycisk lub menu pod prawym przyciskiem myszy): <i>Z kamery...</i> robi zdjęcie kamerą USB, <i>Z pliku...</i> kopiuje obraz do katalogu zdjęć programu. Miniatury są po prawej; kliknięcie otwiera zdjęcie, prawy przycisk pozwala je usunąć z wpisu (plik zostaje na dysku).
+<li><b>Kolejny serwis tego urządzenia...</b> tworzy nowy wpis z danymi urządzenia, lokalizacją, technikiem i rodzajem skopiowanymi z zaznaczonego wpisu, z dzisiejszą datą.
+<li><b>Historia urządzenia</b> pokazuje wszystkie wpisy tego samego urządzenia (po numerze seryjnym, a gdy go brak po nazwie). Aby wrócić do całej listy, wyczyść pole szukania.
+<li>Filtry nad listą: tekst, rodzaj, status i zakres dat. Wpisy <i>w trakcie</i> są niebieskie, a <i>oczekujące na części</i> pomarańczowe.
+<li><b>Eksport CSV...</b> zapisuje widoczne wpisy (po filtrach) do pliku dla Excela: jedna linia na część, a wpis bez części ma jedną linię.
 </ul>
 
 <a name=skroty>

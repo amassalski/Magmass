@@ -210,7 +210,7 @@ std::optional<WynikWykonane> etap3Wewn(const Wymagania& w, const Rdzen& r, const
         }
         const double F1 = s.pierwotna ? F + ulamek : F - ulamek;    // pierwotne podnosi, wtórne cofa siłomotoryczną
         odc.push_back({s.gruboscMm * 1e-3, F, F1, (x + s.gruboscMm / 2.0) * 1e-3, hUzytMm * 1e-3});
-        s.dlugoscZwojuCm = r.dlugoscZwojuCm + 2.0 * kPi * (x + s.gruboscMm / 2.0) * 0.1;   // obwód rdzenia + 2π·odległość środka sekcji
+        s.dlugoscZwojuCm = r.dlugoscZwojuCm + 2.0 * kPi * (u.sciankaKarkasuMm + x + s.gruboscMm / 2.0) * 0.1;   // obwód rdzenia + 2π·(ścianka karkasu przy rdzeniu + odległość środka sekcji)
         x += s.gruboscMm;
         F = F1;
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
-  <assemblyIdentity type="win32" name="Magmass" version="1.9.10.0" processorArchitecture="*"/>
+  <assemblyIdentity type="win32" name="Magmass" version="1.9.21.0" processorArchitecture="*"/>
   <description>Magmass</description>
   <!-- Common Controls 6: nowoczesny, płaski wygląd przycisków, list i pól (bez tego Windows rysuje styl klasyczny) -->
   <dependency>

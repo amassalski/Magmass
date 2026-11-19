@@ -7,6 +7,7 @@
 #include <wx/string.h>
 #include <wx/sizer.h>
 #include <wx/textctrl.h>
+#include <wx/window.h>
 
 #include <functional>
 
@@ -22,6 +23,11 @@ wxString ZapiszKlatke(const KlatkaRGB& klatka, const wxString& symbol);
 wxString SkopiujDoKatalogu(const wxString& sciezka);
 /// Ładuje zdjęcie i skaluje do pola o podanym rozmiarze z zachowaniem proporcji (nie powiększa); pusty obraz przy błędzie
 wxImage Wczytaj(const wxString& sciezka, wxSize pole);
+
+/// Okno kamery: zwraca ścieżkę zrobionego zdjęcia albo pusty tekst, gdy anulowano. @p nazwaDlaPliku trafia do nazwy pliku.
+wxString ZKamery(wxWindow* rodzic, const wxString& nazwaDlaPliku);
+/// Okno wyboru pliku obrazu; wybrany plik jest kopiowany do katalogu zdjęć. Pusty tekst, gdy anulowano.
+wxString ZPliku(wxWindow* rodzic);
 
 /**
  * Wiersz formularza ze zdjęciem: pole tekstowe @p pole (musi mieć rodzica @p rodzic) i przyciski "Wybierz..." oraz "Z kamery...".

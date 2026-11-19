@@ -766,3 +766,63 @@ ON CONFLICT (klucz) DO NOTHING;
 INSERT INTO public.tbl_wersja_schematu (wersja, opis)
 SELECT 17, 'Słownik opisów parametrów'
 WHERE NOT EXISTS (SELECT 1 FROM public.tbl_wersja_schematu WHERE wersja = 17);
+
+-- ---------------------------------------------------------------------
+-- Wersja 18: ewidencja serwisowa (zlecenia serwisowe, wymienione części, zdjęcia)
+-- ---------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public.tbl_serwis (
+    id bigserial PRIMARY KEY,
+    data_serwisu date NOT NULL DEFAULT current_date,
+    urzadzenie character varying(200) NOT NULL,
+    producent character varying(100),
+    model character varying(100),
+    numer_seryjny character varying(100),
+    lokalizacja character varying(200),
+    rodzaj character varying(30) NOT NULL DEFAULT 'naprawa',
+    status character varying(30) NOT NULL DEFAULT 'zakończone',
+    zgloszenie character varying(100),
+    technik character varying(100),
+    czas_min integer,
+    usterka text,
+    wykonano text,
+    uwagi text,
+    dodano timestamp without time zone NOT NULL DEFAULT current_timestamp,
+    zmieniono timestamp without time zone NOT NULL DEFAULT current_timestamp
+);
+CREATE INDEX IF NOT EXISTS idx_tbl_serwis_data ON public.tbl_serwis (data_serwisu DESC);
+CREATE INDEX IF NOT EXISTS idx_tbl_serwis_urzadzenie ON public.tbl_serwis (lower(urzadzenie));
+
+CREATE TABLE IF NOT EXISTS public.tbl_serwis_czesci (
+    id bigserial PRIMARY KEY,
+    id_serwisu bigint NOT NULL REFERENCES public.tbl_serwis(id) ON DELETE CASCADE,
+    nazwa character varying(200) NOT NULL,
+    ilosc numeric(12,3) NOT NULL DEFAULT 1,
+    numer_stary character varying(100),
+    numer_nowy character varying(100),
+    uwagi character varying(300)
+);
+CREATE INDEX IF NOT EXISTS idx_tbl_serwis_czesci_serwis ON public.tbl_serwis_czesci (id_serwisu);
+
+CREATE TABLE IF NOT EXISTS public.tbl_serwis_zdjecia (
+    id bigserial PRIMARY KEY,
+    id_serwisu bigint NOT NULL REFERENCES public.tbl_serwis(id) ON DELETE CASCADE,
+    sciezka text NOT NULL,
+    opis character varying(300),
+    dodano timestamp without time zone NOT NULL DEFAULT current_timestamp
+);
+CREATE INDEX IF NOT EXISTS idx_tbl_serwis_zdjecia_serwis ON public.tbl_serwis_zdjecia (id_serwisu);
+
+INSERT INTO public.tbl_wersja_schematu (wersja, opis)
+SELECT 18, 'Ewidencja serwisowa'
+WHERE NOT EXISTS (SELECT 1 FROM public.tbl_wersja_schematu WHERE wersja = 18);
+
+-- ---------------------------------------------------------------------
+-- Wersja 19: część serwisowa może pochodzić z magazynu (powiązanie z elementem i pobranie ze stanu)
+-- ---------------------------------------------------------------------
+ALTER TABLE public.tbl_serwis_czesci ADD COLUMN IF NOT EXISTS id_elementu bigint REFERENCES public.tbl_elementy(id) ON DELETE SET NULL;
+ALTER TABLE public.tbl_serwis_czesci ADD COLUMN IF NOT EXISTS pobrano boolean NOT NULL DEFAULT false;
+CREATE INDEX IF NOT EXISTS idx_tbl_serwis_czesci_element ON public.tbl_serwis_czesci (id_elementu);
+
+INSERT INTO public.tbl_wersja_schematu (wersja, opis)
+SELECT 19, 'Części serwisowe z magazynu'
+WHERE NOT EXISTS (SELECT 1 FROM public.tbl_wersja_schematu WHERE wersja = 19);

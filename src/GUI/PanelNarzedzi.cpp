@@ -1,3 +1,4 @@
+#include "PoleDaty.h"
 #include "PanelNarzedzi.h"
 
 #include "DialogPozyczki.h"
@@ -16,6 +17,7 @@
 #include <wx/filedlg.h>
 #include <wx/filename.h>
 #include <wx/log.h>
+#include <wx/menu.h>
 #include <wx/wrapsizer.h>
 
 namespace {
@@ -68,7 +70,7 @@ public:
         tcMiejsce_->SetHint(TR("np. warsztat, szuflada 3"));
         dodaj(TR("Miejsce"), tcMiejsce_);
         wxBoxSizer* zakup = new wxBoxSizer(wxHORIZONTAL);
-        dpZakup_ = new wxDatePickerCtrl(this, wxID_ANY, wxDefaultDateTime, wxDefaultPosition, wxDefaultSize, wxDP_DROPDOWN | wxDP_ALLOWNONE);
+        dpZakup_ = NowePoleDaty(this, wxDefaultDateTime, wxDP_DROPDOWN | wxDP_ALLOWNONE);
         wxDateTime d;
         if (!n.dataZakupu.empty() && d.ParseISODate(TekstZUTF8(n.dataZakupu))) dpZakup_->SetValue(d);
         else dpZakup_->SetValue(wxDateTime());
@@ -110,7 +112,7 @@ private:
     Narzedzie narzedzie_;
     wxTextCtrl *tcNazwa_, *tcProducent_, *tcModel_, *tcSeryjny_, *tcInwentarzowy_, *tcMiejsce_, *tcCena_, *tcInstrukcja_, *tcZdjecie_, *tcUwagi_;
     wxComboBox* cbKategoria_;
-    wxDatePickerCtrl* dpZakup_;
+    PoleDatyTyp* dpZakup_;
 
     static std::string T(wxTextCtrl* c) { return Przytnij(c->GetValue()).utf8_string(); }
     void NaOK(wxCommandEvent& e) {
@@ -237,6 +239,7 @@ PanelNarzedzi::PanelNarzedzi(wxWindow* parent, LogikaNarzedzi& logika) : wxPanel
     widok_->Bind(wxEVT_LIST_ITEM_SELECTED, [this](wxListEvent&) { PokazSzczegoly(); });
     widok_->Bind(wxEVT_LIST_ITEM_DESELECTED, [this](wxListEvent&) { PokazSzczegoly(); });
     widok_->Bind(wxEVT_LIST_ITEM_ACTIVATED, [this](wxListEvent&) { Edytuj(); });
+    widok_->Bind(wxEVT_LIST_ITEM_RIGHT_CLICK, [this](wxListEvent& e) { MenuKontekstowe(e.GetIndex()); });
     Bind(wxEVT_BUTTON, [this](wxCommandEvent&) { Nowe(); }, ID_N_NOWE);
     Bind(wxEVT_BUTTON, [this](wxCommandEvent&) { Edytuj(); }, ID_N_EDYTUJ);
     Bind(wxEVT_BUTTON, [this](wxCommandEvent&) { Usun(); }, ID_N_USUN);
@@ -500,4 +503,59 @@ int PanelNarzedzi::Przypomnij() {
     for (const Pozyczka& p : przet)
         Komunikat(wxString::Format(TR("⚠ Narzędzie \"%s\" miało wrócić %s od: %s"), TekstZUTF8(p.nazwaNarzedzia), TekstZUTF8(p.termin), TekstZUTF8(p.osoba)));
     return static_cast<int>(przet.size());
+}
+
+void PanelNarzedzi::MenuKontekstowe(long element) {
+    if (element < 0 || static_cast<size_t>(element) >= lista_.size()) return;
+    widok_->SetItemState(element, wxLIST_STATE_SELECTED, wxLIST_STATE_SELECTED);
+    const Narzedzie* n = Wybrane();
+    if (!n) return;
+    wxMenu menu;
+    if (n->pozyczone) menu.Append(ID_N_ZWROC, TR("Zwrócono"));
+    else menu.Append(ID_N_POZYCZ, TR("Wypożycz..."));
+    menu.AppendSeparator();
+    menu.Append(ID_N_KAMERA, TR("Dołącz zdjęcie z kamery..."));
+    menu.Append(ID_N_PLIK, TR("Dołącz zdjęcie z pliku..."));
+    menu.Append(ID_N_EDYTUJ, TR("Edytuj..."));
+    menu.AppendSeparator();
+    menu.Append(ID_N_USUN, TR("Usuń"));
+    menu.Bind(wxEVT_MENU, [this](wxCommandEvent& e) {
+        const int id = e.GetId();
+        CallAfter([this, id] {
+            switch (id) {
+            case ID_N_ZWROC: Zwroc(); break;
+            case ID_N_POZYCZ: Pozycz(); break;
+            case ID_N_KAMERA: DolaczZdjecieZKamery(); break;
+            case ID_N_PLIK: DolaczZdjecieZPliku(); break;
+            case ID_N_EDYTUJ: Edytuj(); break;
+            case ID_N_USUN: Usun(); break;
+            }
+        });
+    });
+    PopupMenu(&menu);
+}
+
+bool PanelNarzedzi::DolaczZdjecie(const wxString& sciezka) {
+    const Narzedzie* w = Wybrane();
+    if (!w || sciezka.empty()) return false;
+    Narzedzie n = *w;
+    n.zdjecie = sciezka.utf8_string();
+    if (!logika_.zapisz(n)) { Blad(TekstZUTF8(logika_.pobierzBlad())); return false; }
+    Komunikat(TR("✓ Zapisano zdjęcie narzędzia: ") + TekstZUTF8(n.nazwa));
+    Odswiez();
+    Wybierz(n.id);
+    return true;
+}
+
+void PanelNarzedzi::DolaczZdjecieZKamery() {
+    const Narzedzie* w = Wybrane();
+    if (!w) return;
+    const wxString p = ZdjeciaElementow::ZKamery(this, TekstZUTF8(w->nazwa));
+    if (!p.empty()) DolaczZdjecie(p);
+}
+
+void PanelNarzedzi::DolaczZdjecieZPliku() {
+    if (!Wybrane()) return;
+    const wxString p = ZdjeciaElementow::ZPliku(this);
+    if (!p.empty()) DolaczZdjecie(p);
 }

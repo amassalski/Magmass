@@ -61,6 +61,7 @@ wxString DialogOProgramie::TrescPodziekowan() {
     poz("OCRmyPDF (James R. Barlow)", TR("rozpoznawanie tekstu w skanach PDF; zewnętrzny program (MPL-2.0), korzysta z Tesseract OCR (Apache-2.0) i Ghostscript"));
     poz("Poppler (pdftotext)", TR("odczyt tekstu z PDF do indeksu treści (GPL); dołączany do wersji instalacyjnych"));
     poz("OpenCV", TR("opcjonalny odczyt kodów kreskowych z kamery (Apache-2.0)"));
+    poz("tonestack (Oliver Gardiner) i Duncan's Tone Stack Calculator", TR("topologie i wartości wzorcowe biernych układów regulacji barwy (GPL-3.0); silnik obliczeń jest własny"));
     poz(TR("Biblioteka Narodowa"), TR("dane bibliograficzne pobierane z publicznego API data.bn.org.pl"));
     poz(TR("Ikony"), TR("własny, płaski zestaw ikon programu, narysowany skryptem narzedzia/zbuduj_ikony.py i udostępniany na tej samej licencji GPL"));
     h += "</ul><p>" + Esc(TR("Nazwy programów i znaki towarowe należą do ich właścicieli.")) + "</p>";

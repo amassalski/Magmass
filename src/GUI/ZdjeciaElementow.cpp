@@ -76,6 +76,20 @@ wxImage Wczytaj(const wxString& sciezka, wxSize pole) {
 }
 
 
+wxString ZKamery(wxWindow* rodzic, const wxString& nazwaDlaPliku) {
+    DialogKamery dlg(rodzic, nazwaDlaPliku);
+    if (dlg.ShowModal() == wxID_OK) return dlg.Sciezka();
+    return wxString();
+}
+
+wxString ZPliku(wxWindow* rodzic) {
+    wxFileDialog dlg(rodzic, TR("Wybierz zdjęcie"), wxEmptyString, wxEmptyString,
+                     TR("Obrazy (*.jpg;*.jpeg;*.png;*.bmp;*.gif)|*.jpg;*.jpeg;*.png;*.bmp;*.gif|Wszystkie pliki|*.*"),
+                     wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+    if (dlg.ShowModal() != wxID_OK) return wxString();
+    return SkopiujDoKatalogu(dlg.GetPath());
+}
+
 wxBoxSizer* WierszWyboru(wxWindow* rodzic, wxTextCtrl* pole, const std::function<wxString()>& nazwaDlaKamery) {
     wxBoxSizer* wiersz = new wxBoxSizer(wxHORIZONTAL);
     wiersz->Add(pole, 1, wxALIGN_CENTER_VERTICAL | wxRIGHT, 6);

@@ -139,7 +139,7 @@ std::optional<WynikWykonane> wykonane(const Wejscie& w, const Wykonane& u) {
             const double ulamek = e.pierwotna ? double(e.zwoje) / u.zwojePierwotne : double(e.zwoje) / u.zwojeWtorne;
             const double F1 = e.pierwotna ? F + ulamek : F - ulamek;
             odc.push_back({s.gruboscMm * 1e-3, F, F1, (x + s.gruboscMm / 2.0) * 1e-3});
-            s.dlugoscZwojuCm = w.dlugoscZwojuCm + 2.0 * pi * (x + s.gruboscMm / 2.0) * 0.1;
+            s.dlugoscZwojuCm = w.dlugoscZwojuCm + 2.0 * pi * (u.sciankaKarkasuMm + x + s.gruboscMm / 2.0) * 0.1;
             x += s.gruboscMm;
             r.suma += s.gruboscMm;
             F = F1;

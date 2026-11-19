@@ -81,6 +81,11 @@ bool MagmassApp::OnInit() {
 
     SkonfigurujSciezki();
     ManagerBazyDanych::pobierz().wczytajUstawienia();
+#if defined(__WXMSW__) && wxCHECK_VERSION(3, 3, 0)
+    // Windows: ciemny motyw systemu dla okien, list i pól (wxWidgets 3.3+); wymaga wywołania przed utworzeniem pierwszego okna.
+    // Wyłączenie: w config.ini [interfejs] motyw=jasny
+    if (Konfiguracja::pobierz().pobierz("interfejs", "motyw", "") != "jasny") MSWEnableDarkMode();
+#endif
 
     // Katalogi z tłumaczeniami: obok exe (pl/LC_MESSAGES/Magmass.mo)
     // oraz katalog bieżący.

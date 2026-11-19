@@ -108,6 +108,19 @@ t('tbl_pozyczki', 'Pożyczki narzędzi i książek; otwarta pożyczka to taka be
   {'id_narzedzia': 'Pożyczone narzędzie (tbl_narzedzia); dokładnie jedno z id_narzedzia i id_ksiazki', 'id_ksiazki': 'Pożyczona książka (tbl_ksiazki)',
    'osoba': 'Komu pożyczono', 'data_pozyczenia': 'Data pożyczenia', 'termin': 'Termin zwrotu (opcjonalny)', 'data_zwrotu': 'Data zwrotu (pusta = nadal pożyczone)'})
 
+t('tbl_serwis', 'Ewidencja serwisowa: jedno wykonane zlecenie lub czynność przy urządzeniu',
+  {'data_serwisu': 'Data wykonania serwisu', 'urzadzenie': 'Nazwa serwisowanego urządzenia lub elementu sieci', 'producent': 'Producent urządzenia',
+   'model': 'Model urządzenia', 'numer_seryjny': 'Numer seryjny urządzenia', 'lokalizacja': 'Gdzie urządzenie stoi (obiekt, węzeł, szafa)',
+   'rodzaj': 'Rodzaj: naprawa, wymiana, przegląd, konfiguracja, instalacja, pomiar, inne', 'status': 'Status: zakończone, w trakcie, oczekuje na części',
+   'zgloszenie': 'Numer zgłoszenia lub zlecenia w systemie zewnętrznym', 'technik': 'Kto wykonał serwis', 'czas_min': 'Czas pracy w minutach',
+   'usterka': 'Opis usterki lub powód wizyty', 'wykonano': 'Wykonane czynności'})
+t('tbl_serwis_czesci', 'Części wymienione lub zamontowane podczas serwisu',
+  {'id_serwisu': 'Wpis serwisowy (tbl_serwis)', 'nazwa': 'Nazwa części', 'ilosc': 'Ilość sztuk', 'numer_stary': 'Numer seryjny elementu zdjętego',
+   'numer_nowy': 'Numer seryjny elementu zamontowanego', 'id_elementu': 'Element z magazynu, z którego pochodzi część (tbl_elementy); puste, gdy część spoza magazynu',
+   'pobrano': 'Czy ilość części została już zdjęta ze stanu magazynu'})
+t('tbl_serwis_zdjecia', 'Zdjęcia dołączone do wpisu serwisowego (ścieżki do plików)',
+  {'id_serwisu': 'Wpis serwisowy (tbl_serwis)', 'sciezka': 'Ścieżka pliku zdjęcia', 'opis': 'Podpis zdjęcia'})
+
 WIDOKI = {
     'wid_kategorie': 'Drzewo kategorii z pełną nazwą i liczbą elementów',
     'wid_elementy': 'Elementy z nazwą kategorii i znacznikiem niskiego stanu',
