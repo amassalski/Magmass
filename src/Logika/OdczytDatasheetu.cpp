@@ -37,6 +37,9 @@ std::string normalizuj(std::string s) {
     zamien("\xE2\x80\x93", "-");   // –
     zamien("\xE2\x80\x94", "-");   // —
     zamien("\xC2\xB0", " deg");    // °
+    zamien("\xCB\x9A", " deg");    // ˚ (kółko nad literą, często zamiast stopnia)
+    zamien("\xEF\xBC\x88", "(");   // （
+    zamien("\xEF\xBC\x89", ")");   // ）
     zamien("\xE2\x84\x83", " degC"); // ℃
     zamien("\xC2\xA0", " ");
     zamien("\xCE\xBC", "\xC2\xB5");   // μ (grecka mi) -> µ
@@ -51,6 +54,13 @@ bool zawiera(const std::string& l, std::initializer_list<const char*> slowa) {
     const std::string m = maleLitery(l);
     for (const char* s : slowa) if (m.find(s) != std::string::npos) return true;
     return false;
+}
+
+// Karty w układzie dwukolumnowym (pdftotext -layout) sklejają kolumny dużymi odstępami: bierze tekst do pierwszego odstępu >= @p odstep spacji
+std::string pierwszaKolumna(const std::string& l, size_t odstep = 4) {
+    const std::string luka(odstep, ' ');
+    const size_t p = l.find(luka);
+    return p == std::string::npos ? l : l.substr(0, p);
 }
 
 std::string skroc(const std::string& s, size_t n = 140) { return s.size() <= n ? s : s.substr(0, n) + "..."; }
@@ -287,20 +297,20 @@ void odczytajTabele(const std::vector<std::string>& L, Wynik& w, std::set<std::s
 // ===================== uwagi: opis zastosowania =====================
 
 bool tytulInnejSekcji(const std::string& l) {
-    static const std::regex re(R"(^(?:[0-9]+\.?\s*)?(features?|key features|description|general description|ordering|order information|pin |absolute|electrical|block diagram|package|typical|specifications?|contents|revision|maximum ratings|benefits|overview|applications? information|functional)\b)", std::regex::icase);
+    static const std::regex re(R"(^(?:[0-9]+\.?\s*)?(features?|key features|description|general description|ordering|order information|pin |absolute|electrical|block diagram|package|typical|specifications?|contents|revision|maximum ratings|benefits|overview|applications? information|functional|climatic|construction|terminals|marking|delivery|dimension)\b)", std::regex::icase);
     return std::regex_search(l, re);
 }
 
 std::string akapitPoNaglowku(const std::vector<std::string>& L, const std::regex& naglowek) {
     for (size_t i = 0; i < L.size(); ++i) {
         std::smatch m;
-        const std::string l = zwin(L[i]);
+        const std::string l = zwin(pierwszaKolumna(L[i]));
         if (l.size() > 140 || !std::regex_search(l, m, naglowek)) continue;
         std::string tekst = l.substr(static_cast<size_t>(m[0].length()));
         while (!tekst.empty() && (tekst[0] == ':' || tekst[0] == ' ')) tekst.erase(0, 1);
         int puste = 0, wierszy = 0;
         for (size_t j = i + 1; j < L.size() && wierszy < 10 && tekst.size() < 500; ++j) {
-            const std::string x = zwin(L[j]);
+            const std::string x = zwin(pierwszaKolumna(L[j]));
             if (x.empty()) { if (++puste >= 2 || (!tekst.empty() && puste >= 1 && wierszy >= 3)) break; continue; }
             puste = 0;
             if (tytulInnejSekcji(x)) break;
@@ -324,6 +334,200 @@ void odczytajUwagi(const std::vector<std::string>& L, Wynik& w) {
     t = akapitPoNaglowku(L, opis);
     if (!t.empty()) w.uwagi = "Opis: " + t;
 }
+
+
+// ===================== kondensatory (elektrolityczne, foliowe, EMI, ceramiczne, tantalowe) =====================
+
+std::vector<double> liczbyZ(const std::string& t) {
+    std::vector<double> v;
+    static const std::regex num(R"([0-9]+(?:\.[0-9]+)?)");
+    for (auto it = std::sregex_iterator(t.begin(), t.end(), num); it != std::sregex_iterator(); ++it) v.push_back(std::stod(it->str()));
+    return v;
+}
+
+std::string liczbaTekst(double x) {
+    std::ostringstream o;
+    o << x;
+    return o.str();
+}
+
+std::string zakresTekst(const std::vector<double>& v, const std::string& jedn) {
+    if (v.empty()) return {};
+    const double a = *std::min_element(v.begin(), v.end()), b = *std::max_element(v.begin(), v.end());
+    return a == b ? liczbaTekst(a) + " " + jedn : liczbaTekst(a) + " ... " + liczbaTekst(b) + " " + jedn;
+}
+
+// wyrażenie regularne budowane raz (static w lambdzie)
+#define RE(...) ([]() -> const std::regex& { static const std::regex r(__VA_ARGS__); return r; }())
+
+void odczytajKondensator(const std::vector<std::string>& L, Wynik& w, std::set<std::string>& mamy) {
+    int slowKond = 0;
+    for (const std::string& l : L) if (zawiera(l, {"capacitor", "capacitance"})) ++slowKond;
+    if (slowKond < 3) return;
+
+    // --- rodzaj kondensatora (pierwszy pasujący w kolejności ważności)
+    std::string rodzaj, fragRodzaju;
+    {
+        struct R { const char* wzor; const char* nazwa; };
+        static const R rodzaje[] = {
+            {R"(alumin(?:um|ium)\s+electrolytic|electrolytic\s+capacitor)", "Elektrolityczny aluminiowy"},
+            {R"(tantalum)", "Tantalowy"},
+            {R"(\bMKP\b|polypropylene)", "Foliowy polipropylenowy (MKP)"},
+            {R"(\bMKT\b|polyester|\bPET\b film)", "Foliowy poliestrowy (MKT)"},
+            {R"(multilayer ceramic|\bMLCC\b|ceramic capacitor|\b(?:X7R|X5R|C0G|NP0)\b)", "Ceramiczny"},
+            {R"(film capacitor)", "Foliowy"},
+        };
+        for (const R& r : rodzaje) {
+            const std::regex re(r.wzor, std::regex::icase);
+            for (const std::string& l : L) if (std::regex_search(l, re)) { rodzaj = r.nazwa; fragRodzaju = zwin(l); break; }
+            if (!rodzaj.empty()) break;
+        }
+        if (!rodzaj.empty()) dodaj(w, mamy, "Rodzaj kondensatora", rodzaj, fragRodzaju);
+    }
+
+    std::string poj, tolerancja;
+    bool maRatedV = false;
+    std::string jednostkaCR;
+    double minCR = 1e300, maxCR = -1;
+    std::set<double> tol;
+    std::vector<double> rozstaw, srednica;
+    for (size_t i = 0; i < L.size(); ++i) {
+        const std::string l = zwin(L[i]);
+        if (l.empty()) continue;
+        std::smatch m;
+
+        // pojemność znamionowa (zakres)
+        if (poj.empty() && std::regex_search(l, m, RE(R"(^(?:rated )?capacitance(?: range)?\s*:?\s*([0-9]+(?:[.,][0-9]+)?)\s*(?:to|-|\.\.\.|~)\s*([0-9]+(?:[.,][0-9]+)?)\s*(\xC2\xB5F|uF|nF|pF|mF)\b)", std::regex::icase))) {
+            poj = m[1].str() + " ... " + m[2].str() + " " + m[3].str();
+            dodaj(w, mamy, "Pojemność", poj, l);
+        }
+        // tabela zamawiania: kolumna CR, jednostka w nagłówku
+        if (std::regex_search(l, RE(R"(\bCR\b)"))) {
+            for (size_t j = i; j < L.size() && j < i + 3; ++j) {
+                std::smatch mu;
+                const std::string lj = zwin(L[j]);
+                if (std::regex_search(lj, mu, RE(R"((\xC2\xB5F|uF|nF|pF)\b)"))) { jednostkaCR = mu[1].str(); break; }
+            }
+        }
+        if (!jednostkaCR.empty() && std::regex_search(l, m, RE(R"(^(?:[0-9]+(?:\.[0-9]+)?\s+)?([0-9]+(?:[.,][0-9]+)?)\s+[0-9]+(?:[.,][0-9]+)?\s*(?:\xC3\x97|x)\s*[0-9])"))) {
+            std::string c = m[1].str();
+            std::replace(c.begin(), c.end(), ',', '.');
+            const double v = std::stod(c);
+            minCR = std::min(minCR, v);
+            maxCR = std::max(maxCR, v);
+        }
+        // tolerancja
+        if (tolerancja.empty() && std::regex_search(l, m, RE(R"(capacitance tolerance\s*:?\s*(?:\xC2\xB1|\+/-)\s*([0-9]+(?:[.,][0-9]+)?)\s*%)", std::regex::icase))) {
+            tolerancja = "\xC2\xB1" + m[1].str() + " %";
+            dodaj(w, mamy, "Tolerancja pojemności", tolerancja, l);
+        }
+        {   // kody tolerancji w numerze zamówieniowym: "M = ±20%", "K = ±10%"
+            for (auto it = std::sregex_iterator(l.begin(), l.end(), RE(R"(\b[A-Z]\s*=\s*(?:\xC2\xB1|\+/-)\s*([0-9]+(?:\.[0-9]+)?)\s*%)")); it != std::sregex_iterator(); ++it)
+                tol.insert(std::stod((*it)[1].str()));
+        }
+        // napięcie znamionowe
+        if (!maRatedV && std::regex_search(l, m, RE(R"(^rated voltage(?: range)?\s*:?\s*([0-9]+(?:[.,][0-9]+)?)\s*(?:to|-|\.\.\.|~)\s*([0-9]+(?:[.,][0-9]+)?)\s*V\b)", std::regex::icase))) {
+            maRatedV = true;
+            dodaj(w, mamy, "Napięcie znamionowe", m[1].str() + " ... " + m[2].str() + " V", l);
+        }
+        if (std::regex_search(l, m, RE(R"(^rated (?:AC )?voltage[^0-9]{0,40}([0-9]+)\s*V\s*(?:\(?\s*(?:AC|50/60 ?Hz))?)", std::regex::icase)) &&
+            zawiera(l, {"ac", "50/60"}))
+            dodaj(w, mamy, "Napięcie znamionowe AC", m[1].str() + " V AC", l);
+        if (std::regex_search(l, m, RE(R"(\bX[12]\b\s*/\s*([0-9]+)\s*V\s*AC)", std::regex::icase)))
+            dodaj(w, mamy, "Napięcie znamionowe AC", m[1].str() + " V AC", l);
+        if (std::regex_search(l, m, RE(R"(maximum continuous DC voltage[^0-9]{0,20}([0-9]+)\s*V)", std::regex::icase)))
+            dodaj(w, mamy, "Maks. napięcie ciągłe DC", m[1].str() + " V", l);
+        if (std::regex_search(l, m, RE(R"(maximum continuous AC voltage[^0-9]{0,20}([0-9]+)\s*V)", std::regex::icase)))
+            dodaj(w, mamy, "Maks. napięcie ciągłe AC", m[1].str() + " V", l);
+        if (std::regex_search(l, m, RE(R"(\b(X[12]|Y[1-4])\b[^.]{0,12}\bclass\b|\bclass\s+(X[12]|Y[1-4])\b)", std::regex::icase)))
+            dodaj(w, mamy, "Klasa przeciwzakłóceniowa", m[1].matched ? m[1].str() : m[2].str(), l);
+        if (std::regex_search(l, m, RE(R"(DC test voltage\s*:?\s*([0-9]+)\s*V\s*,?\s*([0-9]+)\s*s)", std::regex::icase)))
+            dodaj(w, mamy, "Napięcie probiercze DC", m[1].str() + " V / " + m[2].str() + " s", l);
+
+        // temperatura
+        if (std::regex_search(l, m, RE(R"(max\.? operating temperature[^0-9+-]{0,20}\+?([0-9]{2,3})\s*deg\s*C)", std::regex::icase)))
+            dodaj(w, mamy, "Maks. temperatura pracy", m[1].str() + " \xC2\xB0" "C", l);
+        if (std::regex_search(l, m, RE(R"(climatic category.{0,30}?\b([0-9]{2})/([0-9]{2,3})/([0-9]{2,3}))", std::regex::icase))) {
+            dodaj(w, mamy, "Kategoria klimatyczna", m[1].str() + "/" + m[2].str() + "/" + m[3].str(), l);
+            dodaj(w, mamy, "Temperatura pracy", "-" + m[1].str() + " ... +" + m[2].str() + " \xC2\xB0" "C", l);
+        }
+
+        // wyprowadzenia, rozstaw, średnica
+        if (std::regex_search(l, RE(R"(radial lead|parallel wire leads)", std::regex::icase)))
+            dodaj(w, mamy, "Wyprowadzenia", "Radialne", l);
+        if (rozstaw.empty() && std::regex_search(l, m, RE(R"(^lead spacing\s+((?:[0-9]+(?:\.[0-9]+)?\s*(?:mm)?\s*)+)$)", std::regex::icase)))
+            rozstaw = liczbyZ(m[1].str());
+        {
+            const std::string kol = zwin(pierwszaKolumna(L[i], 20));
+            if (rozstaw.empty() && std::regex_search(kol, m, RE(R"(^P\s+((?:[0-9]+(?:\.[0-9]+)?\s*)+)$)")))
+                rozstaw = liczbyZ(m[1].str());
+            if (srednica.empty() && std::regex_search(kol, m, RE(R"(^(?:\xCF\x86|\xC3\x98)D\s+((?:[0-9]+(?:\.[0-9]+)?\s*)+)$)")))
+                srednica = liczbyZ(m[1].str());
+        }
+
+        // tg δ
+        if (std::regex_search(l, RE(R"(^tan\s*\xCE\xB4)", std::regex::icase)) && zawiera(l, {"max"})) {
+            std::vector<double> v;
+            static const std::regex mal(R"(\b0[.,][0-9]+\b)");
+            for (auto it = std::sregex_iterator(l.begin(), l.end(), mal); it != std::sregex_iterator(); ++it) { std::string t = it->str(); std::replace(t.begin(), t.end(), ',', '.'); v.push_back(std::stod(t)); }
+            if (v.size() >= 2) dodaj(w, mamy, "Tangens kąta strat tg \xCE\xB4", zakresTekst(v, "(max., 120 Hz, 20 \xC2\xB0" "C)"), l);
+        }
+        if (zawiera(l, {"dissipation factor"}) && l.find("10-3") != std::string::npos) {
+            for (size_t j = i + 1; j < L.size() && j < i + 4; ++j) {
+                const std::string lj = zwin(L[j]);
+                if (std::regex_search(lj, m, RE(R"(at\s+([0-9]+\s*kHz)\s+([0-9]+(?:\.[0-9]+)?(?:\s+[0-9]+(?:\.[0-9]+)?){0,2}))", std::regex::icase))) {
+                    const std::vector<double> v = liczbyZ(m[2].str());
+                    if (!v.empty()) dodaj(w, mamy, "Tangens kąta strat tg \xCE\xB4", zakresTekst(v, "x10^-3 (" + m[1].str() + ", 20 \xC2\xB0" "C, max.)"), lj);
+                    break;
+                }
+            }
+        }
+
+        // prąd upływu (kondensatory elektrolityczne): "After 2 minutes ... 0.01CV"
+        if (std::regex_search(l, m, RE(R"(after\s+([0-9]+)\s+minutes?.{0,120}?([0-9]*\.?[0-9]+)\s*CV)", std::regex::icase))) {
+            const std::string wart = m[2].str() + "\xC2\xB7" "C\xC2\xB7" "V \xC2\xB5" "A po " + m[1].str() + " min";
+            std::string nazwa = "Prąd upływu (po " + m[1].str() + " min)";
+            dodaj(w, mamy, nazwa, "\xE2\x89\xA4 " + wart, l);
+        }
+        // trwałość
+        if (std::regex_search(l, m, RE(R"(applied for\s+([0-9]+)\s+hours?\s+at\s+([0-9]+)\s*deg)", std::regex::icase)))
+            dodaj(w, mamy, "Trwałość", m[1].str() + " h / " + m[2].str() + " \xC2\xB0" "C", l);
+        // rezystancja izolacji / stała czasowa (kondensatory foliowe)
+        if (std::regex_search(l, m, RE(R"(\b([0-9]{1,3}(?: [0-9]{3})+)\s*M\s?ohm\s+([0-9]{1,3}(?: [0-9]{3})*)\s*s\b)", std::regex::icase))) {
+            auto bez = [](std::string t) { t.erase(std::remove(t.begin(), t.end(), ' '), t.end()); return t; };
+            dodaj(w, mamy, "Rezystancja izolacji", bez(m[1].str()) + " M\xCE\xA9 (mniejsze pojemności) / stała czasowa " + bez(m[2].str()) + " s", l);
+        }
+    }
+
+    if (poj.empty() && maxCR > 0) dodaj(w, mamy, "Pojemność", zakresTekst({minCR, maxCR}, jednostkaCR), "(tabela zamawiania)");
+    if (tolerancja.empty() && !tol.empty()) {
+        std::string t;
+        for (double x : tol) t += (t.empty() ? "" : " / ") + std::string("\xC2\xB1") + liczbaTekst(x) + " %";
+        dodaj(w, mamy, "Tolerancja pojemności", t, "(kody tolerancji w numerze zamówieniowym)");
+    }
+    if (!rozstaw.empty()) dodaj(w, mamy, "Rozstaw wyprowadzeń", zakresTekst(rozstaw, "mm"), "(rozstaw wyprowadzeń)");
+    if (!srednica.empty()) dodaj(w, mamy, "Średnica obudowy \xCF\x86" "D", zakresTekst(srednica, "mm"), "(wymiary)");
+
+    // --- opis: rodzaj + oznaczenie serii
+    if (!rodzaj.empty()) {
+        std::string seria;
+        static const std::regex typ(R"(^series\s*/\s*type\s*:\s*(.+)$)", std::regex::icase);
+        static const std::regex krotka(R"(^[A-Z]{2,6}[0-9]?$)");
+        int n = 0;
+        for (const std::string& raw : L) {
+            const std::string l = zwin(raw);
+            std::smatch m;
+            if (std::regex_search(l, m, typ)) { seria = m[1].str(); break; }
+            if (++n <= 12 && std::regex_match(l, krotka) && l != "RoHS") { seria = l; break; }
+        }
+        std::string r = rodzaj;
+        r[0] = static_cast<char>(r[0]);
+        w.opis = "Kondensator " + maleLitery(rodzaj.substr(0, 1)) + rodzaj.substr(1);
+        if (!seria.empty()) w.opis += " " + seria;
+    }
+}
+
+#undef RE
 
 } // namespace
 
@@ -451,6 +655,7 @@ Wynik wyciagnij(const std::string& surowy) {
     }
     (void)liczba;
     odczytajTabele(L, w, mamy);
+    odczytajKondensator(L, w, mamy);
     odczytajUwagi(L, w);
     return w;
 }

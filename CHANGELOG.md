@@ -2,8 +2,9 @@
 
 ## 2.0 (w przygotowaniu)
 
-Wersje robocze przed 2.0 są numerowane 1.9.N (kolejny numer N przy każdej paczce poprawek); numer bierze się z `CMakeLists.txt` i widać go w oknie „O programie”. Bieżąca wersja robocza: 1.9.21.
+Wersje robocze przed 2.0 są numerowane 1.9.N (kolejny numer N przy każdej paczce poprawek); numer bierze się z `CMakeLists.txt` i widać go w oknie „O programie”. Bieżąca wersja robocza: 1.9.22.
 
+- Odczyt parametrów z datasheetu: rozpoznawanie kondensatorów (elektrolityczne aluminiowe, foliowe MKP/MKT, EMI X/Y; także ceramiczne i tantalowe z podstawowymi polami): rodzaj, pojemność (zakres z tabeli zamawiania), tolerancja (także z kodów M/K), napięcie znamionowe DC i AC, klasa X/Y, temperatura pracy i kategoria klimatyczna, tg δ, prąd upływu, trwałość, rezystancja izolacji, napięcie probiercze, rozstaw wyprowadzeń i średnica. Poprawki: znak ˚ (kółko nad literą) jako stopień, karty dwukolumnowe przy opisie zastosowania, opis układu z rodzaju i serii.
 - Serwis: część wpisu można wybrać z magazynu (okno wyboru z wyszukiwaniem) i opcjonalnie zdjąć jej ilość ze stanu (wydanie w historii; brak towaru odrzuca zapis); zwrot na stan przy usunięciu części lub wpisu (pytanie). Struktura bazy w wersji 19 (tbl_serwis_czesci.id_elementu, pobrano).
 - Windows: pola dat używają wersji rysowanej przez wxWidgets (natywne pole nie przyjmuje ciemnego motywu i zostawało białe); nowy nagłówek PoleDaty.h.
 - Windows: ciemny motyw okien (wxWidgets 3.3+, `MSWEnableDarkMode`); CMake preferuje wx-config-3.3 i podaje wykrytą wersję. Z wxWidgets 3.2 okna na Windows zostają jasne. Wyłączenie: `motyw=jasny` w `[interfejs]`.

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(Magmass VERSION 1.9.21 LANGUAGES CXX)
+project(Magmass VERSION 1.9.22 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

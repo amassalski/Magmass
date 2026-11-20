@@ -70,6 +70,81 @@ int main() {
     SPR(t2.uwagi.find("Audio preamplifiers") != std::string::npos && t2.uwagi.find("Zastosowanie") == 0);
     for (const auto& x : t2.parametry) if (x.nazwa.find("Maks.: ") == 0 || x.nazwa.find("Elektr.: ") == 0) std::printf("  %s = %s\n", x.nazwa.c_str(), x.wartosc.c_str());
 
+    // kondensator elektrolityczny (układ tabel pdftotext -layout, kółko nad literą zamiast stopnia)
+    const std::string el =
+        "ALUMINUM  ELECTROLYTIC  CAPACITORS\n\nURZ\n"
+        "                                  Compact & Low-Profile Sized,\n"
+        "Specifications\n"
+        "Category Temperature Range                            \xE2\x80\x93" "55 to +105\xCB\x9A" "C\n"
+        "Rated Voltage Range                                   16 to 100V\n"
+        "Rated Capacitance Range                               47 to 6800\xC2\xB5" "F\n"
+        "Capacitance Tolerance                                 \xC2\xB1 20% at 120Hz, 20\xCB\x9A" "C\n"
+        "                                                       After 1 minute's application of rated voltage at 20\xC2\xB0" "C, leakage current is not more than 0.03CV(\xCE\xBC" "A).\n"
+        "Leakage Current                                       After 2 minutes' application of rated voltage at 20\xC2\xB0" "C, leakage current is not more than 0.01CV(\xCE\xBC" "A).\n"
+        "Tangent of loss angle (tan \xCE\xB4)    Rated voltage (V)  16  25  35\n"
+        "                    tan \xCE\xB4 (max.)       0.20      0.16      0.14      0.12      0.10      0.08\n"
+        "voltage is applied for 1000 hours at 105\xC2\xB0" "C.\n"
+        "         \xCF\x86" "D               10     12.5     16        18                                                                          Pb-free PET sleeve\n"
+        "          P             5.0    5.0      7.5       7.5                                                                             10                     PD\n"
+        "capacitor capacitor\n";
+    auto we = OdczytDatasheetu::wyciagnij(el);
+    SPR(param(we, "Rodzaj kondensatora") == "Elektrolityczny aluminiowy");
+    SPR(param(we, "Temperatura pracy") == "-55 ... +105 \xC2\xB0" "C");
+    SPR(param(we, "Napięcie znamionowe") == "16 ... 100 V");
+    SPR(param(we, "Pojemność") == "47 ... 6800 \xC2\xB5" "F");
+    SPR(param(we, "Tolerancja pojemności") == "\xC2\xB1" "20 %");
+    SPR(param(we, "Prąd upływu (po 1 min)").find("0.03") != std::string::npos);
+    SPR(param(we, "Prąd upływu (po 2 min)").find("0.01") != std::string::npos);
+    SPR(param(we, "Tangens kąta strat tg \xCE\xB4").find("0.08 ... 0.2") == 0);
+    SPR(param(we, "Trwałość") == "1000 h / 105 \xC2\xB0" "C");
+    SPR(param(we, "Rozstaw wyprowadzeń") == "5 ... 7.5 mm");
+    SPR(param(we, "Średnica obudowy \xCF\x86" "D") == "10 ... 18 mm");
+    SPR(we.opis == "Kondensator elektrolityczny aluminiowy URZ");
+
+    // kondensator foliowy EMI (X2): karta dwukolumnowa
+    const std::string fo =
+        "Film Capacitors\n\nEMI Suppression Capacitors (MKP)\n\nSeries/Type:          B32921C/D ... B32928C/D\n"
+        "EMI suppression capacitors (MKP)                                                 B32921C/D ... B32928C/D\n"
+        "X2 / 305 V AC\n\n"
+        "Typical applications                                 Dimensional drawings\n"
+        "  X2 class for interference suppression              Drawing 1\n"
+        "  \"Across the line\" applications\n"
+        "Climatic\n"
+        "  Max. operating temperature: 110 \xC2\xB0" "C\n"
+        "  Climatic category (IEC 60068-1): 40/110/56\n"
+        "Terminals\n"
+        "  Parallel wire leads, lead-free tinned\n"
+        "Lead spacing 10 mm 15 mm 22.5 mm 27.5 mm 37.5 mm 52.5 mm\n"
+        "Lead CR Max. dimensions Ordering code\n"
+        "spacing w\xC3\x97h\xC3\x97l\n"
+        "mm \xC2\xB5" "F mm\n"
+        "10 0.010 4.0 \xC3\x97 9.0 \xC3\x97 13.0 B32921C3103+*** 4000 2\n"
+        "0.33 6.0 \xC3\x97 15.0 \xC3\x97 26.5 B32923C3334M*** 2720 2\n"
+        "52.5 30 35.0 \xC3\x97 50.0 \xC3\x97 57.5 B32928C3306M*** 108 4\n"
+        "+ = Capacitance tolerance code:\n"
+        "    M = \xC2\xB1" "20%\n    K = \xC2\xB1" "10%\n"
+        "Maximum continuous DC voltage VDC 630 V\n"
+        "Rated AC voltage (IEC 60384-14)                305 V (50/60 Hz)\n"
+        "DC test voltage                                2121 V, 2 s\n"
+        "Insulation resistance Rins        CR<=0.33 \xC2\xB5" "F      CR>0.33 \xC2\xB5" "F\n"
+        "or time constant                 100 000 M\xCE\xA9 30 000 s\n"
+        "capacitors capacitor\n";
+    auto wf = OdczytDatasheetu::wyciagnij(fo);
+    SPR(param(wf, "Rodzaj kondensatora") == "Foliowy polipropylenowy (MKP)");
+    SPR(param(wf, "Napięcie znamionowe AC") == "305 V AC");
+    SPR(param(wf, "Klasa przeciwzakłóceniowa") == "X2");
+    SPR(param(wf, "Temperatura pracy") == "-40 ... +110 \xC2\xB0" "C");
+    SPR(param(wf, "Maks. temperatura pracy") == "110 \xC2\xB0" "C");
+    SPR(param(wf, "Pojemność") == "0.01 ... 30 \xC2\xB5" "F");
+    SPR(param(wf, "Tolerancja pojemności") == "\xC2\xB1" "10 % / \xC2\xB1" "20 %");
+    SPR(param(wf, "Rozstaw wyprowadzeń") == "10 ... 52.5 mm");
+    SPR(param(wf, "Maks. napięcie ciągłe DC") == "630 V");
+    SPR(param(wf, "Napięcie probiercze DC") == "2121 V / 2 s");
+    SPR(param(wf, "Rezystancja izolacji").find("100000") == 0);
+    SPR(param(wf, "Wyprowadzenia") == "Radialne");
+    SPR(wf.opis == "Kondensator foliowy polipropylenowy (MKP) B32921C/D ... B32928C/D");
+    SPR(wf.uwagi == "Zastosowanie: X2 class for interference suppression; \"Across the line\" applications");
+
     auto p = OdczytDatasheetu::wyciagnij("");
     SPR(p.parametry.empty() && p.opis.empty() && p.obudowa.empty());
     std::printf(bledy ? "BLEDY: %d\n" : "test_datasheet OK\n", bledy);
