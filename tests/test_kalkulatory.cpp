@@ -4,6 +4,7 @@
 #include "Logika/KalkulatoryLampowe.h"
 #include "Logika/KalkulatoryWzmacniaczy.h"
 #include "Logika/SchematyLampowe.h"
+#include "Logika/SchematBarwy.h"
 #include "Logika/MetodyGraficzne.h"
 #include "Logika/Znieksztalcenia.h"
 #include "Logika/Dlawik.h"
@@ -732,6 +733,23 @@ int main() {
                 if (et && nr == 1) { Wykonane xp = x; xp.pierwotnePodzielone = true; const auto ep = etap3(w2, r, xp); CHECK(ep && bl(et->lrH, ep->lrH, 1e-3)); }
                 if (et && nr == 3) CHECK(et->sekcje[2].komora == 1 && et->sekcje[2].wysokoscKomoryMm < 5.1 * 10 / 2 + 1e-9);
             }
+            {   // Mesa Boogie DR zmodyfikowany: 11 warstw, wtórne 2∥5∥5'∥9 (4 Ω), + 3∥8 (8 Ω), + 6 (16 Ω); zwoje odczepów 1 : √2 : 2
+                const auto ps = presetSekcji(6, 1696, 100);
+                int a = 0, w = 0;
+                for (const auto& q : ps) (q.pierwotna ? a : w) += q.zwoje;
+                CHECK(ps.size() == 11 && a == 1696 && maOdczepy(ps) && w == 100 * 4 + 41 * 2 + 59);
+                CHECK(zwojeWtorneZSekcji(ps, false, 1) == 100 && zwojeWtorneZSekcji(ps, false, 2) == 141 && zwojeWtorneZSekcji(ps, false, 3) == 200);
+                CHECK(std::fabs(zwojeWtorneZSekcji(ps, false, 2) / 100.0 - std::sqrt(2.0)) < 0.005 && std::fabs(zwojeWtorneZSekcji(ps, false, 3) / 100.0 - 2.0) < 1e-9);
+                Wykonane xd = x; xd.zwojePierwotne = 1696; xd.zwojeWtorne = 100; xd.sekcjeWej = ps; xd.drutPierwotnyMm = 0.3; xd.drutWtornyMm = 0.4;
+                for (int k = 1; k <= 3; k++) {
+                    xd.odczep = k;
+                    const auto ed = etap3(w2, r, xd);
+                    CHECK(ed && ed->sekcje.size() == 11 && !ed->niezrownowazone && ed->rwOm > 0);
+                }
+                const std::string tekst = formatujSekcje(ps);
+                std::vector<SekcjaWej> s2; std::string b2;
+                CHECK(parsujSekcje(tekst, s2, b2) && s2.size() == ps.size() && s2[10].kolejnosc == 4 && s2[5].grupaOdczep[2] == 3);
+            }
             {   // Mesa Boogie DR (Rys.15): jedno trafo, 10 warstw, odczepy 4, 8 i 16 Ω jednocześnie; pierwotne 1-7-środek-4-10
                 const auto ps = presetSekcji(5, 1696, 78);
                 int a = 0, w = 0;
@@ -1048,7 +1066,7 @@ int main() {
         // regulacja barwy: wartości odniesienia z niezależnej implementacji (numpy), która czyta bezpośrednio netlisty .cir
         // i katalog projektu tonestack (wartości, krzywe potencjometrów); poziomy w dB przy zadanej częstotliwości
         const auto& uk = ukladyBarwy();
-        CHECK(uk.size() == 14 && uk[0].nazwa.find("Bassman") != std::string::npos);
+        CHECK(uk.size() == 16 && uk[0].nazwa.find("Bassman") != std::string::npos);
         struct Wz { const char* plik; size_t nr; double p[3]; double f; double db; };
         static const Wz wz[] = {
         {"fender", 1, {0.5, 0.5, 0.5}, 1000, -22.933285971},
@@ -1116,6 +1134,7 @@ int main() {
             bool bierny = true;
             for (size_t i = 0; i < uk.size(); ++i) {
                 NastawyBarwy n;
+                if (uk[i].opWe != 0) continue;   // układy czynne wzmacniają
                 for (double a : {0.0, 0.5, 1.0}) for (double c : {0.0, 0.5, 1.0}) {
                     n.poz[1] = a; n.poz[2] = c; n.poz[3] = a;
                     for (double f = 20; f <= 20000; f *= 1.4)
@@ -1128,6 +1147,71 @@ int main() {
         {
             auto d = [&](double sr) { NastawyBarwy n; n.poz[1] = 0.5; n.poz[2] = sr; n.poz[3] = 0.5; return poziomUkladuDb(uk[0], n, 500); };
             CHECK(d(0.1) < d(0.5) && d(0.5) < d(1.0));
+        }
+        // Baxandall czynny (idealny wzmacniacz operacyjny): odniesienie z niezależnego rachunku Yin/Yf (superpozycja prądów w węźle
+        // wejścia odwracającego, bez macierzy węzłowej); źródło idealne (rzr = 0)
+        {
+            const UkladBarwy& ba = uk[uk.size() - 2];
+            CHECK(ba.opWe == 10 && ba.nazwa.find("Baxandall czynny") != std::string::npos);
+            UkladBarwy b0 = ba; b0.rzr = 1e-3;
+            struct Wc { double xb, xt, f, db; };
+            static const Wc wc[] = {{0.5, 0.5, 1000, 0.0}, {1, 0.5, 50, 14.555565106}, {0, 0.5, 50, -14.555565106},
+                                    {0.5, 1, 10000, 14.677128286}, {0.5, 0, 10000, -14.677128286},
+                                    {0.8, 0.3, 700, -0.961098277}, {0.2, 0.9, 4000, 6.302664765}};
+            for (const Wc& w : wc) {
+                NastawyBarwy n; n.poz[1] = w.xb; n.poz[3] = w.xt;
+                const double d = poziomUkladuDb(b0, n, w.f);
+                if (std::fabs(d - w.db) >= 1e-4) std::cerr << "  Baxandall czynny f=" << w.f << ": " << d << " zamiast " << w.db << "\n";
+                CHECK(std::fabs(d - w.db) < 1e-4);
+            }
+            // płaski w środku w całym paśmie; wzmocnienie ponad 0 dB (układ czynny); obciążenie wyjścia nie ma wpływu
+            bool plasko = true;
+            NastawyBarwy sr; sr.poz[1] = sr.poz[2] = sr.poz[3] = 0.5;
+            for (double f = 20; f <= 20000; f *= 1.3) plasko = plasko && std::fabs(poziomUkladuDb(b0, sr, f)) < 1e-3;
+            CHECK(plasko);
+            NastawyBarwy max; max.poz[1] = 1; max.poz[3] = 1;
+            CHECK(poziomUkladuDb(ba, max, 20) > 15 && poziomUkladuDb(ba, max, 20000) > 15);
+            UkladBarwy obc = ba; obc.robc = 100;
+            CHECK(std::fabs(poziomUkladuDb(obc, max, 100) - poziomUkladuDb(ba, max, 100)) < 1e-12);
+        }
+        // Revox B251 (wejście nieodwracające z sieci RC): odniesienie z niezależnego rachunku (MNA z jawnym prądem wyjścia wzmacniacza,
+        // wiersz warunku V(-) = V(+) zamiast zamiany wiersza), źródło idealne
+        {
+            const UkladBarwy& rv = uk.back();
+            CHECK(rv.opWe == 10 && rv.opPlus == 20 && rv.nazwa.find("Revox") != std::string::npos && rv.uzywaPot(1) && rv.uzywaPot(3) && !rv.uzywaPot(2));
+            struct Wc { double xb, xt, f, db; };
+            static const Wc wc[] = {{0.5, 0.5, 1000, 0.0}, {1, 0.5, 50, 9.277301345}, {0, 0.5, 50, -9.277301345},
+                                    {0.5, 1, 10000, 5.219386151}, {0.5, 0, 10000, -5.219386151},
+                                    {0.8, 0.3, 700, -0.198827565}, {0.2, 0.9, 4000, 1.270118993}};
+            for (const Wc& w : wc) {
+                NastawyBarwy n; n.poz[1] = w.xb; n.poz[3] = w.xt;
+                const double d = poziomUkladuDb(rv, n, w.f);
+                if (std::fabs(d - w.db) >= 1e-4) std::cerr << "  Revox f=" << w.f << ": " << d << " zamiast " << w.db << "\n";
+                CHECK(std::fabs(d - w.db) < 1e-4);
+            }
+            bool plasko = true;   // suwaki w środku: płasko 0 dB w całym paśmie
+            NastawyBarwy sr; sr.poz[1] = sr.poz[2] = sr.poz[3] = 0.5;
+            for (double f = 20; f <= 20000; f *= 1.3) plasko = plasko && std::fabs(poziomUkladuDb(rv, sr, f)) < 1e-3;   // rzr = 0 -> 1 mΩ w solverze
+            CHECK(plasko);
+            UkladBarwy obc = rv; obc.robc = 100;
+            CHECK(std::fabs(poziomUkladuDb(obc, sr, 100) - poziomUkladuDb(rv, sr, 100)) < 1e-12);
+            // wejście nieodwracające na węźle spoza netlisty = błędne dane
+            UkladBarwy zly = rv; zly.opPlus = 99;
+            CHECK(odpowiedzUkladu(zly, sr, 1000) == std::complex<double>(0));
+        }
+        // rysunki: każdy układ ma w rysunku tyle elementów co w netliście, współrzędne mieszczą się w rysunku, czynny ma wzmacniacz
+        {
+            bool ok = true;
+            for (const UkladBarwy& u : uk) {
+                const SchematBarwy::Rysunek r = SchematBarwy::zbuduj(u);
+                int oczek = 0;
+                for (const Skladnik& s : u.skladniki) oczek += s.w1 != s.w2;
+                ok = ok && r.elementow == oczek && r.szerokosc > 100 && r.wysokosc > 100 && r.ile(SchematBarwy::Rodzaj::Zacisk) == 2
+                     && r.ile(SchematBarwy::Rodzaj::Wzmacniacz) == (u.opWe ? 1 : 0)
+                     && r.ile(SchematBarwy::Rodzaj::Rezystor) + r.ile(SchematBarwy::Rodzaj::Kondensator) + r.ile(SchematBarwy::Rodzaj::Cewka) == oczek;
+                for (const SchematBarwy::Prym& p : r.prymy) ok = ok && p.x1 >= 0 && p.y1 >= 0 && p.x1 <= r.szerokosc && p.y1 <= r.wysokosc;
+            }
+            CHECK(ok);
         }
         const ParametryUkladu ps = parametryUkladu(uk[0], NastawyBarwy{});
         CHECK(ps.minimumDb < -10 && ps.fMinimumHz >= 100 && ps.fMinimumHz <= 3000 && ps.maksimumDb <= 0 && ps.poziom1kHz > -60);

@@ -1,4 +1,4 @@
-; Instalator Magmass (NSIS 3, Unicode). Parametry przekazuje zbuduj_windows.sh przez makensis -D:
+﻿; Instalator Magmass (NSIS 3, Unicode). Parametry przekazuje zbuduj_windows.sh przez makensis -D:
 ;   WERSJA, STAGE (katalog z gotowym programem), WYNIK (plik wyjściowy), IKONA (opcjonalnie, .ico), LICENCJA (opcjonalnie, tekst licencji do zatwierdzenia)
 Unicode true
 !include "MUI2.nsh"
@@ -8,6 +8,9 @@ OutFile "${WYNIK}"
 InstallDir "$PROGRAMFILES64\Magmass"
 InstallDirRegKey HKLM "Software\Magmass" "Katalog"
 RequestExecutionLevel admin
+; Skróty menu Start i pulpitu: SetShellVarContext all w każdej sekcji (instalator z podniesionymi uprawnieniami tworzyłby je
+; inaczej w profilu konta administratora, które może być innym kontem niż użytkownika, więc skrótów nie byłoby widać).
+; Plik MUSI być zapisany jako UTF-8 z BOM, inaczej makensis czyta go jako ANSI i polskie litery są zepsute.
 SetCompressor /SOLID lzma
 
 VIProductVersion "${WERSJA}.0"
@@ -41,6 +44,7 @@ VIAddVersionKey /LANG=1045 "LegalCopyright" "© 2026 Adam Massalski, GNU GPL 3 l
 
 Section "Program (wymagany)" SecProgram
   SectionIn RO
+  SetShellVarContext all
   SetOutPath "$INSTDIR"
   File /r "${STAGE}\*.*"
   WriteUninstaller "$INSTDIR\Odinstaluj.exe"
@@ -56,17 +60,23 @@ Section "Program (wymagany)" SecProgram
 SectionEnd
 
 Section "Skrót w menu Start" SecStart
+  SetShellVarContext all
+  SetOutPath "$INSTDIR"
   CreateDirectory "$SMPROGRAMS\Magmass"
   CreateShortcut "$SMPROGRAMS\Magmass\Magmass.lnk" "$INSTDIR\Magmass.exe"
   CreateShortcut "$SMPROGRAMS\Magmass\Odinstaluj.lnk" "$INSTDIR\Odinstaluj.exe"
 SectionEnd
 
 Section "Skrót na pulpicie" SecPulpit
+  SetShellVarContext all
+  SetOutPath "$INSTDIR"
   CreateShortcut "$DESKTOP\Magmass.lnk" "$INSTDIR\Magmass.exe"
 SectionEnd
 
 ; Domyślnie wyłączony (/o): klasyczny pasek szybkiego uruchamiania istnieje tylko, jeśli użytkownik włączył go w systemie.
 Section /o "Skrót na pasku szybkiego uruchamiania" SecSzybki
+  SetShellVarContext current   ; Quick Launch jest zawsze folderem bieżącego użytkownika
+  SetOutPath "$INSTDIR"
   CreateDirectory "$QUICKLAUNCH"
   CreateShortcut "$QUICKLAUNCH\Magmass.lnk" "$INSTDIR\Magmass.exe"
 SectionEnd
@@ -79,9 +89,14 @@ SectionEnd
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 Section "Uninstall"
+  SetShellVarContext all
   ; Dane użytkownika (konfiguracja w %APPDATA%\DomowyMagazyn) zostają, baza danych też.
   Delete "$DESKTOP\Magmass.lnk"
+  SetShellVarContext current
   Delete "$QUICKLAUNCH\Magmass.lnk"
+  Delete "$DESKTOP\Magmass.lnk"   ; skrót z wcześniejszych wersji instalatora (profil użytkownika)
+  RMDir /r "$SMPROGRAMS\Magmass"
+  SetShellVarContext all
   RMDir /r "$SMPROGRAMS\Magmass"
   RMDir /r "$INSTDIR"
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Magmass"

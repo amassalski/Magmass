@@ -52,7 +52,7 @@ Gotowe instalatory (DEB dla Debiana i Ubuntu, instalator i wersja przenośna dla
 |---|---|
 | Kompilator | C++17 (GCC, Clang, MinGW) |
 | Budowanie | CMake 3.16 lub nowszy |
-| Biblioteki | wxWidgets 3.2, libpq (PostgreSQL) |
+| Biblioteki | wxWidgets 3.3 (na wszystkich systemach), libpq (PostgreSQL) |
 | Baza danych | PostgreSQL 9.6 lub nowszy z rozszerzeniem `ltree` |
 | Opcjonalnie | OpenCV (moduły `core` i `videoio`, kamera USB), poppler (`pdftotext`, odczyt datasheetów), gettext (tłumaczenia) |
 
@@ -60,7 +60,9 @@ Gotowe instalatory (DEB dla Debiana i Ubuntu, instalator i wersja przenośna dla
 
 **Linux (Debian, Ubuntu)**
 ```bash
-sudo apt install cmake g++ libwxgtk3.2-dev libpq-dev poppler-utils libopencv-dev libcurl4-openssl-dev
+# wxWidgets 3.3 nie ma jeszcze w pakietach Debiana/Ubuntu: zbuduj go ze źródeł (https://www.wxwidgets.org/downloads/, ./configure --with-gtk=3 && make && sudo make install)
+# albo użyj skryptu build-wxwidgets.ps1 / dokumentacja/instalacja.md. CMake wymaga wxWidgets 3.3 (wx-config-3.3 albo -DWX_CONFIG=...).
+sudo apt install cmake g++ libgtk-3-dev libpq-dev poppler-utils libopencv-dev libcurl4-openssl-dev
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j
 ./build/Magmass
@@ -69,11 +71,11 @@ Pakiet DEB: `narzedzia/zbuduj_deb.sh`.
 
 **Windows (MSYS2, powłoka UCRT64)**
 
-> Ciemny motyw systemu na Windows obsługuje dopiero wxWidgets 3.3: zamiast `wxwidgets3.2-msw` zainstaluj `mingw-w64-ucrt-x86_64-wxwidgets3.3-msw` (CMake wybierze go sam; z wxWidgets 3.2 okna zostają jasne). Wyłączenie: `motyw=jasny` w `[interfejs]` w config.ini.
+> Magmass wymaga wxWidgets 3.3 (ciemny motyw systemu na Windows działa dopiero w tej wersji): zainstaluj `mingw-w64-ucrt-x86_64-wxwidgets3.3-msw` (CMake wybierze go sam, a z wersją 3.2 zatrzyma konfigurację). Wyłączenie ciemnego motywu: `motyw=jasny` w `[interfejs]` w config.ini. Do testów na starszej bibliotece: `-DMAGMASS_DOPUSC_WX32=ON` (bez ciemnego motywu).
 
 ```bash
 pacman -S --needed mingw-w64-ucrt-x86_64-toolchain mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-ninja \
-  mingw-w64-ucrt-x86_64-wxwidgets3.2-msw mingw-w64-ucrt-x86_64-postgresql
+  mingw-w64-ucrt-x86_64-wxwidgets3.3-msw mingw-w64-ucrt-x86_64-postgresql
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 cmake --build build
 ```
@@ -82,6 +84,7 @@ Instalator i wersja przenośna: `narzedzia/zbuduj_windows.sh`.
 **macOS**
 ```bash
 brew install cmake wxwidgets postgresql@15 dylibbundler poppler    # albo odpowiedniki z MacPorts
+wx-config --version    # musi być 3.3 lub nowszy (w razie potrzeby wskaż -DWX_CONFIG=...)
 cmake -S . -B build-mac -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_WX=ON
 cmake --build build-mac -j
 ```

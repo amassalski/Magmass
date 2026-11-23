@@ -75,7 +75,8 @@ bool maOdczepy(const std::vector<SekcjaWej>& sekcje);
 constexpr double kImpedancjeOdczepow[3] = {4.0, 8.0, 16.0};
 /// Gotowe układy sekcji dla z1 i z2 zwojów: 0 = P-S, 1 = P/2-S-P/2, 2 = gitarowy 3-sekcyjny (A 40% / W 50% / A 20% / W 50% / A 40%),
 /// 3 = HiFi dwukomorowy (komora 1: A½ W½, komora 2: A½ W½), 4 = HiFi dwukomorowy przeplatany (każda komora: A¼ W½ A¼),
-/// 5, 6, 7 = Mesa Boogie DR (10 warstw, wtórne 2∥5∥8, 3∥9, 6) dla odczepu 4, 8 albo 16 Ω; z2 = zwoje wtórnego na wybranym odczepie
+/// 5 = Mesa Boogie DR (10 warstw, wtórne 2∥5∥8, 3∥9, 6; odczepy 4, 8 i 16 Ω), 6 = DR zmodyfikowany (11 warstw, wtórne 2∥5∥5'∥9, 3∥8, 6);
+/// z2 = zwoje wtórnego na odczepie 4 Ω
 std::vector<SekcjaWej> presetSekcji(int numer, int z1, int z2);
 /// Tekst „A1 600 / W1 100 / | / A2 300 ...” -> sekcje. Za liczbą zwojów mogą stać: g<N> (grupa wtórnych), x (sekcja nieczynna), e<N> (kolejność elektryczna sekcji A). Wiersz „|” (albo „---”) zaczyna nową komorę. A lub P = pierwotne, W lub S = wtórne.
 bool parsujSekcje(const std::string& tekst, std::vector<SekcjaWej>& sekcje, std::string& blad);

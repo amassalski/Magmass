@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Magmass\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-10 10:26+0000\n"
+"POT-Creation-Date: 2026-11-20 20:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,367 +17,591 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/GUI/DialogAudioLampy.cpp:150
+#: src/GUI/DialogAudioLampy.cpp:159
 msgid "Narzędzia audio i lampowe"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:154
+#: src/GUI/DialogAudioLampy.cpp:163
 msgid "Układy lampowe"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:155
+#: src/GUI/DialogAudioLampy.cpp:164
 msgid "dB i nepery"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:156
+#: src/GUI/DialogAudioLampy.cpp:165
 msgid "Krzywa RIAA"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:157
+#: src/GUI/DialogAudioLampy.cpp:166
 msgid "Punkt pracy lampy"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:159 src/GUI/DialogCewkiAL.cpp:62
-#: src/GUI/DialogDlawika.cpp:264 src/GUI/DialogEtykiet.cpp:71
-#: src/GUI/DialogImportuElementow.cpp:94 src/GUI/DialogKalkulatorow.cpp:112
+#: src/GUI/DialogAudioLampy.cpp:167
+msgid "Polaryzacja katodowa"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:168
+msgid "Kondensator sprzęgający"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:169
+msgid "Regulacja barwy"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:171 src/GUI/DialogCewkiAL.cpp:63
+#: src/GUI/DialogDlawika.cpp:312 src/GUI/DialogEtykiet.cpp:71
+#: src/GUI/DialogImportuElementow.cpp:95 src/GUI/DialogKalkulatorow.cpp:112
 #: src/GUI/DialogKodow.cpp:107 src/GUI/DialogLinkowElementu.cpp:171
-#: src/GUI/DialogMetodyGraficzne.cpp:253 src/GUI/DialogObudow.cpp:164
+#: src/GUI/DialogMetodyGraficzne.cpp:254 src/GUI/DialogObudow.cpp:164
 #: src/GUI/DialogRaportu.cpp:60 src/GUI/DialogSklepow.cpp:43
-#: src/GUI/DialogTrafoPP.cpp:138 src/GUI/DialogTrafoSE.cpp:161
-#: src/GUI/DialogTrafoSieciowy.cpp:103 src/GUI/DialogZestawienia.cpp:63
-#: src/GUI/DialogZnieksztalcen.cpp:61 src/Pomoc/PomocGUI.cpp:143
+#: src/GUI/DialogSlownikaParametrow.cpp:79 src/GUI/DialogTrafoPP.cpp:150
+#: src/GUI/DialogTrafoSE.cpp:163 src/GUI/DialogTrafoSieciowy.cpp:108
+#: src/GUI/DialogZestawienia.cpp:63 src/GUI/DialogZnieksztalcen.cpp:62
+#: src/Pomoc/PomocGUI.cpp:161
 msgid "Zamknij"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:370
+#: src/GUI/DialogAudioLampy.cpp:385 src/GUI/DialogAudioLampy.cpp:1206
 msgid "Układ:"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:376
+#: src/GUI/DialogAudioLampy.cpp:391
 msgid "Polaryzacja automatyczna (Rk bez kondensatora)"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:382 src/GUI/DialogAudioLampy.cpp:975
+#: src/GUI/DialogAudioLampy.cpp:397 src/GUI/DialogAudioLampy.cpp:990
 msgid "Lampa z katalogu..."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:383
+#: src/GUI/DialogAudioLampy.cpp:398
 msgid "Zapisz lampę do katalogu..."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:471
+#: src/GUI/DialogAudioLampy.cpp:486
 msgid ""
 "Uwagi: uzupełnij pola liczbami (rezystancje, pojemności i dane lampy większe "
 "od zera)."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:480
+#: src/GUI/DialogAudioLampy.cpp:495
 msgid ""
 "Uwagi: przy polaryzacji automatycznej górna częstotliwość jest przybliżona "
 "(ECCLab podaje niższą)."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:645 src/GUI/DialogAudioLampy.cpp:708
-#: src/GUI/OknoGlowne.cpp:681
+#: src/GUI/DialogAudioLampy.cpp:660 src/GUI/DialogAudioLampy.cpp:723
+#: src/GUI/OknoGlowne.cpp:692
 msgid "Brak połączenia z bazą danych."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:645 src/GUI/DialogAudioLampy.cpp:668
-#: src/GUI/DialogAudioLampy.cpp:674
+#: src/GUI/DialogAudioLampy.cpp:660 src/GUI/DialogAudioLampy.cpp:683
+#: src/GUI/DialogAudioLampy.cpp:689 src/GUI/DialogTrafoPP.cpp:53
 msgid "Lampa z katalogu"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:667
+#: src/GUI/DialogAudioLampy.cpp:682
 msgid ""
 "W katalogu nie ma jeszcze lamp (rodzina „Lampy elektronowe”). Dodać lampy "
 "przykładowe: ECC81, ECC82, ECC83, ECC85, ECC88?"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:674
+#: src/GUI/DialogAudioLampy.cpp:689
 msgid "Wybierz lampę z katalogu:"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:708 src/GUI/DialogAudioLampy.cpp:712
-#: src/GUI/DialogAudioLampy.cpp:715 src/GUI/DialogAudioLampy.cpp:718
+#: src/GUI/DialogAudioLampy.cpp:723 src/GUI/DialogAudioLampy.cpp:727
+#: src/GUI/DialogAudioLampy.cpp:730 src/GUI/DialogAudioLampy.cpp:733
 msgid "Zapisz lampę do katalogu"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:712
+#: src/GUI/DialogAudioLampy.cpp:727
 msgid "Uzupełnij Ka i Rwew (albo Sa) lampy liczbami większymi od zera."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:715
+#: src/GUI/DialogAudioLampy.cpp:730
 msgid "Symbol lampy (np. ECC83). Istniejąca pozycja dostanie nowe parametry."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:718
+#: src/GUI/DialogAudioLampy.cpp:733
 msgid "Nie udało się zapisać lampy w katalogu."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:730
+#: src/GUI/DialogAudioLampy.cpp:745
 msgid "Zamiana napięć na decybele i nepery (dB = 20 log U1/U2, Np = ln U1/U2)"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:734
+#: src/GUI/DialogAudioLampy.cpp:749
 msgid "Zamiana mocy na decybele i nepery (dB = 10 log P1/P2, Np = ½ ln P1/P2)"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:738
+#: src/GUI/DialogAudioLampy.cpp:753
 msgid "Zamiana miary liniowej na decybele"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:739
+#: src/GUI/DialogAudioLampy.cpp:754
 msgid "Miara liniowa"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:741 src/GUI/DialogAudioLampy.cpp:750
+#: src/GUI/DialogAudioLampy.cpp:756 src/GUI/DialogAudioLampy.cpp:765
 msgid "napięcie / prąd"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:742 src/GUI/DialogAudioLampy.cpp:751
+#: src/GUI/DialogAudioLampy.cpp:757 src/GUI/DialogAudioLampy.cpp:766
 msgid "moc"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:747
+#: src/GUI/DialogAudioLampy.cpp:762
 msgid "Zamiana decybeli na miarę liniową"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:756
+#: src/GUI/DialogAudioLampy.cpp:771
 msgid "Zamiana neperów na decybele (1 Np = 8,686 dB)"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:759
+#: src/GUI/DialogAudioLampy.cpp:774
 msgid "Zamiana decybeli na nepery"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:771
+#: src/GUI/DialogAudioLampy.cpp:786
 msgid "Wpisz liczby większe od zera."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:782
+#: src/GUI/DialogAudioLampy.cpp:797
 msgid "miara liniowa = "
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:782 src/GUI/DialogAudioLampy.cpp:784
-#: src/GUI/DialogAudioLampy.cpp:786
+#: src/GUI/DialogAudioLampy.cpp:797 src/GUI/DialogAudioLampy.cpp:799
+#: src/GUI/DialogAudioLampy.cpp:801
 msgid "Wpisz liczbę."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:795
+#: src/GUI/DialogAudioLampy.cpp:810
 msgid "Odtwarzanie (korektor gramofonowy)"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:796
+#: src/GUI/DialogAudioLampy.cpp:811
 msgid "Nagrywanie (krzywa tłoczenia)"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:800
+#: src/GUI/DialogAudioLampy.cpp:815
 msgid "IEC (filtr 20 Hz)"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:803
+#: src/GUI/DialogAudioLampy.cpp:818
 msgid "Częstotliwość [Hz]"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:811
+#: src/GUI/DialogAudioLampy.cpp:826
 msgid "Tabela od [Hz]"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:813
+#: src/GUI/DialogAudioLampy.cpp:828
 msgid "do"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:815
+#: src/GUI/DialogAudioLampy.cpp:830
 msgid "co [Hz]"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:822
+#: src/GUI/DialogAudioLampy.cpp:837
 msgid "f [Hz]"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:823
+#: src/GUI/DialogAudioLampy.cpp:838
 msgid "dB"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:824
+#: src/GUI/DialogAudioLampy.cpp:839
 msgid "faza [°]"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:833
+#: src/GUI/DialogAudioLampy.cpp:848
 msgid ""
 "Elementy RC biernej sieci korekcyjnej (odtwarzanie): sekcja A = R1 || C1 w "
 "szeregu i R2 || C2 do masy (3180/318 µs), sekcja B = R3 szeregowo i C3 do "
 "masy (75 µs); sekcje rozdziela stopień wzmacniający."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:842
+#: src/GUI/DialogAudioLampy.cpp:857
 msgid "rezystory z szeregu"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:846
+#: src/GUI/DialogAudioLampy.cpp:861
 msgid "kondensatory"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:868
+#: src/GUI/DialogAudioLampy.cpp:883
 msgid "Wpisz częstotliwość większą od zera."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:871
+#: src/GUI/DialogAudioLampy.cpp:886
 msgid "(względem 1 kHz)"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:886
+#: src/GUI/DialogAudioLampy.cpp:901
 msgid "Podaj zakres i dodatni interwał."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:886
+#: src/GUI/DialogAudioLampy.cpp:901
 #, c-format
 msgid "Punktów: %zu"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:907
+#: src/GUI/DialogAudioLampy.cpp:922
 msgid "Wpisz R2 i R3, np. 100k i 10k."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:909
+#: src/GUI/DialogAudioLampy.cpp:924
 msgid "Wpisz R2 i R3 większe od zera."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:912
+#: src/GUI/DialogAudioLampy.cpp:927
 msgid "Obliczone:  "
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:914
+#: src/GUI/DialogAudioLampy.cpp:929
 msgid "Z szeregów:  "
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:916
+#: src/GUI/DialogAudioLampy.cpp:931
 #, c-format
 msgid ""
 "Największa odchyłka od krzywej RIAA (20 Hz..20 kHz): %s dB.  Tłumienie sieci "
 "przy 1 kHz: %s dB (o tyle wzmacniacz musi dodać wzmocnienia)."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:972
+#: src/GUI/DialogAudioLampy.cpp:987
 msgid ""
 "Punkt pracy ze stałą polaryzacją katodową (siatka na masie): Rk = |Ug| / (Ia "
 "+ Ig2), Ua = B+ − Ia·Ra − |Ug|. Napięcie siatki Ug odczytaj z charakterystyk "
 "lampy."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:987
+#: src/GUI/DialogAudioLampy.cpp:1002
 msgid "Zasilanie B+ [V]:"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:988
+#: src/GUI/DialogAudioLampy.cpp:1003
 msgid "Opór anodowy Ra [Ω]:"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:989
+#: src/GUI/DialogAudioLampy.cpp:1004
 msgid "Prąd anody Ia [mA]:"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:990
+#: src/GUI/DialogAudioLampy.cpp:1005
 msgid "Napięcie siatki Ug [V]:"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:991
+#: src/GUI/DialogAudioLampy.cpp:1006
 msgid "Prąd ekranu Ig2 [mA]:"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:992
+#: src/GUI/DialogAudioLampy.cpp:1007
 msgid "Napięcie ekranu Ug2 [V]:"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:993
+#: src/GUI/DialogAudioLampy.cpp:1008
 msgid "Amplifikacja μ:"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:994
+#: src/GUI/DialogAudioLampy.cpp:1009
 msgid "Rezystancja wewn. ra [Ω]:"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:995
+#: src/GUI/DialogAudioLampy.cpp:1010
 msgid "Moc anody max [W]:"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:996
+#: src/GUI/DialogAudioLampy.cpp:1011
 msgid "Dolna częstotliwość [Hz]:"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:1001
+#: src/GUI/DialogAudioLampy.cpp:1016
 msgid ""
 "Pola Ig2 i Ug2 wypełnij tylko dla pentody lub tetrody. μ i ra są potrzebne "
 "do wzmocnienia i kondensatora katodowego (np. ECC83: μ = 100, ra = 62,5 k; "
 "ECC82: μ = 17, ra = 7,7 k)."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:1014
+#: src/GUI/DialogAudioLampy.cpp:1029
 msgid "Wpisz B+, Ra, Ia i Ug (np. 250, 100k, 0,8, -1,5)."
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:1017
+#: src/GUI/DialogAudioLampy.cpp:1032 src/GUI/DialogAudioLampy.cpp:1106
 msgid "Rk = "
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:1018
+#: src/GUI/DialogAudioLampy.cpp:1033
 msgid "Ua = "
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:1018
+#: src/GUI/DialogAudioLampy.cpp:1033
 msgid "moc anody "
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:1019
+#: src/GUI/DialogAudioLampy.cpp:1034
 msgid "— PRZEKROCZONA moc dopuszczalna!"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:1020
+#: src/GUI/DialogAudioLampy.cpp:1035
 msgid "Linia obciążenia: od "
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:1021
+#: src/GUI/DialogAudioLampy.cpp:1036
 msgid "Rezystor ekranu Rg2 = "
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:1022
+#: src/GUI/DialogAudioLampy.cpp:1037
 msgid "Wzmocnienie napięciowe: "
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:1022 src/GUI/DialogKalkulatorow.cpp:377
+#: src/GUI/DialogAudioLampy.cpp:1037 src/GUI/DialogKalkulatorow.cpp:377
 msgid " V/V"
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:1023
+#: src/GUI/DialogAudioLampy.cpp:1038
 msgid "Kondensator katodowy: co najmniej "
 msgstr ""
 
-#: src/GUI/DialogAudioLampy.cpp:1026
+#: src/GUI/DialogAudioLampy.cpp:1041
 msgid "Niemożliwe: Ug musi być ujemne, a spadek na Ra mniejszy od B+."
 msgstr ""
 
-#: src/GUI/DialogCewkiAL.cpp:15
+#: src/GUI/DialogAudioLampy.cpp:1062
+msgid ""
+"Rk = Uk / (Ia + Ig2).  Ck: spadek wzmocnienia o 3 dB przy fd, z równania |(1 "
+"+ jx) / (1 + gm·Rk + jx)| = 1/√2, czyli x = 2π·fd·Rk·Ck = √((1 + gm·Rk)² − "
+"2)."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1072
+msgid "Prąd anodowy Ia [mA]:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1073
+msgid "Prąd siatki ekranującej Ig2 [mA] (trioda: 0):"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1074
+msgid "Napięcie polaryzacji Uk [V]:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1075
+msgid "Konduktancja gm [mA/V] (puste: tylko reguła):"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1076
+msgid "Dolna częstotliwość graniczna fd [Hz] (puste: bez Ck):"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1077
+msgid "Szereg dla Rk:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1081
+msgid "Szereg dla Ck:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1098
+msgid "Wpisz Ia i Uk (liczby), pozostałe pola mogą być puste."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1104
+msgid "Prąd i napięcie muszą być dodatnie."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1105
+msgid "Prąd katody Ik = "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1106 src/GUI/DialogAudioLampy.cpp:1113
+#: src/GUI/DialogAudioLampy.cpp:1186
+msgid "  →  z szeregu "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1106
+msgid "  (Uk = "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1107
+msgid "Moc rezystora "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1107
+msgid " mW, zalecany z zapasem x2: "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1111
+msgid ""
+"Przy tak małym gm·Rk spadek wzmocnienia po wyłączeniu Ck nie sięga 3 dB: "
+"kondensator katodowy nie jest potrzebny."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1113
+msgid "Ck dla spadku 3 dB przy fd: "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1114
+msgid "Napięcie pracy Ck co najmniej "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1115
+msgid "Reguła praktyczna (Xc = Rk/10 przy fd): "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1116
+msgid "Bez gm podano tylko regułę praktyczną (Xc = Rk/10 przy fd)."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1119
+msgid "Z kondensatorem z szeregu częstotliwość -3 dB wynosi "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1135
+msgid ""
+"fc = 1 / (2π · (Ra ‖ ra + Rg) · Cs).  Dla n jednakowych sekcji RC w "
+"kaskadzie f(-3 dB) = fc / √(2^(1/n) − 1)."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1144
+msgid "Obciążenie anodowe Ra poprzedniego stopnia:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1145
+msgid "Rezystancja wewnętrzna lampy ra (puste: pomiń):"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1146
+msgid "Rezystor siatki następnego stopnia Rg:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1147
+msgid "Kondensator sprzęgający Cs (np. 22n; puste: tylko dobór):"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1148
+msgid "Żądana dolna częstotliwość fd [Hz] (puste: tylko f z Cs):"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1149
+msgid "Liczba jednakowych sekcji w kaskadzie:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1155
+msgid "Szereg dla Cs:"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1173
+msgid "Wpisz Ra i Rg (np. 100k, 470k); Cs np. 22n."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1179
+msgid "Ra i Rg muszą być dodatnie."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1180
+msgid "Rezystancja widziana przez Cs: "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1182
+msgid "Częstotliwość graniczna jednej sekcji: "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1183
+msgid "Częstotliwość -3 dB całej kaskady ("
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1183
+msgid " sekcji): "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1186
+msgid "Cs dla fd = "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1187
+msgid "Tłumienie całego układu przy fd z tą wartością: "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1203
+msgid ""
+"Układy regulacji barwy liczone z równań węzłowych: bierne (topologie i "
+"wartości wzorcowe: projekt tonestack, GPL-3.0, wzorowany na Duncan's Tone "
+"Stack Calculator) oraz czynne z idealnym wzmacniaczem operacyjnym. Wykres "
+"pokazuje poziom względem napięcia źródła; rysunek obok przedstawia wybrany "
+"układ."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1223
+msgid "Rźr"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1224
+msgid "Robc"
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1359
+msgid ""
+"Wpisz wartości elementów (np. 250k, 22n, 470p, 6H); rezystory, kondensatory "
+"i cewki muszą być większe od zera."
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1364
+msgid "Poziom: 100 Hz "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1364
+msgid " dB, 400 Hz "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1364
+msgid " dB, 1 kHz "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1365
+msgid " dB, 4 kHz "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1365
+msgid " dB, 10 kHz "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1366
+msgid "Najgłębsze wycięcie w paśmie 100 Hz do 3 kHz: "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1366
+msgid " dB przy "
+msgstr ""
+
+#: src/GUI/DialogAudioLampy.cpp:1366
+msgid " Hz; najwyższy poziom: "
+msgstr ""
+
+#: src/GUI/DialogCewkiAL.cpp:16
 msgid "Cewka na rdzeniu z AL"
 msgstr ""
 
-#: src/GUI/DialogCewkiAL.cpp:19 src/GUI/DialogElementu.cpp:137
-#: src/GUI/DialogTrafoSE.cpp:33 src/GUI/PanelElementow.cpp:145
+#: src/GUI/DialogCewkiAL.cpp:20 src/GUI/DialogElementu.cpp:137
+#: src/GUI/DialogTrafoSE.cpp:34 src/GUI/PanelElementow.cpp:145
 msgid "Parametry"
 msgstr ""
 
-#: src/GUI/DialogCewkiAL.cpp:44 src/GUI/DialogMetodyGraficzne.cpp:309
-#: src/GUI/DialogTrafoPPEtap3.cpp:85 src/GUI/DialogTrafoSE.cpp:105
-#: src/GUI/DialogTrafoSEWykonane.cpp:72
+#: src/GUI/DialogCewkiAL.cpp:45 src/GUI/DialogMetodyGraficzne.cpp:310
+#: src/GUI/DialogTrafoPPEtap3.cpp:108 src/GUI/DialogTrafoSE.cpp:106
+#: src/GUI/DialogTrafoSEWykonane.cpp:81
 msgid "Wyniki"
 msgstr ""
 
-#: src/GUI/DialogCewkiAL.cpp:99
+#: src/GUI/DialogCewkiAL.cpp:100
 msgid ""
 "Uwagi: wpisz AL i żądaną indukcyjność (liczby większe od zera); tolerancja "
 "poniżej 100%."
 msgstr ""
 
-#: src/GUI/DialogCewkiAL.cpp:112
+#: src/GUI/DialogCewkiAL.cpp:113
 #, c-format
 msgid ""
 "Dla %s zwojów z podanym AL wychodzi %s mH, czyli %s%% względem żądanej "
@@ -385,13 +609,13 @@ msgid ""
 "wartość AL lub inna definicja w drugim programie. "
 msgstr ""
 
-#: src/GUI/DialogCewkiAL.cpp:114
+#: src/GUI/DialogCewkiAL.cpp:115
 msgid ""
 "Indukcja szczytowa przekracza dopuszczalną - AL maleje, a rdzeń się nasyca; "
 "weź rdzeń o większym Ae lub ze szczeliną. "
 msgstr ""
 
-#: src/GUI/DialogCewkiAL.cpp:115
+#: src/GUI/DialogCewkiAL.cpp:116
 msgid ""
 "AL podaje producent dla małego sygnału bez prądu stałego; przy polaryzacji "
 "prądem stałym efektywne AL jest mniejsze (potrzeba więcej zwojów lub "
@@ -418,15 +642,18 @@ msgstr ""
 
 #: src/GUI/DialogDatasheetMouser.cpp:21 src/GUI/DialogEdycjiZbiorczej.cpp:34
 #: src/GUI/DialogElementu.cpp:110 src/GUI/DialogProjektu.cpp:99
-#: src/GUI/PanelElementow.cpp:141 src/GUI/PanelNarzedzi.cpp:57
-#: src/GUI/PanelNarzedzi.cpp:344 src/GUI/PanelPodgladu.cpp:134
+#: src/GUI/PanelElementow.cpp:141 src/GUI/PanelNarzedzi.cpp:59
+#: src/GUI/PanelNarzedzi.cpp:347 src/GUI/PanelPodgladu.cpp:134
+#: src/GUI/PanelSerwisu.cpp:171 src/GUI/PanelSerwisu.cpp:576
 msgid "Producent"
 msgstr ""
 
 #: src/GUI/DialogDatasheetMouser.cpp:22 src/GUI/DialogDodajSklep.cpp:45
 #: src/GUI/DialogElementu.cpp:112 src/GUI/DialogObudow.cpp:139
 #: src/GUI/DialogProjektu.cpp:51 src/GUI/DialogProjektu.cpp:102
-#: src/GUI/PanelElementow.cpp:142 src/GUI/PanelPodgladu.cpp:135
+#: src/GUI/DialogSlownikaParametrow.cpp:70
+#: src/GUI/DialogSlownikaParametrow.cpp:197 src/GUI/PanelElementow.cpp:142
+#: src/GUI/PanelPodgladu.cpp:135
 msgid "Opis"
 msgstr ""
 
@@ -438,10 +665,10 @@ msgstr ""
 #: src/GUI/DialogDatasheetMouser.cpp:24 src/GUI/DialogLinkowElementu.cpp:361
 #: src/GUI/DialogLinkowElementu.cpp:366 src/GUI/DialogLinkowElementu.cpp:418
 #: src/GUI/DialogLinkowElementu.cpp:432 src/GUI/PanelElementow.cpp:677
-#: src/GUI/PanelElementow.cpp:682 src/GUI/PanelKatalogu.cpp:418
-#: src/GUI/PanelKatalogu.cpp:551 src/GUI/PanelKatalogu.cpp:556
-#: src/GUI/PanelKatalogu.cpp:592 src/GUI/PanelKatalogu.cpp:616
-#: src/GUI/PanelKatalogu.cpp:657
+#: src/GUI/PanelElementow.cpp:682 src/GUI/PanelKatalogu.cpp:469
+#: src/GUI/PanelKatalogu.cpp:602 src/GUI/PanelKatalogu.cpp:607
+#: src/GUI/PanelKatalogu.cpp:643 src/GUI/PanelKatalogu.cpp:667
+#: src/GUI/PanelKatalogu.cpp:703 src/GUI/PanelKatalogu.cpp:717
 msgid "Datasheet"
 msgstr ""
 
@@ -450,22 +677,23 @@ msgid "Wpisz adres ręcznie..."
 msgstr ""
 
 #: src/GUI/DialogDatasheetMouser.cpp:31 src/GUI/DialogLinkowElementu.cpp:390
-#: src/GUI/PanelKatalogu.cpp:168 src/GUI/PanelKatalogu.cpp:624
+#: src/GUI/PanelKatalogu.cpp:175 src/GUI/PanelKatalogu.cpp:675
 msgid "Pobierz datasheet"
 msgstr ""
 
 #: src/GUI/DialogDatasheetMouser.cpp:37 src/GUI/DialogImportBOM.cpp:85
-#: src/GUI/DialogKamery.cpp:62 src/GUI/PanelKatalogu.cpp:494
+#: src/GUI/DialogKamery.cpp:62 src/GUI/PanelKatalogu.cpp:545
 msgid "Anuluj"
 msgstr ""
 
 #: src/GUI/DialogDatasheetMouser.cpp:67 src/GUI/DialogEtykiet.cpp:163
-#: src/GUI/DialogZebra.cpp:158 src/GUI/OknoGlowne.cpp:879
+#: src/GUI/DialogZebra.cpp:158 src/GUI/OknoGlowne.cpp:890
 #: src/GUI/PanelElementow.cpp:203 src/GUI/PanelElementow.cpp:504
-#: src/GUI/PanelKatalogu.cpp:216 src/GUI/PanelKatalogu.cpp:424
+#: src/GUI/PanelKatalogu.cpp:230 src/GUI/PanelKatalogu.cpp:475
 #: src/GUI/PanelKategorii.cpp:70 src/GUI/PanelKsiazek.cpp:245
 #: src/GUI/PanelKsiazek.cpp:687 src/GUI/PanelKsiazek.cpp:727
-#: src/GUI/PanelNarzedzi.cpp:252 src/GUI/PanelProjektow.cpp:180
+#: src/GUI/PanelNarzedzi.cpp:255 src/GUI/PanelProjektow.cpp:180
+#: src/GUI/PanelSerwisu.cpp:475
 msgid "✗ "
 msgstr ""
 
@@ -498,7 +726,7 @@ msgstr ""
 
 #: src/GUI/DialogDatasheetMouser.cpp:106 src/GUI/DialogKodow.cpp:363
 #: src/GUI/DialogZestawienia.cpp:178 src/GUI/DialogZestawienia.cpp:179
-#: src/GUI/PanelTrafoModel.cpp:76
+#: src/GUI/PanelTrafoModel.cpp:94
 msgid "brak"
 msgstr ""
 
@@ -515,91 +743,91 @@ msgstr ""
 msgid "Znaleziono: %zu. Wybierz pozycję i kliknij Pobierz datasheet."
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:122
+#: src/GUI/DialogDlawika.cpp:170
 msgid "b – grubość pakietu (głębokość)"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:124
+#: src/GUI/DialogDlawika.cpp:172
 msgid "l – średnia droga strumienia (jedna połówka)"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:126
+#: src/GUI/DialogDlawika.cpp:174
 msgid "lzw – średnia długość zwoju"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:164
+#: src/GUI/DialogDlawika.cpp:212
 msgid "Dławik zasilacza"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:169 src/GUI/DialogDlawika.cpp:220
-#: src/GUI/DialogTrafoSieciowy.cpp:27
+#: src/GUI/DialogDlawika.cpp:217 src/GUI/DialogDlawika.cpp:268
+#: src/GUI/DialogTrafoSieciowy.cpp:28
 msgid "Rdzeń"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:180 src/GUI/DialogTrafoSieciowy.cpp:37
+#: src/GUI/DialogDlawika.cpp:228 src/GUI/DialogTrafoSieciowy.cpp:38
 msgid "Kształtka"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:183 src/GUI/DialogTrafoPP.cpp:82
-#: src/GUI/DialogTrafoSE.cpp:64 src/GUI/DialogTrafoSieciowy.cpp:40
+#: src/GUI/DialogDlawika.cpp:231 src/GUI/DialogTrafoPP.cpp:90
+#: src/GUI/DialogTrafoSE.cpp:65 src/GUI/DialogTrafoSieciowy.cpp:41
 msgid "własna"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:187
+#: src/GUI/DialogDlawika.cpp:235
 msgid "Grubość blachy [mm]"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:201
+#: src/GUI/DialogDlawika.cpp:249
 msgid "Parametry dławika"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:214
+#: src/GUI/DialogDlawika.cpp:262
 msgid "Oblicz"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:218 src/GUI/DialogTrafoSieciowy.cpp:69
+#: src/GUI/DialogDlawika.cpp:266 src/GUI/DialogTrafoSieciowy.cpp:66
 msgid "Wyniki obliczeń"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:221 src/GUI/DialogTrafoSieciowy.cpp:199
+#: src/GUI/DialogDlawika.cpp:269 src/GUI/DialogTrafoSieciowy.cpp:204
 msgid "Uzwojenie"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:262 src/Pomoc/PomocGUI.cpp:338
-#: src/Pomoc/PomocGUI.cpp:356
+#: src/GUI/DialogDlawika.cpp:310 src/Pomoc/PomocGUI.cpp:356
+#: src/Pomoc/PomocGUI.cpp:374
 msgid "Pomoc"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:274
+#: src/GUI/DialogDlawika.cpp:322
 msgid "Średnica drutu nawojowego"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:342
+#: src/GUI/DialogDlawika.cpp:390
 msgid ""
 "Uwagi: uzupełnij pola liczbami większymi od zera (średnica drutu może być 0)."
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:350
+#: src/GUI/DialogDlawika.cpp:398
 msgid "Dla Twoich danych: indukcja w rdzeniu bez szczeliny wyniosłaby "
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:350
+#: src/GUI/DialogDlawika.cpp:398
 msgid "przy dopuszczalnej "
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:351
+#: src/GUI/DialogDlawika.cpp:399
 msgid "więc szczelina jest potrzebna."
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:351
+#: src/GUI/DialogDlawika.cpp:399
 msgid "więc szczelina nie jest potrzebna."
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:353
+#: src/GUI/DialogDlawika.cpp:401
 msgid "bez reluktancji żelaza"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:355
+#: src/GUI/DialogDlawika.cpp:403
 #, c-format
 msgid ""
 "Obliczone uzwojenie zajmuje ponad 75% okna rdzenia. Należy zmniejszyć "
@@ -610,7 +838,7 @@ msgid ""
 "- zwiększyć rozmiar kształtki rdzenia."
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:360
+#: src/GUI/DialogDlawika.cpp:408
 #, c-format
 msgid ""
 "Obliczone uzwojenie zajmuje mniej niż 50% okna rdzenia, rdzeń nie jest "
@@ -622,27 +850,27 @@ msgid ""
 "- zmniejszyć rozmiar kształtki rdzenia."
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:365
+#: src/GUI/DialogDlawika.cpp:413
 #, c-format
 msgid "Uwaga: uzwojenie zajmuje ponad 75% okna - nie zmieści się."
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:366
+#: src/GUI/DialogDlawika.cpp:414
 #, c-format
 msgid ""
 "Uwaga: uzwojenie zajmuje mniej niż 50% okna - rdzeń nie jest optymalnie "
 "wypełniony."
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:371
+#: src/GUI/DialogDlawika.cpp:419
 msgid "Uwaga !!!!"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:375
+#: src/GUI/DialogDlawika.cpp:423
 msgid "Dławik - pomoc"
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:378
+#: src/GUI/DialogDlawika.cpp:426
 msgid ""
 "Obliczone uzwojenie należy sprawdzić pod względem zajmowanego miejsca w "
 "oknie rdzenia. Karkas, na którym znajduje się uzwojenie, zmniejsza przekrój "
@@ -672,7 +900,7 @@ msgid ""
 "mały."
 msgstr ""
 
-#: src/GUI/DialogDlawika.cpp:395
+#: src/GUI/DialogDlawika.cpp:443
 msgid "Szczelina [mm] = "
 msgstr ""
 
@@ -689,7 +917,7 @@ msgid "Sklep aktywny (uwzględniany w zestawieniach)"
 msgstr ""
 
 #: src/GUI/DialogDodajSklep.cpp:37 src/GUI/DialogProjektu.cpp:47
-#: src/GUI/PanelNarzedzi.cpp:55
+#: src/GUI/PanelNarzedzi.cpp:57 src/GUI/PanelSerwisu.cpp:45
 msgid "Nazwa *"
 msgstr ""
 
@@ -760,13 +988,13 @@ msgid ""
 msgstr ""
 
 #: src/GUI/DialogEdycjiZbiorczej.cpp:25 src/GUI/DialogElementu.cpp:211
-#: src/GUI/DialogImportBOM.cpp:45 src/GUI/DialogKatalogu.cpp:163
+#: src/GUI/DialogImportBOM.cpp:45 src/GUI/DialogKatalogu.cpp:186
 msgid "(bez kategorii)"
 msgstr ""
 
 #: src/GUI/DialogEdycjiZbiorczej.cpp:32 src/GUI/DialogElementu.cpp:109
-#: src/GUI/PanelElementow.cpp:147 src/GUI/PanelNarzedzi.cpp:62
-#: src/GUI/PanelNarzedzi.cpp:346 src/GUI/PanelPodgladu.cpp:136
+#: src/GUI/PanelElementow.cpp:147 src/GUI/PanelNarzedzi.cpp:64
+#: src/GUI/PanelNarzedzi.cpp:349 src/GUI/PanelPodgladu.cpp:136
 msgid "Kategoria"
 msgstr ""
 
@@ -843,7 +1071,7 @@ msgstr ""
 msgid "Symbol producenta"
 msgstr ""
 
-#: src/GUI/DialogElementu.cpp:113 src/GUI/DialogKatalogu.cpp:47
+#: src/GUI/DialogElementu.cpp:113 src/GUI/DialogKatalogu.cpp:48
 #: src/GUI/DialogProjektu.cpp:100 src/GUI/PanelElementow.cpp:143
 #: src/GUI/PanelPodgladu.cpp:117
 msgid "Wartość"
@@ -893,7 +1121,7 @@ msgid "szuflada"
 msgstr ""
 
 #: src/GUI/DialogElementu.cpp:159 src/GUI/PanelElementow.cpp:148
-#: src/GUI/PanelNarzedzi.cpp:69 src/GUI/PanelNarzedzi.cpp:349
+#: src/GUI/PanelNarzedzi.cpp:71 src/GUI/PanelNarzedzi.cpp:352
 #: src/GUI/PanelPodgladu.cpp:137
 msgid "Miejsce"
 msgstr ""
@@ -911,17 +1139,18 @@ msgid "Datasheet (adres)"
 msgstr ""
 
 #: src/GUI/DialogElementu.cpp:182 src/GUI/DialogKsiazki.cpp:120
-#: src/GUI/DialogProjektu.cpp:171 src/GUI/PanelNarzedzi.cpp:84
-#: src/GUI/ZdjeciaElementow.cpp:82
+#: src/GUI/DialogProjektu.cpp:171 src/GUI/PanelNarzedzi.cpp:86
+#: src/GUI/ZdjeciaElementow.cpp:96
 msgid "Wybierz..."
 msgstr ""
 
-#: src/GUI/DialogElementu.cpp:185 src/GUI/ZdjeciaElementow.cpp:83
+#: src/GUI/DialogElementu.cpp:185 src/GUI/PanelSerwisu.cpp:228
+#: src/GUI/ZdjeciaElementow.cpp:97
 msgid "Z kamery..."
 msgstr ""
 
 #: src/GUI/DialogElementu.cpp:192 src/GUI/DialogElementu.cpp:509
-#: src/GUI/PanelNarzedzi.cpp:89
+#: src/GUI/PanelNarzedzi.cpp:91
 msgid "Zdjęcie"
 msgstr ""
 
@@ -935,7 +1164,7 @@ msgid ""
 "Obudowy) albo wybierz obudowę ręcznie przyciskiem \"...\"."
 msgstr ""
 
-#: src/GUI/DialogElementu.cpp:369 src/GUI/DialogKatalogu.cpp:139
+#: src/GUI/DialogElementu.cpp:369 src/GUI/DialogKatalogu.cpp:162
 msgid "Podaj symbol elementu."
 msgstr ""
 
@@ -980,7 +1209,8 @@ msgid "Ustaw stan na (inwentaryzacja)"
 msgstr ""
 
 #: src/GUI/DialogElementu.cpp:423 src/GUI/DialogProjektu.cpp:103
-#: src/GUI/PanelElementow.cpp:149
+#: src/GUI/PanelElementow.cpp:149 src/GUI/PanelSerwisu.cpp:47
+#: src/GUI/PanelSerwisu.cpp:209 src/GUI/PanelSerwisu.cpp:409
 msgid "Ilość"
 msgstr ""
 
@@ -1016,8 +1246,9 @@ msgstr ""
 msgid "Wybierz zdjęcie elementu"
 msgstr ""
 
-#: src/GUI/DialogElementu.cpp:493 src/GUI/OknoGlowne.cpp:873
-#: src/GUI/PanelPodgladu.cpp:193 src/GUI/ZdjeciaElementow.cpp:89
+#: src/GUI/DialogElementu.cpp:493 src/GUI/OknoGlowne.cpp:884
+#: src/GUI/PanelPodgladu.cpp:193 src/GUI/ZdjeciaElementow.cpp:87
+#: src/GUI/ZdjeciaElementow.cpp:103
 msgid ""
 "Obrazy (*.jpg;*.jpeg;*.png;*.bmp;*.gif)|*.jpg;*.jpeg;*.png;*.bmp;*.gif|"
 "Wszystkie pliki|*.*"
@@ -1130,7 +1361,7 @@ msgstr ""
 
 #: src/GUI/DialogEtykiet.cpp:188 src/GUI/DialogEtykiet.cpp:281
 #: src/GUI/DialogEtykiet.cpp:291 src/GUI/DialogEtykiet.cpp:312
-#: src/GUI/OknoGlowne.cpp:782
+#: src/GUI/OknoGlowne.cpp:793
 msgid "Etykiety"
 msgstr ""
 
@@ -1177,7 +1408,7 @@ msgstr ""
 msgid "Plik:"
 msgstr ""
 
-#: src/GUI/DialogImportBOM.cpp:26 src/GUI/DialogImportuElementow.cpp:174
+#: src/GUI/DialogImportBOM.cpp:26 src/GUI/DialogImportuElementow.cpp:175
 msgid "Wybierz plik..."
 msgstr ""
 
@@ -1207,7 +1438,7 @@ msgstr ""
 msgid "Utwórz nowy element"
 msgstr ""
 
-#: src/GUI/DialogImportBOM.cpp:76 src/GUI/PanelKatalogu.cpp:494
+#: src/GUI/DialogImportBOM.cpp:76 src/GUI/PanelKatalogu.cpp:545
 msgid "Pomiń"
 msgstr ""
 
@@ -1247,8 +1478,8 @@ msgstr ""
 msgid ", pozycji: %zu, sztuk: %d"
 msgstr ""
 
-#: src/GUI/DialogImportBOM.cpp:165 src/GUI/DialogImportuElementow.cpp:213
-#: src/GUI/DialogImportuElementow.cpp:331
+#: src/GUI/DialogImportBOM.cpp:165 src/GUI/DialogImportuElementow.cpp:214
+#: src/GUI/DialogImportuElementow.cpp:332
 msgid "• "
 msgstr ""
 
@@ -1277,182 +1508,182 @@ msgstr ""
 msgid "Obecna lista części projektu zostanie zastąpiona. Kontynuować?"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:43
+#: src/GUI/DialogImportuElementow.cpp:44
 msgid "Generator szeregów E (rezystory, kondensatory, cewki)"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:44
+#: src/GUI/DialogImportuElementow.cpp:45
 msgid "Import elementów z pliku CSV"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:68
+#: src/GUI/DialogImportuElementow.cpp:69
 msgid "Gdy symbol już jest w magazynie:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:71
+#: src/GUI/DialogImportuElementow.cpp:72
 msgid "pomiń (nic nie zmieniaj)"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:72
+#: src/GUI/DialogImportuElementow.cpp:73
 msgid "dodaj ilość do istniejącego"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:73
+#: src/GUI/DialogImportuElementow.cpp:74
 msgid "uzupełnij dane (stan bez zmian)"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:83
+#: src/GUI/DialogImportuElementow.cpp:84
 msgid "Zapisz jako CSV..."
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:87
+#: src/GUI/DialogImportuElementow.cpp:88
 msgid "Zapisz szablon CSV..."
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:92
+#: src/GUI/DialogImportuElementow.cpp:93
 msgid "Dodaj do magazynu"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:119
+#: src/GUI/DialogImportuElementow.cpp:120
 msgid "Rodzaj:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:134 src/GUI/DialogKalkulatorow.cpp:138
+#: src/GUI/DialogImportuElementow.cpp:135 src/GUI/DialogKalkulatorow.cpp:138
 #: src/GUI/DialogKalkulatorow.cpp:191 src/GUI/DialogKalkulatorow.cpp:356
 #: src/GUI/DialogKalkulatorow.cpp:480
 msgid "Szereg:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:141
+#: src/GUI/DialogImportuElementow.cpp:142
 msgid "Od:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:142 src/GUI/DialogRaportu.cpp:33
+#: src/GUI/DialogImportuElementow.cpp:143 src/GUI/DialogRaportu.cpp:33
 msgid "Do:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:144 src/GUI/DialogKodow.cpp:296
+#: src/GUI/DialogImportuElementow.cpp:145 src/GUI/DialogKodow.cpp:296
 msgid "Tolerancja:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:145 src/GUI/DialogKatalogu.cpp:28
+#: src/GUI/DialogImportuElementow.cpp:146 src/GUI/DialogKatalogu.cpp:29
 msgid "Obudowa:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:146
+#: src/GUI/DialogImportuElementow.cpp:147
 msgid "Moc:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:147
+#: src/GUI/DialogImportuElementow.cpp:148
 msgid "Napięcie:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:148
+#: src/GUI/DialogImportuElementow.cpp:149
 msgid "Dielektryk:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:149 src/GUI/DialogKatalogu.cpp:26
+#: src/GUI/DialogImportuElementow.cpp:150 src/GUI/DialogKatalogu.cpp:27
 msgid "Producent:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:150
+#: src/GUI/DialogImportuElementow.cpp:151
 msgid "Ilość każdej:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:151
+#: src/GUI/DialogImportuElementow.cpp:152
 msgid "Minimum:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:152
+#: src/GUI/DialogImportuElementow.cpp:153
 msgid "Cena szt.:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:153
+#: src/GUI/DialogImportuElementow.cpp:154
 msgid "Wzór symbolu:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:154 src/GUI/DialogKatalogu.cpp:161
+#: src/GUI/DialogImportuElementow.cpp:155 src/GUI/DialogKatalogu.cpp:184
 msgid "Kategoria:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:155 src/GUI/DialogKatalogu.cpp:156
+#: src/GUI/DialogImportuElementow.cpp:156 src/GUI/DialogKatalogu.cpp:179
 msgid "Miejsce:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:159
+#: src/GUI/DialogImportuElementow.cpp:160
 msgid ""
 "Każda dekada wartości do osobnej szuflady (A1, A2, A3, ... licząc od podanej)"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:164
+#: src/GUI/DialogImportuElementow.cpp:165
 msgid ""
 "Wartości możesz wpisywać zapisem 4k7, 100n, 2M2, 10 kΩ. Puste pola "
 "(tolerancja, wzór, kategoria) dostają wartości domyślne."
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:170
+#: src/GUI/DialogImportuElementow.cpp:171
 msgid "Plik CSV:"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:178
+#: src/GUI/DialogImportuElementow.cpp:179
 msgid ""
 "Kolumny rozpoznawane po nagłówku: Symbol, Wartość, Tolerancja, Obudowa, "
 "Ilość, Minimum, Kategoria, Miejsce, Producent, Cena, Tagi, ... Plik wzorcowy "
 "zapiszesz przyciskiem poniżej."
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:181
+#: src/GUI/DialogImportuElementow.cpp:182
 msgid "Wybierz plik CSV z elementami"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:182
+#: src/GUI/DialogImportuElementow.cpp:183
 msgid "Pliki CSV (*.csv;*.txt)|*.csv;*.txt|Wszystkie pliki|*"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:196
+#: src/GUI/DialogImportuElementow.cpp:197
 msgid "Nie można odczytać pliku: "
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:196
-#: src/GUI/DialogImportuElementow.cpp:206
+#: src/GUI/DialogImportuElementow.cpp:197
+#: src/GUI/DialogImportuElementow.cpp:207
 msgid "Import CSV"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:215
+#: src/GUI/DialogImportuElementow.cpp:216
 msgid "Uwagi do pliku"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:262
+#: src/GUI/DialogImportuElementow.cpp:263
 msgid "błąd: "
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:265
+#: src/GUI/DialogImportuElementow.cpp:266
 msgid "już jest, pominę"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:266
+#: src/GUI/DialogImportuElementow.cpp:267
 msgid "już jest, dodam ilość"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:267
+#: src/GUI/DialogImportuElementow.cpp:268
 msgid "już jest, uzupełnię dane"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:270
+#: src/GUI/DialogImportuElementow.cpp:271
 msgid "nowy"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:307
+#: src/GUI/DialogImportuElementow.cpp:308
 #, c-format
 msgid "Razem: %zu, nowych: %d, już w magazynie: %d, błędnych: %d"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:324
-#: src/GUI/DialogImportuElementow.cpp:334
+#: src/GUI/DialogImportuElementow.cpp:325
+#: src/GUI/DialogImportuElementow.cpp:335
 msgid "Import elementów"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:327
+#: src/GUI/DialogImportuElementow.cpp:328
 #, c-format
 msgid ""
 "Dodano nowych: %d\n"
@@ -1462,7 +1693,7 @@ msgid ""
 "Utworzono kategorii: %d"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:330
+#: src/GUI/DialogImportuElementow.cpp:331
 #, c-format
 msgid ""
 "\n"
@@ -1470,36 +1701,36 @@ msgid ""
 "Błędy (%zu):\n"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:340
+#: src/GUI/DialogImportuElementow.cpp:341
 msgid "Zapisz zestaw jako CSV"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:341
-#: src/GUI/DialogImportuElementow.cpp:351 src/GUI/DialogRaportu.cpp:151
-#: src/GUI/DialogZestawienia.cpp:223 src/GUI/OknoGlowne.cpp:964
-#: src/GUI/PanelKatalogu.cpp:517 src/GUI/PanelKatalogu.cpp:536
+#: src/GUI/DialogImportuElementow.cpp:342
+#: src/GUI/DialogImportuElementow.cpp:352 src/GUI/DialogRaportu.cpp:151
+#: src/GUI/DialogZestawienia.cpp:223 src/GUI/OknoGlowne.cpp:976
+#: src/GUI/PanelKatalogu.cpp:568 src/GUI/PanelKatalogu.cpp:587
 #: src/GUI/PanelKsiazek.cpp:600 src/GUI/PanelKsiazek.cpp:615
-#: src/GUI/PanelNarzedzi.cpp:464 src/GUI/PanelNarzedzi.cpp:479
-#: src/GUI/PanelProjektow.cpp:561
+#: src/GUI/PanelNarzedzi.cpp:467 src/GUI/PanelNarzedzi.cpp:482
+#: src/GUI/PanelProjektow.cpp:561 src/GUI/PanelSerwisu.cpp:789
 msgid "Pliki CSV (*.csv)|*.csv"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:346
-#: src/GUI/DialogImportuElementow.cpp:356 src/GUI/PanelKatalogu.cpp:527
-#: src/GUI/PanelKatalogu.cpp:540 src/GUI/PanelProjektow.cpp:527
+#: src/GUI/DialogImportuElementow.cpp:347
+#: src/GUI/DialogImportuElementow.cpp:357 src/GUI/PanelKatalogu.cpp:578
+#: src/GUI/PanelKatalogu.cpp:591 src/GUI/PanelProjektow.cpp:527
 #: src/GUI/PanelProjektow.cpp:543
 msgid "Nie udało się zapisać pliku."
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:346
+#: src/GUI/DialogImportuElementow.cpp:347
 msgid "Zapis CSV"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:350
+#: src/GUI/DialogImportuElementow.cpp:351
 msgid "Zapisz plik wzorcowy"
 msgstr ""
 
-#: src/GUI/DialogImportuElementow.cpp:356
+#: src/GUI/DialogImportuElementow.cpp:357
 msgid "Szablon CSV"
 msgstr ""
 
@@ -2134,11 +2365,11 @@ msgstr ""
 msgid "Zdjęcie z kamery"
 msgstr ""
 
-#: src/GUI/DialogKamery.cpp:42 src/GUI/DialogTermowizji.cpp:101
+#: src/GUI/DialogKamery.cpp:42 src/GUI/DialogTermowizji.cpp:105
 msgid "Kamera:"
 msgstr ""
 
-#: src/GUI/DialogKamery.cpp:45 src/GUI/DialogTermowizji.cpp:105
+#: src/GUI/DialogKamery.cpp:45 src/GUI/DialogTermowizji.cpp:109
 msgid "Wykryj ponownie"
 msgstr ""
 
@@ -2154,7 +2385,7 @@ msgstr ""
 msgid "Użyj zdjęcia"
 msgstr ""
 
-#: src/GUI/DialogKamery.cpp:100 src/GUI/DialogTermowizji.cpp:225
+#: src/GUI/DialogKamery.cpp:100 src/GUI/DialogTermowizji.cpp:242
 msgid "Nie wykryto kamery"
 msgstr ""
 
@@ -2186,87 +2417,91 @@ msgid ""
 "aplikacji."
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:13
+#: src/GUI/DialogKatalogu.cpp:14
 msgid "Nowa pozycja katalogu"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:13
+#: src/GUI/DialogKatalogu.cpp:14
 msgid "Pozycja katalogu"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:25
+#: src/GUI/DialogKatalogu.cpp:26
 msgid "Symbol:"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:27 src/GUI/DialogObudow.cpp:52
+#: src/GUI/DialogKatalogu.cpp:28 src/GUI/DialogObudow.cpp:52
 msgid "Opis:"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:29 src/GUI/DialogObudow.cpp:329
-#: src/GUI/PanelKatalogu.cpp:103
+#: src/GUI/DialogKatalogu.cpp:30 src/GUI/DialogObudow.cpp:329
+#: src/GUI/PanelKatalogu.cpp:110
 msgid "Rodzina:"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:34
+#: src/GUI/DialogKatalogu.cpp:35
 msgid "Datasheet (adres):"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:35
+#: src/GUI/DialogKatalogu.cpp:36
 msgid "Zdjęcie:"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:37 src/GUI/PanelNarzedzi.cpp:88
+#: src/GUI/DialogKatalogu.cpp:38 src/GUI/PanelNarzedzi.cpp:90
 msgid "plik obrazu"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:40 src/GUI/DialogObudow.cpp:73
-#: src/GUI/DialogPozyczki.cpp:34 src/GUI/PanelNarzedzi.cpp:91
+#: src/GUI/DialogKatalogu.cpp:41 src/GUI/DialogObudow.cpp:73
+#: src/GUI/DialogPozyczki.cpp:35 src/GUI/PanelNarzedzi.cpp:93
 msgid "Uwagi:"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:43
+#: src/GUI/DialogKatalogu.cpp:44
 msgid "Parametry (indeksy: V_CE albo V_{CE(sat)}, potęgi: m^2, 10^-3):"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:46 src/GUI/DialogSklepow.cpp:19
+#: src/GUI/DialogKatalogu.cpp:47 src/GUI/DialogSklepow.cpp:19
 msgid "Nazwa"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:48
+#: src/GUI/DialogKatalogu.cpp:49
 msgid "Źródło"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:69
+#: src/GUI/DialogKatalogu.cpp:50
+msgid "Opis (dymek)"
+msgstr ""
+
+#: src/GUI/DialogKatalogu.cpp:84
 msgid "Dodaj parametr"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:70
+#: src/GUI/DialogKatalogu.cpp:85
 msgid "Usuń parametr"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:139 src/GUI/OknoGlowne.cpp:87
-#: src/GUI/PanelElementow.cpp:660 src/GUI/PanelKatalogu.cpp:217
-#: src/GUI/PanelKatalogu.cpp:458
+#: src/GUI/DialogKatalogu.cpp:162 src/GUI/OknoGlowne.cpp:89
+#: src/GUI/PanelElementow.cpp:660 src/GUI/PanelKatalogu.cpp:231
+#: src/GUI/PanelKatalogu.cpp:509
 msgid "Katalog"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:148
+#: src/GUI/DialogKatalogu.cpp:171
 msgid "Dodaj do magazynu: "
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:153 src/GUI/PanelProjektow.cpp:470
+#: src/GUI/DialogKatalogu.cpp:176 src/GUI/PanelProjektow.cpp:470
 msgid "Ilość:"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:158
+#: src/GUI/DialogKatalogu.cpp:181
 msgid "np. Kontener 1 szufladka A1/1"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:189
+#: src/GUI/DialogKatalogu.cpp:212
 msgid "Wybierz z katalogu"
 msgstr ""
 
-#: src/GUI/DialogKatalogu.cpp:194
+#: src/GUI/DialogKatalogu.cpp:217
 msgid "Szukaj: symbol, producent, opis, rodzina..."
 msgstr ""
 
@@ -2478,7 +2713,7 @@ msgstr ""
 #: src/GUI/DialogKsiazki.cpp:226 src/GUI/DialogKsiazki.cpp:230
 #: src/GUI/DialogKsiazki.cpp:257 src/GUI/DialogKsiazki.cpp:271
 #: src/GUI/DialogKsiazki.cpp:287 src/GUI/DialogKsiazki.cpp:312
-#: src/GUI/DialogKsiazki.cpp:319 src/GUI/OknoGlowne.cpp:89
+#: src/GUI/DialogKsiazki.cpp:319 src/GUI/OknoGlowne.cpp:91
 #: src/GUI/PanelKsiazek.cpp:224 src/GUI/PanelKsiazek.cpp:246
 #: src/GUI/PanelKsiazek.cpp:461 src/GUI/PanelKsiazek.cpp:465
 #: src/GUI/PanelKsiazek.cpp:521 src/GUI/PanelKsiazek.cpp:538
@@ -2499,7 +2734,7 @@ msgstr ""
 msgid "Znaleziono kilka pozycji. Wybierz właściwą:"
 msgstr ""
 
-#: src/GUI/DialogKsiazki.cpp:246 src/GUI/DialogOProgramie.cpp:63
+#: src/GUI/DialogKsiazki.cpp:246 src/GUI/DialogOProgramie.cpp:65
 msgid "Biblioteka Narodowa"
 msgstr ""
 
@@ -2573,7 +2808,9 @@ msgstr ""
 
 #: src/GUI/DialogLinkowElementu.cpp:61 src/GUI/DialogProjektu.cpp:197
 #: src/GUI/PanelKsiazek.cpp:377 src/GUI/PanelKsiazek.cpp:497
-#: src/GUI/PanelNarzedzi.cpp:187 src/GUI/PanelNarzedzi.cpp:353
+#: src/GUI/PanelNarzedzi.cpp:189 src/GUI/PanelNarzedzi.cpp:356
+#: src/GUI/PanelSerwisu.cpp:55 src/GUI/PanelSerwisu.cpp:203
+#: src/GUI/PanelSerwisu.cpp:212 src/GUI/PanelSerwisu.cpp:585
 msgid "Uwagi"
 msgstr ""
 
@@ -2634,20 +2871,22 @@ msgid "Adres"
 msgstr ""
 
 #: src/GUI/DialogLinkowElementu.cpp:143 src/GUI/DialogObudow.cpp:153
-#: src/GUI/DialogSklepow.cpp:36
+#: src/GUI/DialogSklepow.cpp:36 src/GUI/DialogSlownikaParametrow.cpp:74
 msgid "Dodaj..."
 msgstr ""
 
 #: src/GUI/DialogLinkowElementu.cpp:144 src/GUI/DialogObudow.cpp:154
-#: src/GUI/DialogSklepow.cpp:37
+#: src/GUI/DialogSklepow.cpp:37 src/GUI/PanelSerwisu.cpp:218
 msgid "Zmień..."
 msgstr ""
 
 #: src/GUI/DialogLinkowElementu.cpp:145 src/GUI/DialogObudow.cpp:155
-#: src/GUI/DialogSklepow.cpp:38 src/GUI/PanelElementow.cpp:109
-#: src/GUI/PanelElementow.cpp:628 src/GUI/PanelKatalogu.cpp:160
-#: src/GUI/PanelKategorii.cpp:35 src/GUI/PanelKategorii.cpp:255
-#: src/GUI/PanelKsiazek.cpp:168 src/GUI/PanelNarzedzi.cpp:214
+#: src/GUI/DialogSklepow.cpp:38 src/GUI/DialogSlownikaParametrow.cpp:76
+#: src/GUI/PanelElementow.cpp:109 src/GUI/PanelElementow.cpp:628
+#: src/GUI/PanelKatalogu.cpp:167 src/GUI/PanelKategorii.cpp:35
+#: src/GUI/PanelKategorii.cpp:255 src/GUI/PanelKsiazek.cpp:168
+#: src/GUI/PanelNarzedzi.cpp:216 src/GUI/PanelNarzedzi.cpp:521
+#: src/GUI/PanelSerwisu.cpp:445 src/GUI/PanelSerwisu.cpp:638
 msgid "Usuń"
 msgstr ""
 
@@ -2756,7 +2995,7 @@ msgid "Brak datasheetu."
 msgstr ""
 
 #: src/GUI/DialogLinkowElementu.cpp:361 src/GUI/PanelElementow.cpp:677
-#: src/GUI/PanelKatalogu.cpp:551
+#: src/GUI/PanelKatalogu.cpp:602
 msgid "Nie znaleziono programu do otwierania plików PDF."
 msgstr ""
 
@@ -2766,7 +3005,7 @@ msgid ""
 "albo \"Szukaj w internecie\"."
 msgstr ""
 
-#: src/GUI/DialogLinkowElementu.cpp:371 src/GUI/PanelKatalogu.cpp:576
+#: src/GUI/DialogLinkowElementu.cpp:371 src/GUI/PanelKatalogu.cpp:627
 msgid "Pobieranie datasheetu..."
 msgstr ""
 
@@ -2774,11 +3013,11 @@ msgstr ""
 msgid "✓ Datasheet pobrany."
 msgstr ""
 
-#: src/GUI/DialogLinkowElementu.cpp:382 src/GUI/PanelKatalogu.cpp:587
+#: src/GUI/DialogLinkowElementu.cpp:382 src/GUI/PanelKatalogu.cpp:638
 msgid "✗ Nie udało się pobrać datasheetu: "
 msgstr ""
 
-#: src/GUI/DialogLinkowElementu.cpp:390 src/GUI/PanelKatalogu.cpp:624
+#: src/GUI/DialogLinkowElementu.cpp:390 src/GUI/PanelKatalogu.cpp:675
 msgid "Adres pliku PDF z datasheetem:"
 msgstr ""
 
@@ -2807,133 +3046,133 @@ msgstr ""
 msgid "Szukanie datasheetu (%zu z %zu)..."
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:157
+#: src/GUI/DialogMetodyGraficzne.cpp:158
 msgid ""
 "Wczytaj obraz charakterystyki anodowej lampy (przycisk „Wczytaj obraz...”)."
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:228 src/GUI/DialogMetodyGraficzne.cpp:418
+#: src/GUI/DialogMetodyGraficzne.cpp:229 src/GUI/DialogMetodyGraficzne.cpp:419
 msgid "Metody graficzne"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:233
+#: src/GUI/DialogMetodyGraficzne.cpp:234
 msgid "Wczytaj obraz..."
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:238
+#: src/GUI/DialogMetodyGraficzne.cpp:239
 msgid "Opcje wyświetlania"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:239
+#: src/GUI/DialogMetodyGraficzne.cpp:240
 msgid "Skalowanie charakterystyk"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:240
+#: src/GUI/DialogMetodyGraficzne.cpp:241
 msgid "Wyniki i wyznaczanie Ra"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:274
+#: src/GUI/DialogMetodyGraficzne.cpp:275
 msgid ""
 "Wybierz krok i kliknij na obrazie: 1) punkt (0,0), czyli przecięcie osi; 2) "
 "punkt na osi napięcia o znanej wartości; 3) punkt na osi prądu o znanej "
 "wartości. Wpisz te wartości i naciśnij „Skaluj”."
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:295
+#: src/GUI/DialogMetodyGraficzne.cpp:296
 msgid "Skaluj"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:323
+#: src/GUI/DialogMetodyGraficzne.cpp:324
 msgid "Koniec prądowy"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:324
+#: src/GUI/DialogMetodyGraficzne.cpp:325
 msgid "Koniec napięciowy"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:327
+#: src/GUI/DialogMetodyGraficzne.cpp:328
 msgid "Ra klasa A [kΩ]"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:328
+#: src/GUI/DialogMetodyGraficzne.cpp:329
 msgid "Raa klasa B [kΩ]"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:329
+#: src/GUI/DialogMetodyGraficzne.cpp:330
 msgid "Moc SE klasa A [W]"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:330
+#: src/GUI/DialogMetodyGraficzne.cpp:331
 msgid "Moc PP klasa B [W]"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:334
+#: src/GUI/DialogMetodyGraficzne.cpp:335
 msgid "Zablokuj"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:335
+#: src/GUI/DialogMetodyGraficzne.cpp:336
 msgid "Wartość Ra"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:336
+#: src/GUI/DialogMetodyGraficzne.cpp:337
 msgid "Amplitudę (ΔIa)"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:344
+#: src/GUI/DialogMetodyGraficzne.cpp:345
 msgid "Osie napięcia i natężenia (siatka kontrolna)"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:362
+#: src/GUI/DialogMetodyGraficzne.cpp:363
 msgid "Moc strat w anodzie Pa max"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:364
+#: src/GUI/DialogMetodyGraficzne.cpp:365
 msgid "Rysuj"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:371
+#: src/GUI/DialogMetodyGraficzne.cpp:372
 msgid "Zniekształcenia (pięć rzędnych)"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:373
+#: src/GUI/DialogMetodyGraficzne.cpp:374
 msgid ""
 "Dwuklik na prostej w miejscu przecięcia z krzywą Ug ustawia kolejny punkt; "
 "skrajne punkty to końce prostej."
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:411
+#: src/GUI/DialogMetodyGraficzne.cpp:412
 msgid "Wybierz obraz charakterystyki"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:412
+#: src/GUI/DialogMetodyGraficzne.cpp:413
 msgid ""
 "Obrazy (*.png;*.jpg;*.jpeg;*.bmp;*.gif)|*.png;*.jpg;*.jpeg;*.bmp;*.gif|"
 "Wszystkie pliki|*"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:418
+#: src/GUI/DialogMetodyGraficzne.cpp:419
 msgid "Nie udało się wczytać obrazu."
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:431
+#: src/GUI/DialogMetodyGraficzne.cpp:432
 msgid "Najpierw wczytaj obraz."
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:433
+#: src/GUI/DialogMetodyGraficzne.cpp:434
 msgid ""
 "Ustaw wszystkie trzy punkty (punkt Ua na prawo od zera, punkt Ia nad zerem) "
 "i wpisz wartości większe od zera."
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:444
+#: src/GUI/DialogMetodyGraficzne.cpp:445
 msgid "punkt ustawiony"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:444
+#: src/GUI/DialogMetodyGraficzne.cpp:445
 msgid "brak punktu"
 msgstr ""
 
-#: src/GUI/DialogMetodyGraficzne.cpp:446
+#: src/GUI/DialogMetodyGraficzne.cpp:447
 msgid "Skala: "
 msgstr ""
 
@@ -2994,7 +3233,7 @@ msgstr ""
 msgid "Repozytorium"
 msgstr ""
 
-#: src/GUI/DialogOProgramie.cpp:45 src/GUI/DialogOProgramie.cpp:112
+#: src/GUI/DialogOProgramie.cpp:45 src/GUI/DialogOProgramie.cpp:114
 msgid "Licencja"
 msgstr ""
 
@@ -3019,69 +3258,81 @@ msgid "Magmass korzysta z pracy wielu projektów. Dziękuję ich autorom:"
 msgstr ""
 
 #: src/GUI/DialogOProgramie.cpp:57
-msgid "biblioteka interfejsu graficznego (wxWindows Library Licence)"
+msgid ""
+"asystent AI, współtwórca programu: pisał i testował kod, dokumentację i "
+"narzędzia pod kierunkiem autora"
 msgstr ""
 
 #: src/GUI/DialogOProgramie.cpp:58
-msgid "baza danych i biblioteka klienta (PostgreSQL License)"
+msgid "biblioteka interfejsu graficznego (wxWindows Library Licence)"
 msgstr ""
 
 #: src/GUI/DialogOProgramie.cpp:59
+msgid "baza danych i biblioteka klienta (PostgreSQL License)"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:60
 msgid ""
 "zapis i odczyt metadanych PDF; zewnętrzny program, nie jest częścią Magmass "
 "(Artistic License / GPL)"
 msgstr ""
 
-#: src/GUI/DialogOProgramie.cpp:60
+#: src/GUI/DialogOProgramie.cpp:61
 msgid ""
 "rozpoznawanie tekstu w skanach PDF; zewnętrzny program (MPL-2.0), korzysta z "
 "Tesseract OCR (Apache-2.0) i Ghostscript"
 msgstr ""
 
-#: src/GUI/DialogOProgramie.cpp:61
+#: src/GUI/DialogOProgramie.cpp:62
 msgid ""
 "odczyt tekstu z PDF do indeksu treści (GPL); dołączany do wersji "
 "instalacyjnych"
 msgstr ""
 
-#: src/GUI/DialogOProgramie.cpp:62
+#: src/GUI/DialogOProgramie.cpp:63
 msgid "opcjonalny odczyt kodów kreskowych z kamery (Apache-2.0)"
 msgstr ""
 
-#: src/GUI/DialogOProgramie.cpp:63
+#: src/GUI/DialogOProgramie.cpp:64
+msgid ""
+"topologie i wartości wzorcowe biernych układów regulacji barwy (GPL-3.0); "
+"silnik obliczeń jest własny"
+msgstr ""
+
+#: src/GUI/DialogOProgramie.cpp:65
 msgid "dane bibliograficzne pobierane z publicznego API data.bn.org.pl"
 msgstr ""
 
-#: src/GUI/DialogOProgramie.cpp:64
+#: src/GUI/DialogOProgramie.cpp:66
 msgid "Ikony"
 msgstr ""
 
-#: src/GUI/DialogOProgramie.cpp:64
+#: src/GUI/DialogOProgramie.cpp:66
 msgid ""
 "własny, płaski zestaw ikon programu, narysowany skryptem narzedzia/"
 "zbuduj_ikony.py i udostępniany na tej samej licencji GPL"
 msgstr ""
 
-#: src/GUI/DialogOProgramie.cpp:65
+#: src/GUI/DialogOProgramie.cpp:67
 msgid "Nazwy programów i znaki towarowe należą do ich właścicieli."
 msgstr ""
 
-#: src/GUI/DialogOProgramie.cpp:82
+#: src/GUI/DialogOProgramie.cpp:84
 msgid ""
 "Magmass jest wolnym oprogramowaniem na licencji GNU General Public License, "
 "wersja 3 lub nowsza. Nie znaleziono pliku LICENSE z pełnym tekstem; jest on "
 "dostępny pod adresem:"
 msgstr ""
 
-#: src/GUI/DialogOProgramie.cpp:87
+#: src/GUI/DialogOProgramie.cpp:89
 msgid "O programie Magmass"
 msgstr ""
 
-#: src/GUI/DialogOProgramie.cpp:107
+#: src/GUI/DialogOProgramie.cpp:109
 msgid "O programie"
 msgstr ""
 
-#: src/GUI/DialogOProgramie.cpp:108
+#: src/GUI/DialogOProgramie.cpp:110
 msgid "Podziękowania"
 msgstr ""
 
@@ -3284,101 +3535,101 @@ msgstr ""
 msgid "Wybrane: %s"
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:10
+#: src/GUI/DialogPolaczenia.cpp:11
 msgid "Ustawienia połączenia z bazą danych"
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:35
+#: src/GUI/DialogPolaczenia.cpp:36
 msgid "Host:"
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:36
+#: src/GUI/DialogPolaczenia.cpp:37
 msgid "Port:"
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:37
+#: src/GUI/DialogPolaczenia.cpp:38
 msgid "Baza danych:"
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:38
+#: src/GUI/DialogPolaczenia.cpp:39
 msgid "Użytkownik:"
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:39
+#: src/GUI/DialogPolaczenia.cpp:40
 msgid "Hasło:"
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:49
+#: src/GUI/DialogPolaczenia.cpp:50
 msgid "Zapamiętaj hasło w pliku konfiguracji (zapis jako zwykły tekst)"
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:53 src/GUI/OknoGlowne.cpp:238
+#: src/GUI/DialogPolaczenia.cpp:54 src/GUI/OknoGlowne.cpp:246
 msgid "Plik konfiguracji: "
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:65
+#: src/GUI/DialogPolaczenia.cpp:66
 msgid "&Test połączenia"
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:66
+#: src/GUI/DialogPolaczenia.cpp:67
 msgid "&Zapisz ustawienia"
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:70 src/GUI/DialogUstawien.cpp:85
+#: src/GUI/DialogPolaczenia.cpp:71 src/GUI/DialogUstawien.cpp:87
 msgid "&OK"
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:71 src/GUI/DialogUstawien.cpp:86
+#: src/GUI/DialogPolaczenia.cpp:72 src/GUI/DialogUstawien.cpp:88
 msgid "&Anuluj"
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:105
+#: src/GUI/DialogPolaczenia.cpp:106
 msgid "Podaj host, nazwę bazy i użytkownika."
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:116
+#: src/GUI/DialogPolaczenia.cpp:117
 msgid "Łączenie..."
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:128
+#: src/GUI/DialogPolaczenia.cpp:129
 msgid "✓ Połączenie udane (PostgreSQL "
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:130
+#: src/GUI/DialogPolaczenia.cpp:131
 msgid "✗ Błąd: "
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:139
+#: src/GUI/DialogPolaczenia.cpp:140
 msgid "✓ Ustawienia zapisane"
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:141
+#: src/GUI/DialogPolaczenia.cpp:142
 msgid "✗ Nie udało się zapisać ustawień: "
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:150 src/GUI/DialogUstawien.cpp:365
+#: src/GUI/DialogPolaczenia.cpp:151 src/GUI/DialogUstawien.cpp:401
 msgid ""
 "Nie udało się zapisać ustawień:\n"
 "\n"
 msgstr ""
 
-#: src/GUI/DialogPolaczenia.cpp:151 src/GUI/DialogUstawien.cpp:366
+#: src/GUI/DialogPolaczenia.cpp:152 src/GUI/DialogUstawien.cpp:402
 msgid "Błąd zapisu"
 msgstr ""
 
-#: src/GUI/DialogPozyczki.cpp:27
+#: src/GUI/DialogPozyczki.cpp:28
 msgid "Komu *"
 msgstr ""
 
-#: src/GUI/DialogPozyczki.cpp:29
+#: src/GUI/DialogPozyczki.cpp:30
 msgid "Data pożyczenia"
 msgstr ""
 
-#: src/GUI/DialogPozyczki.cpp:32
+#: src/GUI/DialogPozyczki.cpp:33
 msgid "Termin zwrotu (opcjonalnie)"
 msgstr ""
 
-#: src/GUI/DialogPozyczki.cpp:43
+#: src/GUI/DialogPozyczki.cpp:44
 msgid "Pożyczki"
 msgstr ""
 
@@ -3407,6 +3658,7 @@ msgid "Edycja projektu"
 msgstr ""
 
 #: src/GUI/DialogProjektu.cpp:49 src/GUI/PanelProjektow.cpp:40
+#: src/GUI/PanelSerwisu.cpp:187 src/GUI/PanelSerwisu.cpp:575
 msgid "Status"
 msgstr ""
 
@@ -3426,7 +3678,8 @@ msgstr ""
 msgid "Szukaj: symbol, opis, wartość, obudowa..."
 msgstr ""
 
-#: src/GUI/DialogProjektu.cpp:98
+#: src/GUI/DialogProjektu.cpp:98 src/GUI/DialogSlownikaParametrow.cpp:69
+#: src/GUI/DialogSlownikaParametrow.cpp:196
 msgid "Symbol"
 msgstr ""
 
@@ -3601,7 +3854,7 @@ msgid ""
 "Wiersz od # to komentarz."
 msgstr ""
 
-#: src/GUI/DialogSklepow.cpp:141
+#: src/GUI/DialogSklepow.cpp:141 src/GUI/PanelSerwisu.cpp:229
 msgid "Z pliku..."
 msgstr ""
 
@@ -3642,302 +3895,521 @@ msgid ""
 "Kursy wpisuje się ręcznie - program nie pobiera ich z internetu."
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:90
+#: src/GUI/DialogSlownikaParametrow.cpp:11
+msgid "Zmień wpis słownika"
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:11
+msgid "Nowy wpis słownika"
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:18
+msgid "Symbol (np. W_amax):"
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:21
+msgid "Opis (dymek):"
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:25
+msgid ""
+"Wielkość liter, spacje, podkreślenia i nawiasy w symbolu się nie liczą: "
+"V_CE(sat) i vce sat to ten sam symbol."
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:44
+#: src/GUI/DialogSlownikaParametrow.cpp:55
+#: src/GUI/DialogSlownikaParametrow.cpp:107
+#: src/GUI/DialogSlownikaParametrow.cpp:164
+#: src/GUI/DialogSlownikaParametrow.cpp:167
+#: src/GUI/DialogSlownikaParametrow.cpp:177
+#: src/GUI/DialogSlownikaParametrow.cpp:183
+msgid "Słownik parametrów"
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:65
+msgid ""
+"Opisy symboli parametrów pokazywane w dymku po najechaniu na parametr w "
+"katalogu (gdy parametr nie ma własnego opisu)."
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:75 src/GUI/PanelElementow.cpp:621
+#: src/GUI/PanelKatalogu.cpp:165 src/GUI/PanelKsiazek.cpp:166
+#: src/GUI/PanelNarzedzi.cpp:214 src/GUI/PanelNarzedzi.cpp:519
+#: src/GUI/PanelSerwisu.cpp:437 src/GUI/PanelSerwisu.cpp:631
+msgid "Edytuj..."
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:77
+msgid "Przywróć brakujące wbudowane"
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:78
+msgid ""
+"Dopisuje wbudowane symbole, których w słowniku brakuje; istniejących wpisów "
+"nie zmienia."
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:116
+#, c-format
+msgid "Wpisów: %d"
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:162
+msgid "Usunąć zaznaczony wpis ze słownika?"
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:163
+#, c-format
+msgid "Usunąć zaznaczone wpisy (%d) ze słownika?"
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:181
+msgid "Wszystkie wbudowane symbole są już w słowniku."
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:182
+#, c-format
+msgid "Dopisano brakujące wbudowane symbole: %d."
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:188
+msgid "Dodaj do słownika parametrów"
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:191
+msgid ""
+"Tych symboli nie ma jeszcze w słowniku, więc dymek nie powie, co oznaczają. "
+"Wpisz opis przy tych, które chcesz zapamiętać (zaznaczone wiersze z opisem "
+"trafią do słownika; pozostałe zostaną pominięte)."
+msgstr ""
+
+#: src/GUI/DialogSlownikaParametrow.cpp:195
+msgid "Dodaj"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:94
 msgid "brak temperatur"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:96 src/GUI/DialogTermowizji.cpp:187
-#: src/GUI/DialogTermowizji.cpp:193
+#: src/GUI/DialogTermowizji.cpp:100 src/GUI/DialogTermowizji.cpp:204
+#: src/GUI/DialogTermowizji.cpp:210 src/GUI/DialogTermowizji.cpp:483
+#: src/GUI/DialogTermowizji.cpp:490
 msgid "Kamera termowizyjna"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:113
+#: src/GUI/DialogTermowizji.cpp:117
 msgid "Paleta:"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:115
+#: src/GUI/DialogTermowizji.cpp:119
 msgid "Żelazo"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:115
+#: src/GUI/DialogTermowizji.cpp:119
 msgid "Tęcza"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:115
+#: src/GUI/DialogTermowizji.cpp:119
 msgid "Szara"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:115
+#: src/GUI/DialogTermowizji.cpp:119
 msgid "Szara odwrócona"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:119
+#: src/GUI/DialogTermowizji.cpp:123
 msgid "Układ ramki:"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:121
+#: src/GUI/DialogTermowizji.cpp:125
 msgid "Automatycznie"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:121
+#: src/GUI/DialogTermowizji.cpp:125
 msgid "Obraz i dane (górna/dolna połowa)"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:121
+#: src/GUI/DialogTermowizji.cpp:125
 msgid "Tylko obraz"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:126
+#: src/GUI/DialogTermowizji.cpp:130
 msgid "Dzielnik:"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:130
+#: src/GUI/DialogTermowizji.cpp:134
 msgid "Przesunięcie [K]:"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:135 src/GUI/DialogTermowizji.cpp:212
-#: src/GUI/DialogTermowizji.cpp:248
+#: src/GUI/DialogTermowizji.cpp:139 src/GUI/DialogTermowizji.cpp:229
+#: src/GUI/DialogTermowizji.cpp:265
 msgid "Zamroź obraz"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:137
+#: src/GUI/DialogTermowizji.cpp:141
 msgid "Polecenie UVC zoom (hex):"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:141
+#: src/GUI/DialogTermowizji.cpp:145
 msgid "Wyślij polecenie (tryb surowy)"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:144
+#: src/GUI/DialogTermowizji.cpp:148
 msgid "Kalibracja (tryb surowy) - temperatura środka [°C]:"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:148
+#: src/GUI/DialogTermowizji.cpp:152
 msgid "Dodaj punkt kalibracji"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:151
+#: src/GUI/DialogTermowizji.cpp:155
 msgid "Wyczyść kalibrację"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:154
+#: src/GUI/DialogTermowizji.cpp:158
 msgid "Zapisz próbkę (do analizy)..."
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:157
+#: src/GUI/DialogTermowizji.cpp:161
 msgid "Zapisz obraz PNG..."
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:184
+#: src/GUI/DialogTermowizji.cpp:163
+msgid "Biblioteka temperatur Xtherm (XthermDll.dll)..."
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:167
+msgid "Sprawdź SDK IRay (USBSDK.dll)..."
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:201
 msgid "Katalog na próbkę"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:187
+#: src/GUI/DialogTermowizji.cpp:204
 msgid "Nie udało się zapisać próbki."
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:187
+#: src/GUI/DialogTermowizji.cpp:204
 msgid "Zapisano próbkę: "
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:191
+#: src/GUI/DialogTermowizji.cpp:208
 msgid "Zapisz obraz"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:193
+#: src/GUI/DialogTermowizji.cpp:210
 msgid "Nie udało się zapisać obrazu."
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:212
+#: src/GUI/DialogTermowizji.cpp:229
 msgid "Wznów podgląd"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:228
+#: src/GUI/DialogTermowizji.cpp:245
 msgid ""
 "Podłącz kamerę termowizyjną przez USB i naciśnij „Wykryj ponownie”. System "
 "może zapytać o zgodę na dostęp do kamery."
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:229
+#: src/GUI/DialogTermowizji.cpp:246
 msgid "Próby otwarcia (OpenCV):"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:230
+#: src/GUI/DialogTermowizji.cpp:247
 msgid "Ta wersja programu została zbudowana bez obsługi kamery (OpenCV)."
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:290
+#: src/GUI/DialogTermowizji.cpp:326
+msgid "(biblioteka Xtherm) "
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:326
 msgid "(kalibracja użytkownika) "
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:290
+#: src/GUI/DialogTermowizji.cpp:326
 msgid "Środek: "
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:290 src/GUI/DialogTermowizji.cpp:294
+#: src/GUI/DialogTermowizji.cpp:326 src/GUI/DialogTermowizji.cpp:330
 msgid "   min: "
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:290 src/GUI/DialogTermowizji.cpp:294
+#: src/GUI/DialogTermowizji.cpp:326 src/GUI/DialogTermowizji.cpp:330
 msgid "   max: "
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:293
+#: src/GUI/DialogTermowizji.cpp:329
 msgid "Surowe odczyty (bez kalibracji do °C) - środek: "
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:296
+#: src/GUI/DialogTermowizji.cpp:332
 msgid "Brak danych temperatury w tej ramce (tylko obraz)"
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:312
+#: src/GUI/DialogTermowizji.cpp:349
 msgid ""
 "Wartość polecenia musi być liczbą szesnastkową do FFFF (można podać kilka, "
 "oddzielonych spacją)."
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:319
+#: src/GUI/DialogTermowizji.cpp:356
 msgid "Polecenie wysłane: "
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:319
+#: src/GUI/DialogTermowizji.cpp:356
 msgid "Polecenie nie powiodło się: "
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:333
+#: src/GUI/DialogTermowizji.cpp:370
 msgid "Kalibracja wymaga klatki w trybie surowym i temperatury podanej liczbą."
 msgstr ""
 
-#: src/GUI/DialogTermowizji.cpp:339
+#: src/GUI/DialogTermowizji.cpp:376
 #, c-format
 msgid "Punkt kalibracji: odczyt %.1f = %.1f °C (punktów: %d)"
 msgstr ""
 
-#: src/GUI/DialogTrafoPP.cpp:24
+#: src/GUI/DialogTermowizji.cpp:424
+msgid ""
+"Diagnostyka SDK IRay (biblioteka z Twojej kopii, program jej nie zawiera)"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:426
+msgid "Wskaż USBSDK.dll (wersja x64)"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:438
+msgid "Biblioteka załadowana: "
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:442
+msgid "Nie znaleziono urządzeń (kamera podłączona? zamknięta inna aplikacja?)."
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:452
+msgid "Typ rdzenia: "
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:456
+#, c-format
+msgid "Matryca: %d x %d"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:458
+#, c-format
+msgid "Temperatura detektora (FPA): %.1f"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:464
+#, c-format
+msgid ""
+"Klatka temperatur: %d x %d, surowe słowa 16-bitowe min %u, max %u, środek %u"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:466
+msgid ""
+"Skala tych liczb nie jest opisana przez producenta: przelicz ją własną "
+"kalibracją (lód 0 °C, dłoń ok. 33 °C)."
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:468
+msgid ""
+"Brak klatki temperatur (kamera bez pomiaru albo za krótki czas oczekiwania)."
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:475
+msgid "Wskaż XthermDll.dll (wersja x64)"
+msgstr ""
+
+#: src/GUI/DialogTermowizji.cpp:489
+msgid ""
+"Biblioteka załadowana. Dla klatek 384x292 (tryb surowy 0x8004 albo YUYV "
+"0x8005) temperatury będą liczone przez bibliotekę producenta."
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:28
 msgid "Transformator głośnikowy PP"
 msgstr ""
 
-#: src/GUI/DialogTrafoPP.cpp:29
+#: src/GUI/DialogTrafoPP.cpp:33
 msgid "Etap 1: wymagania"
 msgstr ""
 
-#: src/GUI/DialogTrafoPP.cpp:32
+#: src/GUI/DialogTrafoPP.cpp:40
 msgid "Przeznaczenie"
 msgstr ""
 
-#: src/GUI/DialogTrafoPP.cpp:34
+#: src/GUI/DialogTrafoPP.cpp:42
 msgid "Hi-Fi"
 msgstr ""
 
-#: src/GUI/DialogTrafoPP.cpp:35
+#: src/GUI/DialogTrafoPP.cpp:43
 msgid "gitarowy"
 msgstr ""
 
-#: src/GUI/DialogTrafoPP.cpp:39 src/GUI/DialogTrafoSE.cpp:45
+#: src/GUI/DialogTrafoPP.cpp:47 src/GUI/DialogTrafoSE.cpp:46
 msgid "Spadek na krańcach pasma"
 msgstr ""
 
-#: src/GUI/DialogTrafoPP.cpp:61
+#: src/GUI/DialogTrafoPP.cpp:69
 msgid "Pożądane parametry transformatora"
 msgstr ""
 
-#: src/GUI/DialogTrafoPP.cpp:76
+#: src/GUI/DialogTrafoPP.cpp:84
 msgid "Wymiary zdobytego transformatora"
 msgstr ""
 
-#: src/GUI/DialogTrafoPP.cpp:79 src/GUI/DialogTrafoSE.cpp:61
+#: src/GUI/DialogTrafoPP.cpp:87 src/GUI/DialogTrafoSE.cpp:62
 msgid "Kształtka EI"
 msgstr ""
 
-#: src/GUI/DialogTrafoPP.cpp:99
-msgid "Etap 2: uzwojenia"
-msgstr ""
-
-#: src/GUI/DialogTrafoPP.cpp:113
-msgid "Porównanie: metoda gitarowa (Mn = 1,25)"
-msgstr ""
-
-#: src/GUI/DialogTrafoPP.cpp:127 src/GUI/DialogTrafoSE.cpp:145
+#: src/GUI/DialogTrafoPP.cpp:104 src/GUI/DialogTrafoSE.cpp:146
 msgid "Rdzeń EI"
 msgstr ""
 
-#: src/GUI/DialogTrafoPP.cpp:135
+#: src/GUI/DialogTrafoPP.cpp:113
+msgid "Etap 2: uzwojenia"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:128
+msgid "Porównanie: metoda gitarowa (Mn = 1,25)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPP.cpp:147
 msgid "Dalej: uzwojenia wykonane (Etap 3)"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:23
+#: src/GUI/DialogTrafoPP.cpp:181
+msgid "(wpisz ręcznie)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:28
 msgid "Transformator PP - uzwojenia wykonane (Etap 3)"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:28 src/GUI/DialogTrafoSEWykonane.cpp:32
+#: src/GUI/DialogTrafoPPEtap3.cpp:33 src/GUI/DialogTrafoSEWykonane.cpp:40
 msgid "Uzwojenia wykonane"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:32 src/GUI/DialogTrafoSEWykonane.cpp:36
+#: src/GUI/DialogTrafoPPEtap3.cpp:38 src/GUI/DialogTrafoSEWykonane.cpp:44
 msgid "wykonane"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:33 src/GUI/DialogTrafoSEWykonane.cpp:37
+#: src/GUI/DialogTrafoPPEtap3.cpp:39 src/GUI/DialogTrafoSEWykonane.cpp:45
 msgid "proponowane"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:47 src/GUI/DialogTrafoSEWykonane.cpp:52
-msgid "Układ uzwojeń"
-msgstr ""
-
-#: src/GUI/DialogTrafoPPEtap3.cpp:49
-msgid "P-S: nieprzeplatane"
-msgstr ""
-
-#: src/GUI/DialogTrafoPPEtap3.cpp:50
-msgid "P/2-S-P/2: pierwotne wokół wtórnego"
-msgstr ""
-
 #: src/GUI/DialogTrafoPPEtap3.cpp:51
-msgid "gitarowy: A 40% W 50% A 20% W 50% A 40%"
-msgstr ""
-
-#: src/GUI/DialogTrafoPPEtap3.cpp:52
-msgid "HiFi: karkas dwukomorowy (A W | A W)"
-msgstr ""
-
-#: src/GUI/DialogTrafoPPEtap3.cpp:53
-msgid "HiFi: dwukomorowy przeplatany (A W A | A W A)"
-msgstr ""
-
-#: src/GUI/DialogTrafoPPEtap3.cpp:54
-msgid "własny (tabela sekcji)"
-msgstr ""
-
-#: src/GUI/DialogTrafoPPEtap3.cpp:58
 msgid "Sekcje od rdzenia: A pierwotne, W wtórne, | przegroda"
 msgstr ""
 
+#: src/GUI/DialogTrafoPPEtap3.cpp:58 src/GUI/DialogTrafoSEWykonane.cpp:59
+msgid "Układ uzwojeń"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:60
+msgid "P-S: nieprzeplatane"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:61
+msgid "P/2-S-P/2: pierwotne wokół wtórnego"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:62
+msgid "gitarowy: A 40% W 50% A 20% W 50% A 40%"
+msgstr ""
+
 #: src/GUI/DialogTrafoPPEtap3.cpp:63
-msgid "Sekcje wtórne połączone"
+msgid "HiFi: karkas dwukomorowy (A W | A W)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:64
+msgid "HiFi: dwukomorowy przeplatany (A W A | A W A)"
 msgstr ""
 
 #: src/GUI/DialogTrafoPPEtap3.cpp:65
-msgid "szeregowo"
+msgid "Mesa Boogie DR: odczepy 4, 8 i 16 Ω (10 warstw)"
 msgstr ""
 
 #: src/GUI/DialogTrafoPPEtap3.cpp:66
-msgid "równolegle (równe sekcje)"
+msgid "własny (tabela sekcji)"
 msgstr ""
 
 #: src/GUI/DialogTrafoPPEtap3.cpp:70
-msgid "Grubość przegrody karkasu [mm] ="
+msgid "Sekcje wtórne połączone"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:99 src/GUI/DialogTrafoSEWykonane.cpp:86
-msgid "Rozmieszczenie uzwojeń w oknie (od rdzenia)"
+#: src/GUI/DialogTrafoPPEtap3.cpp:72
+msgid "szeregowo"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:112 src/GUI/DialogTrafoSEWykonane.cpp:99
+#: src/GUI/DialogTrafoPPEtap3.cpp:73
+msgid "równolegle (równe sekcje)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:77
+msgid "Odczep wtórnego (DR)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:79
+msgid "4 Ω"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:80
+msgid "8 Ω"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:81
+msgid "16 Ω"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:83
+msgid ""
+"Transformator z odczepami (Mesa Boogie DR) ma wszystkie trzy obciążenia "
+"naraz; tu wybierasz, dla którego liczysz wyniki. Zestawienie wszystkich "
+"trzech jest pod tabelą sekcji."
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:94
+msgid "Przegroda karkasu [mm] ="
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:95
+msgid "Ścianka karkasu [mm] ="
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:96
+msgid "Margines warstwy [mm] ="
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:97
+msgid "Przekładki warstw [mm] ="
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:98
+msgid "Poprawka k (brzegi) ="
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:99
+msgid "Rezystywność Cu [Ω·mm²/m] ="
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:123 src/GUI/DialogTrafoSEWykonane.cpp:96
+msgid "Komunikaty"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:128 src/GUI/DialogTrafoSEWykonane.cpp:101
 msgid "Powrót"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:195
+#: src/GUI/DialogTrafoPPEtap3.cpp:132 src/GUI/DialogTrafoSEWykonane.cpp:105
+msgid "Rozmieszczenie uzwojeń w oknie (od rdzenia)"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:263
 msgid ""
 "Uwagi: uzupełnij pola liczbami większymi od zera. Suma zwojów A w tabeli "
 "sekcji musi być równa zwojom pierwotnym, suma W wtórnym (przy połączeniu "
@@ -3945,440 +4417,477 @@ msgid ""
 "zmieścić w oknie."
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:202 src/GUI/DialogTrafoSEWykonane.cpp:147
+#: src/GUI/DialogTrafoPPEtap3.cpp:271 src/GUI/DialogTrafoSEWykonane.cpp:179
 msgid "Sekcja"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:202
+#: src/GUI/DialogTrafoPPEtap3.cpp:271
 msgid "komora"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:202 src/GUI/DialogTrafoSEWykonane.cpp:147
-#: src/GUI/DialogTrafoSieciowy.cpp:199
+#: src/GUI/DialogTrafoPPEtap3.cpp:271 src/GUI/DialogTrafoPPEtap3.cpp:282
+#: src/GUI/DialogTrafoSEWykonane.cpp:179 src/GUI/DialogTrafoSieciowy.cpp:204
 msgid "zwoje"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:202 src/GUI/DialogTrafoSEWykonane.cpp:147
-#: src/GUI/DialogTrafoSieciowy.cpp:199
+#: src/GUI/DialogTrafoPPEtap3.cpp:271 src/GUI/DialogTrafoSEWykonane.cpp:179
+#: src/GUI/DialogTrafoSieciowy.cpp:204
 msgid "zw/warstwa"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:202 src/GUI/DialogTrafoSEWykonane.cpp:147
-#: src/GUI/DialogTrafoSieciowy.cpp:200
+#: src/GUI/DialogTrafoPPEtap3.cpp:271 src/GUI/DialogTrafoSEWykonane.cpp:179
+#: src/GUI/DialogTrafoSieciowy.cpp:205
 msgid "warstw"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:202 src/GUI/DialogTrafoSEWykonane.cpp:147
-#: src/GUI/DialogTrafoSieciowy.cpp:200
+#: src/GUI/DialogTrafoPPEtap3.cpp:271 src/GUI/DialogTrafoSEWykonane.cpp:179
+#: src/GUI/DialogTrafoSieciowy.cpp:205
 msgid "grubość[mm]"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:202 src/GUI/DialogTrafoSEWykonane.cpp:147
+#: src/GUI/DialogTrafoPPEtap3.cpp:271 src/GUI/DialogTrafoSEWykonane.cpp:179
 msgid "zwój[cm]"
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:214
+#: src/GUI/DialogTrafoPPEtap3.cpp:281
+msgid "Odczepy (każdy dla własnego obciążenia):"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:282
+msgid "odczep"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:282
+msgid "Raa[Ω]"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:282
+msgid "Lr[H]"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:282
+msgid "Rw[Ω]"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:282
+msgid "η"
+msgstr ""
+
+#: src/GUI/DialogTrafoPPEtap3.cpp:289
 msgid "Indukcyjność pierwotna jest mniejsza od pożądanej - dodaj zwoje. "
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:215
+#: src/GUI/DialogTrafoPPEtap3.cpp:290
 msgid ""
 "Indukcyjność rozproszenia przekracza dopuszczalną - przeplataj uzwojenia lub "
 "zmniejsz grubość uzwojeń. "
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:216 src/GUI/DialogTrafoSEWykonane.cpp:161
+#: src/GUI/DialogTrafoPPEtap3.cpp:291 src/GUI/DialogTrafoSEWykonane.cpp:193
 msgid "Uzwojenia nie mieszczą się w oknie. "
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:217
+#: src/GUI/DialogTrafoPPEtap3.cpp:292
 msgid ""
 "Podzielona sekcja pierwotna ma nieparzystą liczbę warstw (*) - trudniej "
 "połączyć sekcje; zmień liczbę zwojów lub drut. "
 msgstr ""
 
-#: src/GUI/DialogTrafoPPEtap3.cpp:218
+#: src/GUI/DialogTrafoPPEtap3.cpp:293
 msgid ""
 "Którakolwiek komora nie ma równych amperozwojów A i W - strumień "
 "rozproszenia nie zamyka się w komorze, wynik rozproszenia jest orientacyjny. "
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:28
+#: src/GUI/DialogTrafoSE.cpp:29
 msgid "Transformator głośnikowy SE"
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:54
+#: src/GUI/DialogTrafoSE.cpp:55
 msgid "Rdzeń i sprawność"
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:57
+#: src/GUI/DialogTrafoSE.cpp:58
 msgid "Sprawność transformatora η ="
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:78
+#: src/GUI/DialogTrafoSE.cpp:79
 msgid "Lampa i układ (Krize, współczynnik A)"
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:80
+#: src/GUI/DialogTrafoSE.cpp:81
 msgid "pentoda bez NFB (A=20)"
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:81
+#: src/GUI/DialogTrafoSE.cpp:82
 msgid "pentoda z NFB (A=10)"
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:82
+#: src/GUI/DialogTrafoSE.cpp:83
 msgid "trioda bez NFB (A=10)"
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:83
+#: src/GUI/DialogTrafoSE.cpp:84
 msgid "trioda z NFB (A=5)"
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:90
+#: src/GUI/DialogTrafoSE.cpp:91
 msgid "Model fizyczny"
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:157
+#: src/GUI/DialogTrafoSE.cpp:159
 msgid "Dalej: uzwojenia wykonane"
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:304
+#: src/GUI/DialogTrafoSE.cpp:331
 msgid ""
 "Uwaga: żądana moc jest większa niż lampa odda w klasie A przy tym prądzie "
 "anodowym (maks. ok. "
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:304
+#: src/GUI/DialogTrafoSE.cpp:331
 msgid " VA). "
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:305
+#: src/GUI/DialogTrafoSE.cpp:332
 msgid ""
 "Model liniowy nie wymaga szczeliny (żelazo samo daje potrzebną "
 "indukcyjność), ale przy podmagnesowaniu przenikalność przyrostowa spada: "
 "zostaw szczelinę co najmniej 0,05 mm. "
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:306
+#: src/GUI/DialogTrafoSE.cpp:333
 msgid ""
 "Podmagnesowanie przekracza 2 A·zw./cm: wg Cykina (XI.3) rdzeń musi mieć "
 "szczelinę. "
 msgstr ""
 
-#: src/GUI/DialogTrafoSE.cpp:307
+#: src/GUI/DialogTrafoSE.cpp:334
 msgid "Przekrój rdzenia jest mniejszy od orientacyjnego. "
 msgstr ""
 
-#: src/GUI/DialogTrafoSEWykonane.cpp:28
+#: src/GUI/DialogTrafoSEWykonane.cpp:32
 msgid "Transformator SE - uzwojenia wykonane"
 msgstr ""
 
-#: src/GUI/DialogTrafoSEWykonane.cpp:54
-msgid "nieprzeplatane (pierwotne, wtórne)"
+#: src/GUI/DialogTrafoSEWykonane.cpp:61
+msgid "P-W: nieprzeplatane"
 msgstr ""
 
-#: src/GUI/DialogTrafoSEWykonane.cpp:55
-msgid "pierwotne w dwóch częściach wokół wtórnego"
+#: src/GUI/DialogTrafoSEWykonane.cpp:62
+msgid "P/2-W-P/2: pierwotne wokół wtórnego"
 msgstr ""
 
-#: src/GUI/DialogTrafoSEWykonane.cpp:56
-msgid "wtórne w dwóch częściach wokół pierwotnego"
+#: src/GUI/DialogTrafoSEWykonane.cpp:63
+msgid "W/2-P-W/2: wtórne wokół pierwotnego"
 msgstr ""
 
-#: src/GUI/DialogTrafoSEWykonane.cpp:137
+#: src/GUI/DialogTrafoSEWykonane.cpp:168
 msgid ""
 "Uwagi: uzupełnij pola liczbami większymi od zera (zwoje całkowite, szczelina "
 "może być 0)."
 msgstr ""
 
-#: src/GUI/DialogTrafoSEWykonane.cpp:158
+#: src/GUI/DialogTrafoSEWykonane.cpp:190
 msgid ""
 "Indukcyjność pierwotna jest mniejsza od zadanej - dodaj zwoje albo zmniejsz "
 "szczelinę. "
 msgstr ""
 
-#: src/GUI/DialogTrafoSEWykonane.cpp:159
+#: src/GUI/DialogTrafoSEWykonane.cpp:191
 msgid ""
 "Indukcja szczytowa przekracza zadaną - rdzeń może się nasycać; zwiększ "
 "szczelinę lub zwoje. "
 msgstr ""
 
-#: src/GUI/DialogTrafoSEWykonane.cpp:160
+#: src/GUI/DialogTrafoSEWykonane.cpp:192
 msgid ""
 "Indukcyjność rozproszenia przekracza dopuszczalną dla Fg - przeplataj "
 "uzwojenia lub zmniejsz grubość uzwojeń. "
 msgstr ""
 
-#: src/GUI/DialogTrafoSEWykonane.cpp:162
+#: src/GUI/DialogTrafoSEWykonane.cpp:194
 msgid ""
 "Podzielona sekcja ma nieparzystą liczbę warstw (*) - trudniej połączyć "
 "sekcje; zmień liczbę zwojów lub drut. "
 msgstr ""
 
-#: src/GUI/DialogTrafoSieciowy.cpp:23
+#: src/GUI/DialogTrafoSieciowy.cpp:24
 msgid "Transformator sieciowy"
 msgstr ""
 
-#: src/GUI/DialogTrafoSieciowy.cpp:49
+#: src/GUI/DialogTrafoSieciowy.cpp:50
 msgid "Parametry transformatora"
 msgstr ""
 
-#: src/GUI/DialogTrafoSieciowy.cpp:62
-msgid "Uzwojenia wtórne: napięcie [V] i prąd [A], jedno uzwojenie w wierszu"
-msgstr ""
-
-#: src/GUI/DialogTrafoSieciowy.cpp:66
+#: src/GUI/DialogTrafoSieciowy.cpp:63
 msgid "Wartości typowe wg mocy"
 msgstr ""
 
-#: src/GUI/DialogTrafoSieciowy.cpp:93
+#: src/GUI/DialogTrafoSieciowy.cpp:90
 msgid "Uzwojenia"
 msgstr ""
 
-#: src/GUI/DialogTrafoSieciowy.cpp:192
+#: src/GUI/DialogTrafoSieciowy.cpp:98
+msgid "Wpisz uzwojenia wtórne:"
+msgstr ""
+
+#: src/GUI/DialogTrafoSieciowy.cpp:197
 msgid ""
 "Uwagi: uzupełnij pola liczbami większymi od zera; uzwojenia wtórne wpisz "
 "jako pary: napięcie i prąd."
 msgstr ""
 
-#: src/GUI/DialogTrafoSieciowy.cpp:199 src/GUI/ZestawienieDrutu.cpp:15
+#: src/GUI/DialogTrafoSieciowy.cpp:204 src/GUI/ZestawienieDrutu.cpp:15
 msgid "drut[mm]"
 msgstr ""
 
-#: src/GUI/DialogTrafoSieciowy.cpp:199
+#: src/GUI/DialogTrafoSieciowy.cpp:204
 msgid "emalia"
 msgstr ""
 
-#: src/GUI/DialogTrafoSieciowy.cpp:205
+#: src/GUI/DialogTrafoSieciowy.cpp:210
 msgid "pierwotne"
 msgstr ""
 
-#: src/GUI/DialogTrafoSieciowy.cpp:206
+#: src/GUI/DialogTrafoSieciowy.cpp:211
 #, c-format
 msgid "wtórne %d"
 msgstr ""
 
-#: src/GUI/DialogTrafoSieciowy.cpp:210
+#: src/GUI/DialogTrafoSieciowy.cpp:215
 msgid ""
 "Uwaga: iloczyn q_o·q_z rdzenia jest mniejszy od wymaganego - wybierz większy "
 "rdzeń. "
 msgstr ""
 
-#: src/GUI/DialogTrafoSieciowy.cpp:211
+#: src/GUI/DialogTrafoSieciowy.cpp:216
 msgid "Uzwojenia mieszczą się w oknie (zapas duży; optymalnie ok. 5 mm)."
 msgstr ""
 
-#: src/GUI/DialogTrafoSieciowy.cpp:211
+#: src/GUI/DialogTrafoSieciowy.cpp:216
 msgid "Uzwojenia mieszczą się w oknie."
 msgstr ""
 
-#: src/GUI/DialogTrafoSieciowy.cpp:212
+#: src/GUI/DialogTrafoSieciowy.cpp:217
 msgid "Uwaga: uzwojenia nie mieszczą się w oknie rdzenia."
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:18
+#: src/GUI/DialogUstawien.cpp:20
 msgid "Ustawienia"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:31 src/GUI/OknoGlowne.cpp:278
+#: src/GUI/DialogUstawien.cpp:33 src/GUI/OknoGlowne.cpp:286
 msgid "&Ustawienia połączenia..."
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:35 src/GUI/DialogUstawien.cpp:38
+#: src/GUI/DialogUstawien.cpp:37 src/GUI/DialogUstawien.cpp:40
 msgid "..."
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:42
+#: src/GUI/DialogUstawien.cpp:44
 msgid "EAN13"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:43
+#: src/GUI/DialogUstawien.cpp:45
 msgid "EAN8"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:44
+#: src/GUI/DialogUstawien.cpp:46
 msgid "Code128"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:52
+#: src/GUI/DialogUstawien.cpp:54
 msgid "Arial"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:53
+#: src/GUI/DialogUstawien.cpp:55
 msgid "Times New Roman"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:54
+#: src/GUI/DialogUstawien.cpp:56
 msgid "Courier New"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:55
+#: src/GUI/DialogUstawien.cpp:57
 msgid "Verdana"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:61 src/GUI/DialogUwagHTML.cpp:18
+#: src/GUI/DialogUstawien.cpp:63 src/GUI/DialogUwagHTML.cpp:18
 msgid "Pogrubienie"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:62 src/GUI/DialogUwagHTML.cpp:19
+#: src/GUI/DialogUstawien.cpp:64 src/GUI/DialogUwagHTML.cpp:19
 msgid "Kursywa"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:64
+#: src/GUI/DialogUstawien.cpp:66
 msgid "Przykład tekstu"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:69
+#: src/GUI/DialogUstawien.cpp:71
 msgid "Według systemu"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:74
+#: src/GUI/DialogUstawien.cpp:76
 #, c-format
 msgid "puste = automatycznie, np. okular --page %p \"%f\""
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:76
+#: src/GUI/DialogUstawien.cpp:78
 msgid "puste = exiftool z PATH"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:78
+#: src/GUI/DialogUstawien.cpp:80
 msgid "puste = ocrmypdf z PATH"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:80
+#: src/GUI/DialogUstawien.cpp:82
 msgid "pol+eng"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:82
+#: src/GUI/DialogUstawien.cpp:84
 msgid "klucz z maila od Mousera (xxxxxxxx-xxxx-...)"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:110 src/GUI/DialogUstawien.cpp:119
-#: src/GUI/OknoGlowne.cpp:625
+#: src/GUI/DialogUstawien.cpp:112 src/GUI/DialogUstawien.cpp:121
+#: src/GUI/OknoGlowne.cpp:636
 msgid "Baza danych"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:127 src/GUI/DialogUstawien.cpp:156
+#: src/GUI/DialogUstawien.cpp:129 src/GUI/DialogUstawien.cpp:158
 msgid "Ścieżki"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:131
+#: src/GUI/DialogUstawien.cpp:133
 msgid "Folder obrazków:"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:135
+#: src/GUI/DialogUstawien.cpp:137
 msgid "Folder PDF:"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:143 src/GUI/DialogUstawien.cpp:344
-#: src/GUI/OknoGlowne.cpp:1000 src/GUI/OknoGlowne.cpp:1010
-#: src/GUI/OknoGlowne.cpp:1017 src/GUI/OknoGlowne.cpp:1025
+#: src/GUI/DialogUstawien.cpp:145 src/GUI/DialogUstawien.cpp:380
+#: src/GUI/OknoGlowne.cpp:1012 src/GUI/OknoGlowne.cpp:1022
+#: src/GUI/OknoGlowne.cpp:1029 src/GUI/OknoGlowne.cpp:1037
 msgid "Aktualizacje"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:146
+#: src/GUI/DialogUstawien.cpp:148
 msgid "Repozytorium GitHub:"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:150
+#: src/GUI/DialogUstawien.cpp:152
 msgid ""
 "Plik wersja.txt musi leżeć w głównym katalogu repozytorium (repozytorium "
 "musi być publiczne)."
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:167
+#: src/GUI/DialogUstawien.cpp:169
 msgid "Kod EAN"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:169
+#: src/GUI/DialogUstawien.cpp:171
 msgid "Typ kodu:"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:171
+#: src/GUI/DialogUstawien.cpp:173
 msgid "Prefix:"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:177
+#: src/GUI/DialogUstawien.cpp:179
 msgid "Czcionka"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:180
+#: src/GUI/DialogUstawien.cpp:182
 msgid "Nazwa:"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:183
+#: src/GUI/DialogUstawien.cpp:185
 msgid "Rozmiar:"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:186
+#: src/GUI/DialogUstawien.cpp:188
 msgid "Styl:"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:192
+#: src/GUI/DialogUstawien.cpp:194
 msgid "Podgląd:"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:200
+#: src/GUI/DialogUstawien.cpp:207 src/GUI/DialogUstawien.cpp:221
+msgid "Wskaż program"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:223
+msgid ""
+"Programy (*.exe;*.bat;*.cmd)|*.exe;*.bat;*.cmd|Wszystkie pliki (*.*)|*.*"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:225
+msgid "Wszystkie pliki"
+msgstr ""
+
+#: src/GUI/DialogUstawien.cpp:236
 msgid "Język i Literatura"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:203
+#: src/GUI/DialogUstawien.cpp:239
 msgid "Język interfejsu:"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:205
+#: src/GUI/DialogUstawien.cpp:241
 msgid "Polecenie czytnika PDF:"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:207
+#: src/GUI/DialogUstawien.cpp:243
 msgid "Program ExifTool:"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:209
+#: src/GUI/DialogUstawien.cpp:245
 msgid "Program ocrmypdf:"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:211
+#: src/GUI/DialogUstawien.cpp:247
 msgid "Języki OCR (Tesseract):"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:213
+#: src/GUI/DialogUstawien.cpp:249
 msgid "Klucz API Mouser (datasheety):"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:216
+#: src/GUI/DialogUstawien.cpp:252
 #, c-format
 msgid ""
 "W poleceniu %f to plik, a %p numer strony. Zmiana języka działa po ponownym "
 "uruchomieniu programu."
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:222
+#: src/GUI/DialogUstawien.cpp:258
 msgid "Inne"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:250 src/GUI/OknoGlowne.cpp:687
+#: src/GUI/DialogUstawien.cpp:286 src/GUI/OknoGlowne.cpp:698
 msgid "Serwer: "
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:251 src/GUI/OknoGlowne.cpp:688
+#: src/GUI/DialogUstawien.cpp:287 src/GUI/OknoGlowne.cpp:699
 msgid "Baza: "
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:252 src/GUI/OknoGlowne.cpp:689
+#: src/GUI/DialogUstawien.cpp:288 src/GUI/OknoGlowne.cpp:700
 msgid "Użytkownik: "
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:299
+#: src/GUI/DialogUstawien.cpp:335
 msgid "Wybierz folder obrazków"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:306
+#: src/GUI/DialogUstawien.cpp:342
 msgid "Wybierz folder PDF"
 msgstr ""
 
-#: src/GUI/DialogUstawien.cpp:343
+#: src/GUI/DialogUstawien.cpp:379
 msgid ""
 "Adres repozytorium musi mieć postać https://github.com/wlasciciel/"
 "repozytorium"
@@ -4595,33 +5104,52 @@ msgstr ""
 msgid "Lista zamówień skopiowana do schowka."
 msgstr ""
 
-#: src/GUI/DialogZnieksztalcen.cpp:20
+#: src/GUI/DialogZnieksztalcen.cpp:21
 msgid "Zniekształcenia harmoniczne"
 msgstr ""
 
-#: src/GUI/DialogZnieksztalcen.cpp:22
+#: src/GUI/DialogZnieksztalcen.cpp:23
 msgid ""
 "Metoda pięciu rzędnych: odczytaj z prostej obciążenia prądy dla wysterowania "
 "+Um, +0,5 Um, 0, -0,5 Um, -Um albo zmierz odcinki a..g."
 msgstr ""
 
-#: src/GUI/DialogZnieksztalcen.cpp:24
+#: src/GUI/DialogZnieksztalcen.cpp:25
 msgid "Oblicz dla prądów"
 msgstr ""
 
-#: src/GUI/DialogZnieksztalcen.cpp:25
+#: src/GUI/DialogZnieksztalcen.cpp:26
 msgid "Oblicz dla odcinków"
 msgstr ""
 
-#: src/GUI/DialogZnieksztalcen.cpp:58
+#: src/GUI/DialogZnieksztalcen.cpp:59
 msgid "Wyczyść dane"
 msgstr ""
 
-#: src/GUI/DialogZnieksztalcen.cpp:100
+#: src/GUI/DialogZnieksztalcen.cpp:65
+msgid "Co odczytać z wykresu"
+msgstr ""
+
+#: src/GUI/DialogZnieksztalcen.cpp:104
+msgid ""
+"Na prostej obciążenia zaznacz pięć punktów (przecięcia z charakterystykami "
+"dla Ug0 ±Um, Ug0 ±0,5Um i Ug0). Zmierz linijką kolejne odcinki między nimi: "
+"d, e, f, g. Odcinki a = d+e, b = f+g i c = e+f są ich sumami; do h2 i h3 "
+"wystarczą a, b, c, do h4 potrzebne są d, e, f, g."
+msgstr ""
+
+#: src/GUI/DialogZnieksztalcen.cpp:105
+msgid ""
+"Narysuj prostą obciążenia i zaznacz jej przecięcia z charakterystykami dla "
+"Ug0 ±Um, Ug0 ±0,5Um i Ug0. Z każdego punktu poprowadź poziomą linię do osi "
+"Ia i odczytaj prądy anodowe: Ia max, Ia1, Ia0, Ia2, Ia min [mA]."
+msgstr ""
+
+#: src/GUI/DialogZnieksztalcen.cpp:116
 msgid "Uwagi: pierwsza harmoniczna jest równa zero (brak wysterowania)."
 msgstr ""
 
-#: src/GUI/DialogZnieksztalcen.cpp:100
+#: src/GUI/DialogZnieksztalcen.cpp:116
 msgid "Uwagi: uzupełnij pola liczbami."
 msgstr ""
 
@@ -4649,7 +5177,7 @@ msgid ""
 msgstr ""
 
 #: src/GUI/OcrPliku.cpp:35 src/GUI/OcrPliku.cpp:49
-#: src/GUI/PanelKatalogu.cpp:443 src/GUI/PanelKsiazek.cpp:753
+#: src/GUI/PanelKatalogu.cpp:494 src/GUI/PanelKsiazek.cpp:753
 msgid "OCR"
 msgstr ""
 
@@ -4668,472 +5196,482 @@ msgid ""
 "To może potrwać kilka minut..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:84
+#: src/GUI/OknoGlowne.cpp:86 src/GUI/PanelSerwisu.cpp:213
+#: src/GUI/PanelSerwisu.cpp:412
 msgid "Magazyn"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:86
+#: src/GUI/OknoGlowne.cpp:88
 msgid "Projekty"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:91 src/GUI/PanelNarzedzi.cpp:118
-#: src/GUI/PanelNarzedzi.cpp:125 src/GUI/PanelNarzedzi.cpp:253
-#: src/GUI/PanelNarzedzi.cpp:402 src/GUI/PanelNarzedzi.cpp:412
-#: src/GUI/PanelNarzedzi.cpp:428 src/GUI/PanelNarzedzi.cpp:494
+#: src/GUI/OknoGlowne.cpp:93 src/GUI/PanelNarzedzi.cpp:120
+#: src/GUI/PanelNarzedzi.cpp:127 src/GUI/PanelNarzedzi.cpp:256
+#: src/GUI/PanelNarzedzi.cpp:405 src/GUI/PanelNarzedzi.cpp:415
+#: src/GUI/PanelNarzedzi.cpp:431 src/GUI/PanelNarzedzi.cpp:497
 msgid "Narzędzia"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:116
+#: src/GUI/OknoGlowne.cpp:95 src/GUI/PanelSerwisu.cpp:109
+#: src/GUI/PanelSerwisu.cpp:122 src/GUI/PanelSerwisu.cpp:126
+#: src/GUI/PanelSerwisu.cpp:130 src/GUI/PanelSerwisu.cpp:328
+#: src/GUI/PanelSerwisu.cpp:335 src/GUI/PanelSerwisu.cpp:476
+#: src/GUI/PanelSerwisu.cpp:696 src/GUI/PanelSerwisu.cpp:728
+#: src/GUI/PanelSerwisu.cpp:735 src/GUI/PanelSerwisu.cpp:767
+msgid "Serwis"
+msgstr ""
+
+#: src/GUI/OknoGlowne.cpp:120
 msgid "Nie znaleziono elementu w magazynie"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:153
+#: src/GUI/OknoGlowne.cpp:161
 msgid "Gotowy"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:154 src/GUI/OknoGlowne.cpp:414
-#: src/GUI/OknoGlowne.cpp:539
+#: src/GUI/OknoGlowne.cpp:162 src/GUI/OknoGlowne.cpp:422
+#: src/GUI/OknoGlowne.cpp:547
 msgid "Brak połączenia z bazą"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:272
+#: src/GUI/OknoGlowne.cpp:280
 msgid "Za&kończ\tCtrl+Q"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:275
+#: src/GUI/OknoGlowne.cpp:283
 msgid "&Połącz\tCtrl+L"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:276
+#: src/GUI/OknoGlowne.cpp:284
 msgid "&Rozłącz"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:279
+#: src/GUI/OknoGlowne.cpp:287
 msgid "U&twórz / zaktualizuj strukturę bazy..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:280
+#: src/GUI/OknoGlowne.cpp:288
 msgid "&Informacje o bazie..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:283
+#: src/GUI/OknoGlowne.cpp:291
 msgid "&Nowy element...\tCtrl+N"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:284
+#: src/GUI/OknoGlowne.cpp:292
 msgid "&Edytuj element...\tCtrl+E"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:285
+#: src/GUI/OknoGlowne.cpp:293
 msgid "Zmień &stan magazynowy...\tCtrl+T"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:286
+#: src/GUI/OknoGlowne.cpp:294
 msgid "&Usuń element"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:288
+#: src/GUI/OknoGlowne.cpp:296
 msgid "Nowa kategoria &główna...\tCtrl+Shift+N"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:289
+#: src/GUI/OknoGlowne.cpp:297
 msgid "Nowa &podkategoria..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:290
+#: src/GUI/OknoGlowne.cpp:298
 msgid "Zmień nazwę &kategorii..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:291
+#: src/GUI/OknoGlowne.cpp:299
 msgid "Usuń k&ategorię"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:293
+#: src/GUI/OknoGlowne.cpp:301
 msgid "Importuj kategorie s&tartowe"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:294
+#: src/GUI/OknoGlowne.cpp:302
 msgid "&Importuj kategorie z pliku..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:296
+#: src/GUI/OknoGlowne.cpp:304
 msgid "&Obudowy (typy, moc, napięcie, biblioteki Eagle)..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:297
+#: src/GUI/OknoGlowne.cpp:305
 msgid "&Generator szeregów E (rezystory, kondensatory, cewki)..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:298
+#: src/GUI/OknoGlowne.cpp:306
 msgid "Importuj elementy z pliku &CSV..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:300
+#: src/GUI/OknoGlowne.cpp:308
 msgid "Drukuj &etykiety z kodem kreskowym...\tCtrl+P"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:301
+#: src/GUI/OknoGlowne.cpp:309
 msgid "Znajdź element po &zdjęciu kodu..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:302
+#: src/GUI/OknoGlowne.cpp:310
 msgid "E&ksportuj listę do CSV...\tCtrl+Shift+E"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:305
+#: src/GUI/OknoGlowne.cpp:313
 msgid "&Nowy projekt..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:306
+#: src/GUI/OknoGlowne.cpp:314
 msgid "&Edytuj projekt..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:307
+#: src/GUI/OknoGlowne.cpp:315
 msgid "&Usuń projekt"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:309
+#: src/GUI/OknoGlowne.cpp:317
 msgid "&Importuj listę części (KiCad / Eagle)...\tCtrl+I"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:310
+#: src/GUI/OknoGlowne.cpp:318
 msgid "&Dodaj część do projektu..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:311
+#: src/GUI/OknoGlowne.cpp:319
 msgid "&Wydaj wszystko dostępne"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:312
+#: src/GUI/OknoGlowne.cpp:320
 msgid "&Lista zakupów do CSV..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:314
+#: src/GUI/OknoGlowne.cpp:322
 msgid "Skrypt &atrybutów dla Eagle (.scr)..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:315
+#: src/GUI/OknoGlowne.cpp:323
 msgid "Program ULP dla Eagle (lista części do CSV)..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:318
+#: src/GUI/OknoGlowne.cpp:326
 msgid "&Nowa pozycja katalogu..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:319
+#: src/GUI/OknoGlowne.cpp:327
 msgid "&Edytuj pozycję..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:320
+#: src/GUI/OknoGlowne.cpp:328
 msgid "&Usuń pozycję"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:322
+#: src/GUI/OknoGlowne.cpp:330
 msgid "&Dodaj do magazynu..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:324
+#: src/GUI/OknoGlowne.cpp:332
 msgid "&Importuj katalog z CSV..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:325
+#: src/GUI/OknoGlowne.cpp:333
 msgid "E&ksportuj katalog do CSV..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:326
+#: src/GUI/OknoGlowne.cpp:334
 msgid "Zapisz &szablon CSV..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:328
+#: src/GUI/OknoGlowne.cpp:336
 msgid "&Otwórz datasheet"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:329
+#: src/GUI/OknoGlowne.cpp:337
 msgid "Odczytaj &parametry z datasheetu (PDF)..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:332
+#: src/GUI/OknoGlowne.cpp:340
 msgid "&Raporty...\tCtrl+R"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:335
+#: src/GUI/OknoGlowne.cpp:343
 msgid "&Lista sklepów...\tCtrl+Shift+S"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:336
+#: src/GUI/OknoGlowne.cpp:344
 msgid "Sklepy, ceny i &datasheet wybranego elementu...\tCtrl+K"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:338
+#: src/GUI/OknoGlowne.cpp:346
 msgid "&Najtańsze zestawienie zakupów...\tCtrl+Shift+Z"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:341
+#: src/GUI/OknoGlowne.cpp:349
 msgid "Kamera &termowizyjna (InfiRay T3 Pro)...\tCtrl+Shift+T"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:345
+#: src/GUI/OknoGlowne.cpp:353
 msgid "&Paski kolorów i kody SMD...\tCtrl+D"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:346
+#: src/GUI/OknoGlowne.cpp:354
 msgid "&Kalkulatory (dzielnik, LED, filtr RC)...\tCtrl+Shift+K"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:347
+#: src/GUI/OknoGlowne.cpp:355
 msgid "Narzędzia &audio i lampowe (dB, RIAA)...\tCtrl+Shift+L"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:348
+#: src/GUI/OknoGlowne.cpp:356
 msgid "Metody &graficzne (charakterystyki lamp)...\tCtrl+Shift+G"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:349
+#: src/GUI/OknoGlowne.cpp:357
 msgid "&Zniekształcenia harmoniczne (metoda graficzna)...\tCtrl+Shift+Z"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:352
+#: src/GUI/OknoGlowne.cpp:360
 msgid "&Dławik zasilacza...\tCtrl+Shift+D"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:353
+#: src/GUI/OknoGlowne.cpp:361
 msgid "Transformator &sieciowy..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:354
+#: src/GUI/OknoGlowne.cpp:362
 msgid "Transformator głośnikowy &PP..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:355
+#: src/GUI/OknoGlowne.cpp:363
 msgid "Transformator głośnikowy S&E..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:356
+#: src/GUI/OknoGlowne.cpp:364
 msgid "Cewka na rdzeniu z &AL (ferryt, toroid)..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:357
+#: src/GUI/OknoGlowne.cpp:365
 msgid "Cewki &powietrzne (jedno- i wielowarstwowe)..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:359
+#: src/GUI/OknoGlowne.cpp:367
 msgid "&Elementy indukcyjne"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:364
+#: src/GUI/OknoGlowne.cpp:372
 msgid "&Odśwież\tF5"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:365
+#: src/GUI/OknoGlowne.cpp:373
 msgid "&Szukaj\tCtrl+F"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:366
+#: src/GUI/OknoGlowne.cpp:374
 msgid "Pokaż &dziennik zdarzeń"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:369
+#: src/GUI/OknoGlowne.cpp:377
 msgid "&Ustawienia aplikacji..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:372
+#: src/GUI/OknoGlowne.cpp:380
 msgid "&Spis treści\tF1"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:373
+#: src/GUI/OknoGlowne.cpp:381
 msgid "Otwórz pomoc w &przeglądarce"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:375
+#: src/GUI/OknoGlowne.cpp:383
 msgid "Sprawdź &aktualizacje..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:376
+#: src/GUI/OknoGlowne.cpp:384
 msgid "Sprawdzaj aktualizacje przy &uruchomieniu"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:379
+#: src/GUI/OknoGlowne.cpp:387
 msgid "&O programie..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:382
+#: src/GUI/OknoGlowne.cpp:390
 msgid "&Program"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:383
+#: src/GUI/OknoGlowne.cpp:391
 msgid "&Baza danych"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:384
+#: src/GUI/OknoGlowne.cpp:392
 msgid "&Magazyn"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:385
+#: src/GUI/OknoGlowne.cpp:393
 msgid "Pro&jekty"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:386
+#: src/GUI/OknoGlowne.cpp:394
 msgid "&Katalog"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:387
+#: src/GUI/OknoGlowne.cpp:395
 msgid "&Raporty"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:388
+#: src/GUI/OknoGlowne.cpp:396
 msgid "S&klepy"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:389
+#: src/GUI/OknoGlowne.cpp:397
 msgid "Ka&mera"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:390
+#: src/GUI/OknoGlowne.cpp:398
 msgid "&Narzędzia"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:391
+#: src/GUI/OknoGlowne.cpp:399
 msgid "&Widok"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:392
+#: src/GUI/OknoGlowne.cpp:400
 msgid "&Ustawienia"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:393
+#: src/GUI/OknoGlowne.cpp:401
 msgid "Pomo&c"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:408
+#: src/GUI/OknoGlowne.cpp:416
 msgid "Łączenie z bazą..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:507
+#: src/GUI/OknoGlowne.cpp:515
 msgid "Hasło użytkownika "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:507
+#: src/GUI/OknoGlowne.cpp:515
 msgid " do bazy "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:509
+#: src/GUI/OknoGlowne.cpp:517
 msgid "Hasło do bazy danych"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:511
+#: src/GUI/OknoGlowne.cpp:519
 msgid "Łączenie anulowane"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:522
+#: src/GUI/OknoGlowne.cpp:530
 msgid "Łączenie z "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:538
+#: src/GUI/OknoGlowne.cpp:546
 msgid "✗ Nie udało się połączyć: "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:545
+#: src/GUI/OknoGlowne.cpp:553
 msgid "✓ Połączono z bazą danych"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:546
+#: src/GUI/OknoGlowne.cpp:554
 msgid "Połączono z bazą danych"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:555
+#: src/GUI/OknoGlowne.cpp:563
 msgid "  PostgreSQL "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:555
+#: src/GUI/OknoGlowne.cpp:563
 msgid ", użytkownik "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:559
+#: src/GUI/OknoGlowne.cpp:567
 msgid "  Baza nie zawiera struktury programu."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:561
+#: src/GUI/OknoGlowne.cpp:569
 msgid "Baza „"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:562
+#: src/GUI/OknoGlowne.cpp:570
 msgid ""
 "” nie zawiera jeszcze tabel programu.\n"
 "\n"
 "Czy utworzyć strukturę bazy teraz?"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:563
+#: src/GUI/OknoGlowne.cpp:571
 msgid "Brak struktury bazy"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:566
+#: src/GUI/OknoGlowne.cpp:574
 msgid "  Struktura bazy jest przestarzała."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:568
+#: src/GUI/OknoGlowne.cpp:576
 msgid ""
 "Struktura bazy jest w starszej wersji niż wymaga program.\n"
 "\n"
 "Zaktualizować ją teraz? (Dane nie zostaną usunięte.)"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:570
+#: src/GUI/OknoGlowne.cpp:578
 msgid "Aktualizacja bazy"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:573
+#: src/GUI/OknoGlowne.cpp:581
 msgid "  Struktura bazy: wersja "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:620
+#: src/GUI/OknoGlowne.cpp:631
 msgid "✓ Struktura bazy utworzona / zaktualizowana"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:621
+#: src/GUI/OknoGlowne.cpp:632
 msgid "Struktura bazy gotowa"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:624
+#: src/GUI/OknoGlowne.cpp:635
 msgid ""
 "Struktura bazy została utworzona lub zaktualizowana.\n"
 "\n"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:627
+#: src/GUI/OknoGlowne.cpp:638
 msgid "✗ Błąd tworzenia struktury bazy: "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:628
+#: src/GUI/OknoGlowne.cpp:639
 msgid ""
 "Nie udało się utworzyć struktury bazy:\n"
 "\n"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:629
+#: src/GUI/OknoGlowne.cpp:640
 msgid ""
 "\n"
 "\n"
 "Postęp:\n"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:630
+#: src/GUI/OknoGlowne.cpp:641
 msgid "Błąd bazy danych"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:650
+#: src/GUI/OknoGlowne.cpp:661
 msgid "Rozłączono z bazą danych"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:651
+#: src/GUI/OknoGlowne.cpp:662
 msgid "Rozłączono"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:661
+#: src/GUI/OknoGlowne.cpp:672
 msgid "Zapisano ustawienia połączenia"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:670
+#: src/GUI/OknoGlowne.cpp:681
 msgid ""
 "Struktura bazy już istnieje.\n"
 "\n"
@@ -5141,161 +5679,161 @@ msgid ""
 "elementy i nie usuwają danych."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:672
+#: src/GUI/OknoGlowne.cpp:683
 msgid "Aktualizacja struktury bazy"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:681 src/GUI/OknoGlowne.cpp:694
+#: src/GUI/OknoGlowne.cpp:692 src/GUI/OknoGlowne.cpp:705
 msgid "Informacje o bazie"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:690
+#: src/GUI/OknoGlowne.cpp:701
 msgid "Wersja PostgreSQL: "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:691
+#: src/GUI/OknoGlowne.cpp:702
 msgid "Struktura programu: "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:692
+#: src/GUI/OknoGlowne.cpp:703
 msgid "wersja "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:693
+#: src/GUI/OknoGlowne.cpp:704
 msgid "brak (użyj Baza danych → Utwórz / zaktualizuj)"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:742
+#: src/GUI/OknoGlowne.cpp:753
 msgid "Nie znaleziono katalogu „sql” ze skryptami obok programu."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:743 src/GUI/OknoGlowne.cpp:767
-#: src/GUI/OknoGlowne.cpp:776
+#: src/GUI/OknoGlowne.cpp:754 src/GUI/OknoGlowne.cpp:778
+#: src/GUI/OknoGlowne.cpp:787
 msgid "Import kategorii"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:750
+#: src/GUI/OknoGlowne.cpp:761
 msgid "Wybierz plik z kategoriami"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:751
+#: src/GUI/OknoGlowne.cpp:762
 msgid "Pliki tekstowe (*.txt;*.csv)|*.txt;*.csv|Wszystkie pliki|*"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:766
+#: src/GUI/OknoGlowne.cpp:777
 msgid "✗ Import kategorii nie powiódł się: "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:770
+#: src/GUI/OknoGlowne.cpp:781
 msgid "Wczytano ścieżek: "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:771
+#: src/GUI/OknoGlowne.cpp:782
 msgid ", dodano nowych kategorii: "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:772
+#: src/GUI/OknoGlowne.cpp:783
 msgid "✓ Import kategorii. "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:775
+#: src/GUI/OknoGlowne.cpp:786
 msgid ""
 "\n"
 "\n"
 "Wszystkie kategorie już istniały."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:782
+#: src/GUI/OknoGlowne.cpp:793
 msgid "Lista elementów jest pusta, nie ma czego drukować."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:855
+#: src/GUI/OknoGlowne.cpp:866
 #, c-format
 msgid ""
 "✓ Generator szeregów: dodano %d, dodano ilość %d, uzupełniono %d, pominięto "
 "%d"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:865
+#: src/GUI/OknoGlowne.cpp:876
 #, c-format
 msgid ""
 "✓ Import CSV: dodano %d, dodano ilość %d, uzupełniono %d, pominięto %d, "
 "błędów %zu"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:872
+#: src/GUI/OknoGlowne.cpp:883
 msgid "Wybierz zdjęcie etykiety z kodem kreskowym"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:880
+#: src/GUI/OknoGlowne.cpp:891
 msgid "Odczyt kodu"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:884
+#: src/GUI/OknoGlowne.cpp:895
 msgid "Odczytano kod: "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:958
+#: src/GUI/OknoGlowne.cpp:970
 msgid "Lista elementów jest pusta, nie ma czego eksportować."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:958 src/GUI/OknoGlowne.cpp:970
+#: src/GUI/OknoGlowne.cpp:970 src/GUI/OknoGlowne.cpp:982
 msgid "Eksport do CSV"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:962
+#: src/GUI/OknoGlowne.cpp:974
 msgid "Eksport listy do CSV"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:969
+#: src/GUI/OknoGlowne.cpp:981
 msgid "✗ Eksport nie powiódł się: "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:973
+#: src/GUI/OknoGlowne.cpp:985
 msgid "✓ Wyeksportowano "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:973
+#: src/GUI/OknoGlowne.cpp:985
 msgid " elementów do: "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:974
+#: src/GUI/OknoGlowne.cpp:986
 msgid "Wyeksportowano do CSV"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:999
+#: src/GUI/OknoGlowne.cpp:1011
 msgid ""
 "Adres repozytorium w ustawieniach jest nieprawidłowy. Podaj adres w postaci "
 "https://github.com/wlasciciel/repozytorium"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:1005
+#: src/GUI/OknoGlowne.cpp:1017
 msgid "Sprawdzam, czy jest nowsza wersja..."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:1010
+#: src/GUI/OknoGlowne.cpp:1022
 msgid ""
 "Nie udało się sprawdzić aktualizacji.\n"
 "\n"
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:1014
+#: src/GUI/OknoGlowne.cpp:1026
 msgid "Plik z numerem wersji ma nieoczekiwaną treść."
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:1017
+#: src/GUI/OknoGlowne.cpp:1029
 msgid "Masz najnowszą wersję programu ("
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:1021
+#: src/GUI/OknoGlowne.cpp:1033
 msgid "Dostępna jest nowa wersja programu: "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:1021
+#: src/GUI/OknoGlowne.cpp:1033
 msgid " (masz "
 msgstr ""
 
-#: src/GUI/OknoGlowne.cpp:1024
+#: src/GUI/OknoGlowne.cpp:1036
 msgid ""
 "\n"
 "\n"
@@ -5444,11 +5982,6 @@ msgstr ""
 msgid "Edytuj zaznaczone (zbiorczo)..."
 msgstr ""
 
-#: src/GUI/PanelElementow.cpp:621 src/GUI/PanelKatalogu.cpp:158
-#: src/GUI/PanelKsiazek.cpp:166 src/GUI/PanelNarzedzi.cpp:212
-msgid "Edytuj..."
-msgstr ""
-
 #: src/GUI/PanelElementow.cpp:622
 msgid "Zmień stan..."
 msgstr ""
@@ -5491,11 +6024,11 @@ msgid ""
 "w zakładce Katalog."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:44
+#: src/GUI/PanelKatalogu.cpp:48
 msgid "Parametry odczytane z datasheetu"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:48
+#: src/GUI/PanelKatalogu.cpp:52
 msgid ""
 "To tylko propozycje - program odgaduje je z tekstu karty katalogowej i może "
 "się mylić.\n"
@@ -5503,247 +6036,280 @@ msgid ""
 "\"datasheet\".\n"
 "\"Maks.\" = Absolute Maximum Ratings, \"Elektr.\" = Electrical "
 "Characteristics. Pozycje oznaczone \"zgadywane\" są odznaczone - sprawdź je "
-"przed zaznaczeniem."
+"przed zaznaczeniem.\n"
+"\"w słowniku\" = program zna ten symbol (opis w dymku); po zapisie zapyta o "
+"symbole, których jeszcze nie zna."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:56
+#: src/GUI/PanelKatalogu.cpp:62
 msgid "   (zgadywane)"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:60
-msgid "Ustaw opis: "
+#: src/GUI/PanelKatalogu.cpp:63
+msgid "   · nie ma w słowniku"
 msgstr ""
 
 #: src/GUI/PanelKatalogu.cpp:63
+msgid "   · w słowniku: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:67
+msgid "Ustaw opis: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:70
 msgid "Ustaw obudowę: "
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:66
+#: src/GUI/PanelKatalogu.cpp:73
 msgid "Dopisz do uwag: "
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:100
+#: src/GUI/PanelKatalogu.cpp:107
 msgid "Szukaj w katalogu..."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:107
+#: src/GUI/PanelKatalogu.cpp:114
 msgid "tylko te, które mam w magazynie"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:127 src/GUI/PanelKatalogu.cpp:330
+#: src/GUI/PanelKatalogu.cpp:134 src/GUI/PanelKatalogu.cpp:373
 msgid "Wybierz pozycję z listy"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:157 src/GUI/PanelKsiazek.cpp:165
+#: src/GUI/PanelKatalogu.cpp:164 src/GUI/PanelKsiazek.cpp:165
 msgid "Nowa..."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:162
+#: src/GUI/PanelKatalogu.cpp:169
 msgid "Dodaj do magazynu..."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:164 src/GUI/PanelKsiazek.cpp:182
-#: src/GUI/PanelNarzedzi.cpp:221
+#: src/GUI/PanelKatalogu.cpp:171 src/GUI/PanelKsiazek.cpp:182
+#: src/GUI/PanelNarzedzi.cpp:223
 msgid "Import CSV..."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:165 src/GUI/PanelKsiazek.cpp:183
-#: src/GUI/PanelNarzedzi.cpp:222
+#: src/GUI/PanelKatalogu.cpp:172 src/GUI/PanelKsiazek.cpp:183
+#: src/GUI/PanelNarzedzi.cpp:224 src/GUI/PanelSerwisu.cpp:447
 msgid "Eksport CSV..."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:166 src/GUI/PanelKsiazek.cpp:184
-#: src/GUI/PanelNarzedzi.cpp:223
+#: src/GUI/PanelKatalogu.cpp:173 src/GUI/PanelKsiazek.cpp:184
+#: src/GUI/PanelNarzedzi.cpp:225
 msgid "Szablon CSV..."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:167
+#: src/GUI/PanelKatalogu.cpp:174
 msgid "Otwórz datasheet"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:169
+#: src/GUI/PanelKatalogu.cpp:176
 msgid "Odczytaj parametry z PDF..."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:259
+#: src/GUI/PanelKatalogu.cpp:178
+msgid "OCR datasheetu..."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:180
+msgid "Słownik parametrów..."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:181
+msgid ""
+"Opisy symboli parametrów (np. W_amax) pokazywane w dymkach; zapisane w bazie "
+"danych."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:273
 msgid "(wszystkie)"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:291
+#: src/GUI/PanelKatalogu.cpp:305
+msgid "✗ Słownik: "
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:308
+#, c-format
+msgid "✓ Dodano do słownika parametrów: %d"
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:334
 msgid "✗ Katalog: "
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:316
+#: src/GUI/PanelKatalogu.cpp:359
 #, c-format
 msgid "Pozycji: %d"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:330
+#: src/GUI/PanelKatalogu.cpp:373
 #, c-format
 msgid "Zaznaczono pozycji: %d"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:340
+#: src/GUI/PanelKatalogu.cpp:383
 msgid "Obudowa: "
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:341
+#: src/GUI/PanelKatalogu.cpp:384
 msgid "Rodzina: "
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:342
+#: src/GUI/PanelKatalogu.cpp:385
 #, c-format
 msgid "W magazynie: %d szt. (%d poz.)"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:343
+#: src/GUI/PanelKatalogu.cpp:386
 msgid "Nie ma w magazynie."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:345
+#: src/GUI/PanelKatalogu.cpp:388
 msgid "Datasheet: pobrany\n"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:346
+#: src/GUI/PanelKatalogu.cpp:389
 msgid "Datasheet: "
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:347
+#: src/GUI/PanelKatalogu.cpp:390
 msgid "Uwagi: "
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:371
+#: src/GUI/PanelKatalogu.cpp:422
 msgid "✓ Dodano do katalogu: "
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:387
+#: src/GUI/PanelKatalogu.cpp:438
 msgid "✓ Zapisano: "
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:407
+#: src/GUI/PanelKatalogu.cpp:458
 msgid "Usuń z katalogu"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:407
+#: src/GUI/PanelKatalogu.cpp:458
 msgid "Usuń zaznaczone z katalogu"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:409
+#: src/GUI/PanelKatalogu.cpp:460
 msgid "Wykonaj OCR datasheetu"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:418
+#: src/GUI/PanelKatalogu.cpp:469
 msgid "Zaznacz pozycje, które mają pobrany datasheet (plik PDF)."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:441
+#: src/GUI/PanelKatalogu.cpp:492
 #, c-format
 msgid "✓ OCR datasheetów wykonano dla plików: %d z %zu"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:441 src/GUI/PanelKsiazek.cpp:712
+#: src/GUI/PanelKatalogu.cpp:492 src/GUI/PanelKsiazek.cpp:712
 #: src/GUI/PanelKsiazek.cpp:752
 msgid " (są błędy)"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:442
+#: src/GUI/PanelKatalogu.cpp:493
 msgid ". Teraz możesz odczytać parametry z datasheetu."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:443 src/GUI/PanelKsiazek.cpp:753
+#: src/GUI/PanelKatalogu.cpp:494 src/GUI/PanelKsiazek.cpp:753
 msgid ""
 "Nie wszystkie pliki zostały przetworzone:\n"
 "\n"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:456
+#: src/GUI/PanelKatalogu.cpp:507
 msgid "Usunąć z katalogu \""
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:456
+#: src/GUI/PanelKatalogu.cpp:507
 msgid "\"? Elementy w magazynie zostaną nietknięte."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:457
+#: src/GUI/PanelKatalogu.cpp:508
 #, c-format
 msgid ""
 "Usunąć z katalogu zaznaczone pozycje (%zu)? Elementy w magazynie zostaną "
 "nietknięte."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:465
+#: src/GUI/PanelKatalogu.cpp:516
 #, c-format
 msgid "Usunięto z katalogu pozycji: %d"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:479
+#: src/GUI/PanelKatalogu.cpp:530
 msgid "✓ Dodano do magazynu: "
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:488
+#: src/GUI/PanelKatalogu.cpp:539
 msgid "Importuj katalog z CSV"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:489
+#: src/GUI/PanelKatalogu.cpp:540
 msgid "Pliki CSV (*.csv;*.txt)|*.csv;*.txt|Wszystkie pliki|*.*"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:492
+#: src/GUI/PanelKatalogu.cpp:543
 msgid ""
 "Co zrobić z pozycjami, które już są w katalogu (ten sam symbol i producent)?"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:493
+#: src/GUI/PanelKatalogu.cpp:544
 msgid "Import katalogu"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:494
+#: src/GUI/PanelKatalogu.cpp:545
 msgid "Zaktualizuj"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:500 src/GUI/PanelKsiazek.cpp:583
-#: src/GUI/PanelNarzedzi.cpp:447
+#: src/GUI/PanelKatalogu.cpp:551 src/GUI/PanelKsiazek.cpp:583
+#: src/GUI/PanelNarzedzi.cpp:450
 msgid "Nie można odczytać pliku."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:505
+#: src/GUI/PanelKatalogu.cpp:556
 #, c-format
 msgid "Import katalogu: dodano %d, zaktualizowano %d, pominięto %d"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:506
+#: src/GUI/PanelKatalogu.cpp:557
 #, c-format
 msgid ", błędów: %d"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:516
+#: src/GUI/PanelKatalogu.cpp:567
 msgid "Eksport katalogu do CSV"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:528
+#: src/GUI/PanelKatalogu.cpp:579
 #, c-format
 msgid "✓ Wyeksportowano %d pozycji katalogu."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:535
+#: src/GUI/PanelKatalogu.cpp:586
 msgid "Zapisz szablon katalogu"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:541
+#: src/GUI/PanelKatalogu.cpp:592
 msgid "✓ Zapisano szablon katalogu."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:555
+#: src/GUI/PanelKatalogu.cpp:606
 msgid ""
 "Ta pozycja nie ma datasheetu. Wpisz adres w edycji pozycji albo użyj "
 "\"Pobierz datasheet\"."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:585
+#: src/GUI/PanelKatalogu.cpp:636
 msgid "✓ Pobrano datasheet: "
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:590
+#: src/GUI/PanelKatalogu.cpp:641
 msgid ""
 "Serwer nie pozwolił pobrać pliku automatycznie, więc otworzyłem datasheet w "
 "przeglądarce.\n"
@@ -5751,34 +6317,42 @@ msgid ""
 "Zapisz go w tym miejscu, a program go znajdzie:\n"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:615
+#: src/GUI/PanelKatalogu.cpp:666
 msgid ""
 "Mouser nie podaje datasheetu dla tej części. Dane (producent, opis, obudowa) "
 "zostały uzupełnione."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:640
+#: src/GUI/PanelKatalogu.cpp:691
 msgid "Wybierz plik PDF z datasheetem"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:641
+#: src/GUI/PanelKatalogu.cpp:692
 msgid "Pliki PDF (*.pdf)|*.pdf"
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:649
+#: src/GUI/PanelKatalogu.cpp:702
+msgid ""
+"Ten PDF nie ma warstwy tekstowej (wygląda na skan). Wykonać OCR i odczytać "
+"parametry jeszcze raz?\n"
+"\n"
+"Oryginał zostanie zachowany jako plik.pdf.bak."
+msgstr ""
+
+#: src/GUI/PanelKatalogu.cpp:709
 msgid "✗ Odczyt datasheetu: "
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:650
+#: src/GUI/PanelKatalogu.cpp:710
 msgid "Nie udało się odczytać tekstu z PDF: "
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:656
+#: src/GUI/PanelKatalogu.cpp:716
 msgid ""
 "Nie znalazłem w tym pliku żadnych parametrów, które program umie rozpoznać."
 msgstr ""
 
-#: src/GUI/PanelKatalogu.cpp:688
+#: src/GUI/PanelKatalogu.cpp:748
 #, c-format
 msgid "✓ Z datasheetu zapisano parametrów: %d"
 msgstr ""
@@ -5951,11 +6525,11 @@ msgstr ""
 msgid "Otwórz plik"
 msgstr ""
 
-#: src/GUI/PanelKsiazek.cpp:171 src/GUI/PanelNarzedzi.cpp:216
+#: src/GUI/PanelKsiazek.cpp:171 src/GUI/PanelNarzedzi.cpp:218
 msgid "Pożycz..."
 msgstr ""
 
-#: src/GUI/PanelKsiazek.cpp:172 src/GUI/PanelNarzedzi.cpp:186
+#: src/GUI/PanelKsiazek.cpp:172 src/GUI/PanelNarzedzi.cpp:188
 msgid "Zwrot"
 msgstr ""
 
@@ -5992,7 +6566,7 @@ msgstr ""
 msgid "✗ Literatura: "
 msgstr ""
 
-#: src/GUI/PanelKsiazek.cpp:341 src/GUI/PanelNarzedzi.cpp:309
+#: src/GUI/PanelKsiazek.cpp:341 src/GUI/PanelNarzedzi.cpp:312
 msgid " (do "
 msgstr ""
 
@@ -6027,7 +6601,7 @@ msgid "Pożyczona: "
 msgstr ""
 
 #: src/GUI/PanelKsiazek.cpp:379 src/GUI/PanelKsiazek.cpp:495
-#: src/GUI/PanelNarzedzi.cpp:355
+#: src/GUI/PanelNarzedzi.cpp:358
 msgid ", od "
 msgstr ""
 
@@ -6154,7 +6728,7 @@ msgstr ""
 msgid "Podaj, komu pożyczasz książkę."
 msgstr ""
 
-#: src/GUI/PanelKsiazek.cpp:547 src/GUI/PanelNarzedzi.cpp:419
+#: src/GUI/PanelKsiazek.cpp:547 src/GUI/PanelNarzedzi.cpp:422
 #, c-format
 msgid "✓ Pożyczono \"%s\": %s"
 msgstr ""
@@ -6164,7 +6738,7 @@ msgstr ""
 msgid "Zarejestrować zwrot książki \"%s\" od: %s?"
 msgstr ""
 
-#: src/GUI/PanelKsiazek.cpp:560 src/GUI/PanelNarzedzi.cpp:432
+#: src/GUI/PanelKsiazek.cpp:560 src/GUI/PanelNarzedzi.cpp:435
 msgid "✓ Zwrócono: "
 msgstr ""
 
@@ -6177,7 +6751,7 @@ msgstr ""
 msgid "Importuj książki z CSV"
 msgstr ""
 
-#: src/GUI/PanelKsiazek.cpp:577 src/GUI/PanelNarzedzi.cpp:441
+#: src/GUI/PanelKsiazek.cpp:577 src/GUI/PanelNarzedzi.cpp:444
 msgid "Pliki CSV (*.csv)|*.csv|Wszystkie pliki|*.*"
 msgstr ""
 
@@ -6191,7 +6765,8 @@ msgid "Eksportuj książki do CSV"
 msgstr ""
 
 #: src/GUI/PanelKsiazek.cpp:607 src/GUI/PanelKsiazek.cpp:620
-#: src/GUI/PanelNarzedzi.cpp:471 src/GUI/PanelNarzedzi.cpp:484
+#: src/GUI/PanelNarzedzi.cpp:474 src/GUI/PanelNarzedzi.cpp:487
+#: src/GUI/PanelSerwisu.cpp:803
 msgid "Nie można zapisać pliku."
 msgstr ""
 
@@ -6200,7 +6775,7 @@ msgstr ""
 msgid "✓ Wyeksportowano książek: %zu"
 msgstr ""
 
-#: src/GUI/PanelKsiazek.cpp:615 src/GUI/PanelNarzedzi.cpp:479
+#: src/GUI/PanelKsiazek.cpp:615 src/GUI/PanelNarzedzi.cpp:482
 msgid "Zapisz szablon CSV"
 msgstr ""
 
@@ -6304,213 +6879,231 @@ msgstr ""
 msgid "Trafień w treści: %zu"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:44
+#: src/GUI/PanelNarzedzi.cpp:46
 msgid "Zmień narzędzie"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:44
+#: src/GUI/PanelNarzedzi.cpp:46
 msgid "Nowe narzędzie"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:59 src/GUI/PanelNarzedzi.cpp:345
+#: src/GUI/PanelNarzedzi.cpp:61 src/GUI/PanelNarzedzi.cpp:348
+#: src/GUI/PanelSerwisu.cpp:173 src/GUI/PanelSerwisu.cpp:577
 msgid "Model"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:64 src/GUI/PanelNarzedzi.cpp:347
+#: src/GUI/PanelNarzedzi.cpp:66 src/GUI/PanelNarzedzi.cpp:350
+#: src/GUI/PanelSerwisu.cpp:169 src/GUI/PanelSerwisu.cpp:578
 msgid "Numer seryjny"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:66 src/GUI/PanelNarzedzi.cpp:348
+#: src/GUI/PanelNarzedzi.cpp:68 src/GUI/PanelNarzedzi.cpp:351
 msgid "Numer inwentarzowy"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:68
+#: src/GUI/PanelNarzedzi.cpp:70
 msgid "np. warsztat, szuflada 3"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:76
+#: src/GUI/PanelNarzedzi.cpp:78
 msgid "Cena [zł]:"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:79
+#: src/GUI/PanelNarzedzi.cpp:81
 msgid "Data zakupu"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:82
+#: src/GUI/PanelNarzedzi.cpp:84
 msgid "plik PDF lub adres strony"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:86 src/GUI/PanelNarzedzi.cpp:352
+#: src/GUI/PanelNarzedzi.cpp:88 src/GUI/PanelNarzedzi.cpp:355
 msgid "Instrukcja"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:101
+#: src/GUI/PanelNarzedzi.cpp:103
 msgid "Instrukcja narzędzia"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:101
+#: src/GUI/PanelNarzedzi.cpp:103
 msgid "Dokumenty (*.pdf)|*.pdf|Wszystkie pliki|*.*"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:118
+#: src/GUI/PanelNarzedzi.cpp:120
 msgid "Podaj nazwę narzędzia."
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:125
+#: src/GUI/PanelNarzedzi.cpp:127
 msgid "Cena musi być liczbą nieujemną (np. 249,90)."
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:152
+#: src/GUI/PanelNarzedzi.cpp:154
 msgid "Szukaj narzędzia lub osoby..."
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:155
+#: src/GUI/PanelNarzedzi.cpp:157
 msgid "tylko pożyczone"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:158
+#: src/GUI/PanelNarzedzi.cpp:160
 msgid "tylko po terminie"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:172 src/GUI/PanelNarzedzi.cpp:336
+#: src/GUI/PanelNarzedzi.cpp:174 src/GUI/PanelNarzedzi.cpp:339
 msgid "Wybierz narzędzie z listy"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:181
+#: src/GUI/PanelNarzedzi.cpp:183
 msgid "Historia pożyczek:"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:183
+#: src/GUI/PanelNarzedzi.cpp:185
 msgid "Komu"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:184
+#: src/GUI/PanelNarzedzi.cpp:186
 msgid "Od"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:185
+#: src/GUI/PanelNarzedzi.cpp:187
 msgid "Termin"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:211
+#: src/GUI/PanelNarzedzi.cpp:213
 msgid "Nowe..."
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:218
+#: src/GUI/PanelNarzedzi.cpp:220 src/GUI/PanelNarzedzi.cpp:514
 msgid "Zwrócono"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:220
+#: src/GUI/PanelNarzedzi.cpp:222
 msgid "Otwórz instrukcję"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:297
+#: src/GUI/PanelNarzedzi.cpp:300
 msgid "✗ Narzędzia: "
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:306
+#: src/GUI/PanelNarzedzi.cpp:309
 msgid "u mnie"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:308
+#: src/GUI/PanelNarzedzi.cpp:311
 msgid "PO TERMINIE: "
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:308
+#: src/GUI/PanelNarzedzi.cpp:311
 msgid "pożyczone: "
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:309
+#: src/GUI/PanelNarzedzi.cpp:312
 msgid " (od "
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:315
+#: src/GUI/PanelNarzedzi.cpp:318
 #, c-format
 msgid "Narzędzi: %zu"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:350
+#: src/GUI/PanelNarzedzi.cpp:353
 msgid "Kupiono"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:351
+#: src/GUI/PanelNarzedzi.cpp:354
 msgid "Cena: "
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:355
+#: src/GUI/PanelNarzedzi.cpp:358
 msgid "POŻYCZONE: "
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:356
+#: src/GUI/PanelNarzedzi.cpp:359
 msgid ", termin zwrotu "
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:356
+#: src/GUI/PanelNarzedzi.cpp:359
 msgid " (minął!)"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:368
+#: src/GUI/PanelNarzedzi.cpp:371
 msgid "nie zwrócono"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:381
+#: src/GUI/PanelNarzedzi.cpp:384
 msgid "✓ Dodano narzędzie: "
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:400
+#: src/GUI/PanelNarzedzi.cpp:403
 #, c-format
 msgid "Usunąć narzędzie \"%s\" razem z historią pożyczek?"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:401
+#: src/GUI/PanelNarzedzi.cpp:404
 #, c-format
 msgid ""
 "Narzędzie \"%s\" jest pożyczone (%s). Usunąć je razem z historią pożyczek?"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:411
+#: src/GUI/PanelNarzedzi.cpp:414
 #, c-format
 msgid "To narzędzie jest już pożyczone (%s). Najpierw zarejestruj zwrot."
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:415
+#: src/GUI/PanelNarzedzi.cpp:418
 msgid "Pożycz narzędzie"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:415
+#: src/GUI/PanelNarzedzi.cpp:418
 msgid "Komu pożyczasz narzędzie?"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:427
+#: src/GUI/PanelNarzedzi.cpp:430
 #, c-format
 msgid "Zarejestrować zwrot narzędzia \"%s\" od: %s?"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:441
+#: src/GUI/PanelNarzedzi.cpp:444
 msgid "Importuj narzędzia z CSV"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:453
+#: src/GUI/PanelNarzedzi.cpp:456
 #, c-format
 msgid "Dodano narzędzi: %d, pominięto (już są): %d."
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:464
+#: src/GUI/PanelNarzedzi.cpp:467
 msgid "Eksportuj narzędzia do CSV"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:472
+#: src/GUI/PanelNarzedzi.cpp:475
 #, c-format
 msgid "✓ Wyeksportowano narzędzi: %zu"
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:494
+#: src/GUI/PanelNarzedzi.cpp:497
 msgid "Nie można otworzyć instrukcji (sprawdź ścieżkę lub adres)."
 msgstr ""
 
-#: src/GUI/PanelNarzedzi.cpp:501
+#: src/GUI/PanelNarzedzi.cpp:504
 #, c-format
 msgid "⚠ Narzędzie \"%s\" miało wrócić %s od: %s"
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:515
+msgid "Wypożycz..."
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:517 src/GUI/PanelSerwisu.cpp:634
+msgid "Dołącz zdjęcie z kamery..."
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:518 src/GUI/PanelSerwisu.cpp:635
+msgid "Dołącz zdjęcie z pliku..."
+msgstr ""
+
+#: src/GUI/PanelNarzedzi.cpp:544
+msgid "✓ Zapisano zdjęcie narzędzia: "
 msgstr ""
 
 #: src/GUI/PanelPodgladu.cpp:25
@@ -6529,15 +7122,15 @@ msgstr ""
 msgid "Nie można odczytać zdjęcia"
 msgstr ""
 
-#: src/GUI/PanelPodgladu.cpp:77
+#: src/GUI/PanelPodgladu.cpp:77 src/GUI/PanelSerwisu.cpp:441
 msgid "Zdjęcie z kamery..."
 msgstr ""
 
-#: src/GUI/PanelPodgladu.cpp:78
+#: src/GUI/PanelPodgladu.cpp:78 src/GUI/PanelSerwisu.cpp:442
 msgid "Zdjęcie z pliku..."
 msgstr ""
 
-#: src/GUI/PanelPodgladu.cpp:79
+#: src/GUI/PanelPodgladu.cpp:79 src/GUI/PanelSerwisu.cpp:230
 msgid "Usuń zdjęcie"
 msgstr ""
 
@@ -6790,32 +7383,354 @@ msgstr ""
 msgid "✓ Zapisano listę zakupów (%zu pozycji): "
 msgstr ""
 
-#: src/GUI/PanelTrafoModel.cpp:23
+#: src/GUI/PanelSchematu.cpp:257
+msgid "jedna połówka"
+msgstr ""
+
+#: src/GUI/PanelSchematu.cpp:287
+msgid "dwie połówki (odczep)"
+msgstr ""
+
+#: src/GUI/PanelSchematu.cpp:418
+msgid "skok"
+msgstr ""
+
+#: src/GUI/PanelSchematu.cpp:420 src/GUI/PanelSchematu.cpp:459
+msgid "przekrój osiowy"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:35 src/GUI/PanelSerwisu.cpp:208
+#: src/GUI/PanelSerwisu.cpp:408
+msgid "Część"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:44
+msgid "np. zasilacz 150 W, moduł SFP, wentylator"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:49
+msgid "numer seryjny elementu zdjętego"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:50
+msgid "Numer zdjętego"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:52
+msgid "numer seryjny elementu zamontowanego"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:53
+msgid "Numer zamontowanego"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:57
+msgid "Z magazynu"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:59
+msgid "Wybierz z magazynu..."
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:60
+msgid "Odłącz"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:66
+msgid "Zdejmij ilość ze stanu magazynu przy zapisie wpisu"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:96
+msgid "Pobrano ze stanu: "
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:97
+msgid "Element: "
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:98
+msgid "(część spoza magazynu)"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:122
+msgid "Podaj nazwę części."
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:126
+msgid "Ilość musi być liczbą dodatnią."
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:130
+msgid "Część z magazynu musi mieć całkowitą ilość sztuk."
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:147
+msgid "Zmień wpis serwisowy"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:147
+msgid "Nowy wpis serwisowy"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:161
+msgid "Data serwisu"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:163
+msgid "np. numer w systemie zgłoszeń"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:164 src/GUI/PanelSerwisu.cpp:581
+msgid "Nr zgłoszenia"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:167
+msgid "Urządzenie *"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:176 src/GUI/PanelSerwisu.cpp:579
+msgid "Lokalizacja"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:179 src/GUI/PanelSerwisu.cpp:580
+msgid "Technik"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:183 src/GUI/PanelSerwisu.cpp:574
+msgid "Rodzaj"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:189
+msgid "minuty"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:190
+msgid "Czas pracy [min]"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:201
+msgid "Usterka / powód wizyty"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:202
+msgid "Wykonane czynności"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:206
+msgid "Wymienione i zamontowane części:"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:210 src/GUI/PanelSerwisu.cpp:410
+msgid "Zdjęty nr"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:211 src/GUI/PanelSerwisu.cpp:411
+msgid "Zamontowany nr"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:217
+msgid "Dodaj część..."
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:219
+msgid "Usuń część"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:223
+msgid "Zdjęcia:"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:305 src/GUI/PanelSerwisu.cpp:594
+msgid "pobrano "
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:305
+msgid "do pobrania"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:305
+msgid "powiązano"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:328
+msgid "Podaj nazwę urządzenia."
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:335
+msgid "Czas pracy musi być liczbą minut (np. 90)."
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:365
+msgid "Szukaj urządzenia, numeru, części..."
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:369
+msgid "wszystkie rodzaje"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:374
+msgid "wszystkie statusy"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:378
+msgid "od:"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:382
+msgid "do:"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:400 src/GUI/PanelSerwisu.cpp:559
+msgid "Wybierz wpis z listy"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:406
+msgid "Części:"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:414
+msgid "Zdjęcia (kliknij, by otworzyć; prawy przycisk: usuń):"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:436
+msgid "Nowy wpis..."
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:439 src/GUI/PanelSerwisu.cpp:632
+msgid "Kolejny serwis tego urządzenia..."
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:443
+msgid "Historia urządzenia"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:529
+msgid "✗ Serwis: "
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:545
+#, c-format
+msgid "Wpisów: %zu"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:582
+msgid "Czas pracy: "
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:582
+#, c-format
+msgid "%d min"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:583
+msgid "Usterka"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:584
+msgid "Wykonano"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:605
+msgid "(brak pliku)\n"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:622
+msgid "Usuń to zdjęcie z wpisu"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:636
+msgid "Historia tego urządzenia"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:673 src/GUI/PanelSerwisu.cpp:718
+msgid "✓ Dodano wpis serwisowy: "
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:695
+msgid "Usunięto części pobrane wcześniej z magazynu:"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:695 src/GUI/PanelSerwisu.cpp:734
+msgid "Zwrócić je na stan magazynu?"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:726
+#, c-format
+msgid ""
+"Usunąć wpis serwisowy \"%s\" z %s razem z listą części i zdjęciami (pliki "
+"zdjęć zostają na dysku)?"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:734
+msgid "Ten wpis ma części pobrane z magazynu:"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:746
+msgid "✓ Dołączono zdjęcie do wpisu serwisowego"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:767
+msgid "Usunąć to zdjęcie z wpisu (plik zostaje na dysku)?"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:783
+#, c-format
+msgid ""
+"Historia urządzenia: %zu wpisów (aby wrócić do wszystkich, wyczyść pole "
+"szukania)"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:789
+msgid "Eksportuj ewidencję serwisową do CSV"
+msgstr ""
+
+#: src/GUI/PanelSerwisu.cpp:804
+#, c-format
+msgid "✓ Wyeksportowano wpisów serwisowych: %zu"
+msgstr ""
+
+#: src/GUI/PanelTrafoModel.cpp:24
 msgid "Analiza dokładna (jeden model fizyczny: pełny schemat zastępczy)"
 msgstr ""
 
-#: src/GUI/PanelTrafoModel.cpp:82
+#: src/GUI/PanelTrafoModel.cpp:100
 msgid ""
 "Indukcja łączna przekracza 0,9·Bs - rdzeń nasyca się przy pełnej mocy na "
 "dolnym brzegu pasma. "
 msgstr ""
 
-#: src/GUI/PanelTrafoModel.cpp:83
+#: src/GUI/PanelTrafoModel.cpp:101
 msgid "Dolny kraniec pasma poza zakresem obliczeń. "
 msgstr ""
 
-#: src/GUI/PanelTrafoModel.cpp:84
+#: src/GUI/PanelTrafoModel.cpp:102
 msgid "Górny kraniec pasma poza zakresem obliczeń. "
 msgstr ""
 
-#: src/GUI/PanelTrafoModel.cpp:85
+#: src/GUI/PanelTrafoModel.cpp:103
 #, c-format
 msgid ""
 "Rezonans rozproszenia z pojemnością własną: +%s dB przy %s Hz - grozi "
 "niestabilnością pętli sprzężenia zwrotnego. "
 msgstr ""
 
-#: src/GUI/ZdjeciaElementow.cpp:88
+#: src/GUI/PanelWykresuZnieksztalcen.cpp:136
+msgid "wykres poglądowy (przykładowa trioda)"
+msgstr ""
+
+#: src/GUI/PoleDaty.cpp:42
+msgid "Dziś"
+msgstr ""
+
+#: src/GUI/PoleDaty.cpp:45
+msgid "Brak daty"
+msgstr ""
+
+#: src/GUI/PoleDaty.cpp:95
+msgid "Pokaż kalendarz"
+msgstr ""
+
+#: src/GUI/ZdjeciaElementow.cpp:86 src/GUI/ZdjeciaElementow.cpp:102
 msgid "Wybierz zdjęcie"
 msgstr ""
 
@@ -6850,42 +7765,42 @@ msgstr ""
 msgid "Zestawienie drutu (waga)"
 msgstr ""
 
-#: src/Pomoc/PomocGUI.cpp:81
+#: src/Pomoc/PomocGUI.cpp:96
 msgid "Magmass: pomoc"
 msgstr ""
 
-#: src/Pomoc/PomocGUI.cpp:84
+#: src/Pomoc/PomocGUI.cpp:99
 msgid "&Wstecz"
 msgstr ""
 
-#: src/Pomoc/PomocGUI.cpp:85
+#: src/Pomoc/PomocGUI.cpp:100
 msgid "&Dalej"
 msgstr ""
 
-#: src/Pomoc/PomocGUI.cpp:86
+#: src/Pomoc/PomocGUI.cpp:101
 msgid "&Spis treści"
 msgstr ""
 
-#: src/Pomoc/PomocGUI.cpp:87
+#: src/Pomoc/PomocGUI.cpp:102
 msgid "Otwórz w &przeglądarce"
 msgstr ""
 
-#: src/Pomoc/PomocGUI.cpp:134
+#: src/Pomoc/PomocGUI.cpp:152
 msgid "Pomoc: "
 msgstr ""
 
-#: src/Pomoc/PomocGUI.cpp:141
+#: src/Pomoc/PomocGUI.cpp:159
 msgid "Więcej w pomocy"
 msgstr ""
 
-#: src/Pomoc/PomocGUI.cpp:338
+#: src/Pomoc/PomocGUI.cpp:356
 msgid "Nie znaleziono pliku pomocy (katalog „pomoc” obok programu)."
 msgstr ""
 
-#: src/Pomoc/PomocGUI.cpp:356
+#: src/Pomoc/PomocGUI.cpp:374
 msgid "Nie udało się wczytać pliku pomocy."
 msgstr ""
 
-#: src/main.cpp:115
+#: src/main.cpp:120
 msgid "Magmass"
 msgstr ""

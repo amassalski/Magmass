@@ -9,7 +9,7 @@
 #include "../Pomoc/PomocGUI.h"
 
 namespace {
-constexpr int kUkladWlasny = 6;   // numer pozycji „własny (tabela sekcji)” na liście układów (po szablonach P-S ... Mesa Boogie DR)
+constexpr int kUkladWlasny = 7;   // numer pozycji „własny (tabela sekcji)” na liście układów (po szablonach P-S ... Mesa Boogie DR)
 const char* kNazwy[7] = {"z1", "d1", "z2", "d2", "beta", "k", "rho"};
 struct Poz { const char* klucz; const char* etykieta; int miejsca; };
 const Poz kPoz[15] = {
@@ -63,6 +63,7 @@ DialogTrafoPPEtap3::DialogTrafoPPEtap3(wxWindow* parent, const TrafoPP::Wymagani
     chUklad_->Append(TR("HiFi: karkas dwukomorowy (A W | A W)"));
     chUklad_->Append(TR("HiFi: dwukomorowy przeplatany (A W A | A W A)"));
     chUklad_->Append(TR("Mesa Boogie DR: odczepy 4, 8 i 16 Ω (10 warstw)"));
+    chUklad_->Append(TR("Mesa Boogie DR zmodyfikowany: odczepy 4, 8 i 16 Ω (11 warstw)"));
     chUklad_->Append(TR("własny (tabela sekcji)"));
     chUklad_->SetSelection(0);
     PomocGUI::Dodaj(chUklad_, "trafopp.uklad");
@@ -192,7 +193,7 @@ void DialogTrafoPPEtap3::ZSzablonu() {
         wypelniam_ = true;
         tcSekcje_->ChangeValue(wxString::FromUTF8(TrafoPP::formatujSekcje(TrafoPP::presetSekcji(numer, static_cast<int>(std::lround(z1)), static_cast<int>(std::lround(z2))))));
         wypelniam_ = false;
-        if (numer == 5) {   // DR: odczep najbliższy obciążeniu z Etapu 1 (z2 w tabeli = zwoje odczepu 4 Ω)
+        if (numer == 5 || numer == 6) {   // DR: odczep najbliższy obciążeniu z Etapu 1 (z2 w tabeli = zwoje odczepu 4 Ω)
             int najblizszy = 0;
             for (int k = 1; k < 3; k++)
                 if (std::fabs(TrafoPP::kImpedancjeOdczepow[k] - w_.rObciazeniaOm) < std::fabs(TrafoPP::kImpedancjeOdczepow[najblizszy] - w_.rObciazeniaOm)) najblizszy = k;

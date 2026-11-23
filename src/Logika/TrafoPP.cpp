@@ -329,6 +329,19 @@ std::vector<SekcjaWej> presetSekcji(int numer, int z1, int z2) {
         v = {Ae(a1, 1), Wg(b, 1, 1, 1), Wg(c, -1, 2, -1), Ae(a2, 3), Wg(b, 1, 1, 1), Wg(d, -1, -1, 2), Ae(a7, 2), Wg(b, 1, 1, 1), Wg(c, -1, 2, -1), Ae(a10, 4)};
         break;
     }
+    case 6: {   // Mesa Boogie DR zmodyfikowany (schemat użytkownika): 11 sekcji od rdzenia: A1 W2 W3 A4 W5 W6 W5' A7 W8 W9 A10
+        // pierwotne jak w DR (318/530/530/318), połączone 1-7-(środek +HT)-4-10. Wtórne: 4 Ω = 2∥5∥5'∥9 (z2 zwojów każda), 8 Ω = + 3∥8,
+        // 16 Ω = + 6 (wszystkie trzy grupy szeregowo). Zwoje z teorii: Z ~ n², więc odczepy mają zwoje 1 : √2 : 2,
+        // czyli 3 i 8 mają (√2-1)·z2, a 6 ma (2-√2)·z2 zwojów.
+        const int a1 = static_cast<int>(std::lround(z1 * 318.0 / 1696.0)), a2 = static_cast<int>(std::lround(z1 * 530.0 / 1696.0));
+        const int a10 = z1 - a1 - 2 * a2;
+        const int b = z2, c = std::max(1, static_cast<int>(std::lround(b * (std::sqrt(2.0) - 1)))), d = std::max(1, static_cast<int>(std::lround(b * (2 - std::sqrt(2.0)))));
+        auto Wg = [](int z, int g4, int g8, int g16) { SekcjaWej s{false, z, 0}; s.grupaOdczep = {g4, g8, g16}; return s; };
+        auto Ae = [](int z, int e) { SekcjaWej s{true, z, 0}; s.kolejnosc = e; return s; };
+        v = {Ae(a1, 1), Wg(b, 1, 1, 1), Wg(c, -1, 2, 2), Ae(a2, 3), Wg(b, 1, 1, 1), Wg(d, -1, -1, 3), Wg(b, 1, 1, 1),
+             Ae(a2, 2), Wg(c, -1, 2, 2), Wg(b, 1, 1, 1), Ae(a10, 4)};
+        break;
+    }
     default: v = {A(z1), W(z2)}; break;
     }
     return v;

@@ -1,13 +1,13 @@
 # Budowanie programu (Windows, MSYS2)
 
-Cały program buduje się w powłoce **MSYS2 UCRT64** (nie MSYS). W środowisku MINGW64 repozytorium MSYS2 nie ma już wxWidgets 3.2 (są tylko wersje `ucrt64`, `clang64` i `clangarm64`), więc zalecane jest UCRT64; skrypty i CMake działają też w MINGW64 i CLANG64, jeśli masz tam wxWidgets.
+Magmass wymaga wxWidgets 3.3 na wszystkich systemach (CMake przerywa konfigurację przy starszej wersji; do testów: `-DMAGMASS_DOPUSC_WX32=ON`). Cały program buduje się w powłoce **MSYS2 UCRT64** (nie MSYS). W środowisku MINGW64 repozytorium MSYS2 nie ma już wxWidgets 3.2 (są tylko wersje `ucrt64`, `clang64` i `clangarm64`), więc zalecane jest UCRT64; skrypty i CMake działają też w MINGW64 i CLANG64, jeśli masz tam wxWidgets.
 
 ## Pakiety
 
 ```bash
 pacman -S --needed base-devel git zip unzip curl \
   mingw-w64-ucrt-x86_64-toolchain mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-ninja \
-  mingw-w64-ucrt-x86_64-wxwidgets3.2-msw mingw-w64-ucrt-x86_64-postgresql \
+  mingw-w64-ucrt-x86_64-wxwidgets3.3-msw mingw-w64-ucrt-x86_64-postgresql \
   mingw-w64-ucrt-x86_64-gettext-tools mingw-w64-ucrt-x86_64-python
 ```
 

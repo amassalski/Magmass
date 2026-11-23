@@ -1,5 +1,7 @@
 #include "KoloryMotywu.h"
 #include "DialogAudioLampy.h"
+#include "PanelSchematuBarwy.h"
+#include "../Logika/SchematBarwy.h"
 #include "../Logika/Kalkulatory.h"
 #include "../Logika/KalkulatoryAnalogowe.h"
 #include "PanelSchematu.h"
@@ -1198,7 +1200,7 @@ wxPanel* DialogAudioLampy::StronaBarwy() {
     wxPanel* p = new wxPanel(ksiazka_);
     panelBarwy_ = p;
     wxBoxSizer* s = new wxBoxSizer(wxVERTICAL);
-    s->Add(new wxStaticText(p, wxID_ANY, TR("Bierne układy regulacji barwy liczone z równań węzłowych (topologie i wartości wzorcowe: projekt tonestack, GPL-3.0, wzorowany na Duncan's Tone Stack Calculator). Wykres pokazuje straty układu względem napięcia źródła.")),
+    s->Add(new wxStaticText(p, wxID_ANY, TR("Układy regulacji barwy liczone z równań węzłowych: bierne (topologie i wartości wzorcowe: projekt tonestack, GPL-3.0, wzorowany na Duncan's Tone Stack Calculator) oraz czynne z idealnym wzmacniaczem operacyjnym. Wykres pokazuje poziom względem napięcia źródła; rysunek obok przedstawia wybrany układ.")),
            0, wxALL, 10);
     wxBoxSizer* gora = new wxBoxSizer(wxHORIZONTAL);
     gora->Add(new wxStaticText(p, wxID_ANY, TR("Układ:")), 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, 6);
@@ -1215,8 +1217,8 @@ wxPanel* DialogAudioLampy::StronaBarwy() {
         PomocGUI::Dodaj(tc, klucz);
         tc->Bind(wxEVT_TEXT, [this](wxCommandEvent&) { PrzeliczBarwe(); });
     };
-    for (int i = 1; i <= 3; ++i) pole(etBR_[i], tcBR_[i], wxString::Format("R%d", i), "audio.barwa_r");
-    for (int i = 1; i <= 4; ++i) pole(etBC_[i], tcBC_[i], wxString::Format("C%d", i), "audio.barwa_c");
+    for (int i = 1; i <= 9; ++i) pole(etBR_[i], tcBR_[i], wxString::Format("R%d", i), "audio.barwa_r");
+    for (int i = 1; i <= 7; ++i) pole(etBC_[i], tcBC_[i], wxString::Format("C%d", i), "audio.barwa_c");
     for (int i = 1; i <= 2; ++i) pole(etBL_[i], tcBL_[i], wxString::Format("L%d", i), "audio.barwa_l");
     pole(etBRzr_, tcBRzr_, TR("Rźr"), "audio.barwa_zr");
     pole(etBRobc_, tcBRobc_, TR("Robc"), "audio.barwa_obc");
@@ -1244,7 +1246,12 @@ wxPanel* DialogAudioLampy::StronaBarwy() {
     s->Add(lbBarwa_, 0, wxALL, 10);
     wykresBarwy_ = new WykresRIAA(p);
     wykresBarwy_->UstawZakres(-50, 0, 10);
-    s->Add(wykresBarwy_, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 10);
+    schematBarwy_ = new PanelSchematuBarwy(p);
+    PomocGUI::Dodaj(schematBarwy_, "audio.barwa_schemat");
+    wxBoxSizer* dolBarwy = new wxBoxSizer(wxHORIZONTAL);
+    dolBarwy->Add(wykresBarwy_, 3, wxEXPAND | wxRIGHT, 10);
+    dolBarwy->Add(schematBarwy_, 2, wxEXPAND);
+    s->Add(dolBarwy, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 10);
     p->SetSizer(s);
 
     chPresetBarwy_->Bind(wxEVT_CHOICE, [this](wxCommandEvent&) { WczytajPresetBarwy(); PrzeliczBarwe(); });
@@ -1265,11 +1272,12 @@ void DialogAudioLampy::WczytajPresetBarwy() {
         et->Show(uzyty); tc->Show(uzyty);
         if (uzyty) { siatkaBarwy_->Add(et, 0, wxALIGN_CENTER_VERTICAL); siatkaBarwy_->Add(tc, 0); }
     };
-    for (int i = 1; i <= 3; ++i) { wpisz(tcBR_[i], u.r[i], RodzajElementu::Rezystor); pokaz(etBR_[i], tcBR_[i], u.uzywa(Typ::R, i)); }
-    for (int i = 1; i <= 4; ++i) { wpisz(tcBC_[i], u.c[i], RodzajElementu::Kondensator); pokaz(etBC_[i], tcBC_[i], u.uzywa(Typ::C, i)); }
+    for (int i = 1; i <= 9; ++i) { wpisz(tcBR_[i], u.r[i], RodzajElementu::Rezystor); pokaz(etBR_[i], tcBR_[i], u.uzywa(Typ::R, i)); }
+    for (int i = 1; i <= 7; ++i) { wpisz(tcBC_[i], u.c[i], RodzajElementu::Kondensator); pokaz(etBC_[i], tcBC_[i], u.uzywa(Typ::C, i)); }
     for (int i = 1; i <= 2; ++i) { wpisz(tcBL_[i], u.l[i], RodzajElementu::Cewka); pokaz(etBL_[i], tcBL_[i], u.uzywa(Typ::L, i)); }
     wpisz(tcBRzr_, u.rzr, RodzajElementu::Rezystor); pokaz(etBRzr_, tcBRzr_, true);
-    wpisz(tcBRobc_, u.robc, RodzajElementu::Rezystor); pokaz(etBRobc_, tcBRobc_, true);
+    wpisz(tcBRobc_, u.robc, RodzajElementu::Rezystor); pokaz(etBRobc_, tcBRobc_, u.opWe == 0);   // wyjście wzmacniacza operacyjnego jest idealne
+    if (u.opWe != 0) wykresBarwy_->UstawZakres(-30, 30, 10); else wykresBarwy_->UstawZakres(-50, 0, 10);
 
     siatkaPotBarwy_->Clear(false);
     for (int i = 1; i <= 3; ++i) {
@@ -1305,8 +1313,8 @@ void DialogAudioLampy::PrzeliczBarwe() {
         if (!w) { blad = true; return; }
         v = *w;
     };
-    for (int i = 1; i <= 3; ++i) if (u.uzywa(Typ::R, i)) pobierz(tcBR_[i], RodzajElementu::Rezystor, u.r[i], false);
-    for (int i = 1; i <= 4; ++i) if (u.uzywa(Typ::C, i)) pobierz(tcBC_[i], RodzajElementu::Kondensator, u.c[i], false);
+    for (int i = 1; i <= 9; ++i) if (u.uzywa(Typ::R, i)) pobierz(tcBR_[i], RodzajElementu::Rezystor, u.r[i], false);
+    for (int i = 1; i <= 7; ++i) if (u.uzywa(Typ::C, i)) pobierz(tcBC_[i], RodzajElementu::Kondensator, u.c[i], false);
     for (int i = 1; i <= 2; ++i) if (u.uzywa(Typ::L, i)) pobierz(tcBL_[i], RodzajElementu::Cewka, u.l[i], false);
     pobierz(tcBRzr_, RodzajElementu::Rezystor, u.rzr, true);
     pobierz(tcBRobc_, RodzajElementu::Rezystor, u.robc, true);
@@ -1318,6 +1326,25 @@ void DialogAudioLampy::PrzeliczBarwe() {
         u.pot[i].taper = static_cast<Taper>(std::max(0, chPotTaper_[i]->GetSelection()));
         n.poz[i] = slPot_[i]->GetValue() / 100.0;
         etPoz_[i]->SetLabel(L(slPot_[i]->GetValue() / 10.0, 1));
+    }
+    if (schematBarwy_) {
+        auto etykieta = [&](const Skladnik& sk) -> std::string {
+            auto w = [&](double v, RodzajElementu rodz) { return v > 0 ? " " + SzeregiE::formatWartosci(v, rodz) : std::string(); };
+            switch (sk.typ) {
+                case Typ::R: return "R" + std::to_string(sk.numer) + w(u.r[sk.numer], RodzajElementu::Rezystor);
+                case Typ::C: return "C" + std::to_string(sk.numer) + w(u.c[sk.numer], RodzajElementu::Kondensator);
+                case Typ::L: return "L" + std::to_string(sk.numer) + w(u.l[sk.numer], RodzajElementu::Cewka);
+                case Typ::PotLo:
+                case Typ::PotHi: {
+                    const PotUkladu& pt = u.pot[sk.numer];
+                    const double fr = udzialRezystancji(n.poz[sk.numer], pt.taper);
+                    const double rr = pt.calkowita * (sk.typ == Typ::PotLo ? fr : 1.0 - fr);
+                    return pt.nazwa + (rr > 0 ? " " + SzeregiE::formatWartosci(rr, RodzajElementu::Rezystor) : std::string(" 0"));
+                }
+            }
+            return {};
+        };
+        schematBarwy_->Ustaw(SchematBarwy::zbuduj(u, etykieta));
     }
     auto nieDodatnie = [&]() {
         for (const Skladnik& s : u.skladniki) {
@@ -1351,6 +1378,9 @@ void DialogAudioLampy::UstawBarwe(int uklad, double poz1, double poz2, double po
     for (int i = 1; i <= 3; ++i) slPot_[i]->SetValue(static_cast<int>(std::lround(p[i] * 100)));
     PrzeliczBarwe();
 }
+
+size_t DialogAudioLampy::PrymitywowSchematuBarwy() const { return schematBarwy_ ? schematBarwy_->LiczbaPrymitywow() : 0; }
+int DialogAudioLampy::ElementowSchematuBarwy() const { return schematBarwy_ ? schematBarwy_->Rysunek().elementow : 0; }
 
 int DialogAudioLampy::LiczbaPotBarwy() const {
     int n = 0;

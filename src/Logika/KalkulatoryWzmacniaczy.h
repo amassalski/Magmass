@@ -91,17 +91,24 @@ struct PotUkladu {
 struct UkladBarwy {
     std::string nazwa;
     std::vector<Skladnik> skladniki;
-    double r[6] = {};   ///< R1..R5 [Ω] (indeks 0 nieużywany)
-    double c[6] = {};   ///< C1..C5 [F]
+    double r[10] = {};  ///< R1..R9 [Ω] (indeks 0 nieużywany)
+    double c[8] = {};   ///< C1..C7 [F]
     double l[3] = {};   ///< L1, L2 [H]
     double rzr = 0;     ///< Ω: rezystancja źródła (R98), 0 = idealne źródło
     double robc = 0;    ///< Ω: obciążenie wyjścia (R99), 0 = bez obciążenia
     PotUkladu pot[4];   ///< indeksy 1..3
+    /// Układ czynny: węzeł wejścia odwracającego idealnego wzmacniacza operacyjnego (0 = układ bierny). Wyjście wzmacniacza
+    /// to węzeł 3. Wzmacniacz jest idealny: napięcie wejścia odwracającego równa się napięciu wejścia nieodwracającego
+    /// (opPlus; 0 = masa), więc obciążenie wyjścia (robc) nie wpływa na wynik.
+    int opWe = 0;
+    int opPlus = 0;   ///< węzeł wejścia nieodwracającego (0 = masa)
+    std::string opis;   ///< krótki opis układu (źródło, zastosowanie)
     bool uzywa(Typ t, int numer) const;
     bool uzywaPot(int numer) const;
 };
-/// Układy wzorcowe: Fender Bassman 5F6-A (wartości typowe) oraz bierne układy z katalogu projektu tonestack
-/// (Fender, Marshall, Vox, James, Baxandall, Bandmaster, Bench, Voigt, Bone Ray, Tube Driver, Marshall 18 W, Big Muff, Moonlight).
+/// Układy wzorcowe: Fender Bassman 5F6-A (wartości typowe), bierne układy z katalogu projektu tonestack
+/// (Fender, Marshall, Vox, James, Baxandall, Bandmaster, Bench, Voigt, Bone Ray, Tube Driver, Marshall 18 W, Big Muff, Moonlight)
+/// oraz układy czynne z idealnym wzmacniaczem operacyjnym (Baxandall ze sprzężeniem zwrotnym).
 const std::vector<UkladBarwy>& ukladyBarwy();
 
 struct NastawyBarwy {

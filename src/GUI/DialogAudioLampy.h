@@ -14,6 +14,8 @@
 #include <initializer_list>
 #include <vector>
 
+class PanelSchematuBarwy;
+
 /// Wykres krzywej RIAA (oś częstotliwości logarytmiczna 20 Hz..20 kHz, oś dB); opcjonalnie druga krzywa (sieć RC)
 class WykresRIAA : public wxPanel {
 public:
@@ -89,6 +91,8 @@ public:
     void UstawTaperPotBarwy(int nr, int taper); ///< 0 liniowy, 1 log, 2 log A, 3 odwrotny log
     wxString WynikBarwy() const { return lbBarwa_->GetLabel(); }
     size_t PunktowBarwy() const { return wykresBarwy_->LiczbaPunktow(); }
+    size_t PrymitywowSchematuBarwy() const;   ///< rysunek wybranego układu regulacji barwy (do testów)
+    int ElementowSchematuBarwy() const;
     int PresetBarwy() const { return chPresetBarwy_->GetSelection(); }
 
     /// Punkt pracy lampy (zakładka 3): pola w kolejności z formularza, "" zostawia puste
@@ -170,14 +174,15 @@ private:
     wxChoice *chKatR_ = nullptr, *chKatC_ = nullptr, *chSprzC_ = nullptr, *chSprzSekcje_ = nullptr, *chPresetBarwy_ = nullptr;
     wxStaticText *lbKatoda_ = nullptr, *lbSprz_ = nullptr, *lbBarwa_ = nullptr;
     // regulacja barwy: elementy układu (R1..R3, C1..C4, L1..L2), rezystancje źródła i obciążenia, potencjometry 1..3
-    wxTextCtrl *tcBR_[4] = {}, *tcBC_[5] = {}, *tcBL_[3] = {}, *tcBRzr_ = nullptr, *tcBRobc_ = nullptr, *tcPotR_[4] = {};
-    wxStaticText *etBR_[4] = {}, *etBC_[5] = {}, *etBL_[3] = {}, *etBRzr_ = nullptr, *etBRobc_ = nullptr, *etPot_[4] = {}, *etPoz_[4] = {};
+    wxTextCtrl *tcBR_[10] = {}, *tcBC_[8] = {}, *tcBL_[3] = {}, *tcBRzr_ = nullptr, *tcBRobc_ = nullptr, *tcPotR_[4] = {};
+    wxStaticText *etBR_[10] = {}, *etBC_[8] = {}, *etBL_[3] = {}, *etBRzr_ = nullptr, *etBRobc_ = nullptr, *etPot_[4] = {}, *etPoz_[4] = {};
     wxSlider* slPot_[4] = {};
     wxChoice* chPotTaper_[4] = {};
     wxFlexGridSizer *siatkaBarwy_ = nullptr, *siatkaPotBarwy_ = nullptr;
     wxPanel* panelBarwy_ = nullptr;
     bool wczytujeBarwe_ = false;
     WykresRIAA* wykresBarwy_ = nullptr;
+    PanelSchematuBarwy* schematBarwy_ = nullptr;
     wxPanel* StronaDecybeli();
     wxPanel* StronaRIAA();
     void PrzeliczDecybele();

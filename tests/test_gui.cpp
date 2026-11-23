@@ -25,6 +25,7 @@
 
 #include "BazaDanych/ManagerBazyDanych.h"
 #include "GUI/DialogElementu.h"
+#include "GUI/PoleDaty.h"
 #include "Logika/LogikaProjektow.h"
 #include "GUI/DialogEtykiet.h"
 #include "GUI/DialogZebra.h"
@@ -1653,7 +1654,7 @@ private:
         d.UstawPolaSprzezenia({"100k", "62k", "0", "22n", "20"}, 1);
         CHECK(d.WynikSprzezenia().Contains("muszą być dodatnie"));
         // regulacja barwy: wybór układu pokazuje tylko jego elementy i potencjometry
-        CHECK(d.LiczbaUkladowBarwy() == 14);
+        CHECK(d.LiczbaUkladowBarwy() == 16);
         d.UstawBarwe(0, 0.5, 0.5, 0.5);   // Fender Bassman 5F6-A (potencjometry log A: bas i wysokie)
         CHECK(d.PunktowBarwy() > 50 && d.LiczbaPotBarwy() == 3 && d.NazwaPotBarwy(1) == "Bas" && d.WynikBarwy().Contains("1 kHz -16,9"));
         d.UstawTaperPotBarwy(1, 0);
@@ -1663,6 +1664,36 @@ private:
         CHECK(d.LiczbaPotBarwy() == 2 && d.NazwaPotBarwy(2).empty() && d.NazwaPotBarwy(3) == "Wysokie" && d.PunktowBarwy() > 50);
         d.UstawBarwe(11, 0.5, 0.5, 0.5);  // Marshall 18 W: jeden potencjometr „Barwa”
         CHECK(d.LiczbaPotBarwy() == 1 && d.NazwaPotBarwy(2) == "Barwa");
+        // rysunek układu zmienia się z wyborem układu i ma tyle elementów, ile netlista
+        {
+            const auto& uk = KalkulatoryWzmacniaczy::ukladyBarwy();
+            bool rysunki = true;
+            for (size_t i = 0; i < uk.size(); ++i) {
+                d.UstawBarwe(static_cast<int>(i), 0.5, 0.5, 0.5);
+                int oczek = 0;
+                for (const auto& sk : uk[i].skladniki) oczek += sk.w1 != sk.w2;
+                rysunki = rysunki && d.PrymitywowSchematuBarwy() > 10 && d.ElementowSchematuBarwy() == oczek;
+            }
+            CHECK(rysunki);
+            d.UstawBarwe(0, 0.5, 0.5, 0.5);
+            const size_t a = d.PrymitywowSchematuBarwy();
+            d.UstawBarwe(static_cast<int>(uk.size()) - 2, 0.5, 0.5, 0.5);   // Baxandall czynny: wzmacniacz, wykres z podbiciem
+            CHECK(d.PrymitywowSchematuBarwy() != a && d.LiczbaPotBarwy() == 2 && !d.WynikBarwy().Contains("Wpisz"));
+        }
+        // własne pole daty: wartość, zdarzenie przy zmianie (tylko gdy data się zmienia), brak daty przy wxDP_ALLOWNONE
+        {
+            PoleDaty pd(&d, wxDateTime(5, wxDateTime::Mar, 2026), wxDP_ALLOWNONE);
+            int zdarzen = 0;
+            pd.Bind(wxEVT_DATE_CHANGED, [&](wxDateEvent&) { ++zdarzen; });
+            CHECK(pd.GetValue().FormatISODate() == "2026-03-05" && zdarzen == 0);
+            pd.Wybierz(wxDateTime(6, wxDateTime::Mar, 2026));
+            pd.Wybierz(wxDateTime(6, wxDateTime::Mar, 2026));
+            CHECK(zdarzen == 1 && pd.GetValue().FormatISODate() == "2026-03-06");
+            pd.Wybierz(wxDateTime());
+            CHECK(zdarzen == 2 && !pd.GetValue().IsValid());
+            PoleDaty bez(&d, wxDateTime(), 0);
+            CHECK(bez.GetValue().IsValid());   // bez ALLOWNONE pusta data = dziś
+        }
         d.UstawBarwe(7, 0.5, 0.5, 0.5);   // Bench: z cewkami
         CHECK(d.PunktowBarwy() > 50 && d.LiczbaPotBarwy() == 3 && !d.WynikBarwy().Contains("Wpisz"));
         d.UstawPolaLampy({"250", "100k", "0,8", "-1,5", "", "", "100", "62k5", "1", "20"});

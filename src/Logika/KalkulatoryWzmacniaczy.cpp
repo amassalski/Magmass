@@ -118,6 +118,50 @@ const std::vector<UkladBarwy>& ukladyBarwy() {
         b.rzr = 38e3; b.robc = 1e6;
         b.pot[1].calkowita = 1e6; b.pot[2].calkowita = 25e3; b.pot[3].calkowita = 250e3;
         w.insert(w.begin(), b);
+
+        // Baxandall czynny (ze sprzężeniem zwrotnym): jeden wzmacniacz odwracający, suwaki obu potencjometrów na wejściu
+        // odwracającym (węzeł 10). Bas: R1 + część potencjometru z C1 po stronie wejścia, R2 + część z C2 w pętli sprzężenia;
+        // wysokie: C3 + część potencjometru na wejściu, C4 + część w sprzężeniu. Dla suwaka w środku układ jest płaski (0 dB).
+        // Położenie 1 = podbicie (suwak od strony wejścia), 0 = obcięcie. Wartości typowe dobrane tak, by na końcach skali
+        // dawały ok. ±20 dB (bas przy 20 Hz, wysokie przy 20 kHz); wyprowadzone z równań węzłowych, nie z literatury.
+        UkladBarwy ba;
+        ba.nazwa = "Baxandall czynny (sprzężenie zwrotne, wzmacniacz operacyjny)";
+        ba.skladniki = {{Typ::R, 1, 2, 11}, {Typ::R, 2, 13, 3},
+                        {Typ::C, 1, 11, 10}, {Typ::C, 2, 13, 10}, {Typ::C, 3, 2, 12}, {Typ::C, 4, 3, 14},
+                        {Typ::PotLo, 1, 13, 10}, {Typ::PotHi, 1, 10, 11},
+                        {Typ::PotLo, 3, 14, 10}, {Typ::PotHi, 3, 10, 12}};
+        ba.r[1] = 22e3; ba.r[2] = 22e3;
+        ba.c[1] = 22e-9; ba.c[2] = 22e-9; ba.c[3] = 4.7e-9; ba.c[4] = 4.7e-9;
+        ba.rzr = 1e3; ba.robc = 0;
+        ba.pot[1] = {"Bas", 250e3, Taper::Liniowy};
+        ba.pot[3] = {"Wysokie", 100e3, Taper::Liniowy};
+        ba.opWe = 10;
+        ba.opis = "Klasyczny regulator Baxandalla ze wzmacniaczem operacyjnym w pętli sprzężenia (odwracający). Obliczenia z idealnym wzmacniaczem.";
+        w.push_back(ba);
+
+        // Revox B251 (regulator barwy z wzmacniaczem operacyjnym; schemat użytkownika): wejście przez R1 na wejście odwracające,
+        // R2 w sprzężeniu zwrotnym (wzmocnienie -1 przy płaskiej regulacji), oba potencjometry (10 k, liniowe) między wejściem (węzeł 2)
+        // a wyjściem (węzeł 3), suwaki przez sieci RC sterują wejściem nieodwracającym (węzeł 20). Węzły: 10 wejście odwracające,
+        // 11 suwak wysokich, 12 suwak basów, 13/14 sieć wysokich, 15/16 sieć basów, 20 i 21 dzielnik na wejściu nieodwracającym.
+        // Rezystor 910 Ω w szeregu z samym wejściem wzmacniacza (bez prądu) pominięto. Położenie 1 = suwak przy wyjściu = podbicie.
+        UkladBarwy rv;
+        rv.nazwa = "Revox B251 (czynny, wejście nieodwracające z sieci RC)";
+        rv.skladniki = {{Typ::R, 1, 2, 10}, {Typ::R, 2, 3, 10}, {Typ::R, 3, 2, 0},
+                        {Typ::PotLo, 3, 2, 11}, {Typ::PotHi, 3, 11, 3}, {Typ::C, 1, 11, 13}, {Typ::R, 7, 13, 0},
+                        {Typ::C, 2, 13, 14}, {Typ::R, 4, 14, 20},
+                        {Typ::PotLo, 1, 2, 12}, {Typ::PotHi, 1, 12, 3}, {Typ::R, 8, 12, 15}, {Typ::C, 4, 15, 0},
+                        {Typ::C, 5, 15, 16}, {Typ::R, 6, 16, 21},
+                        {Typ::R, 5, 20, 21}, {Typ::C, 3, 20, 21}, {Typ::C, 6, 21, 0}, {Typ::R, 9, 21, 0}};
+        rv.r[1] = 3.3e3; rv.r[2] = 3.3e3; rv.r[3] = 100e3; rv.r[4] = 1.5e3; rv.r[5] = 910; rv.r[6] = 6.8e3;
+        rv.r[7] = 6e3; rv.r[8] = 560; rv.r[9] = 12e3;
+        rv.c[1] = 47e-9; rv.c[2] = 10e-9; rv.c[3] = 10e-9; rv.c[4] = 330e-9; rv.c[5] = 470e-9; rv.c[6] = 470e-9;
+        rv.rzr = 0; rv.robc = 0;   // źródło idealne (rezystancja źródła zmienia wzmocnienie, bo wejście jest obciążone)
+        rv.pot[1] = {"Bas", 10e3, Taper::Liniowy};
+        rv.pot[3] = {"Wysokie", 10e3, Taper::Liniowy};
+        rv.opWe = 10; rv.opPlus = 20;
+        rv.opis = "Regulator barwy z magnetofonu Revox B251: wzmacniacz operacyjny o wzmocnieniu -1, potencjometry między wejściem i wyjściem, "
+                  "wejście nieodwracające sterowane z suwaków przez sieci RC. Obliczenia z idealnym wzmacniaczem; potencjometry 10 k liniowe.";
+        w.push_back(rv);
         return w;
     }();
     return v;
@@ -148,12 +192,12 @@ std::complex<double> odpowiedzUkladu(const UkladBarwy& u, const NastawyBarwy& n,
         Zesp y;
         switch (s.typ) {
             case Typ::R: {
-                if (s.numer < 1 || s.numer > 5 || !(u.r[s.numer] > 0)) return 0;
+                if (s.numer < 1 || s.numer > 9 || !(u.r[s.numer] > 0)) return 0;
                 y = 1.0 / u.r[s.numer];
                 break;
             }
             case Typ::C: {
-                if (s.numer < 1 || s.numer > 5 || !(u.c[s.numer] > 0)) return 0;
+                if (s.numer < 1 || s.numer > 7 || !(u.c[s.numer] > 0)) return 0;
                 y = jw * u.c[s.numer];
                 break;
             }
@@ -177,7 +221,16 @@ std::complex<double> odpowiedzUkladu(const UkladBarwy& u, const NastawyBarwy& n,
     const double rzr = std::max(u.rzr, 1e-3);
     A[idx(2)][idx(2)] += 1.0 / rzr;
     A[idx(2)][N] += 1.0 / rzr;
-    if (u.robc > 0) A[idx(3)][idx(3)] += 1.0 / u.robc;
+    if (u.robc > 0 && u.opWe == 0) A[idx(3)][idx(3)] += 1.0 / u.robc;
+    if (u.opWe != 0) {
+        // idealny wzmacniacz operacyjny: wyjście (węzeł 3) dostarcza dowolny prąd, więc zamiast jego równania prądów
+        // wstawiamy warunek zwarcia pozornego V(wejście odwracające) = V(wejście nieodwracające)
+        const int o = idx(3), x = idx(u.opWe), pl = u.opPlus == 0 ? -1 : idx(u.opPlus);
+        if (x < 0 || x >= N || x == o || (u.opPlus != 0 && (pl < 0 || pl >= N))) return 0;   // węzeł spoza netlisty = błędne dane
+        for (int j = 0; j <= N; ++j) A[o][j] = Zesp(0);
+        A[o][x] = Zesp(1);
+        if (pl >= 0) A[o][pl] = Zesp(-1);
+    }
 
     for (int k = 0; k < N; ++k) {   // eliminacja Gaussa z wyborem elementu głównego
         int p = k;

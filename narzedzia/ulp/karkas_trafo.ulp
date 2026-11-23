@@ -1,7 +1,9 @@
 #usage "<b>Karkas składany transformatora - elementy do wycięcia</b>\n"
        "<p>Rysuje w edytorze płytki (Board) 6 elementów karkasu składanego z laminatu (tekstolit, bakelit, preszpan) "
        "dla rdzenia EI, w trzech rodzajach:</p>"
-       "<ul><li><b>1. policzek</b> - 2 szt.: płyta z oknem na tuleję, zaokrąglone rogi, opcjonalnie otwory na wyprowadzenia,</li>"
+       "<ul><li><b>1. policzek</b> - 2 szt.: płyta z oknem na tuleję, zaokrąglone rogi, otwory na wyprowadzenia początków i końców uzwojeń "
+       "(od rdzenia do brzegu pod zadanym kątem, w jednym lub dwóch rzędach), jeden brzeg poszerzony o połowę szerokości okna "
+       "i punkty lutownicze (pady, domyślnie 150 mil, 1,5 mm od brzegu, warstwa Top); liczba otworów i liczba punktów lutowniczych są niezależne,</li>"
        "<li><b>2. ścianka z kołnierzami</b> - 2 szt.: pasek o szerokości kolumny środkowej, z kołnierzami na końcach i wypustkami pośrodku,</li>"
        "<li><b>3. ścianka z wcięciami</b> - 2 szt.: pasek o szerokości pakietu, z wcięciami pośrodku, w które wchodzą wypustki ścianki 2.</li></ul>"
        "<p>Ścianki 2 i 3 łączą się pod kątem 90° (po dwie naprzeciw siebie), wypustek wchodzi we wcięcie o głębokości równej grubości laminatu d. "
@@ -36,11 +38,50 @@ real luz     = 0.3;    // luz na szerokość i grubość pakietu (blachy mają w
 real skroc   = 0;      // skrócenie karkasu (np. 3 mm dla rdzeni M)
 real kol     = 4;      // wysokość kołnierza ścianki 2 (2 do 4 mm)
 real promien = 3;      // promień zaokrąglenia rogów policzka
-int  otwory  = 6;      // liczba otworów na wyprowadzenia (0 = brak)
+int  otwory  = 12;      // liczba otworów na wyprowadzenia (0 = brak)
 real dotw    = 1.5;    // średnica otworów na wyprowadzenia
+real odlOtw  = 0.4;    // minimalna odległość między krawędziami sąsiednich otworów [mm]
+int  rzedy   = 2;      // liczba rzędów otworów (te same współrzędne X, kolejne rzędy wyżej o offY od poprzedniego)
+real offY    = 7.5;      // przesunięcie drugiego i kolejnych rzędów w osi Y [mm], liczone od rzędu poprzedniego (w górę)
+real odlRog  = 0.5;    // odległość krawędzi pierwszego otworu od prawego brzegu okna policzka (w X) [mm]
+real offY1   = 0.5;    // odległość dolnej krawędzi pierwszego otworu od dolnej krawędzi okna (w Y) [mm], nie mniej niż 0
+real kat     = 54;     // kąt linii otworów względem kierunku "od rdzenia prosto do brzegu" [stopnie]
+int  szerszy = 1;      // 1 = prawy brzeg policzka poszerzony o połowę szerokości okna So
+real padMil  = 150;    // rozmiar punktu lutowniczego [mil]
+real padKr   = 1.5;    // odległość punktu lutowniczego od brzegu policzka [mm]
+real padOdl  = 150;    // minimalna odległość między krawędziami punktów lutowniczych [mil]
+int  punkty  = 4;      // liczba punktów lutowniczych (niezależna od liczby otworów; 0 = brak)
 real odstep  = 4;      // odstęp między częściami na rysunku
-real szerLin = 0.1;    // szerokość linii konturu
+real szerLin = 0.2;    // szerokość linii konturu
 int  warstwa = 46;     // warstwa konturów (46 = Milling, 20 = Dimension)
+
+// Szukamy rysunku w tym samym folderze co skrypt ULP lub w podfolderze dokumentacja/
+string scriptDir = filedir(argv[0]);
+string imgPath = scriptDir + "karkas_wymiary.png";
+string a[];
+
+if (fileglob(a, imgPath) == 0) {
+    // Jeśli nie ma obok skryptu, sprawdzamy w podfolderze dokumentacja/
+    imgPath = scriptDir + "dokumentacja/karkas_wymiary.png";
+}
+
+string pomocTxt = "";
+if (fileglob(a, imgPath) > 0) {
+    pomocTxt += "<p><img src=\"" + imgPath + "\"></p>";
+} else {
+    // Awaryjny tekst, gdyby użytkownik przeniósł sam plik .ulp bez obrazka
+    pomocTxt += "<p><i>(Nie znaleziono pliku graficznego karkas_wymiary.png w katalogu skryptu)</i></p>";
+}
+
+pomocTxt += "<p><b>A</b> - odległość krawędzi otworu rzędu 1 od okna w osi X (pole „odległość od okna w X”)<br>";
+pomocTxt += "<b>B</b> - odległość dolnej krawędzi otworu rzędu 1 od dolnej krawędzi okna w osi Y; otwór nie wypada niżej<br>";
+pomocTxt += "<b>C</b> - przesunięcie kolejnego rzędu w osi Y, liczone od rzędu poprzedniego (w górę); ten sam X<br>";
+pomocTxt += "<b>D</b> - kąt linii otworów od kierunku „prosto od rdzenia do brzegu”<br>";
+pomocTxt += "<b>E</b> - średnica otworu; min. odległość między krawędziami otworów jest osobnym parametrem<br>";
+pomocTxt += "<b>F</b> - odległość punktu lutowniczego od brzegu policzka<br>";
+pomocTxt += "<b>G</b> - rozmiar punktu lutowniczego [mil]<br>";
+pomocTxt += "<b>H</b> - min. odległość między krawędziami punktów lutowniczych [mil]<br>";
+pomocTxt += "<b>I</b> - poszerzenie prawego brzegu = So/2</p>";
 
 dlgDialog("Karkas składany transformatora EI") {
     dlgHBoxLayout {
@@ -55,38 +96,95 @@ dlgDialog("Karkas składany transformatora EI") {
             dlgRedisplay();
         }
     }
-    dlgGridLayout {
-        dlgCell(0, 0)  dlgLabel("Sk - szerokość kolumny środkowej [mm]");
-        dlgCell(0, 1)  dlgRealEdit(Sk, 1, 500);
-        dlgCell(1, 0)  dlgLabel("Gr - grubość pakietu blach [mm]");
-        dlgCell(1, 1)  dlgRealEdit(Gr, 1, 500);
-        dlgCell(2, 0)  dlgLabel("d - grubość laminatu [mm]");
-        dlgCell(2, 1)  dlgRealEdit(d, 0.2, 10);
-        dlgCell(3, 0)  dlgLabel("Wo - wysokość okna rdzenia [mm]");
-        dlgCell(3, 1)  dlgRealEdit(Wo, 5, 500);
-        dlgCell(4, 0)  dlgLabel("So - szerokość okna rdzenia [mm]");
-        dlgCell(4, 1)  dlgRealEdit(So, 2, 500);
-        dlgCell(5, 0)  dlgLabel("luz na pakiecie (szerokość i grubość) [mm]");
-        dlgCell(5, 1)  dlgRealEdit(luz, 0, 3);
-        dlgCell(6, 0)  dlgLabel("skrócenie karkasu, rdzeń M [mm]");
-        dlgCell(6, 1)  dlgRealEdit(skroc, 0, 20);
-        dlgCell(7, 0)  dlgLabel("kołnierz ścianki 2 [mm] (2 do 4)");
-        dlgCell(7, 1)  dlgRealEdit(kol, 1, 10);
-        dlgCell(8, 0)  dlgLabel("promień rogów policzka [mm]");
-        dlgCell(8, 1)  dlgRealEdit(promien, 0, 20);
-        dlgCell(9, 0)  dlgLabel("otwory na wyprowadzenia: liczba");
-        dlgCell(9, 1)  dlgIntEdit(otwory, 0, 30);
-        dlgCell(10, 0) dlgLabel("otwory na wyprowadzenia: średnica [mm]");
-        dlgCell(10, 1) dlgRealEdit(dotw, 0.3, 10);
-        dlgCell(11, 0) dlgLabel("odstęp między częściami [mm]");
-        dlgCell(11, 1) dlgRealEdit(odstep, 1, 50);
-        dlgCell(12, 0) dlgLabel("szerokość linii konturu [mm]");
-        dlgCell(12, 1) dlgRealEdit(szerLin, 0, 5);
-        dlgCell(13, 0) dlgLabel("warstwa konturów (numer)");
-        dlgCell(13, 1) dlgIntEdit(warstwa, 1, 255);
+    dlgHBoxLayout {
+        dlgVBoxLayout {
+            dlgGroup("Rdzeń i laminat") {
+                dlgGridLayout {
+                    dlgCell(0, 0) dlgLabel("Sk - szerokość kolumny środkowej [mm]");
+                    dlgCell(0, 1) dlgRealEdit(Sk, 1, 500);
+                    dlgCell(1, 0) dlgLabel("Gr - grubość pakietu blach [mm]");
+                    dlgCell(1, 1) dlgRealEdit(Gr, 1, 500);
+                    dlgCell(2, 0) dlgLabel("d - grubość laminatu [mm]");
+                    dlgCell(2, 1) dlgRealEdit(d, 0.2, 10);
+                    dlgCell(3, 0) dlgLabel("Wo - wysokość okna rdzenia [mm]");
+                    dlgCell(3, 1) dlgRealEdit(Wo, 5, 500);
+                    dlgCell(4, 0) dlgLabel("So - szerokość okna rdzenia [mm]");
+                    dlgCell(4, 1) dlgRealEdit(So, 2, 500);
+                    dlgCell(5, 0) dlgLabel("luz na pakiecie (szerokość i grubość) [mm]");
+                    dlgCell(5, 1) dlgRealEdit(luz, 0, 3);
+                    dlgCell(6, 0) dlgLabel("skrócenie karkasu, rdzeń M [mm]");
+                    dlgCell(6, 1) dlgRealEdit(skroc, 0, 20);
+                }
+            }
+            dlgGroup("Karkas") {
+                dlgGridLayout {
+                    dlgCell(0, 0) dlgLabel("kołnierz ścianki 2 [mm] (2 do 4)");
+                    dlgCell(0, 1) dlgRealEdit(kol, 1, 10);
+                    dlgCell(1, 0) dlgLabel("promień rogów policzka [mm]");
+                    dlgCell(1, 1) dlgRealEdit(promien, 0, 20);
+                }
+            }
+            dlgGroup("Rysunek") {
+                dlgGridLayout {
+                    dlgCell(0, 0) dlgLabel("odstęp między częściami [mm]");
+                    dlgCell(0, 1) dlgRealEdit(odstep, 1, 50);
+                    dlgCell(1, 0) dlgLabel("szerokość linii konturu [mm]");
+                    dlgCell(1, 1) dlgRealEdit(szerLin, 0, 5);
+                    dlgCell(2, 0) dlgLabel("warstwa konturów (numer)");
+                    dlgCell(2, 1) dlgIntEdit(warstwa, 1, 255);
+                }
+            }
+            dlgStretch(1);
+        }
+        dlgVBoxLayout {
+            dlgGroup("Otwory na wyprowadzenia uzwojeń (A–E, I)") {
+                dlgGridLayout {
+                    dlgCell(0, 0) dlgLabel("otwory: liczba");
+                    dlgCell(0, 1) dlgIntEdit(otwory, 0, 30);
+                    dlgCell(1, 0) dlgLabel("E - średnica otworu [mm]");
+                    dlgCell(1, 1) dlgRealEdit(dotw, 0.3, 10);
+                    dlgCell(2, 0) dlgLabel("otwory: min. odległość między krawędziami [mm]");
+                    dlgCell(2, 1) dlgRealEdit(odlOtw, 0, 10);
+                    dlgCell(3, 0) dlgLabel("otwory: liczba rzędów (1 do 6)");
+                    dlgCell(3, 1) dlgIntEdit(rzedy, 1, 6);
+                    dlgCell(4, 0) dlgLabel("C - przesunięcie kolejnego rzędu w Y od poprzedniego [mm]");
+                    dlgCell(4, 1) dlgRealEdit(offY, 0, 50);
+                    dlgCell(5, 0) dlgLabel("A - odległość od okna w X, rząd 1 [mm]");
+                    dlgCell(5, 1) dlgRealEdit(odlRog, 0, 10);
+                    dlgCell(6, 0) dlgLabel("B - odległość od dolnej krawędzi okna w Y, rząd 1 [mm]");
+                    dlgCell(6, 1) dlgRealEdit(offY1, 0, 50);
+                    dlgCell(7, 0) dlgLabel("D - kąt linii [stopnie] (0 = prosto do brzegu)");
+                    dlgCell(7, 1) dlgRealEdit(kat, 0, 60);
+                    dlgCell(8, 0) dlgLabel("I - poszerzyć prawy brzeg policzka o So/2 (1 = tak)");
+                    dlgCell(8, 1) dlgIntEdit(szerszy, 0, 1);
+                }
+            }
+            dlgGroup("Punkty lutownicze, warstwa Top (F–H)") {
+                dlgGridLayout {
+                    dlgCell(0, 0) dlgLabel("liczba punktów lutowniczych (niezależnie od otworów)");
+                    dlgCell(0, 1) dlgIntEdit(punkty, 0, 60);
+                    dlgCell(1, 0) dlgLabel("G - rozmiar punktu [mil]");
+                    dlgCell(1, 1) dlgRealEdit(padMil, 20, 500);
+                    dlgCell(2, 0) dlgLabel("F - odległość punktu od brzegu policzka [mm]");
+                    dlgCell(2, 1) dlgRealEdit(padKr, 0, 20);
+                    dlgCell(3, 0) dlgLabel("H - min. odległość między krawędziami punktów [mil]");
+                    dlgCell(3, 1) dlgRealEdit(padOdl, 0, 1000);
+                }
+            }
+            dlgStretch(1);
+        }
     }
     dlgHBoxLayout {
         dlgStretch(1);
+        dlgPushButton("Pomoc: wymiary") {
+            dlgDialog("Pomoc: wymiary otworów i punktów lutowniczych") {
+                dlgLabel(pomocTxt);
+                dlgHBoxLayout {
+                    dlgStretch(1);
+                    dlgPushButton("+OK") dlgAccept();
+                }
+            };
+        }
         dlgPushButton("+Rysuj") dlgAccept();
         dlgPushButton("-Anuluj") dlgReject();
     }
@@ -113,8 +211,107 @@ if (wk < 9 * d) {
     exit(EXIT_FAILURE);
 }
 
+// ---------------- wyprowadzenia uzwojeń w policzku ----------------
+// Układ współrzędnych policzka: środek okna w (0, 0); poszerzony jest prawy brzeg (x = +hx + ext).
+// Punkty lutownicze (po jednym na otwór): jedna kolumna przy brzegu, a gdy się nie mieszczą na wysokości policzka - dwie, trzy
+// lub cztery kolumny. Przy kilku kolumnach pady dzielą się na grupę górną i dolną, a środkiem zostaje kanał dla linii otworów,
+// która wtedy biegnie aż do brzegu między grupami padów.
+real hxp  = szb / 2;                         // połowa szerokości policzka bez poszerzenia
+real ext  = szerszy ? So / 2 : 0;            // poszerzenie prawego brzegu: połowa szerokości okna na uzwojenie
+real pad  = padMil * 0.0254;                 // średnica punktu lutowniczego [mm]
+real padR = pad / 2;
+real xpc  = hxp + ext - padKr - padR;        // oś zewnętrznej kolumny punktów lutowniczych
+real xs0  = swb / 2 + odlRog + dotw / 2;     // pierwszy otwór: krawędź odlRog od prawego brzegu okna w osi X
+real xeKr = hxp + ext - padKr - dotw / 2;    // ostatni otwór przy kanale: przy brzegu
+real kk   = kat * 3.14159265358979 / 180.0;
+real ck   = cos(kk);
+real sk2  = sin(kk);
+real padPitch = pad + padOdl * 0.0254;       // rozstaw punktów lutowniczych (środek-środek): średnica + odległość między krawędziami
+real wolne = wzb - 2 * promien;              // wysokość policzka dostępna na pady
+int  kolP = 1;                               // liczba kolumn punktów lutowniczych
+int  podzial = 0;                            // 1 = pady w grupie górnej i dolnej, środkiem kanał dla otworów
+int  npk = punkty;                           // punktów w kolumnie
+int  pasuje = 0;
+int  tr = 0;                                 // próba układu: 0 = jedna kolumna wyśrodkowana, 1 = jedna kolumna z kanałem, 2..4 = kilka kolumn z kanałem
+int  padOk = 0;
+int  holeOk = 0;
+int  nGora = 0;                              // punktów w grupie górnej (przy podziale)
+real xe0  = xpc - padR - 1 - dotw / 2;       // ostatni otwór przy kolumnie wyśrodkowanej: przed kolumną punktów
+real xeH  = xe0;                             // ostatni otwór w wybranym układzie
+real dlinT = 0;
+real dlinK = 0;                              // długość linii otworów przy kanale
+real dlin = 0;                               // długość linii otworów (pierwszy rząd)
+int  naRzad = (otwory + rzedy - 1) / rzedy;  // otworów w rzędzie
+real ys0  = -wwb / 2 + offY1 + dotw / 2;       // pierwszy otwór: dolna krawędź offY1 nad dolną krawędzią okna (nigdy niżej)
+int  rzEf = otwory < rzedy ? otwory : rzedy; // faktycznie zajęte rzędy
+real rise = 0;                               // przyrost Y linii otworów
+real chTop = 0;                              // górna krawędź pasma otworów + luz (dla kanału)
+real chBot = 0;                              // dolna krawędź pasma otworów - luz
+real yP   = wzb / 2 - promien - padR;        // największe |Y| środka punktu lutowniczego
+int  capLow = 0;
+int  capUp = 0;
+
+// 1 = któreś dwa otwory (linia długości dl) bliżej niż dotw + odlOtw
+int zaBlisko(real dl) {
+    real st = naRzad > 1 ? dl / (naRzad - 1) : 0;
+    real minC = dotw + odlOtw;
+    int  bl = 0;
+    for (int a = 0; a < otwory; a++) {
+        for (int b = a + 1; b < otwory; b++) {
+            real dx = ((b / rzedy) - (a / rzedy)) * st * ck;
+            real dy = ((b / rzedy) - (a / rzedy)) * st * sk2 + ((b % rzedy) - (a % rzedy)) * offY;
+            if (dx * dx + dy * dy < minC * minC - 1e-9) bl = 1;
+        }
+    }
+    return bl;
+}
+
+// ustawia pasmo otworów dla ostatniego otworu w xe; zwraca 1, gdy otwory się mieszczą
+int otwOk(real xe) {
+    real dl = (xe - xs0) / ck;
+    if (otwory == 0) { rise = 0; chTop = 0.5; chBot = -0.5; return 1; }
+    if (dl < 0) return 0;
+    rise = dl * sk2;
+    chTop = ys0 + rise + (rzEf - 1) * offY + dotw / 2 + 0.5;
+    chBot = ys0 - dotw / 2 - 0.5;
+    if (chTop - 0.5 > wzb / 2 - 0.5 || chBot + 0.5 < -wzb / 2 + 0.5) return 0;
+    return !zaBlisko(dl);
+}
+if (punkty == 0) {
+    xeH = xeKr;                              // bez padów otwory idą aż do brzegu
+    if (!otwOk(xeH)) {
+        dlgMessageBox("Otwory nie mieszczą się: zmniejsz liczbę otworów, zwiększ przesunięcie rzędów w Y, użyj więcej rzędów albo zmniejsz średnicę lub minimalną odległość.", "OK");
+        exit(EXIT_FAILURE);
+    }
+} else {
+    while (!pasuje && tr <= 4) {
+        kolP = tr < 2 ? 1 : tr;
+        podzial = tr > 0;
+        npk = (punkty + kolP - 1) / kolP;
+        xeH = podzial ? xeKr : xe0;
+        holeOk = otwOk(xeH);
+        if (!podzial) {
+            padOk = (npk - 1) * padPitch + pad <= wolne;
+        } else {
+            capLow = chBot - padR + yP >= 0 ? floor((chBot - padR + yP) / padPitch) + 1 : 0;
+            capUp  = yP - chTop - padR >= 0 ? floor((yP - (chTop + padR)) / padPitch) + 1 : 0;
+            nGora = (npk + 1) / 2;
+            if (nGora > capUp) nGora = capUp;
+            if (npk - nGora > capLow) nGora = npk - capLow;
+            padOk = nGora >= 0 && nGora <= capUp && npk - nGora <= capLow && xpc - (kolP - 1) * padPitch - padR > swb / 2 + 1;
+        }
+        if (padOk && holeOk) pasuje = 1;
+        else tr++;
+    }
+    if (!pasuje) {
+        dlgMessageBox("Otwory i punkty lutownicze nie mieszczą się na policzku (próbowano jednej do czterech kolumn punktów, także z kanałem dla otworów): zmniejsz liczbę punktów lub otworów, rozmiar punktów, średnicę otworów albo minimalną odległość, zwiększ przesunięcie rzędów lub użyj więcej rzędów.", "OK");
+        exit(EXIT_FAILURE);
+    }
+}
+dlin = (xeH - xs0) / ck;
+
 string cmd = "";
-real px[96], py[96];
+real px[], py[];
 int  n = 0;
 real ox = 0, oy = 0;
 
@@ -149,36 +346,60 @@ void rog(real cx, real cy, real r, real a0, real a1) {
     }
 }
 
-// 1. policzek: obrys z zaokrąglonymi rogami + okno + otwory; środek w (cx, cy)
+// 1. policzek: obrys z zaokrąglonymi rogami (prawy brzeg poszerzony o ext) + okno + otwory + punkty lutownicze Top;
+// środek okna w (cx, cy)
 void policzek(real cx, real cy) {
     ox = cx; oy = cy;
-    real hx = szb / 2, hy = wzb / 2, r = promien;
-    if (r < 0.1) { pt(-hx, -hy); pt(hx, -hy); pt(hx, hy); pt(-hx, hy); pt(-hx, -hy); }
+    real xl = -hxp, xp = hxp + ext, hy = wzb / 2, r = promien;
+    if (r < 0.1) { pt(xl, -hy); pt(xp, -hy); pt(xp, hy); pt(xl, hy); pt(xl, -hy); }
     else {
-        rog(hx - r, -hy + r, r, -90, 0);
-        rog(hx - r, hy - r, r, 0, 90);
-        rog(-hx + r, hy - r, r, 90, 180);
-        rog(-hx + r, -hy + r, r, 180, 270);
+        rog(xp - r, -hy + r, r, -90, 0);
+        rog(xp - r, hy - r, r, 0, 90);
+        rog(xl + r, hy - r, r, 90, 180);
+        rog(xl + r, -hy + r, r, 180, 270);
         pt(px[0], py[0]);
     }
     kontur();
     pt(-swb / 2, -wwb / 2); pt(swb / 2, -wwb / 2); pt(swb / 2, wwb / 2); pt(-swb / 2, wwb / 2); pt(-swb / 2, -wwb / 2);
     kontur();
-    if (otwory > 0) {                          // rząd otworów w pasie nad oknem
-        real pas = hy - wwb / 2;               // wysokość pasa nad oknem
-        real y = (wwb / 2 + hy) / 2;
-        real w = szb - 2 * (promien + dotw);
+    if (otwory > 0) {
+        // linia otworów od rdzenia ku brzegowi pod kątem kat; drugi rząd przesunięty prostopadle do linii, otwory na przemian
+        // pierwszy otwór pierwszego rzędu przy dolnym prawym rogu okna; kolejne wzdłuż linii pod kątem kat; kolejne rzędy wyżej o offY od poprzedniego, ten sam X
         for (int i = 0; i < otwory; i++) {
-            real x = otwory > 1 ? -w / 2 + w * i / (otwory - 1) : 0;
+            int  rz = i % rzedy;
+            int  nr = i / rzedy;
+            real sdl = naRzad > 1 ? dlin * nr / (naRzad - 1) : 0;
+            real x = xs0 + sdl * ck;                    // ten sam X we wszystkich rzędach
+            real y = ys0 + sdl * sk2 + rz * offY;
             string c;
             sprintf(c, "CIRCLE %.3f (%.3f %.3f) (%.3f %.3f);\n", szerLin, x + cx, y + cy, x + cx + dotw / 2, y + cy);
             cmd += c;
         }
     }
+    if (punkty > 0) {
+        // punkty lutownicze: pełne koła na warstwie Top (1), kolumna przy poszerzonym brzegu
+        string l1;
+        sprintf(l1, "LAYER 1;\n");
+        cmd += l1;
+        for (int j = 0; j < punkty; j++) {
+            int  kol1 = j % kolP;
+            int  m    = j / kolP;
+            real yp   = (m - (npk - 1) / 2.0) * padPitch;
+            if (podzial) {
+                if (m < nGora) yp = chTop + padR + m * padPitch;
+                else           yp = chBot - padR - (m - nGora) * padPitch;
+            }
+            string c2;
+            sprintf(c2, "CIRCLE 0 (%.3f %.3f) (%.3f %.3f);\n", xpc - kol1 * padPitch + cx, yp + cy, xpc - kol1 * padPitch + cx + padR, yp + cy);
+            cmd += c2;
+        }
+        sprintf(l1, "LAYER %d;\n", warstwa);
+        cmd += l1;
+    }
 }
 
 // ścianka pionowa złożona z odcinków o danych połowach szerokości (od dołu do góry), dół w (x0, y0), oś symetrii x = xs
-real hw[8], dl[8];
+real hw[], dl[];
 int  ns = 0;
 void odc(real polowa, real dlugosc) { hw[ns] = polowa; dl[ns] = dlugosc; ns++; }
 
@@ -190,7 +411,7 @@ void scianka(real xs, real y0) {
         y += dl[i];
         pt(xs + hw[i], y);
     }
-    for (int i = ns - 1; i >= 0; i--) {         // lewa strona w dół
+    for (i = ns - 1; i >= 0; i--) {         // lewa strona w dół
         pt(xs - hw[i], y);
         y -= dl[i];
         pt(xs - hw[i], y);
@@ -207,7 +428,7 @@ cmd += s0;
 
 // rząd 1: policzki
 policzek(szb / 2, wzb / 2);
-policzek(szb * 1.5 + odstep, wzb / 2);
+policzek(szb * 1.5 + ext + odstep, wzb / 2);
 tekst("1. Policzek x2", 0, wzb + odstep / 2);
 
 // rząd 2: ścianki 2 (kołnierze + wypustki) i 3 (wcięcia); dół rysujemy poniżej rzędu policzków
@@ -223,15 +444,17 @@ for (int k = 0; k < 2; k++) {                  // ścianka 2: kołnierz | Sk | S
     xs += skk + odstep;
 }
 real yb3 = yb + (wkk - wk) / 2;                // ścianka 3 wyrównana do tulei
-for (int k = 0; k < 2; k++) {                  // ścianka 3: Gr+2d | Gr | Gr+2d
+real xl3 = xs - skk / 2;                       // lewy brzeg ścianki 3: odstęp liczony od prawego brzegu kołnierza ścianki 2
+xs = xl3;
+for (k = 0; k < 2; k++) {                  // ścianka 3: Gr+2d | Gr | Gr+2d
     odc((gr + 2 * d) / 2, ww);
     odc(gr / 2, ww);
     odc((gr + 2 * d) / 2, ww);
-    scianka(xs + (gr + 2 * d) / 2, yb3);
+    scianka(xs + (gr + 2 * d) / 2, yb3);   // xs = lewy brzeg ścianki
     xs += gr + 2 * d + odstep;
 }
 tekst("2. Scianka z kolnierzami x2", 0, yb - 3);
-tekst("3. Scianka z wcieciami x2", 2 * (skk + odstep), yb - 3);
+tekst("3. Scianka z wcieciami x2", xl3, yb - 3);
 
 string op;
 sprintf(op, "Sk=%.1f Gr=%.1f d=%.1f Wo=%.1f So=%.1f luz=%.2f (mm)", Sk, Gr, d, Wo, So, luz);
