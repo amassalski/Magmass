@@ -63,14 +63,14 @@ Section "Skrót w menu Start" SecStart
   SetShellVarContext all
   SetOutPath "$INSTDIR"
   CreateDirectory "$SMPROGRAMS\Magmass"
-  CreateShortcut "$SMPROGRAMS\Magmass\Magmass.lnk" "$INSTDIR\Magmass.exe"
+  CreateShortcut "$SMPROGRAMS\Magmass\Magmass.lnk" "$INSTDIR\Magmass.exe" "" "$INSTDIR\Magmass.exe" 0
   CreateShortcut "$SMPROGRAMS\Magmass\Odinstaluj.lnk" "$INSTDIR\Odinstaluj.exe"
 SectionEnd
 
 Section "Skrót na pulpicie" SecPulpit
   SetShellVarContext all
   SetOutPath "$INSTDIR"
-  CreateShortcut "$DESKTOP\Magmass.lnk" "$INSTDIR\Magmass.exe"
+  CreateShortcut "$DESKTOP\Magmass.lnk" "$INSTDIR\Magmass.exe" "" "$INSTDIR\Magmass.exe" 0
 SectionEnd
 
 ; Domyślnie wyłączony (/o): klasyczny pasek szybkiego uruchamiania istnieje tylko, jeśli użytkownik włączył go w systemie.
@@ -78,7 +78,7 @@ Section /o "Skrót na pasku szybkiego uruchamiania" SecSzybki
   SetShellVarContext current   ; Quick Launch jest zawsze folderem bieżącego użytkownika
   SetOutPath "$INSTDIR"
   CreateDirectory "$QUICKLAUNCH"
-  CreateShortcut "$QUICKLAUNCH\Magmass.lnk" "$INSTDIR\Magmass.exe"
+  CreateShortcut "$QUICKLAUNCH\Magmass.lnk" "$INSTDIR\Magmass.exe" "" "$INSTDIR\Magmass.exe" 0
 SectionEnd
 
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN

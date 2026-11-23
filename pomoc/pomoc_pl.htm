@@ -755,13 +755,44 @@ Okno Kamera / Kamera termowizyjna (Ctrl+Shift+T) pokazuje na żywo obraz z kamer
 <li><b>Mesa Boogie DR</b>: układ z trzema odczepami wtórnego jednocześnie (patrz niżej).</li>
 </ul>
 <h4>Krok 3: tabela sekcji i jej składnia</h4>
-<p>Każdy wiersz tabeli to jedna sekcja, od kolumny środkowej na zewnątrz. Format: litera, numer, spacja, liczba zwojów, np. <tt>A1 600</tt> (pierwotne, sekcja 1, 600 zwojów) i <tt>W1 100</tt> (wtórne). Litera <b>A</b> to uzwojenia pierwotne (anodowe), <b>W</b> wtórne. Znak <tt>|</tt> w osobnym wierszu to przegroda karkasu (druga komora). Po liczbie zwojów można dopisać:</p>
+<p>Każdy wiersz tabeli to jedna sekcja uzwojenia, czyli jedna lub kilka warstw nawiniętych kolejno jedna na drugiej. Wiersze są ułożone <b>od kolumny środkowej rdzenia na zewnątrz</b>: pierwszy wiersz leży najbliżej rdzenia, ostatni najdalej. Podstawowy format wiersza to <b>litera, numer, spacja, liczba zwojów</b>, np. <tt>A1 600</tt>.</p>
 <ul>
-<li><tt>g2</tt>: grupa. Sekcje o tym samym numerze grupy są połączone równolegle, w różnych grupach szeregowo (dla A i W osobno); bez g każda sekcja jest sama w grupie i wszystkie idą szeregowo.</li>
-<li><tt>x</tt>: sekcja leży w oknie, ale nie przewodzi (nieaktywna); zajmuje miejsce, nie wpływa na prąd.</li>
-<li><tt>e2</tt>: kolejność elektryczna sekcji A (przy połączeniu szeregowym inna niż fizyczna).</li>
-<li><tt>g2/3/-</tt>: grupa osobno dla odczepu 4, 8 i 16 Ω; <tt>-</tt> oznacza sekcję nieaktywną przy tym odczepie (układ DR).</li>
+<li><b>Litera</b>: <b>A</b> (albo P) to uzwojenie pierwotne (anodowe), <b>W</b> (albo S) to uzwojenie wtórne (głośnikowe).</li>
+<li><b>Numer</b>: kolejny numer sekcji danego uzwojenia (A1, A2, ...; W1, W2, ...). Służy tylko do rozróżniania; numeracja A i W jest niezależna.</li>
+<li><b>Liczba zwojów</b> sekcji. Suma zwojów wszystkich sekcji A musi dać zwoje pierwotne z1, a zwoje wtórnego z2 wynikają z sekcji W (patrz niżej).</li>
+<li>Wiersz zawierający tylko <tt>|</tt> to przegroda karkasu: następne sekcje leżą w kolejnej komorze.</li>
 </ul>
+<p>Prosty przykład (układ P/2-S-P/2): <tt>A1 300</tt>, <tt>W1 50</tt>, <tt>A2 300</tt>. Najbliżej rdzenia leży połowa pierwotnego, na niej całe wtórne, na wierzchu druga połowa pierwotnego. Bez żadnych dopisków wszystkie sekcje A łączą się ze sobą szeregowo w kolejności tabeli, tak samo sekcje W.</p>
+<p>Dla układów bardziej skomplikowanych (przeplatane uzwojenia, wtórne złożone z kilku warstw połączonych równolegle, transformator z odczepami 4, 8 i 16 Ω) po liczbie zwojów można dopisać dodatkowe oznaczenia. Są one potrzebne tylko wtedy, gdy kolejność w oknie albo sposób połączenia różni się od zwykłego szeregowego.</p>
+<h4>Dopiski za liczbą zwojów</h4>
+<ul>
+<li><tt>e1</tt>, <tt>e2</tt>, ... (tylko sekcje A): <b>kolejność elektryczna</b>. Domyślnie sekcje pierwotne łączy się w tej kolejności, w jakiej leżą w oknie. Gdy w obwodzie mają iść inaczej (np. warstwy leżą w oknie A1, A2, A3, A4, a elektrycznie łączy się A1, A3, A2, A4), każdej sekcji A podaje się jej numer miejsca w łańcuchu połączeń: <tt>e1</tt> to pierwsza od początku uzwojenia, <tt>e2</tt> druga itd. Od tego zależy, między którymi sekcjami wypada odczep środkowy (+HT) i które napięcia leżą na sąsiednich warstwach (pojemności, rozproszenie).</li>
+<li><tt>g1</tt>, <tt>g2</tt>, ... (tylko sekcje W): <b>grupa</b>. Sekcje W o tym samym numerze grupy są połączone <b>równolegle</b> (każda z nich musi mieć tyle samo zwojów), a różne grupy łączą się ze sobą <b>szeregowo</b>. Zwoje wtórnego to suma zwojów po jednej sekcji z każdej grupy. Przykład: <tt>W1 60 g1</tt>, <tt>W2 60 g1</tt>, <tt>W3 20 g2</tt> daje 60 + 20 = 80 zwojów (W1 i W2 równolegle, szeregowo z W3). Sekcje bez dopisku g podlegają ustawieniu „Sekcje wtórne połączone: szeregowo/równolegle”.</li>
+<li><tt>x</tt>: sekcja <b>nieczynna</b>. Leży w oknie (zajmuje miejsce, wlicza się do wymiarów i rozproszenia), ale nie przewodzi i nie liczy się do zwojów ani rezystancji.</li>
+<li><tt>g4/8/16</tt> w postaci trzech wartości oddzielonych ukośnikami, np. <tt>g1/1/1</tt>, <tt>g-/2/-</tt>: <b>grupa osobno dla każdego odczepu</b> wtórnego. Używa się go w transformatorze, który ma jednocześnie wyjścia na 4, 8 i 16 Ω (układ Mesa Boogie DR).</li>
+</ul>
+<h4>Odczepy 4, 8 i 16 Ω: jak czytać <tt>g1/1/1</tt> i znak <tt>-</tt></h4>
+<p>Zapis <tt>g&lt;a&gt;/&lt;b&gt;/&lt;c&gt;</tt> ma zawsze trzy pozycje, w stałej kolejności: <b>pierwsza dla odczepu 4 Ω, druga dla 8 Ω, trzecia dla 16 Ω</b>. Na każdej pozycji stoi numer grupy, do której sekcja należy <i>przy tym odczepie</i>, albo <b>minus</b> <tt>-</tt>. Minus znaczy: <b>przy tym odczepie ta sekcja nie bierze udziału w obwodzie</b> (jest nieczynna, jak przy <tt>x</tt>, ale tylko dla tego jednego odczepu). Sekcja nadal leży w oknie i zajmuje miejsce, bo ten sam transformator służy do wszystkich trzech odczepów.</p>
+<p>Dla każdego odczepu osobno obowiązuje ta sama zasada co przy zwykłym <tt>g</tt>: sekcje o tym samym numerze grupy łączą się równolegle (i muszą mieć tyle samo zwojów), grupy szeregowo, zwoje odczepu to suma zwojów po jednej sekcji z każdej grupy, a sekcje z minusem są pomijane.</p>
+<p><b>Przykład z objaśnieniem</b> (układ Mesa Boogie DR, 10 sekcji, liczby zwojów przykładowe):</p>
+<pre>A1 357 e1
+W1  68 g1/1/1
+W2  40 g-/2/-
+A2 595 e3
+W3  68 g1/1/1
+W4  68 g-/-/2
+A3 595 e2
+W5  68 g1/1/1
+W6  40 g-/2/-
+A4 357 e4</pre>
+<ul>
+<li><b>Pierwotne</b> A1 do A4: 357 + 595 + 595 + 357 = 1904 zwoje. Dopiski <tt>e</tt> mówią, że elektrycznie łączy się je w kolejności A1 (e1), A3 (e2), A2 (e3), A4 (e4); odczep środkowy +HT wypada między e2 i e3, czyli między A3 i A2.</li>
+<li><b>Odczep 4 Ω</b> (pierwsza pozycja): czynne tylko sekcje z <tt>g1</tt> na pierwszej pozycji, czyli W1, W3 i W5. Wszystkie w jednej grupie 1, więc równolegle; każda ma 68 zwojów, więc wtórne ma <b>68 zwojów</b>. W2, W4 i W6 mają tam minus, więc nie biorą udziału.</li>
+<li><b>Odczep 8 Ω</b> (druga pozycja): grupa 1 to W1, W3, W5 (równolegle, 68 zwojów), grupa 2 to W2 i W6 (równolegle, po 40 zwojów). Grupy idą szeregowo: 68 + 40 = <b>108 zwojów</b>. W4 ma na tej pozycji minus.</li>
+<li><b>Odczep 16 Ω</b> (trzecia pozycja): grupa 1 to W1, W3, W5 (68 zwojów), grupa 2 to sama W4 (68 zwojów). Szeregowo: 68 + 68 = <b>136 zwojów</b>. W2 i W6 mają tam minus.</li>
+</ul>
+<p>Zwoje kolejnych odczepów powinny rosnąć jak pierwiastek z impedancji: 1 : √2 : 2, czyli przy 68 zwojach na 4 Ω potrzeba ok. 96 zwojów na 8 Ω (dopinki W2 i W6 po ok. 28 zwojów) i 136 na 16 Ω. W przykładzie 108 zwojów daje impedancję 4 Ω · (108/68)² ≈ 10 Ω zamiast 8 Ω. Zestawienie odczepów pod tabelą pokazuje dla każdego odczepu zwoje i wynikową impedancję, więc nieścisłość widać od razu. Pole „Odczep wtórnego (DR)” wybiera, dla którego odczepu liczone są Lr, rezystancje i sprawność.</p>
+<p><b>Skrót do zapamiętania</b>: <tt>g1/1/1</tt> = „ta sekcja pracuje przy wszystkich trzech odczepach, w grupie 1”; <tt>g-/2/-</tt> = „tylko przy 8 Ω, w grupie 2”; <tt>g-/-/2</tt> = „tylko przy 16 Ω, w grupie 2”. Numery grup są liczone osobno dla każdego odczepu, więc ta sama cyfra na różnych pozycjach nie oznacza tej samej grupy.</p>
 <p>Suma zwojów sekcji A musi dać z1, a aktywnych sekcji W (w jednej grupie szeregowej, po uwzględnieniu równoległych) z2; ewentualny błąd program zgłasza komunikatem pod tabelą.</p>
 <h4>Krok 4: połączenie wtórnych, ścianka, margines, przegroda, poprawka k</h4>
 <ul>
@@ -806,7 +837,7 @@ Okno Kamera / Kamera termowizyjna (Ctrl+Shift+T) pokazuje na żywo obraz z kamer
 <li><i>„Indukcyjność pierwotna jest mniejsza od pożądanej”</i>: dodaj zwoje pierwotne.</li>
 <li><i>Nieparzysta liczba warstw (*)</i> w podzielonej sekcji pierwotnej: trudniej połączyć sekcje; zmień zwoje lub drut tak, by liczba warstw wyszła parzysta.</li>
 <li><i>Niezrównoważone amperozwoje komory</i>: w układach dwukomorowych w każdej komorze amperozwoje A i W powinny być równe, inaczej strumień rozproszenia się nie domyka i wynik Lr jest orientacyjny.</li>
-<li><i>„Wiersz N: …”</i> w tabeli sekcji: błąd składni (pierwsza litera to A lub W, potem numer, spacja i całkowita liczba zwojów, np. <tt>A1 600</tt>; dalej tylko <tt>g</tt>, <tt>x</tt>, <tt>e</tt>); komora przed przegrodą <tt>|</tt> nie może być pusta.</li>
+<li><i>„Wiersz N: …”</i> w tabeli sekcji: błąd składni (pierwsza litera to A lub W, potem numer, spacja i całkowita liczba zwojów, np. <tt>A1 600</tt>; dalej tylko <tt>g</tt> (także w postaci <tt>g1/1/1</tt>), <tt>x</tt>, <tt>e</tt>); komora przed przegrodą <tt>|</tt> nie może być pusta.</li>
 <li>Suma zwojów A w tabeli musi być równa z1, suma W (po uwzględnieniu połączenia sekcji wtórnych) równa z2.</li>
 </ul>
 <h4>Karkas składany z laminatu: skrypt ULP dla EAGLE</h4>

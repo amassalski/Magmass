@@ -1,2 +1,4 @@
 #include <winuser.h>
 1 RT_MANIFEST "Magmass.manifest"
+// ikona pliku exe (Eksplorator, skróty, pasek zadań): pierwsza ikona zasobów programu; bez niej skróty mają ikonę domyślną
+IDI_MAGMASS ICON "Magmass.ico"
